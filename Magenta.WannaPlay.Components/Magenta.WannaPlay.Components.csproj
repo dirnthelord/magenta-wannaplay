@@ -45,7 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Domain\Address.cs" />
+    <Compile Include="Domain\ResidenceAddress.cs" />
     <Compile Include="Domain\BookingSlot.cs" />
     <Compile Include="Domain\DutyGuard.cs" />
     <Compile Include="Domain\Entity.cs" />
