@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Magenta.WannaPlay.UI.WinFor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Magenta.Shared.UI.WinForms", "Magenta.Shared.Ui.WinForms\Magenta.Shared.UI.WinForms.csproj", "{7FE12FFC-99C6-40FC-9D9A-6A2700BEDA66}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Magenta.WannaPlay.Components.Test", "Magenta.WannaPlay.Components.Test\Magenta.WannaPlay.Components.Test.csproj", "{F1FE86A5-728E-489B-A3CA-806125EE3F75}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{7FE12FFC-99C6-40FC-9D9A-6A2700BEDA66}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FE12FFC-99C6-40FC-9D9A-6A2700BEDA66}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7FE12FFC-99C6-40FC-9D9A-6A2700BEDA66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1FE86A5-728E-489B-A3CA-806125EE3F75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1FE86A5-728E-489B-A3CA-806125EE3F75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1FE86A5-728E-489B-A3CA-806125EE3F75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1FE86A5-728E-489B-A3CA-806125EE3F75}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
