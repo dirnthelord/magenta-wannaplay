@@ -3,13 +3,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{7FE12FFC-99C6-40FC-9D9A-6A2700BEDA66}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Magenta.Shared.Ui.WinForms</RootNamespace>
-    <AssemblyName>Magenta.Shared.Ui.WinForms</AssemblyName>
+    <RootNamespace>Magenta.Shared.UI.WinForms</RootNamespace>
+    <AssemblyName>Magenta.Shared.UI.WinForms</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
