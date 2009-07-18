@@ -14,12 +14,12 @@ namespace Magenta.WannaPlay.Services.Booking
 
         #region IBookingService Members
 
-        public BookingDay GetBookingDay(DateTime date)
+        public BookingSlot GetBookingDay(DateTime date)
         {
             return null;
         }
 
-        public void SaveBookingDay(BookingDay bookingDay)
+        public void SaveBookingDay(BookingSlot bookingDay)
         {
             _validator.Validate(bookingDay);
         }

@@ -8,6 +8,6 @@ namespace Magenta.WannaPlay.Services.Booking
 {
     public interface IBookingValidator
     {
-        void Validate(BookingDay bookingDay);
+        void Validate(BookingSlot bookingSlot);
     }
 }

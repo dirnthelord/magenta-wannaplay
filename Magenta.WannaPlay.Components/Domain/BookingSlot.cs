@@ -4,12 +4,11 @@ namespace Magenta.WannaPlay.Domain
 {
     public class BookingSlot : Entity
     {
-        public virtual TimeSpan From { get; set; }
+        public virtual Facility Facility { get; set; }
 
-        /// <summary>
-        /// always 1 until we need something else
-        /// </summary>
-        public virtual int Duration { get; set; }
+        public virtual DateTime From { get; set; }
+
+        public virtual DateTime To { get; set; }
 
         public virtual Resident Resident { get; set; }
     }

@@ -8,8 +8,8 @@ namespace Magenta.WannaPlay.Services.Booking
 {
     public interface IBookingService
     {
-        BookingDay GetBookingDay(DateTime date);
+        BookingSlot GetBookingDay(DateTime date);
 
-        void SaveBookingDay(BookingDay bookingDay);
+        void SaveBookingDay(BookingSlot bookingSlot);
     }
 }

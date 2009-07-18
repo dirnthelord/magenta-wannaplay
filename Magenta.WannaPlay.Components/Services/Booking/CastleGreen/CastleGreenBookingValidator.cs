@@ -4,7 +4,7 @@ namespace Magenta.WannaPlay.Services.Booking.CastleGreen
 {
     public class CastleGreenBookingValidator : IBookingValidator
     {
-        public void Validate(BookingDay bookingDay)
+        public void Validate(BookingSlot bookingSlot)
         {
         }
     }

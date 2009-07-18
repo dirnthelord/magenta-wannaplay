@@ -46,7 +46,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\Address.cs" />
-    <Compile Include="Domain\BookingDay.cs" />
     <Compile Include="Domain\BookingSlot.cs" />
     <Compile Include="Domain\Entity.cs" />
     <Compile Include="Domain\Facility.cs" />
