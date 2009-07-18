@@ -6,6 +6,8 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Magenta.WannaPlay.Services.Residence;
+using Ninject.Core;
 
 namespace Magenta.WannaPlay.UI.WinForms.Controls
 {
@@ -15,5 +17,8 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
         {
             InitializeComponent();
         }
+
+        [Inject]
+        public IResidenceManager ResidenceManager { get; set; }
     }
 }
