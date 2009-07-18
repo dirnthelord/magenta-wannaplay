@@ -5,6 +5,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Magenta.Shared", "Magenta.S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Magenta.WannaPlay.Components", "Magenta.WannaPlay.Components\Magenta.WannaPlay.Components.csproj", "{A7D0D4D2-64D1-4192-B35D-1D7C7FC1C6BE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Magenta.WannaPlay.UI.WinForms", "Magenta.WannaPlay.UI.WinForms\Magenta.WannaPlay.UI.WinForms.csproj", "{EB6A9B6B-FC19-407C-80C6-2DC36A07BE58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Magenta.Shared.Ui.WinForms", "Magenta.Shared.Ui.WinForms\Magenta.Shared.Ui.WinForms.csproj", "{7FE12FFC-99C6-40FC-9D9A-6A2700BEDA66}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +23,14 @@ Global
 		{A7D0D4D2-64D1-4192-B35D-1D7C7FC1C6BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7D0D4D2-64D1-4192-B35D-1D7C7FC1C6BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7D0D4D2-64D1-4192-B35D-1D7C7FC1C6BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB6A9B6B-FC19-407C-80C6-2DC36A07BE58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB6A9B6B-FC19-407C-80C6-2DC36A07BE58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB6A9B6B-FC19-407C-80C6-2DC36A07BE58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB6A9B6B-FC19-407C-80C6-2DC36A07BE58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FE12FFC-99C6-40FC-9D9A-6A2700BEDA66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FE12FFC-99C6-40FC-9D9A-6A2700BEDA66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FE12FFC-99C6-40FC-9D9A-6A2700BEDA66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FE12FFC-99C6-40FC-9D9A-6A2700BEDA66}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
