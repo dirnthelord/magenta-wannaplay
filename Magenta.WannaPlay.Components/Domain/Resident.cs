@@ -10,6 +10,6 @@ namespace Magenta.WannaPlay.Domain
 
         public virtual PersonName Name { get; set; }
 
-        public virtual Address Address { get; set; }
+        public virtual ResidenceAddress Address { get; set; }
     }
 }
