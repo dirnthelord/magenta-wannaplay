@@ -18,6 +18,7 @@ namespace Magenta.Shared.Ui.WinForms
                 Icon = Icon.FromHandle( icon.GetHicon()),
             };
 
+            content.Dock = DockStyle.Fill;
             form.Controls.Add(content);
 
             return form;

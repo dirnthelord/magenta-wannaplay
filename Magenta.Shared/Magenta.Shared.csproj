@@ -49,6 +49,7 @@
     <Compile Include="Exceptions\ExceptionFactory.cs" />
     <Compile Include="Exceptions\UserFriendlyException.cs" />
     <Compile Include="Extensions\System.Collections.Generic\EnumerableExtensions.cs" />
+    <Compile Include="Extensions\System\RandomExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DateTimePeriod.cs" />
   </ItemGroup>
