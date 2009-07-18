@@ -54,6 +54,13 @@
     <Compile Include="Domain\PersonName.cs" />
     <Compile Include="Domain\Resident.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Booking\BookingService.cs" />
+    <Compile Include="Services\Booking\CastleGreen\CastleGreenBookingValidator.cs" />
+    <Compile Include="Services\Booking\IBookingService.cs" />
+    <Compile Include="Services\Booking\IBookingValidator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Repository\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
