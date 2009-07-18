@@ -2,9 +2,14 @@ using Magenta.WannaPlay.Domain;
 
 namespace Magenta.WannaPlay.Services.Booking.CastleGreen
 {
-    public class CastleGreenBookingValidator : IBookingValidator
+    /// <summary>
+    /// Adds Castle Green validation rules:
+    /// - 1 hour per day per unit
+    /// - more?
+    /// </summary>
+    public class CastleGreenBookingValidator : GenericBookingValidator
     {
-        public void Validate(BookingSlot bookingSlot)
+        public override void Validate(BookingSlot bookingSlot)
         {
         }
     }

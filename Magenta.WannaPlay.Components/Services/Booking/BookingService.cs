@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Magenta.WannaPlay.Domain;
 
 namespace Magenta.WannaPlay.Services.Booking
@@ -14,14 +15,19 @@ namespace Magenta.WannaPlay.Services.Booking
 
         #region IBookingService Members
 
-        public BookingSlot GetBookingDay(DateTime date)
+        public IEnumerable<BookingSlot> GetBookingSlots(DateTime from, DateTime to, FacilityType facilityType)
         {
             return null;
         }
 
-        public void SaveBookingDay(BookingSlot bookingDay)
+        public void SaveBookingSlot(BookingSlot bookingDay)
         {
             _validator.Validate(bookingDay);
+        }
+
+        public void CancelBookingSlot(BookingSlot bookingSlot)
+        {
+            
         }
 
         #endregion

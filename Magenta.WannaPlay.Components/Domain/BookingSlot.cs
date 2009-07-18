@@ -11,5 +11,7 @@ namespace Magenta.WannaPlay.Domain
         public virtual DateTime To { get; set; }
 
         public virtual Resident Resident { get; set; }
+
+        public virtual DutyGuard BookedBy { get; set; }
     }
 }
