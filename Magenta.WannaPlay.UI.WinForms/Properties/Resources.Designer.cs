@@ -60,6 +60,27 @@ namespace Magenta.WannaPlay.UI.WinForms.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap Badminton {
+            get {
+                object obj = ResourceManager.GetObject("Badminton", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap Squash {
+            get {
+                object obj = ResourceManager.GetObject("Squash", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap Tennis2 {
+            get {
+                object obj = ResourceManager.GetObject("Tennis2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap WannaPlay {
             get {
                 object obj = ResourceManager.GetObject("WannaPlay", resourceCulture);
