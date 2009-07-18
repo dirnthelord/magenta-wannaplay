@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Magenta.Shared", "Magenta.Shared.csproj", "{18D9C143-D91B-472A-A172-8632CCB6415E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Magenta.Shared", "Magenta.Shared\Magenta.Shared.csproj", "{18D9C143-D91B-472A-A172-8632CCB6415E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Magenta.WannaPlay.Components", "..\Magenta.WannaPlay.Components\Magenta.WannaPlay.Components.csproj", "{A7D0D4D2-64D1-4192-B35D-1D7C7FC1C6BE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Magenta.WannaPlay.Components", "Magenta.WannaPlay.Components\Magenta.WannaPlay.Components.csproj", "{A7D0D4D2-64D1-4192-B35D-1D7C7FC1C6BE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
