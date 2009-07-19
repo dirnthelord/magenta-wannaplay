@@ -9,16 +9,26 @@ using Magenta.WannaPlay.UI.WinForms.Ioc;
 using Magenta.WannaPlay.UI.WinForms.Properties;
 using Magenta.WannaPlay.UI.WinForms.Controls;
 using Ninject.Core;
+using Magenta.Shared.DesignByContract;
 
 namespace Magenta.WannaPlay.UI.WinForms
 {
     public class WannaPlayApplication
     {
+        readonly List<IModule> _componentsConfiguration = new List<IModule>();
+
+        public WannaPlayApplication(params IModule[] componentsConfiguration)
+        {
+            _componentsConfiguration.AddRange(componentsConfiguration);
+
+            _componentsConfiguration.Add(new UIConfiguration());
+        }
+
         public void Run()
         {
             try
             {
-                IKernel kernel = new StandardKernel(new ComponentsConfiguration(), new UIConfiguration());
+                IKernel kernel = new StandardKernel(_componentsConfiguration.ToArray());
 
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);

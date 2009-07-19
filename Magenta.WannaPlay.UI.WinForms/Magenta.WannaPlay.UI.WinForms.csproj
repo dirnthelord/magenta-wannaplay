@@ -82,6 +82,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Services\FixedTimeBookingService.cs" />
+    <Compile Include="Services\IFixedTimeBookingService.cs" />
     <Compile Include="ViewModels\FixedTimeBooking.cs" />
     <Compile Include="ViewModels\FacilityBookingViewModel.cs" />
     <Compile Include="WannaPlayApplication.cs" />

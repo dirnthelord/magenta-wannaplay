@@ -7,6 +7,7 @@ using Magenta.WannaPlay.Services.Residence;
 using Magenta.WannaPlay.UI.WinForms.Controls;
 using Ninject.Core;
 using Ninject.Core.Behavior;
+using Magenta.WannaPlay.UI.WinForms.Services;
 
 namespace Magenta.WannaPlay.UI.WinForms.Ioc
 {
@@ -14,7 +15,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Ioc
     {
         public override void Load()
         {
-            Bind<WannaPlayMainControl>().ToSelf().Using<TransientBehavior>();
+            Bind<IFixedTimeBookingService>().To<FixedTimeBookingService>().Using<SingletonBehavior>();
         }
     }
 }
