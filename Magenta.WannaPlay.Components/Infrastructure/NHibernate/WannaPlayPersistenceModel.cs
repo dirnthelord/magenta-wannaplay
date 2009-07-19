@@ -8,8 +8,9 @@ using FluentNHibernate.MappingModel;
 using FluentNHibernate.MappingModel.Identity;
 using FluentNHibernate.Conventions;
 using FluentNHibernate.Mapping;
+using Magenta.WannaPlay.Domain;
 
-namespace Magenta.WannaPlay.Domain
+namespace Magenta.WannaPlay.Infrastructure.NHibernate
 {
     public class WannaPlayPersistenceModel : AutoPersistenceModel
     {
@@ -18,7 +19,6 @@ namespace Magenta.WannaPlay.Domain
             AddEntityAssembly(Assembly.GetExecutingAssembly())
                 .Where(entity => entity.BaseType == typeof(Entity));
 
-            WithSetup(s => s.IsComponentType = type => type == typeof(PersonName));
             WithSetup(s => s.IsBaseType = type => type == typeof(Entity));
         }
     }

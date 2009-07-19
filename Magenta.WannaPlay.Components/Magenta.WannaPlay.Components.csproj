@@ -65,14 +65,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Domain\WannaPlayPersistenceModel.cs" />
+    <Compile Include="Infrastructure\NHibernate\WannaPlayPersistenceModel.cs" />
     <Compile Include="Domain\ResidenceAddress.cs" />
     <Compile Include="Domain\BookingSlot.cs" />
     <Compile Include="Domain\DutyGuard.cs" />
     <Compile Include="Domain\Entity.cs" />
     <Compile Include="Domain\Facility.cs" />
     <Compile Include="Domain\FacilityType.cs" />
-    <Compile Include="Domain\PersonName.cs" />
     <Compile Include="Domain\Resident.cs" />
     <Compile Include="Infrastructure\NHibernate\SessionProvider.cs" />
     <Compile Include="Ioc\ComponentsConfiguration.cs" />
@@ -82,9 +81,8 @@
     <Compile Include="Services\Booking\BookingService.cs" />
     <Compile Include="Services\Booking\BookingValidationException.cs" />
     <Compile Include="Services\Residence\IResidenceManager.cs" />
-    <Compile Include="Services\Booking\CastleGreen\CastleGreenBookingValidator.cs" />
     <Compile Include="Services\Booking\IBookingService.cs" />
-    <Compile Include="Services\Booking\GenericBookingValidator.cs" />
+    <Compile Include="Services\Booking\BookingValidator.cs" />
     <Compile Include="Services\Booking\IBookingValidator.cs" />
     <Compile Include="Services\Residence\ResidenceManager.cs" />
   </ItemGroup>

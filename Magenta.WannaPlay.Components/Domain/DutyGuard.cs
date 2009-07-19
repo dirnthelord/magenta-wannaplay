@@ -7,6 +7,6 @@ namespace Magenta.WannaPlay.Domain
 {
     public class DutyGuard : Entity
     {
-        public virtual PersonName Name { get; set; }
+        public virtual string Name { get; set; }
     }
 }

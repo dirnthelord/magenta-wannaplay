@@ -15,7 +15,12 @@ namespace Magenta.WannaPlay.Services.Residence
 
         #region IResidenceManager Members
 
-        public IEnumerable<Facility> GetBookableFacilities()
+        public IEnumerable<Facility> GetTennisCourts()
+        {
+            return null;
+        }
+
+        public IEnumerable<Facility> GetSquashCourts()
         {
             return null;
         }
