@@ -5,37 +5,40 @@ using System.Text;
 
 namespace Magenta.Shared
 {
-    public class DateTimePeriod
+    public class DateTimePeriod : EquatableBase<DateTimePeriod>
     {
-        readonly DateTime _from;
-        readonly DateTime _to;
+        public virtual DateTime From { get; set; }
+        public virtual DateTime To { get; set; }
 
-        #region Properties
-        public DateTime From
+        public virtual TimeSpan GetTimeSpan()
         {
-            get { return _from; }
+            return To - From;
         }
 
-        public DateTime To
+        public DateTimePeriod()
         {
-            get { return _to; }
         }
-        #endregion
 
-        public DateTimePeriod(DateTime from, DateTime to)
+        //public DateTimePeriod(DateTime from, DateTime to)
+        //{
+        //    _from = from;
+        //    _to = to;
+        //}
+
+        protected override bool EqualsCoreNotNull(DateTimePeriod other)
         {
-            _from = from;
-            _to = to;
+            return From == other.From && To == other.To;
         }
+
 
         public static DateTimePeriod FromHours(DateTime from, double days)
         {
-            return new DateTimePeriod(from, from.AddHours(days));
+            return new DateTimePeriod { From = from, To = from.AddHours(days) };
         }
 
         public static DateTimePeriod FromDays(DateTime from, double days)
         {
-            return new DateTimePeriod(from, from.AddDays(days));
+            return new DateTimePeriod { From = from, To = from.AddDays(days) };
         }
     }
 }
