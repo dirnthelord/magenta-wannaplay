@@ -37,7 +37,7 @@ namespace Magenta.WannaPlay.Components.Domain
                                  Name = "Ross"
                              };
 
-            // TODO: configure cascading updated in auto-mapper
+            // TODO: configure cascading updates in auto-mapper
             Session.Save(_resident.Address);
             Session.Save(_resident);
             Session.Save(_facility);
