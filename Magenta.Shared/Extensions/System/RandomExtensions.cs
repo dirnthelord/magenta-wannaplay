@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Magenta.Shared.Extensions.System
+namespace System
 {
     public static class RandomExtensions
     {
