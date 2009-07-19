@@ -11,7 +11,7 @@ namespace Magenta.WannaPlay.Services.Booking
     {
         #region IBookingValidator Members
 
-        public virtual void Validate(BookingSlot bookingSlot)
+        public virtual void Validate(BookingEntry bookingSlot)
         {
 
         }
