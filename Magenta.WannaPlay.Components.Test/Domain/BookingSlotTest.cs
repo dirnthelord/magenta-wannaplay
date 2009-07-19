@@ -22,7 +22,7 @@ namespace Magenta.WannaPlay.Components.Domain
             _resident = new Resident
                              {
                                  Name = "John Black",
-                                 Number = "1234",
+                                 PassCardNumber = "1234",
                                  Address = new ResidenceAddress {Block = "100", Unit = "#13-01"}
                              };
 
@@ -51,7 +51,7 @@ namespace Magenta.WannaPlay.Components.Domain
                 .CheckProperty(x => x.FromTime, now.AddDays(1))
                 .CheckProperty(x => x.ToTime, now.AddDays(1).AddHours(1))
                 .CheckProperty(x => x.Resident, _resident)
-                .CheckProperty(x => x.BookedBy, _dutyGuard)
+                .CheckProperty(x => x.BookedByGuard, _dutyGuard)
                 .CheckProperty(x => x.Facility, _facility)
                 .CheckProperty(x => x.BookedAt, now)
                 .VerifyTheMappings();

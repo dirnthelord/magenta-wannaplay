@@ -49,7 +49,7 @@ namespace Magenta.WannaPlay.Infrastructure.Persistence
 
         public Resident LoadResident(string number)
         {
-            return _session.Linq<Resident>().Single(r => r.Number == number);
+            return _session.Linq<Resident>().Single(r => r.PassCardNumber == number);
         }
 
         #endregion
