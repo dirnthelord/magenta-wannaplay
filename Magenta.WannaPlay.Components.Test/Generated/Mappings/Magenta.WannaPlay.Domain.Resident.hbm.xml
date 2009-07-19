@@ -1,0 +1,14 @@
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" default-access="">
+  <class name="Magenta.WannaPlay.Domain.Resident, Magenta.WannaPlay.Components, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" table="`Resident`" xmlns="urn:nhibernate-mapping-2.2">
+    <id name="Id" type="Int32" column="Id">
+      <generator class="identity" />
+    </id>
+    <property name="Number" type="String">
+      <column name="Number" />
+    </property>
+    <property name="Name" type="String">
+      <column name="Name" />
+    </property>
+    <many-to-one name="Address" column="Address_id" />
+  </class>
+</hibernate-mapping>

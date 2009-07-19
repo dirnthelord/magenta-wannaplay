@@ -6,12 +6,14 @@ namespace Magenta.WannaPlay.Domain
     {
         public virtual Facility Facility { get; set; }
 
-        public virtual DateTime From { get; set; }
+        public virtual DateTime FromTime { get; set; }
 
-        public virtual DateTime To { get; set; }
+        public virtual DateTime ToTime { get; set; }
 
         public virtual Resident Resident { get; set; }
 
         public virtual DutyGuard BookedBy { get; set; }
+
+        public virtual DateTime BookedAt { get; set; }
     }
 }

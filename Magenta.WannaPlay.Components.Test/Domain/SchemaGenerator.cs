@@ -37,6 +37,15 @@ namespace Magenta.WannaPlay.Components.Domain
             GenerateSchema(new SQLiteConfiguration().InMemory().ShowSql(), @"..\..\Generated\DBSchema_SqLite.sql");
         }
 
+        public void GenerateMapping()
+        {
+            var model = new WannaPlayPersistenceModel();
+
+            model.CompileMappings();
+                
+            model.WriteMappingsTo(@"..\..\Generated\Mappings\");
+        }
+
         private void GenerateSchema(IPersistenceConfigurer configurer, string filePath)
         {
             var config = new Configuration();
