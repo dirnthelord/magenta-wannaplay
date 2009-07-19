@@ -1,6 +1,5 @@
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
-using Magenta.WannaPlay.Domain;
 using NHibernate;
 using Ninject.Core.Activation;
 using Ninject.Core.Creation;
@@ -9,7 +8,7 @@ namespace Magenta.WannaPlay.Infrastructure.NHibernate
 {
     public class SessionProvider : SimpleProvider<ISession>
     {
-        public const string DefaultFileName = "Persistence.db";
+        public const string DefaultFileName = "WannaPlay.db";
 
         private readonly ISessionFactory _sessionFactory;
         private readonly ISession _session;

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Magenta.WannaPlay.Services.Booking;
-using Magenta.WannaPlay.Services.Booking.CastleGreen;
 using Magenta.WannaPlay.Services.Residence;
 using Magenta.WannaPlay.UI.WinForms.Controls;
 using Ninject.Core;

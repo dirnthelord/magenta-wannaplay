@@ -7,7 +7,7 @@ namespace Magenta.WannaPlay.Services.Booking
     /// - slot is filled correctly
     /// - check for time collisions
     /// </summary>
-    public class GenericBookingValidator : IBookingValidator
+    public class BookingValidator : IBookingValidator
     {
         #region IBookingValidator Members
 

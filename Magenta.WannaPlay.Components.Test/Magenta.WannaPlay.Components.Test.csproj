@@ -67,6 +67,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Generated\DBSchema_MsSql2005.sql" />
+    <None Include="Generated\DBSchema_MsSqlCE.sql" />
     <None Include="Generated\DBSchema_SqLite.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
