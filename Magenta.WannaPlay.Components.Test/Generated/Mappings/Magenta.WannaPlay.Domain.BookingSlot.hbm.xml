@@ -12,8 +12,8 @@
     <property name="BookedAt" type="DateTime">
       <column name="BookedAt" />
     </property>
-    <many-to-one name="Facility" column="FacilityId" />
-    <many-to-one name="Resident" column="ResidentId" />
-    <many-to-one name="BookedBy" column="BookedById" />
+    <many-to-one cascade="all" name="Facility" column="FacilityId" />
+    <many-to-one cascade="all" name="Resident" column="ResidentId" />
+    <many-to-one cascade="all" name="BookedBy" column="BookedById" />
   </class>
 </hibernate-mapping>

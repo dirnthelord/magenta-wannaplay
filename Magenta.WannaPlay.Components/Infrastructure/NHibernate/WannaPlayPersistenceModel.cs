@@ -20,7 +20,10 @@ namespace Magenta.WannaPlay.Infrastructure.NHibernate
                 .Where(entity => entity.BaseType == typeof(Entity))
                 .ConventionDiscovery.Setup(c =>
                 {
-                    c.Add<WannaPlayForeignKeyConvention>();
+                    c.Add<ForeignKeyConvention>();
+                    c.Add<ManyToOneConvention>();
+                    c.Add<OneToManyConvention>();
+                    c.Add<EnumConvention>();
                 });
 
             WithSetup(s => s.IsBaseType = type => type == typeof(Entity));
