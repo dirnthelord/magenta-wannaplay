@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{18D9C143-D91B-472A-A172-8632CCB6415E}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -49,6 +49,7 @@
     <Compile Include="Exceptions\ExceptionFactory.cs" />
     <Compile Include="Exceptions\UserFriendlyException.cs" />
     <Compile Include="Extensions\System\Collections\Generic\EnumerableExtensions.cs" />
+    <Compile Include="Extensions\System\DateTimeExtentions.cs" />
     <Compile Include="Extensions\System\RandomExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DateTimePeriod.cs" />

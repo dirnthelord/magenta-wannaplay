@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assetions.cs" />
     <Compile Include="NHibernate\NHibernateMappingTest.cs" />
     <Compile Include="NHibernate\NHibernateTest.cs" />
     <Compile Include="NHibernate\SqLiteInMemoryPersister.cs" />
