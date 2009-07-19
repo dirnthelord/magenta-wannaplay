@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{EB6A9B6B-FC19-407C-80C6-2DC36A07BE58}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -56,6 +56,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\FacilityTypeBookingControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\FacilityTypeBookingControl.Designer.cs">
+      <DependentUpon>FacilityTypeBookingControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Domain\GranularBookingScheduleGenerator.cs" />
     <Compile Include="Ioc\UIConfiguration.cs" />
     <Compile Include="Controls\FacilityTypeSelector.cs">
       <SubType>UserControl</SubType>
@@ -82,10 +89,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Services\FixedTimeBookingService.cs" />
-    <Compile Include="Services\IFixedTimeBookingService.cs" />
-    <Compile Include="ViewModels\FixedTimeBooking.cs" />
-    <Compile Include="ViewModels\FacilityBookingViewModel.cs" />
+    <Compile Include="Services\GranularScheduleBookingService.cs" />
+    <Compile Include="Services\IGranularScheduleBookingService.cs" />
+    <Compile Include="ViewModels\EmptyGranularScheduleFacilityTypeBookingSlot.cs" />
+    <Compile Include="ViewModels\GranularScheduleFacilityTypeBookingSlot.cs" />
+    <Compile Include="ViewModels\GranularScheduleFacilityTypeBookingViewModel.cs" />
+    <Compile Include="ViewModels\EmptyGranularScheduleFacilityBookingSlot.cs" />
+    <Compile Include="ViewModels\GranularScheduleFacilityBookingSlot.cs" />
+    <Compile Include="ViewModels\GranularScheduleFacilityBookingViewModel.cs" />
     <Compile Include="WannaPlayApplication.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -109,6 +120,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Controls\FacilityTypeBookingControl.resx">
+      <DependentUpon>FacilityTypeBookingControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\FacilityTypeSelector.resx">
       <DependentUpon>FacilityTypeSelector.cs</DependentUpon>
       <SubType>Designer</SubType>

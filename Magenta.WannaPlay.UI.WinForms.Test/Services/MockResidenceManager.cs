@@ -9,8 +9,6 @@ namespace Magenta.WannaPlay.UI.WinForms.Services
 {
     public class MockResidenceManager  : IResidenceManager
     {
-        #region IResidenceManager Members
-
         public IEnumerable<Facility> GetTennisCourts()
         {
             throw new NotImplementedException();
@@ -31,11 +29,9 @@ namespace Magenta.WannaPlay.UI.WinForms.Services
             throw new NotImplementedException();
         }
 
-        public Resident GetResident(int number)
+        public Resident GetResident(string number)
         {
             throw new NotImplementedException();
         }
-
-        #endregion
     }
 }

@@ -37,6 +37,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\_externals\Bin\ninject\Ninject.Core.dll</HintPath>
     </Reference>
+    <Reference Include="nunit.framework, Version=2.5.0.9122, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\_externals\Bin\nunit\_latest\nunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -53,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\GranularBookingScheduleGeneratorTests.cs" />
     <Compile Include="Ioc\MockComponentsConfiguration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -61,6 +66,14 @@
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Magenta.Shared.Testing\Magenta.Shared.Testing.csproj">
+      <Project>{B2DA52AB-F103-4865-8F39-71D076D85E25}</Project>
+      <Name>Magenta.Shared.Testing</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Magenta.Shared\Magenta.Shared.csproj">
+      <Project>{18D9C143-D91B-472A-A172-8632CCB6415E}</Project>
+      <Name>Magenta.Shared</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Magenta.WannaPlay.Components\Magenta.WannaPlay.Components.csproj">
       <Project>{A7D0D4D2-64D1-4192-B35D-1D7C7FC1C6BE}</Project>
       <Name>Magenta.WannaPlay.Components</Name>
