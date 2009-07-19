@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using Magenta.WannaPlay.Ioc;
 
 namespace Magenta.WannaPlay.UI.WinForms
 {
@@ -11,7 +12,7 @@ namespace Magenta.WannaPlay.UI.WinForms
         static void Main()
         {
             // TODO: Add ninject resolution
-            new WannaPlayApplication().Run();
+            new WannaPlayApplication(new ComponentsConfiguration()).Run();
         }
     }
 }
