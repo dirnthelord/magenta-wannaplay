@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{F1FE86A5-728E-489B-A3CA-806125EE3F75}</ProjectGuid>
+    <ProjectGuid>{B2DA52AB-F103-4865-8F39-71D076D85E25}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Magenta.WannaPlay.Components</RootNamespace>
-    <AssemblyName>Magenta.WannaPlay.Components.Test</AssemblyName>
+    <RootNamespace>Magenta.Shared.Testing</RootNamespace>
+    <AssemblyName>Magenta.Shared.Testing</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -39,10 +39,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\_externals\Bin\nhibernate\_latest\NHibernate.dll</HintPath>
     </Reference>
-    <Reference Include="NHibernate.Linq, Version=1.0.0.0, Culture=neutral, PublicKeyToken=444cf6a87fdab271, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\_externals\Bin\nhibernate\_latest\NHibernate.Linq.dll</HintPath>
-    </Reference>
     <Reference Include="nunit.framework, Version=2.5.0.9122, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\_externals\Bin\nunit\_latest\nunit.framework.dll</HintPath>
@@ -50,10 +46,6 @@
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Data.SQLite, Version=1.0.63.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\_externals\Bin\SQLite\_latest\System.Data.SQLite.DLL</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -65,31 +57,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Domain\BookingSlotTest.cs" />
-    <Compile Include="Domain\SchemaGenerator.cs" />
+    <Compile Include="NHibernate\NHibernateMappingTest.cs" />
+    <Compile Include="NHibernate\NHibernateTest.cs" />
+    <Compile Include="NHibernate\SqLiteInMemoryPersister.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Magenta.Shared.Testing\Magenta.Shared.Testing.csproj">
-      <Project>{B2DA52AB-F103-4865-8F39-71D076D85E25}</Project>
-      <Name>Magenta.Shared.Testing</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Magenta.WannaPlay.Components\Magenta.WannaPlay.Components.csproj">
-      <Project>{A7D0D4D2-64D1-4192-B35D-1D7C7FC1C6BE}</Project>
-      <Name>Magenta.WannaPlay.Components</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Generated\Schemas\DBSchema_MsSql2005.sql" />
-    <None Include="Generated\Schemas\DBSchema_MsSqlCE.sql" />
-    <None Include="Generated\Schemas\DBSchema_SqLite.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Generated\Mappings\Magenta.WannaPlay.Domain.BookingSlot.hbm.xml" />
-    <Content Include="Generated\Mappings\Magenta.WannaPlay.Domain.DutyGuard.hbm.xml" />
-    <Content Include="Generated\Mappings\Magenta.WannaPlay.Domain.Facility.hbm.xml" />
-    <Content Include="Generated\Mappings\Magenta.WannaPlay.Domain.ResidenceAddress.hbm.xml" />
-    <Content Include="Generated\Mappings\Magenta.WannaPlay.Domain.Resident.hbm.xml" />
+    <Compile Include="UnitTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
