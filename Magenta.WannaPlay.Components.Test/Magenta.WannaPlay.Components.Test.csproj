@@ -89,16 +89,16 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Generated\Schemas\DBSchema_MsSql2005.sql" />
-    <None Include="Generated\Schemas\DBSchema_MsSqlCE.sql" />
-    <None Include="Generated\Schemas\DBSchema_SqLite.sql" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Generated\Mappings\Magenta.WannaPlay.Domain.BookingSlot.hbm.xml" />
     <Content Include="Generated\Mappings\Magenta.WannaPlay.Domain.DutyGuard.hbm.xml" />
     <Content Include="Generated\Mappings\Magenta.WannaPlay.Domain.Facility.hbm.xml" />
     <Content Include="Generated\Mappings\Magenta.WannaPlay.Domain.ResidenceAddress.hbm.xml" />
     <Content Include="Generated\Mappings\Magenta.WannaPlay.Domain.Resident.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Generated\Schemas\DBSchema_MsSql2005.sql" />
+    <None Include="Generated\Schemas\DBSchema_MsSqlCE.sql" />
+    <None Include="Generated\Schemas\DBSchema_SqLite.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

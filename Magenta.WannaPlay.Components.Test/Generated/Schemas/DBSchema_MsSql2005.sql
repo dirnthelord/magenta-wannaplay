@@ -46,6 +46,7 @@ create table [Resident] (
 create table [Facility] (
   Id INT IDENTITY NOT NULL,
    Name NVARCHAR(255) null,
+   FacilityType INT null,
    primary key (Id)
 )
 alter table [BookingSlot] add constraint FKB9DFF92D89D01458 foreign key (FacilityId) references [Facility]

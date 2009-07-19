@@ -65,7 +65,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Infrastructure\NHibernate\EnumConvention.cs" />
     <Compile Include="Infrastructure\NHibernate\ForeignKeyConvention.cs" />
+    <Compile Include="Infrastructure\NHibernate\ManyToOneConvention.cs" />
+    <Compile Include="Infrastructure\NHibernate\OneToManyConvention.cs" />
     <Compile Include="Infrastructure\NHibernate\WannaPlayPersistenceModel.cs" />
     <Compile Include="Domain\ResidenceAddress.cs" />
     <Compile Include="Domain\BookingSlot.cs" />

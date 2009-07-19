@@ -9,6 +9,6 @@
     <property name="Name" type="String">
       <column name="Name" />
     </property>
-    <many-to-one name="Address" column="AddressId" />
+    <many-to-one cascade="all" name="Address" column="AddressId" />
   </class>
 </hibernate-mapping>
