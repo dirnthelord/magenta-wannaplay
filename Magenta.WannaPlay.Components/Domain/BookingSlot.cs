@@ -12,7 +12,7 @@ namespace Magenta.WannaPlay.Domain
 
         public virtual Resident Resident { get; set; }
 
-        public virtual DutyGuard BookedBy { get; set; }
+        public virtual DutyGuard BookedByGuard { get; set; }
 
         public virtual DateTime BookedAt { get; set; }
     }
