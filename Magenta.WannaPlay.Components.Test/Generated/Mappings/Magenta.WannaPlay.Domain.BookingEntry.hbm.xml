@@ -3,14 +3,16 @@
     <id name="Id" type="Int32" column="Id">
       <generator class="identity" />
     </id>
-    <property name="FromTime" type="DateTime">
-      <column name="FromTime" />
-    </property>
-    <property name="ToTime" type="DateTime">
-      <column name="ToTime" />
-    </property>
-    <property name="BookedAt" type="DateTime">
-      <column name="BookedAt" />
+    <component name="Period" insert="true" update="true">
+      <property name="From" type="DateTime">
+        <column name="PeriodFrom" />
+      </property>
+      <property name="To" type="DateTime">
+        <column name="PeriodTo" />
+      </property>
+    </component>
+    <property name="BookedAtDateTime" type="DateTime">
+      <column name="BookedAtDateTime" />
     </property>
     <many-to-one cascade="all" name="Facility" column="FacilityId" />
     <many-to-one cascade="all" name="Resident" column="ResidentId" />

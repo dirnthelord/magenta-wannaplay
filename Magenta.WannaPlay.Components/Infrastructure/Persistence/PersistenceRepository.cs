@@ -21,8 +21,8 @@ namespace Magenta.WannaPlay.Infrastructure.Persistence
         public IEnumerable<BookingEntry> LoadBookingSlots(DateTime from, DateTime to, FacilityType facilityType)
         {
             return _session.Linq<BookingEntry>()
-                .Where(slot => slot.FromTime >= from.RoundDateDown()
-                    && slot.ToTime <= to.RoundDateUp()
+                .Where(slot => slot.Period.From >= from.RoundDateDown()
+                    && slot.Period.To <= to.RoundDateUp()
                     && slot.Facility.FacilityType == facilityType)
                 .ToList();
         }

@@ -1,6 +1,6 @@
 namespace Magenta.WannaPlay.Domain
 {
-    public class ResidenceAddress : Entity
+    public class ResidenceAddress
     {
         public virtual string Block { get; set; }
 
