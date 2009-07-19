@@ -37,6 +37,8 @@ namespace Magenta.WannaPlay.Components.Domain
                                  Name = "Ross"
                              };
 
+            // TODO: configure cascading updated in auto-mapper
+            Session.Save(_resident.Address);
             Session.Save(_resident);
             Session.Save(_facility);
             Session.Save(_dutyGuard);
@@ -45,13 +47,15 @@ namespace Magenta.WannaPlay.Components.Domain
         [Test]
         public void InsertSelect()
         {
+            var now = DateTime.UtcNow.RoundToSeconds();
+
             new PersistenceSpecification<BookingSlot>(Session)
-                .CheckProperty(x => x.FromTime, DateTime.UtcNow.AddDays(1))
-                .CheckProperty(x => x.ToTime, DateTime.UtcNow.AddDays(1).AddHours(1))
+                .CheckProperty(x => x.FromTime, now.AddDays(1))
+                .CheckProperty(x => x.ToTime, now.AddDays(1).AddHours(1))
                 .CheckProperty(x => x.Resident, _resident)
                 .CheckProperty(x => x.BookedBy, _dutyGuard)
                 .CheckProperty(x => x.Facility, _facility)
-                .CheckProperty(x => x.BookedAt, DateTime.UtcNow)
+                .CheckProperty(x => x.BookedAt, now)
                 .VerifyTheMappings();
         }
     }

@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{F1FE86A5-728E-489B-A3CA-806125EE3F75}</ProjectGuid>
+    <ProjectGuid>{F2CFB30D-6AA3-4DA1-ABC6-C75CEEFE3C59}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Magenta.WannaPlay.Components</RootNamespace>
-    <AssemblyName>Magenta.WannaPlay.Components.Test</AssemblyName>
+    <RootNamespace>Magents.Shared.Test</RootNamespace>
+    <AssemblyName>Magents.Shared.Test</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,18 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FluentNHibernate, Version=0.1.0.524, Culture=neutral, PublicKeyToken=8aa435e3cb308880, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\_externals\Bin\nhibernate\_latest\FluentNHibernate.dll</HintPath>
-    </Reference>
-    <Reference Include="NHibernate, Version=2.0.1.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\_externals\Bin\nhibernate\_latest\NHibernate.dll</HintPath>
-    </Reference>
-    <Reference Include="NHibernate.Linq, Version=1.0.0.0, Culture=neutral, PublicKeyToken=444cf6a87fdab271, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\_externals\Bin\nhibernate\_latest\NHibernate.Linq.dll</HintPath>
-    </Reference>
     <Reference Include="nunit.framework, Version=2.5.0.9122, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\_externals\Bin\nunit\_latest\nunit.framework.dll</HintPath>
@@ -50,10 +38,6 @@
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Data.SQLite, Version=1.0.63.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\_externals\Bin\SQLite\_latest\System.Data.SQLite.DLL</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -65,8 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Domain\BookingSlotTest.cs" />
-    <Compile Include="Domain\SchemaGenerator.cs" />
+    <Compile Include="Extentions\System\DateTimeExtentionsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -78,22 +61,6 @@
       <Project>{18D9C143-D91B-472A-A172-8632CCB6415E}</Project>
       <Name>Magenta.Shared</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Magenta.WannaPlay.Components\Magenta.WannaPlay.Components.csproj">
-      <Project>{A7D0D4D2-64D1-4192-B35D-1D7C7FC1C6BE}</Project>
-      <Name>Magenta.WannaPlay.Components</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Generated\Schemas\DBSchema_MsSql2005.sql" />
-    <None Include="Generated\Schemas\DBSchema_MsSqlCE.sql" />
-    <None Include="Generated\Schemas\DBSchema_SqLite.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Generated\Mappings\Magenta.WannaPlay.Domain.BookingSlot.hbm.xml" />
-    <Content Include="Generated\Mappings\Magenta.WannaPlay.Domain.DutyGuard.hbm.xml" />
-    <Content Include="Generated\Mappings\Magenta.WannaPlay.Domain.Facility.hbm.xml" />
-    <Content Include="Generated\Mappings\Magenta.WannaPlay.Domain.ResidenceAddress.hbm.xml" />
-    <Content Include="Generated\Mappings\Magenta.WannaPlay.Domain.Resident.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
