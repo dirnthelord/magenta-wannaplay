@@ -7,6 +7,7 @@ using Magenta.Shared.Testing.NHibernate;
 using Magenta.WannaPlay.Domain;
 using Magenta.WannaPlay.Infrastructure.NHibernate;
 using NUnit.Framework;
+using Magenta.Shared;
 
 namespace Magenta.WannaPlay.Components.Domain
 {
@@ -23,7 +24,7 @@ namespace Magenta.WannaPlay.Components.Domain
                              {
                                  Name = "John Black",
                                  PassCardNumber = "1234",
-                                 Address = new ResidenceAddress {Block = "100", Unit = "#13-01"}
+                                 Address = new ResidenceAddress { Block = "100", Unit = "#13-01" }
                              };
 
             _facility = new Facility
@@ -48,12 +49,11 @@ namespace Magenta.WannaPlay.Components.Domain
             var now = DateTime.UtcNow.RoundToSeconds();
 
             new PersistenceSpecification<BookingEntry>(Session)
-                .CheckProperty(x => x.FromTime, now.AddDays(1))
-                .CheckProperty(x => x.ToTime, now.AddDays(1).AddHours(1))
+                .CheckProperty(x => x.Period, DateTimePeriod.FromHours(now.AddDays(1), 1))
                 .CheckProperty(x => x.Resident, _resident)
                 .CheckProperty(x => x.BookedByGuard, _dutyGuard)
                 .CheckProperty(x => x.Facility, _facility)
-                .CheckProperty(x => x.BookedAt, now)
+                .CheckProperty(x => x.BookedAtDateTime, now)
                 .VerifyTheMappings();
         }
     }

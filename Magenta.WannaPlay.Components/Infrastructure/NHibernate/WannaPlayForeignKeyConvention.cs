@@ -8,7 +8,7 @@ using FluentNHibernate.Mapping;
 
 namespace Magenta.WannaPlay.Infrastructure.NHibernate
 {
-    public class ForeignKeyConvention : FluentNHibernate.Conventions.ForeignKeyConvention
+    public class WannaPlayForeignKeyConvention : ForeignKeyConvention
     {
         protected override string GetKeyName(PropertyInfo property, Type type)
         {
