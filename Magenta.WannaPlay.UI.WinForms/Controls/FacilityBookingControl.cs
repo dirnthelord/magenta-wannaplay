@@ -16,12 +16,29 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
         public FacilityBookingControl()
         {
             InitializeComponent();
+
+            dataContext.ListChanged += delegate { FormatRows(); };
         }
 
-        public FacilityBookingViewModel ViewModel
+        private void FormatRows()
         {
-            get { return (FacilityBookingViewModel)dataContext.DataSource; }
-            set { dataContext.DataSource = value; }
+            foreach (var row in dataGridView1.Rows.Cast<DataGridViewRow>())
+            {
+                row.Height = (int)((GranularScheduleFacilityBookingSlot)row.DataBoundItem).Period.GetTimeSpan().TotalHours * 22;
+                row.DefaultCellStyle.BackColor = Color.Green;
+            }
+        }
+
+        public GranularScheduleFacilityBookingViewModel ViewModel
+        {
+            get { return (GranularScheduleFacilityBookingViewModel)dataContext.DataSource; }
+            set { dataContext.DataSource = value;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FormatRows();
         }
     }
 }

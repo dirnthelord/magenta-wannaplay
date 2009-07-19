@@ -11,30 +11,29 @@ using Magenta.WannaPlay.UI.WinForms.Services;
 
 namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 {
-    public class FacilityBookingViewModel : INotifyPropertyChanged
+    public class GranularScheduleFacilityTypeBookingViewModel : INotifyPropertyChanged
     {
-        public BindingList<FixedTimeBooking> Slots { get; private set; }
-        public IFixedTimeBookingService BookingService { get; private set; }
-        public DateTime From { get; set; }
-        public DateTime To { get; set; }
-        public FacilityType FacilityType { get; set; }
+        public BindingList<GranularScheduleFacilityTypeBookingSlot> BookingEntries { get; private set; }
+        public IGranularScheduleBookingService BookingService { get; private set; }
+        public DateTimePeriod Period { get; set; }
+        public Facility Facility { get; set; }
 
 
-        public FacilityBookingViewModel(IFixedTimeBookingService bookingService)
+        public GranularScheduleFacilityTypeBookingViewModel(IGranularScheduleBookingService bookingService)
         {
             BookingService = RequireArg.NotNull(bookingService);
 
             // TODO: Parametrize
-            FacilityType = FacilityType.TennisCourt;
-            From = DateTime.UtcNow;
-            To = From.AddDays(1);
+            Facility = new Facility { FacilityType = FacilityType.TennisCourt, Name = "Court One", Id = 1 };
+            Period = DateTimePeriod.FromDays(DateTime.UtcNow.AddDays(-1), 1);
 
             InitializeDataContext();
         }
 
         private void InitializeDataContext()
         {
-            Slots = BookingService.GetBookings(new DateTimePeriod(From, To), FacilityType).ToBindingList();
+            //TODO: Load list of bookings
+            //BookingEntries = BookingService.GetBookings(Period, Facility).ToBindingList();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

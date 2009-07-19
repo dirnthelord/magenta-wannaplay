@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Magenta.WannaPlay.Domain;
 using Magenta.WannaPlay.Infrastructure.Persistence;
+using Magenta.Shared;
 
 namespace Magenta.WannaPlay.Services.Booking
 {
@@ -18,17 +19,17 @@ namespace Magenta.WannaPlay.Services.Booking
 
         #region IBookingService Members
 
-        public IEnumerable<BookingEntry> GetBookingSlots(DateTime from, DateTime to, FacilityType facilityType)
+        public IEnumerable<BookingEntry> GetBookingEntries(DateTimePeriod period, FacilityType facilityType)
         {
             return null;
         }
 
-        public void SaveBookingSlot(BookingEntry bookingDay)
+        public void SaveBookingEntry(BookingEntry bookingDay)
         {
             _validator.Validate(bookingDay);
         }
 
-        public void CancelBookingSlot(BookingEntry bookingSlot)
+        public void CancelBookingEntry(BookingEntry bookingEntry)
         {
             
         }

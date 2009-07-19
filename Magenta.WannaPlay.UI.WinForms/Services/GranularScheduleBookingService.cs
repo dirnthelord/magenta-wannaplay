@@ -7,14 +7,15 @@ using Magenta.Shared.DesignByContract;
 using Magenta.WannaPlay.UI.WinForms.ViewModels;
 using Magenta.Shared;
 using Magenta.WannaPlay.Domain;
+using Magenta.WannaPlay.UI.WinForms.Domain;
 
 namespace Magenta.WannaPlay.UI.WinForms.Services
 {
-    public class FixedTimeBookingService : IFixedTimeBookingService
+    public class GranularScheduleBookingService : IGranularScheduleBookingService
     {
         public IBookingService BookingService { get; private set; }
 
-        // TODO: Inject via service
+        // TODO: Inject via configuration service
         TimeSpan Granularity { get; set; }
 
         bool IsWithinActivityWindow(DateTime date)
@@ -22,7 +23,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Services
             return date.Hour >= 7 && date.Hour <= 22;
         }
 
-        public FixedTimeBookingService(IBookingService bookingService)
+        public GranularScheduleBookingService(IBookingService bookingService)
         {
             BookingService = RequireArg.NotNull(bookingService);
             Granularity = TimeSpan.FromHours(1.0);
@@ -39,22 +40,12 @@ namespace Magenta.WannaPlay.UI.WinForms.Services
             }
         }
 
-        public IEnumerable<FixedTimeBooking> GetBookings(DateTimePeriod fullPeriod, FacilityType facilityType)
+        public IEnumerable<GranularScheduleFacilityBookingSlot> GetBookings(DateTimePeriod fullPeriod, Facility facility)
         {
-            var periods = GetSheduleSheetPeriods(fullPeriod);
-            var bookings = BookingService.GetBookingSlots(fullPeriod.From, fullPeriod.To, facilityType).ToList();
+            var facilityTypeBookings = BookingService.GetBookingEntries(fullPeriod, facility.FacilityType);
+            var facilityBookings = facilityTypeBookings.Where(b => b.Facility == facility);
 
-            return periods.Select(p => CreateFixedTimeBooking(bookings, p));
-        }
-
-        private FixedTimeBooking CreateFixedTimeBooking(List<BookingSlot> bookings, DateTimePeriod period)
-        {
-            var booking = bookings.Where(b => b.FromTime >= period.From && b.ToTime <= period.To).SingleOrDefault();
-
-            if (booking != null)
-                return FixedTimeBooking.FromBooking(booking);
-
-            return new FixedTimeBooking { Period = "not set"  };
+            return new GranularBookingScheduleGenerator(facilityBookings, Granularity).GenerateSchedule(fullPeriod);
         }
     }
 }

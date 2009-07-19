@@ -18,18 +18,18 @@ namespace Magenta.WannaPlay.Infrastructure.Persistence
 
         #region IPersistenceRepository Members
 
-        public IEnumerable<BookingEntry> LoadBookingSlots(DateTime from, DateTime to, FacilityType facilityType)
+        public IEnumerable<BookingEntry> LoadBookingEntries(DateTime from, DateTime to, FacilityType facilityType)
         {
             return _session.Linq<BookingEntry>()
-                .Where(slot => slot.Period.From >= from.RoundDateDown()
-                    && slot.Period.To <= to.RoundDateUp()
-                    && slot.Facility.FacilityType == facilityType)
+                .Where(booking => booking.Period.From >= from.RoundDateDown()
+                    && booking.Period.To <= to.RoundDateUp()
+                    && booking.Facility.FacilityType == facilityType)
                 .ToList();
         }
 
-        public void SaveBookingSlot(BookingEntry bookingSlot)
+        public void SaveBookingEntry(BookingEntry bookingEntry)
         {
-            _session.Save(bookingSlot);
+            _session.Save(bookingEntry);
         }
 
         public IEnumerable<Facility> LoadFacilities()

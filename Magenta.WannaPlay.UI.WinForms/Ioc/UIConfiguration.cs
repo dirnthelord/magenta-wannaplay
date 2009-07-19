@@ -15,7 +15,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Ioc
     {
         public override void Load()
         {
-            Bind<IFixedTimeBookingService>().To<FixedTimeBookingService>().Using<SingletonBehavior>();
+            Bind<IGranularScheduleBookingService>().To<GranularScheduleBookingService>().Using<SingletonBehavior>();
         }
     }
 }

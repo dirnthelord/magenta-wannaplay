@@ -19,26 +19,31 @@ namespace Magenta.Shared
         {
         }
 
-        //public DateTimePeriod(DateTime from, DateTime to)
-        //{
-        //    _from = from;
-        //    _to = to;
-        //}
+        public DateTimePeriod(DateTime from, DateTime to)
+        {
+            From = from;
+            To = to;
+        }
 
         protected override bool EqualsCoreNotNull(DateTimePeriod other)
         {
             return From == other.From && To == other.To;
         }
 
-
-        public static DateTimePeriod FromHours(DateTime from, double days)
+        public override string ToString()
         {
-            return new DateTimePeriod { From = from, To = from.AddHours(days) };
+            return string.Format("{0} - {1}", From, To);
+        }
+
+
+        public static DateTimePeriod FromHours(DateTime from, double hours)
+        {
+            return new DateTimePeriod(from, from.AddHours(hours));
         }
 
         public static DateTimePeriod FromDays(DateTime from, double days)
         {
-            return new DateTimePeriod { From = from, To = from.AddDays(days) };
+            return new DateTimePeriod(from, from.AddDays(days));
         }
     }
 }

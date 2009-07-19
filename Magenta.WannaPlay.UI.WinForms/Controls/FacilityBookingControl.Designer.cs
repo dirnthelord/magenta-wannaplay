@@ -33,84 +33,112 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.slotsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             this.dataContext = new System.Windows.Forms.BindingSource(this.components);
-            this.periodDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bookedByDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.addressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.residentNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.facilityCardDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bookingEntriesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.slotsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataContext)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bookingEntriesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.periodDataGridViewTextBoxColumn,
-            this.bookedByDataGridViewTextBoxColumn,
-            this.addressDataGridViewTextBoxColumn,
-            this.residentNameDataGridViewTextBoxColumn,
-            this.facilityCardDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.slotsBindingSource;
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5});
+            this.dataGridView1.DataSource = this.bookingEntriesBindingSource;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(750, 316);
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(750, 469);
             this.dataGridView1.TabIndex = 0;
             // 
-            // slotsBindingSource
+            // button1
             // 
-            this.slotsBindingSource.DataMember = "Slots";
-            this.slotsBindingSource.DataSource = this.dataContext;
+            this.button1.Location = new System.Drawing.Point(584, 270);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // dataContext
             // 
-            this.dataContext.DataSource = typeof(Magenta.WannaPlay.UI.WinForms.ViewModels.FacilityBookingViewModel);
+            this.dataContext.DataSource = typeof(Magenta.WannaPlay.UI.WinForms.ViewModels.GranularScheduleFacilityBookingViewModel);
             // 
-            // periodDataGridViewTextBoxColumn
+            // bookingEntriesBindingSource
             // 
-            this.periodDataGridViewTextBoxColumn.DataPropertyName = "Period";
-            this.periodDataGridViewTextBoxColumn.HeaderText = "Period";
-            this.periodDataGridViewTextBoxColumn.Name = "periodDataGridViewTextBoxColumn";
+            this.bookingEntriesBindingSource.DataMember = "BookingEntries";
+            this.bookingEntriesBindingSource.DataSource = this.dataContext;
             // 
-            // bookedByDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn1
             // 
-            this.bookedByDataGridViewTextBoxColumn.DataPropertyName = "BookedBy";
-            this.bookedByDataGridViewTextBoxColumn.HeaderText = "Booked By";
-            this.bookedByDataGridViewTextBoxColumn.Name = "bookedByDataGridViewTextBoxColumn";
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "PeriodString";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Period";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 62;
             // 
-            // addressDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn2
             // 
-            this.addressDataGridViewTextBoxColumn.DataPropertyName = "Address";
-            this.addressDataGridViewTextBoxColumn.HeaderText = "Block & Unit";
-            this.addressDataGridViewTextBoxColumn.Name = "addressDataGridViewTextBoxColumn";
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "BookedByGuard";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Booked By Guard";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 80;
             // 
-            // residentNameDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn3
             // 
-            this.residentNameDataGridViewTextBoxColumn.DataPropertyName = "ResidentName";
-            this.residentNameDataGridViewTextBoxColumn.HeaderText = "Resident Name";
-            this.residentNameDataGridViewTextBoxColumn.Name = "residentNameDataGridViewTextBoxColumn";
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "ResidentAddress";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Block & Unit";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 66;
             // 
-            // facilityCardDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn4
             // 
-            this.facilityCardDataGridViewTextBoxColumn.DataPropertyName = "FacilityCard";
-            this.facilityCardDataGridViewTextBoxColumn.HeaderText = "Facility Card";
-            this.facilityCardDataGridViewTextBoxColumn.Name = "facilityCardDataGridViewTextBoxColumn";
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "ResidentName";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Resident Name";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 97;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "ResidentPassNumber";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Resident Pass Number";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Width = 95;
             // 
             // FacilityBookingControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "FacilityBookingControl";
-            this.Size = new System.Drawing.Size(750, 316);
+            this.Size = new System.Drawing.Size(750, 469);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.slotsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataContext)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bookingEntriesBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -119,11 +147,17 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
 
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.BindingSource dataContext;
-        private System.Windows.Forms.BindingSource slotsBindingSource;
-        private DataGridViewTextBoxColumn periodDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn bookedByDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn addressDataGridViewTextBoxColumn;
+        private Button button1;
+        private DataGridViewTextBoxColumn periodStringDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn bookedByGuardDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn residentAddressDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn residentNameDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn facilityCardDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn residentPassNumberDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private BindingSource bookingEntriesBindingSource;
     }
 }

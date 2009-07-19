@@ -9,9 +9,9 @@ namespace Magenta.WannaPlay.Infrastructure.Persistence
 {
     public interface IPersistenceRepository
     {
-        IEnumerable<BookingEntry> LoadBookingSlots(DateTime from, DateTime to, FacilityType facilityType);
+        IEnumerable<BookingEntry> LoadBookingEntries(DateTime from, DateTime to, FacilityType facilityType);
 
-        void SaveBookingSlot(BookingEntry bookingSlot);
+        void SaveBookingEntry(BookingEntry bookingEntry);
 
         IEnumerable<Facility> LoadFacilities();
 
