@@ -18,17 +18,17 @@ namespace Magenta.WannaPlay.Services.Booking
 
         #region IBookingService Members
 
-        public IEnumerable<BookingSlot> GetBookingSlots(DateTime from, DateTime to, FacilityType facilityType)
+        public IEnumerable<BookingEntry> GetBookingSlots(DateTime from, DateTime to, FacilityType facilityType)
         {
             return null;
         }
 
-        public void SaveBookingSlot(BookingSlot bookingDay)
+        public void SaveBookingSlot(BookingEntry bookingDay)
         {
             _validator.Validate(bookingDay);
         }
 
-        public void CancelBookingSlot(BookingSlot bookingSlot)
+        public void CancelBookingSlot(BookingEntry bookingSlot)
         {
             
         }

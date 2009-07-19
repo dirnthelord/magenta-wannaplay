@@ -3,7 +3,7 @@ using Magenta.Shared;
 
 namespace Magenta.WannaPlay.Domain
 {
-    public class BookingSlot : Entity
+    public class BookingEntry : Entity
     {
         public virtual Facility Facility { get; set; }
 

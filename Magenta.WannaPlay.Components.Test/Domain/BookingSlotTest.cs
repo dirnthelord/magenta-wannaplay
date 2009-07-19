@@ -47,7 +47,7 @@ namespace Magenta.WannaPlay.Components.Domain
         {
             var now = DateTime.UtcNow.RoundToSeconds();
 
-            new PersistenceSpecification<BookingSlot>(Session)
+            new PersistenceSpecification<BookingEntry>(Session)
                 .CheckProperty(x => x.FromTime, now.AddDays(1))
                 .CheckProperty(x => x.ToTime, now.AddDays(1).AddHours(1))
                 .CheckProperty(x => x.Resident, _resident)

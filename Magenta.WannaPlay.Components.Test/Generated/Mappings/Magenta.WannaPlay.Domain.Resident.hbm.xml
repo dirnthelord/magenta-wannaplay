@@ -3,8 +3,8 @@
     <id name="Id" type="Int32" column="Id">
       <generator class="identity" />
     </id>
-    <property name="Number" type="String">
-      <column name="Number" />
+    <property name="PassCardNumber" type="String">
+      <column name="PassCardNumber" />
     </property>
     <property name="Name" type="String">
       <column name="Name" />
