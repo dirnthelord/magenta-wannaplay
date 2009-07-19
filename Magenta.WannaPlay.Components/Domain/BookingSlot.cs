@@ -1,4 +1,5 @@
 using System;
+using Magenta.Shared;
 
 namespace Magenta.WannaPlay.Domain
 {
@@ -15,5 +16,8 @@ namespace Magenta.WannaPlay.Domain
         public virtual DutyGuard BookedByGuard { get; set; }
 
         public virtual DateTime BookedAt { get; set; }
+
+        // TODO: Make this as component in NHibernate, remove From and To
+        public virtual DateTimePeriod Period { get { return new DateTimePeriod(FromTime, ToTime); } }
     }
 }
