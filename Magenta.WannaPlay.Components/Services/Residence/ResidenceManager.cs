@@ -35,7 +35,7 @@ namespace Magenta.WannaPlay.Services.Residence
             
         }
 
-        public Resident GetResident(int number)
+        public Resident GetResident(string number)
         {
             return null;
         }

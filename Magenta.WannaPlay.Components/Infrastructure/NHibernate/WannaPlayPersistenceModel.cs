@@ -17,7 +17,11 @@ namespace Magenta.WannaPlay.Infrastructure.NHibernate
         public WannaPlayPersistenceModel()
         {
             AddEntityAssembly(Assembly.GetExecutingAssembly())
-                .Where(entity => entity.BaseType == typeof(Entity));
+                .Where(entity => entity.BaseType == typeof(Entity))
+                .ConventionDiscovery.Setup(c =>
+                {
+                    c.Add<WannaPlayForeignKeyConvention>();
+                });
 
             WithSetup(s => s.IsBaseType = type => type == typeof(Entity));
         }

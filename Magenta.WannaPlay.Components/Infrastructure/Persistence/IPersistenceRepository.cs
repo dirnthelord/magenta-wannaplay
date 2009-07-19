@@ -19,6 +19,6 @@ namespace Magenta.WannaPlay.Infrastructure.Persistence
 
         void SaveDutyGuard(DutyGuard dutyGuard);
 
-        Resident LoadResident(int number);
+        Resident LoadResident(string number);
     }
 }

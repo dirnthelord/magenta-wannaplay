@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Magenta.WannaPlay.Domain;
 using NHibernate;
+using NHibernate.Linq;
 
 namespace Magenta.WannaPlay.Infrastructure.Persistence
 {
@@ -18,32 +20,36 @@ namespace Magenta.WannaPlay.Infrastructure.Persistence
 
         public IEnumerable<BookingSlot> LoadBookingSlots(DateTime from, DateTime to, FacilityType facilityType)
         {
-            return null;
+            return _session.Linq<BookingSlot>()
+                .Where(slot => slot.FromTime >= from.RoundDateDown()
+                    && slot.ToTime <= to.RoundDateUp()
+                    && slot.Facility.FacilityType == facilityType)
+                .ToList();
         }
 
         public void SaveBookingSlot(BookingSlot bookingSlot)
         {
-            
+            _session.Save(bookingSlot);
         }
 
         public IEnumerable<Facility> LoadFacilities()
         {
-            return null;
+            return _session.Linq<Facility>().ToList();
         }
 
         public IEnumerable<DutyGuard> LoadDutyGuards()
         {
-            return null;
+            return _session.Linq<DutyGuard>().ToList();
         }
 
         public void SaveDutyGuard(DutyGuard dutyGuard)
         {
-            
+            _session.Save(dutyGuard);
         }
 
-        public Resident LoadResident(int number)
+        public Resident LoadResident(string number)
         {
-            return null;
+            return _session.Linq<Resident>().Single(r => r.Number == number);
         }
 
         #endregion

@@ -20,6 +20,6 @@ namespace Magenta.WannaPlay.Services.Residence
         /// <summary>
         /// If resident with the number does not exist it will be created
         /// </summary>
-        Resident GetResident(int number);
+        Resident GetResident(string number);
     }
 }
