@@ -27,6 +27,8 @@ namespace Magenta.WannaPlay.Infrastructure.NHibernate
                     c.Add<ManyToOneConvention>();
                     c.Add<OneToManyConvention>();
                     c.Add<EnumConvention>();
+
+                    //TODO: create not null convention
                 });
 
             // TODO: Make it more generic?

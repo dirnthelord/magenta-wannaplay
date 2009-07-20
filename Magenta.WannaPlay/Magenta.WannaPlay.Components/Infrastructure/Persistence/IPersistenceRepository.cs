@@ -20,5 +20,12 @@ namespace Magenta.WannaPlay.Infrastructure.Persistence
         void SaveDutyGuard(DutyGuard dutyGuard);
 
         Resident LoadResident(string number);
+
+        IEnumerable<T> Search<T>(params Func<T,bool>[] filters)
+        {
+            
+        }
+
+        void Save<T>(T entity);
     }
 }

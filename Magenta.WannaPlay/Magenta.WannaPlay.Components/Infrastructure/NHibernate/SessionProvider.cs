@@ -8,27 +8,34 @@ namespace Magenta.WannaPlay.Infrastructure.NHibernate
 {
     public class SessionProvider : SimpleProvider<ISession>
     {
-        public const string DefaultFileName = "WannaPlay.db";
+        public const string DefaultConnectionString = "Data Source=WannaPlay.sdf;Persist Security Info=False;";
 
         private readonly ISessionFactory _sessionFactory;
-        private readonly ISession _session;
 
-        public SessionProvider()
+        public SessionProvider(string connectionString)
         {
             var configuration = Fluently.Configure()
-                .Database(new SQLiteConfiguration().UsingFile(DefaultFileName))
+               .Database(MsSqlCeConfiguration.Standard.ConnectionString(b => b.Is(connectionString)))
                 //.ExposeConfiguration(x => x.SetProperty("adonet.batch_size", "1"))
-                .BuildConfiguration();
+               .BuildConfiguration();
 
             new WannaPlayPersistenceModel().Configure(configuration);
 
             _sessionFactory = configuration.BuildSessionFactory();
-            _session = _sessionFactory.OpenSession();
+            Session = _sessionFactory.OpenSession();           
         }
+
+        public SessionProvider()
+            : this(DefaultConnectionString)
+        {
+
+        }
+
+        public ISession Session { get; private set; }
 
         protected override ISession CreateInstance(IContext context)
         {
-            return _session;
+            return Session;
         }
     }
 }
