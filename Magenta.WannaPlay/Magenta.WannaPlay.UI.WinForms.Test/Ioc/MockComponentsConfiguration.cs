@@ -11,7 +11,7 @@ using Magenta.WannaPlay.UI.WinForms.Services;
 
 namespace Magenta.WannaPlay.UI.WinForms.Ioc
 {
-    public class MockComponentsConfiguration : StandardModule
+    public class MockComponentsConfiguration : ComponentsConfiguration
     {
         public override void Load()
         {

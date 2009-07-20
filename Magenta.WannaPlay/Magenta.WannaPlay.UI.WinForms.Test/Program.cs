@@ -13,10 +13,9 @@ namespace Magenta.WannaPlay.UI.WinForms.Test
         [STAThread]
         static void Main()
         {
-            ///Thread.CurrentThread.CurrentUICulture = CultureInfo.InvariantCulture;
-            Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
+            Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("en-SG");
 
-            new WannaPlayApplication(new MockComponentsConfiguration()).Run();
+            new TestWannaPlayApplication().Run();
         }
     }
 }

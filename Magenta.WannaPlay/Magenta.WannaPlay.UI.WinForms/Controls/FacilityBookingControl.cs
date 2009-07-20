@@ -29,11 +29,11 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             }
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public GranularScheduleFacilityBookingViewModel ViewModel
         {
             get { return (GranularScheduleFacilityBookingViewModel)dataContext.DataSource; }
-            set { dataContext.DataSource = value;
-            }
+            set { dataContext.DataSource = value; }
         }
 
         private void button1_Click(object sender, EventArgs e)

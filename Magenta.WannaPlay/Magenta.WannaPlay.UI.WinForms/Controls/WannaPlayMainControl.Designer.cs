@@ -31,13 +31,17 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.facilityBookingControl1 = new Magenta.WannaPlay.UI.WinForms.Controls.FacilityBookingControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.facilityTypeBookingControl1 = new Magenta.WannaPlay.UI.WinForms.Controls.FacilityTypeBookingControl();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -64,6 +68,25 @@
             this.facilityBookingControl1.Size = new System.Drawing.Size(880, 514);
             this.facilityBookingControl1.TabIndex = 0;
             // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.facilityTypeBookingControl1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(886, 520);
+            this.tabPage1.TabIndex = 2;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // facilityTypeBookingControl1
+            // 
+            this.facilityTypeBookingControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.facilityTypeBookingControl1.Location = new System.Drawing.Point(3, 3);
+            this.facilityTypeBookingControl1.Name = "facilityTypeBookingControl1";
+            this.facilityTypeBookingControl1.Size = new System.Drawing.Size(880, 514);
+            this.facilityTypeBookingControl1.TabIndex = 0;
+            // 
             // WannaPlayMainControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -74,6 +97,7 @@
             this.Load += new System.EventHandler(this.WannaPlayMainControl_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -83,6 +107,8 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage2;
         private FacilityBookingControl facilityBookingControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private FacilityTypeBookingControl facilityTypeBookingControl1;
 
 
     }
