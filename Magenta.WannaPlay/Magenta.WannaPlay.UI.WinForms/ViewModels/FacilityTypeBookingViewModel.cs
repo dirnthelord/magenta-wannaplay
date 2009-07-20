@@ -9,23 +9,29 @@ using Magenta.Shared.DesignByContract;
 using Magenta.Shared;
 using Magenta.WannaPlay.UI.WinForms.Services;
 using Magenta.WannaPlay.UI.WinForms.Domain;
+using Magenta.WannaPlay.Services.Residence;
 
 namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 {
     public class FacilityTypeBookingViewModel : INotifyPropertyChanged
     {
-        public BindingList<FacilityTypeBookingSlot> BookingEntries { get; private set; }
-        public IBookingScheduleService BookingService { get; private set; }
+        public IBookingService BookingService { get; private set; }
+        public IResidenceManager ResidenceManager { get; private set; }
+
+        public BindingList<BookingEntry> BookingEntries { get; private set; }
+        public BindingList<Facility> Facilities { get; private set; }
+
         public DateTimePeriod Period { get; set; }
-        public Facility Facility { get; set; }
+        public FacilityType FacilityType { get; set; }
 
 
-        public FacilityTypeBookingViewModel(IBookingScheduleService bookingService)
+        public FacilityTypeBookingViewModel(IBookingService bookingService, IResidenceManager residenceManager)
         {
             BookingService = RequireArg.NotNull(bookingService);
+            ResidenceManager = RequireArg.NotNull(residenceManager);
 
             // TODO: Parametrize
-            Facility = new Facility { FacilityType = FacilityType.TennisCourt, Name = "Court One", Id = 1 };
+            FacilityType = FacilityType.TennisCourt;
             Period = DateTimePeriod.FromDays(DateTime.UtcNow.AddDays(-1), 1);
 
             InitializeDataContext();
@@ -34,7 +40,8 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
         private void InitializeDataContext()
         {
             //TODO: Load list of bookings
-            //BookingEntries = BookingService.GetBookings(Period, Facility).ToBindingList();
+            Facilities = ResidenceManager.GetTennisCourts().ToBindingList();
+            BookingEntries = BookingService.GetBookingEntries(Period, FacilityType).ToBindingList();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -45,6 +52,14 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 
             if (handler != null)
                 handler(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public FacilityBookingSlot GetFacilityBookingSlot(Facility facility, DateTimePeriod period)
+        {
+            if (period.From.Hour % 5 == facility.Id)
+                return new FacilityBookingSlot(BookingEntries.First());
+            else
+                return new EmptyFacilityBookingSlot(period);
         }
     }
 }

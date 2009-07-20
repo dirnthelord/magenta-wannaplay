@@ -10,7 +10,7 @@ using Magenta.WannaPlay.UI.WinForms.Shared;
 
 namespace Magenta.WannaPlay.UI.WinForms.Domain
 {
-    public class FacilityTypeBookingSlot : CustomTypeDescriptor
+    public class FacilityTypeBookingSlot
     {
         [Browsable(false)]
         public virtual DateTimePeriod Period { get { return Booking.Period; } }
@@ -20,6 +20,11 @@ namespace Magenta.WannaPlay.UI.WinForms.Domain
         [Browsable(false)]
         public BookingEntry Booking { get; private set; }
 
+        public FacilityBookingSlot GetFacilityBookingSlot(Facility facility)
+        {
+            return new EmptyFacilityBookingSlot(Period);
+        }
+
         public FacilityTypeBookingSlot(BookingEntry booking)
         {
             Booking = RequireArg.NotNull(booking);
@@ -27,32 +32,6 @@ namespace Magenta.WannaPlay.UI.WinForms.Domain
 
         protected FacilityTypeBookingSlot()
         {
-        }
-
-        public override PropertyDescriptorCollection GetProperties()
-        {
-            return new PropertyDescriptorCollection(Properties.ToArray());
-        }
-
-        PropertyDescriptorCollection BaseProperties()
-        {
-            return base.GetProperties();
-        }
-
-        IEnumerable<PropertyDescriptor> Properties
-        {
-            get
-            {
-                foreach (var property in BaseProperties().Cast<PropertyDescriptor>())
-                    yield return property;
-
-                yield return new GenericPropertyDescriptor<FacilityBookingSlot>("Tennis Court 1", null);
-            }
-        }
-
-        public override PropertyDescriptorCollection GetProperties(Attribute[] attributes)
-        {
-            return base.GetProperties(attributes);
         }
     }
 }
