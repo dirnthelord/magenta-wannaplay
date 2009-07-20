@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Magenta.WannaPlay.Domain;
 using Magenta.WannaPlay.Infrastructure.Persistence;
 
@@ -17,27 +18,50 @@ namespace Magenta.WannaPlay.Services.Residence
 
         public IEnumerable<Facility> GetTennisCourts()
         {
-            return null;
+            return _persistenceRepository.Search<Facility>(
+                f => f.FacilityType == FacilityType.TennisCourt
+                );
         }
 
         public IEnumerable<Facility> GetSquashCourts()
         {
-            return null;
+            return _persistenceRepository.Search<Facility>(
+                f => f.FacilityType == FacilityType.SquashCourt
+                );
         }
 
         public IEnumerable<DutyGuard> GetDutyGuards()
         {
-            return null;
+            return _persistenceRepository.Search<DutyGuard>();
         }
 
         public void CreateDutyGuard(DutyGuard dutyGuard)
         {
-            
+            _persistenceRepository.Save(dutyGuard);
         }
 
-        public Resident GetResident(string number)
+        public Resident GetResident(string passCardNumber)
         {
-            return null;
+            var residents = _persistenceRepository
+                .Search<Resident>(r => r.PassCardNumber == passCardNumber)
+                .ToList();
+
+            if(residents.Count == 0)
+                return new Resident { PassCardNumber = passCardNumber };
+
+            return residents[0];
+        }
+
+        public ResidenceUnit GetResidenceUnit(string unitBlock, string unitNumber)
+        {
+            var residenceUnits = _persistenceRepository
+                .Search<ResidenceUnit>(u => u.Block == unitBlock && u.Number == unitNumber)
+                .ToList();
+
+            if (residenceUnits.Count == 0)
+                return new ResidenceUnit { Block = unitBlock, Number = unitNumber };
+
+            return residenceUnits[0];
         }
 
         #endregion

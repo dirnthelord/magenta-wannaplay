@@ -21,17 +21,21 @@ namespace Magenta.WannaPlay.Services.Booking
 
         public IEnumerable<BookingEntry> GetBookingEntries(DateTimePeriod period, FacilityType facilityType)
         {
-            return null;
+            return _persistenceRepository.Search<BookingEntry>(e => e.Period.From >= period.From.RoundDateDown()
+                    && e.Period.To <= period.To.RoundDateUp()
+                   && e.Facility.FacilityType == facilityType);
         }
 
-        public void SaveBookingEntry(BookingEntry bookingDay)
+        public void SaveBookingEntry(BookingEntry bookingEntry)
         {
-            _validator.Validate(bookingDay);
+            _validator.Validate(bookingEntry);
+
+            _persistenceRepository.Save(bookingEntry);
         }
 
         public void CancelBookingEntry(BookingEntry bookingEntry)
         {
-            
+            _persistenceRepository.Delete(bookingEntry);
         }
 
         #endregion

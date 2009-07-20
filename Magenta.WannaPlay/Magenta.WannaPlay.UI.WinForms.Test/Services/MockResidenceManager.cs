@@ -33,5 +33,15 @@ namespace Magenta.WannaPlay.UI.WinForms.Services
         {
             throw new NotImplementedException();
         }
+
+        #region IResidenceManager Members
+
+
+        public ResidenceUnit GetResidenceUnit(string unitBlock, string unitNumber)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 }
