@@ -9,11 +9,11 @@ using Magenta.Shared;
 
 namespace Magenta.WannaPlay.UI.WinForms.Domain
 {
-    public class GranularBookingScheduleGenerator
+    public class BookingScheduleGenerator
     {
         readonly List<BookingEntry> _bookings;
 
-        public GranularBookingScheduleGenerator(IEnumerable<BookingEntry> bookings, TimeSpan granularity)
+        public BookingScheduleGenerator(IEnumerable<BookingEntry> bookings, TimeSpan granularity)
         {
             _bookings = RequireArg.NotNull(bookings).ToList();
             Granularity = granularity;
@@ -21,7 +21,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Domain
 
         TimeSpan Granularity { get; set; }
 
-        public IEnumerable<GranularScheduleFacilityBookingSlot> GenerateSchedule(DateTimePeriod fullPeriod)
+        public IEnumerable<FacilityBookingSlot> GenerateSchedule(DateTimePeriod fullPeriod)
         {
             // TODO: Sort bookings by date
             // TODO: Make sure bookings do not intersect
@@ -46,8 +46,8 @@ namespace Magenta.WannaPlay.UI.WinForms.Domain
 
                 var bookingSlot =
                     currentBooking != null
-                    ? new GranularScheduleFacilityBookingSlot(currentBooking)
-                    : new EmptyGranularScheduleFacilityBookingSlot(new DateTimePeriod(currentFrom, currentFrom.Add(Granularity)));
+                    ? new FacilityBookingSlot(currentBooking)
+                    : new EmptyFacilityBookingSlot(new DateTimePeriod(currentFrom, currentFrom.Add(Granularity)));
 
                 yield return bookingSlot;
 

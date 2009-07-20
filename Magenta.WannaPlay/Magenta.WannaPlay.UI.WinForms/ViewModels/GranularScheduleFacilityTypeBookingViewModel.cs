@@ -14,7 +14,7 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 {
     public class GranularScheduleFacilityTypeBookingViewModel : INotifyPropertyChanged
     {
-        public BindingList<GranularScheduleFacilityTypeBookingSlot> BookingEntries { get; private set; }
+        public BindingList<FacilityTypeBookingSlot> BookingEntries { get; private set; }
         public IGranularScheduleBookingService BookingService { get; private set; }
         public DateTimePeriod Period { get; set; }
         public Facility Facility { get; set; }

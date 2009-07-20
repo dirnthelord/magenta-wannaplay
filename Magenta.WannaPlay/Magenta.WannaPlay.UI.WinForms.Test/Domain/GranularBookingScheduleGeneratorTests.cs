@@ -23,7 +23,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Domain
                 new BookingEntry { Period = DateTimePeriod.FromHours(from.AddHours(5), 3) },
             };
 
-            var sheduleGenerator = new GranularBookingScheduleGenerator(bookings, TimeSpan.FromHours(1));
+            var sheduleGenerator = new BookingScheduleGenerator(bookings, TimeSpan.FromHours(1));
 
             var schedule = sheduleGenerator.GenerateSchedule(DateTimePeriod.FromHours(from, 9)).ToList();
 

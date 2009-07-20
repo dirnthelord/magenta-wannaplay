@@ -7,12 +7,12 @@ using Magenta.Shared.DesignByContract;
 
 namespace Magenta.WannaPlay.UI.WinForms.Domain
 {
-    public class EmptyGranularScheduleFacilityBookingSlot : GranularScheduleFacilityBookingSlot
+    public class EmptyFacilityTypeBookingSlot : FacilityTypeBookingSlot
     {
         readonly DateTimePeriod _period;
 
 
-        public EmptyGranularScheduleFacilityBookingSlot(DateTimePeriod period)
+        public EmptyFacilityTypeBookingSlot(DateTimePeriod period)
         {
             _period = RequireArg.NotNull(period);
         }
@@ -21,14 +21,5 @@ namespace Magenta.WannaPlay.UI.WinForms.Domain
         public override DateTimePeriod Period { get { return _period; } }
 
         public override bool IsEmpty { get { return true; } }
-
-        public override string BookedByGuard { get { return ""; } }
-
-        public override string ResidentAddress { get { return ""; } }
-
-        public override string ResidentName { get { return ""; } }
-
-        public override string ResidentPassNumber { get { return ""; } }
-
     }
 }
