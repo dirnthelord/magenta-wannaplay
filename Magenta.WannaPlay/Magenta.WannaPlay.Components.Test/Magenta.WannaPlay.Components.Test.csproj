@@ -89,10 +89,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Generated\Mappings\Magenta.WannaPlay.Domain.BookingSlot.hbm.xml" />
+    <Content Include="Generated\Mappings\Magenta.WannaPlay.Domain.BookingEntry.hbm.xml" />
     <Content Include="Generated\Mappings\Magenta.WannaPlay.Domain.DutyGuard.hbm.xml" />
     <Content Include="Generated\Mappings\Magenta.WannaPlay.Domain.Facility.hbm.xml" />
-    <Content Include="Generated\Mappings\Magenta.WannaPlay.Domain.ResidenceAddress.hbm.xml" />
+    <Content Include="Generated\Mappings\Magenta.WannaPlay.Domain.ResidenceUnit.hbm.xml" />
     <Content Include="Generated\Mappings\Magenta.WannaPlay.Domain.Resident.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
