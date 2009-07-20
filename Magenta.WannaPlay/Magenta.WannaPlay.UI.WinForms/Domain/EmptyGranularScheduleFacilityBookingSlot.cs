@@ -5,7 +5,7 @@ using System.Text;
 using Magenta.Shared;
 using Magenta.Shared.DesignByContract;
 
-namespace Magenta.WannaPlay.UI.WinForms.ViewModels
+namespace Magenta.WannaPlay.UI.WinForms.Domain
 {
     public class EmptyGranularScheduleFacilityBookingSlot : GranularScheduleFacilityBookingSlot
     {

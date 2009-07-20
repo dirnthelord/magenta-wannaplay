@@ -8,6 +8,7 @@ using Magenta.WannaPlay.Services.Booking;
 using Magenta.Shared.DesignByContract;
 using Magenta.Shared;
 using Magenta.WannaPlay.UI.WinForms.Services;
+using Magenta.WannaPlay.UI.WinForms.Domain;
 
 namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 {

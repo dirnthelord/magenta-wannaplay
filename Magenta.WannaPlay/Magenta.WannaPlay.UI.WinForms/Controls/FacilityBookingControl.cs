@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using Magenta.WannaPlay.UI.WinForms.ViewModels;
 using Magenta.Shared.DesignByContract;
+using Magenta.WannaPlay.UI.WinForms.Domain;
 
 namespace Magenta.WannaPlay.UI.WinForms.Controls
 {
