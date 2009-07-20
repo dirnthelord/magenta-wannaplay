@@ -21,11 +21,7 @@ namespace Magenta.Shared.Testing.NHibernate
 
         protected sealed override void SetupContext()
         {
-            var configuration = Fluently.Configure()
-                .Database(new TPersister())
-                .BuildConfiguration();
-
-            new TModel().Configure(configuration);
+            var configuration = new TModel().Configure(new TPersister());
 
             SessionFactory = configuration.BuildSessionFactory();
 

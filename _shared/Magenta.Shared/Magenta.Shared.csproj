@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{18D9C143-D91B-472A-A172-8632CCB6415E}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -31,6 +31,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FluentNHibernate, Version=0.1.0.530, Culture=neutral, PublicKeyToken=8aa435e3cb308880, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\_externals\Bin\nhibernate\_latest\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=2.0.1.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\_externals\Bin\nhibernate\_latest\NHibernate.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -50,6 +58,7 @@
     <Compile Include="EquatableBase.cs" />
     <Compile Include="Exceptions\ExceptionFactory.cs" />
     <Compile Include="Exceptions\UserFriendlyException.cs" />
+    <Compile Include="Extensions\FluentNHibernate\Cfg\PersistenceModelExtention.cs" />
     <Compile Include="Extensions\System\Collections\Generic\EnumerableExtensions.cs" />
     <Compile Include="Extensions\System\DateTimeExtentions.cs" />
     <Compile Include="Extensions\System\RandomExtensions.cs" />

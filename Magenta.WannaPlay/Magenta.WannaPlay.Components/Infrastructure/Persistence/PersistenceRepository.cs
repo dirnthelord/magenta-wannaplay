@@ -52,6 +52,11 @@ namespace Magenta.WannaPlay.Infrastructure.Persistence
             return _session.Linq<Resident>().Single(r => r.PassCardNumber == number);
         }
 
+        public void Save<T>(T entity)
+        {
+            _session.Save(entity);
+        }
+
         #endregion
     }
 }
