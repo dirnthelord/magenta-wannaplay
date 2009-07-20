@@ -15,12 +15,12 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
     public class FacilityTypeBookingViewModel : INotifyPropertyChanged
     {
         public BindingList<FacilityTypeBookingSlot> BookingEntries { get; private set; }
-        public IGranularScheduleBookingService BookingService { get; private set; }
+        public IBookingScheduleService BookingService { get; private set; }
         public DateTimePeriod Period { get; set; }
         public Facility Facility { get; set; }
 
 
-        public FacilityTypeBookingViewModel(IGranularScheduleBookingService bookingService)
+        public FacilityTypeBookingViewModel(IBookingScheduleService bookingService)
         {
             BookingService = RequireArg.NotNull(bookingService);
 
