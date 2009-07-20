@@ -99,7 +99,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Generated\Databases\WannaPlay.sdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Generated\Mappings\Magenta.WannaPlay.Domain.BookingEntry.hbm.xml" />
     <Content Include="Generated\Mappings\Magenta.WannaPlay.Domain.DutyGuard.hbm.xml" />
