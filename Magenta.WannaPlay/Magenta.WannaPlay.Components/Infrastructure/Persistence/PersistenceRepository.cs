@@ -57,6 +57,17 @@ namespace Magenta.WannaPlay.Infrastructure.Persistence
             _session.Save(entity);
         }
 
+        public IEnumerable<T> Search<T>(params Func<T, bool>[] filters)
+        {
+            //var q = _session.Linq<T>().AsQueryable();
+
+            //return filters
+            //    .Aggregate(q, (acc, filter) => acc.Where(filter))
+            //    .ToList();
+
+            return null;
+        }
+
         #endregion
     }
 }
