@@ -32,18 +32,19 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.dataContext = new System.Windows.Forms.BindingSource(this.components);
             this.bookingEntriesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataContext = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataContext)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookingEntriesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataContext)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -51,6 +52,8 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -69,6 +72,11 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.dataGridView1.Size = new System.Drawing.Size(750, 469);
             this.dataGridView1.TabIndex = 0;
             // 
+            // bookingEntriesBindingSource
+            // 
+            this.bookingEntriesBindingSource.DataMember = "BookingEntries";
+            this.bookingEntriesBindingSource.DataSource = this.dataContext;
+            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(584, 270);
@@ -78,15 +86,6 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // dataContext
-            // 
-            this.dataContext.DataSource = typeof(Magenta.WannaPlay.UI.WinForms.ViewModels.GranularScheduleFacilityBookingViewModel);
-            // 
-            // bookingEntriesBindingSource
-            // 
-            this.bookingEntriesBindingSource.DataMember = "BookingEntries";
-            this.bookingEntriesBindingSource.DataSource = this.dataContext;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -128,6 +127,10 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
             this.dataGridViewTextBoxColumn5.Width = 95;
             // 
+            // dataContext
+            // 
+            this.dataContext.DataSource = typeof(Magenta.WannaPlay.UI.WinForms.ViewModels.GranularScheduleFacilityBookingViewModel);
+            // 
             // FacilityBookingControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -137,8 +140,8 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.Name = "FacilityBookingControl";
             this.Size = new System.Drawing.Size(750, 469);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataContext)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookingEntriesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataContext)).EndInit();
             this.ResumeLayout(false);
 
         }

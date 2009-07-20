@@ -15,31 +15,33 @@ namespace Magenta.WannaPlay.UI.WinForms
 {
     public class WannaPlayApplication
     {
-        readonly List<IModule> _componentsConfiguration = new List<IModule>();
+        protected IKernel Kernel { get; private set; }
 
-        public WannaPlayApplication(params IModule[] componentsConfiguration)
+        public WannaPlayApplication(ComponentsConfiguration componentConfiguration)
         {
-            _componentsConfiguration.AddRange(componentsConfiguration);
+            Kernel = new StandardKernel(new IModule[] { componentConfiguration, new UIConfiguration() });
+        }
 
-            _componentsConfiguration.Add(new UIConfiguration());
+        protected virtual Control GetMainControl()
+        {
+            return Kernel.Get<WannaPlayMainControl>();
         }
 
         public void Run()
         {
             try
             {
-                IKernel kernel = new StandardKernel(_componentsConfiguration.ToArray());
-
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
 
-                var wannaPlayMain = kernel.Get<WannaPlayMainControl>();
+                var wannaPlayMain = GetMainControl();
                 var form = ControlHoster.HostInForm(Resources.WannaPlay, "Wanna Play", wannaPlayMain);
 
                 Application.Run(form);
             }
             catch (Exception e)
             {
+                // TODO: Process unhandled exceptions more user-friendly
                 MessageBox.Show(e.StackTrace, e.Message);
             }
         }

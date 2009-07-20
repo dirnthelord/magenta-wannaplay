@@ -15,7 +15,7 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
         public virtual DateTimePeriod Period { get { return Booking.Period; } }
 
         [DisplayName("Period")]
-        public virtual string PeriodString { get { return string.Format("{0:hh tt} - {1:hh tt}", Period.From, Period.To); } }
+        public virtual string PeriodString { get { return string.Format("{0:h tt}", Period.From, Period.To); } }
 
         [DisplayName("Booked By Guard")]
         public virtual string BookedByGuard { get { return Booking.BookedByGuard.Name; } }
