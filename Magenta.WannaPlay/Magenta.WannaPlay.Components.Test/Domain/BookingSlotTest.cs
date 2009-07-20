@@ -24,7 +24,7 @@ namespace Magenta.WannaPlay.Components.Domain
                              {
                                  Name = "John Black",
                                  PassCardNumber = "1234",
-                                 Address = new ResidenceAddress { Block = "100", Unit = "#13-01" }
+                                 Unit = new ResidenceUnit { Block = "100", Number = "#13-01" }
                              };
 
             _facility = new Facility

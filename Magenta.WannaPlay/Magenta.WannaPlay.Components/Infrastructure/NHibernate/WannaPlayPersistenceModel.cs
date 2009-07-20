@@ -15,7 +15,7 @@ namespace Magenta.WannaPlay.Infrastructure.NHibernate
 {
     public class WannaPlayPersistenceModel : AutoPersistenceModel
     {
-        readonly HashSet<Type> _componentTypes = new HashSet<Type> { typeof(ResidenceAddress), typeof(DateTimePeriod) };
+        readonly HashSet<Type> _componentTypes = new HashSet<Type> { typeof(DateTimePeriod) };
 
         public WannaPlayPersistenceModel()
         {
@@ -23,7 +23,7 @@ namespace Magenta.WannaPlay.Infrastructure.NHibernate
                 .Where(entity => entity.BaseType == typeof(Entity))
                 .ConventionDiscovery.Setup(c =>
                 {
-                    c.Add<WannaPlayForeignKeyConvention>();
+                    c.Add<ForeignKeyConvention>();
                     c.Add<ManyToOneConvention>();
                     c.Add<OneToManyConvention>();
                     c.Add<EnumConvention>();

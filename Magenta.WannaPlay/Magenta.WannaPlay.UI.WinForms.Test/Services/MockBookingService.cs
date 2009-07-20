@@ -16,9 +16,9 @@ namespace Magenta.WannaPlay.UI.WinForms.Services
             var squashCourtTwo = new Facility { FacilityType = FacilityType.SquashCourt, Name = "Court Two", Id = 2 };
             var tennisCourtOne = new Facility { FacilityType = FacilityType.TennisCourt, Name = "Court One", Id = 3 };
 
-            var residentOne = new Resident { PassCardNumber = "125", Name = "Konstantin Spirin", Address = new ResidenceAddress { Block = "143", Unit = "12-08" } };
-            var residentTwo = new Resident { PassCardNumber = "9875", Name = "Jeffrey Hi", Address = new ResidenceAddress { Block = "145", Unit = "12-08" } };
-            var residentThree = new Resident { PassCardNumber = "43", Name = "Nick Bully", Address = new ResidenceAddress { Block = "143", Unit = "3-8" } };
+            var residentOne = new Resident { PassCardNumber = "125", Name = "Konstantin Spirin", Unit = new ResidenceUnit { Block = "143", Number = "12-08" } };
+            var residentTwo = new Resident { PassCardNumber = "9875", Name = "Jeffrey Hi", Unit = new ResidenceUnit { Block = "145", Number = "12-08" } };
+            var residentThree = new Resident { PassCardNumber = "43", Name = "Nick Bully", Unit = new ResidenceUnit { Block = "143", Number = "3-8" } };
 
             var guardOne = new DutyGuard { Name = "Chin Hua" };
             var guardTwo = new DutyGuard { Name = "Sick One Keng" };
