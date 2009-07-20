@@ -94,10 +94,10 @@
     <Compile Include="Services\IGranularScheduleBookingService.cs" />
     <Compile Include="Domain\EmptyFacilityTypeBookingSlot.cs" />
     <Compile Include="Domain\FacilityTypeBookingSlot.cs" />
-    <Compile Include="ViewModels\GranularScheduleFacilityTypeBookingViewModel.cs" />
+    <Compile Include="ViewModels\FacilityTypeBookingViewModel.cs" />
     <Compile Include="Domain\EmptyFacilityBookingSlot.cs" />
     <Compile Include="Domain\FacilityBookingSlot.cs" />
-    <Compile Include="ViewModels\GranularScheduleFacilityBookingViewModel.cs" />
+    <Compile Include="ViewModels\FacilityBookingViewModel.cs" />
     <Compile Include="WannaPlayApplication.cs" />
   </ItemGroup>
   <ItemGroup>

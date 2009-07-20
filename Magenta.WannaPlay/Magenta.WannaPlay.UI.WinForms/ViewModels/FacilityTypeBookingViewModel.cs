@@ -12,15 +12,15 @@ using Magenta.WannaPlay.UI.WinForms.Domain;
 
 namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 {
-    public class GranularScheduleFacilityBookingViewModel : INotifyPropertyChanged
+    public class FacilityTypeBookingViewModel : INotifyPropertyChanged
     {
-        public BindingList<FacilityBookingSlot> BookingEntries { get; private set; }
+        public BindingList<FacilityTypeBookingSlot> BookingEntries { get; private set; }
         public IGranularScheduleBookingService BookingService { get; private set; }
         public DateTimePeriod Period { get; set; }
         public Facility Facility { get; set; }
 
 
-        public GranularScheduleFacilityBookingViewModel(IGranularScheduleBookingService bookingService)
+        public FacilityTypeBookingViewModel(IGranularScheduleBookingService bookingService)
         {
             BookingService = RequireArg.NotNull(bookingService);
 
@@ -33,7 +33,8 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 
         private void InitializeDataContext()
         {
-            BookingEntries = BookingService.GetBookings(Period, Facility).ToBindingList();
+            //TODO: Load list of bookings
+            //BookingEntries = BookingService.GetBookings(Period, Facility).ToBindingList();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

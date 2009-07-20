@@ -31,9 +31,9 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public GranularScheduleFacilityBookingViewModel ViewModel
+        public FacilityBookingViewModel ViewModel
         {
-            get { return (GranularScheduleFacilityBookingViewModel)dataContext.DataSource; }
+            get { return (FacilityBookingViewModel)dataContext.DataSource; }
             set { dataContext.DataSource = value; }
         }
 
