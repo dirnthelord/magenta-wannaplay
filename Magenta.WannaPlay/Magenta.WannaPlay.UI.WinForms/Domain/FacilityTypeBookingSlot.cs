@@ -9,7 +9,7 @@ using Magenta.Shared.DesignByContract;
 
 namespace Magenta.WannaPlay.UI.WinForms.Domain
 {
-    public class GranularScheduleFacilityTypeBookingSlot
+    public class FacilityTypeBookingSlot
     {
         [Browsable(false)]
         public virtual DateTimePeriod Period { get { return Booking.Period; } }
@@ -19,12 +19,12 @@ namespace Magenta.WannaPlay.UI.WinForms.Domain
         [Browsable(false)]
         public BookingEntry Booking { get; private set; }
 
-        public GranularScheduleFacilityTypeBookingSlot(BookingEntry booking)
+        public FacilityTypeBookingSlot(BookingEntry booking)
         {
             Booking = RequireArg.NotNull(booking);
         }
 
-        protected GranularScheduleFacilityTypeBookingSlot()
+        protected FacilityTypeBookingSlot()
         {
         }
     }

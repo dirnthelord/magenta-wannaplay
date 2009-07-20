@@ -63,7 +63,7 @@
     <Compile Include="Controls\FacilityTypeBookingControl.Designer.cs">
       <DependentUpon>FacilityTypeBookingControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Domain\GranularBookingScheduleGenerator.cs" />
+    <Compile Include="Domain\BookingScheduleGenerator.cs" />
     <Compile Include="Ioc\UIConfiguration.cs" />
     <Compile Include="Controls\FacilityTypeSelector.cs">
       <SubType>UserControl</SubType>
@@ -92,11 +92,11 @@
     </Compile>
     <Compile Include="Services\GranularScheduleBookingService.cs" />
     <Compile Include="Services\IGranularScheduleBookingService.cs" />
-    <Compile Include="Domain\EmptyGranularScheduleFacilityTypeBookingSlot.cs" />
-    <Compile Include="Domain\GranularScheduleFacilityTypeBookingSlot.cs" />
+    <Compile Include="Domain\EmptyFacilityTypeBookingSlot.cs" />
+    <Compile Include="Domain\FacilityTypeBookingSlot.cs" />
     <Compile Include="ViewModels\GranularScheduleFacilityTypeBookingViewModel.cs" />
-    <Compile Include="Domain\EmptyGranularScheduleFacilityBookingSlot.cs" />
-    <Compile Include="Domain\GranularScheduleFacilityBookingSlot.cs" />
+    <Compile Include="Domain\EmptyFacilityBookingSlot.cs" />
+    <Compile Include="Domain\FacilityBookingSlot.cs" />
     <Compile Include="ViewModels\GranularScheduleFacilityBookingViewModel.cs" />
     <Compile Include="WannaPlayApplication.cs" />
   </ItemGroup>

@@ -11,6 +11,6 @@ namespace Magenta.WannaPlay.UI.WinForms.Services
 {
     public interface IGranularScheduleBookingService
     {
-        IEnumerable<GranularScheduleFacilityBookingSlot> GetBookings(DateTimePeriod period, Facility facilityType);
+        IEnumerable<FacilityBookingSlot> GetBookings(DateTimePeriod period, Facility facilityType);
     }
 }
