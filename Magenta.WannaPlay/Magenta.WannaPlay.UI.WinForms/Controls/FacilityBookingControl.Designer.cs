@@ -107,7 +107,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.DataPropertyName = "ResidentAddress";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Block & Unit";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Block & Number";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
             this.dataGridViewTextBoxColumn3.Width = 66;

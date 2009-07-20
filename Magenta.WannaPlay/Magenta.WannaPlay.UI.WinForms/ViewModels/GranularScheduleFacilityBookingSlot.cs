@@ -20,8 +20,8 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
         [DisplayName("Booked By Guard")]
         public virtual string BookedByGuard { get { return Booking.BookedByGuard.Name; } }
 
-        [DisplayName("Block & Unit")]
-        public virtual string ResidentAddress { get { return string.Format("{0}, #{1}", Booking.Resident.Address.Block, Booking.Resident.Address.Unit); } }
+        [DisplayName("Block & Number")]
+        public virtual string ResidentAddress { get { return string.Format("{0}, #{1}", Booking.Resident.Unit.Block, Booking.Resident.Unit.Number); } }
 
         [DisplayName("Resident Name")]
         public virtual string ResidentName { get { return Booking.Resident.Name; } }
