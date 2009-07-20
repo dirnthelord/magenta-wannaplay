@@ -18,8 +18,13 @@ namespace Magenta.WannaPlay.Services.Residence
         void CreateDutyGuard(DutyGuard dutyGuard);
 
         /// <summary>
-        /// If resident with the number does not exist it will be created
+        /// If resident with the passCardNumber does not exist it will be created
         /// </summary>
-        Resident GetResident(string number);
+        Resident GetResident(string passCardNumber);
+
+        /// <summary>
+        /// If residence unit with the block\number does not exist it will be created
+        /// </summary>
+        ResidenceUnit GetResidenceUnit(string unitBlock, string unitNumber);
     }
 }

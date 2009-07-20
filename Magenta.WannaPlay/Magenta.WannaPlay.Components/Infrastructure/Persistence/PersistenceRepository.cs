@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using Magenta.WannaPlay.Domain;
 using NHibernate;
 using NHibernate.Linq;
@@ -18,54 +19,21 @@ namespace Magenta.WannaPlay.Infrastructure.Persistence
 
         #region IPersistenceRepository Members
 
-        public IEnumerable<BookingEntry> LoadBookingEntries(DateTime from, DateTime to, FacilityType facilityType)
-        {
-            return _session.Linq<BookingEntry>()
-                .Where(booking => booking.Period.From >= from.RoundDateDown()
-                    && booking.Period.To <= to.RoundDateUp()
-                    && booking.Facility.FacilityType == facilityType)
-                .ToList();
-        }
-
-        public void SaveBookingEntry(BookingEntry bookingEntry)
-        {
-            _session.Save(bookingEntry);
-        }
-
-        public IEnumerable<Facility> LoadFacilities()
-        {
-            return _session.Linq<Facility>().ToList();
-        }
-
-        public IEnumerable<DutyGuard> LoadDutyGuards()
-        {
-            return _session.Linq<DutyGuard>().ToList();
-        }
-
-        public void SaveDutyGuard(DutyGuard dutyGuard)
-        {
-            _session.Save(dutyGuard);
-        }
-
-        public Resident LoadResident(string number)
-        {
-            return _session.Linq<Resident>().Single(r => r.PassCardNumber == number);
-        }
-
         public void Save<T>(T entity)
         {
             _session.Save(entity);
         }
 
-        public IEnumerable<T> Search<T>(params Func<T, bool>[] filters)
+        public void Delete<T>(T entity)
         {
-            //var q = _session.Linq<T>().AsQueryable();
+            _session.Delete(entity);
+        }
 
-            //return filters
-            //    .Aggregate(q, (acc, filter) => acc.Where(filter))
-            //    .ToList();
-
-            return null;
+        public IEnumerable<T> Search<T>(params Expression<Func<T, bool>>[] filters)
+        {
+            return filters
+                .Aggregate(_session.Linq<T>().AsQueryable(), (query, filter) => query.Where(filter))
+                .ToList();
         }
 
         #endregion
