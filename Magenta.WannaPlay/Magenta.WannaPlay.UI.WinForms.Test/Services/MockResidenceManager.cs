@@ -11,7 +11,8 @@ namespace Magenta.WannaPlay.UI.WinForms.Services
     {
         public IEnumerable<Facility> GetTennisCourts()
         {
-            throw new NotImplementedException();
+            yield return new Facility { FacilityType = FacilityType.TennisCourt, Name = "Court One", Id = 1 };
+            yield return new Facility { FacilityType = FacilityType.TennisCourt, Name = "Court Two", Id = 2 };
         }
 
         public IEnumerable<Facility> GetSquashCourts()

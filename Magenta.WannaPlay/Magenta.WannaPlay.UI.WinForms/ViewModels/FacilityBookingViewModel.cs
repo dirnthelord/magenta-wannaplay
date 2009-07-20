@@ -33,7 +33,7 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 
         private void InitializeDataContext()
         {
-            BookingEntries = BookingService.GetBookings(Period, Facility).ToBindingList();
+            BookingEntries = BookingService.GetFacilityBookings(Period, Facility).ToBindingList();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

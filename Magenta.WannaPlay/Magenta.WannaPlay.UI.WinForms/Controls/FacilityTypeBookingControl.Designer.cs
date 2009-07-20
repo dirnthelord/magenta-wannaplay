@@ -1,4 +1,6 @@
-﻿namespace Magenta.WannaPlay.UI.WinForms.Controls
+﻿using Magenta.WannaPlay.UI.WinForms.Domain;
+using Magenta.WannaPlay.UI.WinForms.ViewModels;
+namespace Magenta.WannaPlay.UI.WinForms.Controls
 {
     partial class FacilityTypeBookingControl
     {
@@ -28,8 +30,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.bookingEntriesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataContext = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bookingEntriesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataContext)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -41,8 +48,19 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(575, 492);
+            this.dataGridView1.Size = new System.Drawing.Size(509, 319);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.VirtualMode = true;
+            this.dataGridView1.CellValueNeeded += new System.Windows.Forms.DataGridViewCellValueEventHandler(this.dataGridView1_CellValueNeeded);
+            // 
+            // bookingEntriesBindingSource
+            // 
+            this.bookingEntriesBindingSource.DataMember = "BookingEntries";
+            this.bookingEntriesBindingSource.DataSource = this.dataContext;
+            // 
+            // dataContext
+            // 
+            this.dataContext.DataSource = typeof(Magenta.WannaPlay.UI.WinForms.ViewModels.FacilityTypeBookingViewModel);
             // 
             // FacilityTypeBookingControl
             // 
@@ -50,8 +68,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.dataGridView1);
             this.Name = "FacilityTypeBookingControl";
-            this.Size = new System.Drawing.Size(575, 492);
+            this.Size = new System.Drawing.Size(509, 319);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bookingEntriesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataContext)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -59,5 +79,7 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.BindingSource dataContext;
+        private System.Windows.Forms.BindingSource bookingEntriesBindingSource;
     }
 }

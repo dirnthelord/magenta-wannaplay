@@ -63,7 +63,9 @@
     <Compile Include="Controls\FacilityTypeBookingControl.Designer.cs">
       <DependentUpon>FacilityTypeBookingControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\GridCells\FacilityBookingIndicatorCell.cs" />
     <Compile Include="Domain\BookingScheduleGenerator.cs" />
+    <Compile Include="Domain\EmptyFacilityTypeBookingSlot.cs" />
     <Compile Include="Ioc\UIConfiguration.cs" />
     <Compile Include="Controls\FacilityTypeSelector.cs">
       <SubType>UserControl</SubType>
