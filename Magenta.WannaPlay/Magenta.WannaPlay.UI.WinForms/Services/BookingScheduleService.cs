@@ -11,7 +11,7 @@ using Magenta.WannaPlay.UI.WinForms.Domain;
 
 namespace Magenta.WannaPlay.UI.WinForms.Services
 {
-    public class GranularScheduleBookingService : IGranularScheduleBookingService
+    public class BookingScheduleService : IBookingScheduleService
     {
         public IBookingService BookingService { get; private set; }
 
@@ -23,7 +23,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Services
             return date.Hour >= 7 && date.Hour <= 22;
         }
 
-        public GranularScheduleBookingService(IBookingService bookingService)
+        public BookingScheduleService(IBookingService bookingService)
         {
             BookingService = RequireArg.NotNull(bookingService);
             Granularity = TimeSpan.FromHours(1.0);

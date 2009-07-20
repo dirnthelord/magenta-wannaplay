@@ -90,10 +90,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Services\GranularScheduleBookingService.cs" />
-    <Compile Include="Services\IGranularScheduleBookingService.cs" />
-    <Compile Include="Domain\EmptyFacilityTypeBookingSlot.cs" />
+    <Compile Include="Services\BookingScheduleService.cs" />
+    <Compile Include="Services\IBookingScheduleService.cs" />
     <Compile Include="Domain\FacilityTypeBookingSlot.cs" />
+    <Compile Include="Shared\GenericPropertyDescriptor.cs" />
     <Compile Include="ViewModels\FacilityTypeBookingViewModel.cs" />
     <Compile Include="Domain\EmptyFacilityBookingSlot.cs" />
     <Compile Include="Domain\FacilityBookingSlot.cs" />

@@ -9,7 +9,7 @@ using Magenta.WannaPlay.UI.WinForms.Domain;
 
 namespace Magenta.WannaPlay.UI.WinForms.Services
 {
-    public interface IGranularScheduleBookingService
+    public interface IBookingScheduleService
     {
         IEnumerable<FacilityBookingSlot> GetBookings(DateTimePeriod period, Facility facilityType);
     }
