@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Magenta.WannaPlay.Domain;
+using NHibernate;
 
 namespace Magenta.WannaPlay.Infrastructure.Persistence
 {
@@ -21,10 +22,7 @@ namespace Magenta.WannaPlay.Infrastructure.Persistence
 
         Resident LoadResident(string number);
 
-        IEnumerable<T> Search<T>(params Func<T,bool>[] filters)
-        {
-            
-        }
+        IEnumerable<T> Search<T>(params Func<T, bool>[] filters);
 
         void Save<T>(T entity);
     }
