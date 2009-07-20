@@ -1,21 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Magenta.Shared", "Magenta.Shared\Magenta.Shared.csproj", "{18D9C143-D91B-472A-A172-8632CCB6415E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Magenta.Shared", "..\_shared\Magenta.Shared\Magenta.Shared.csproj", "{18D9C143-D91B-472A-A172-8632CCB6415E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Magenta.WannaPlay.Components", "Magenta.WannaPlay.Components\Magenta.WannaPlay.Components.csproj", "{A7D0D4D2-64D1-4192-B35D-1D7C7FC1C6BE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Magenta.WannaPlay.UI.WinForms", "Magenta.WannaPlay.UI.WinForms\Magenta.WannaPlay.UI.WinForms.csproj", "{EB6A9B6B-FC19-407C-80C6-2DC36A07BE58}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Magenta.Shared.UI.WinForms", "Magenta.Shared.Ui.WinForms\Magenta.Shared.UI.WinForms.csproj", "{7FE12FFC-99C6-40FC-9D9A-6A2700BEDA66}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Magenta.Shared.UI.WinForms", "..\_shared\Magenta.Shared.Ui.WinForms\Magenta.Shared.UI.WinForms.csproj", "{7FE12FFC-99C6-40FC-9D9A-6A2700BEDA66}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Magenta.WannaPlay.Components.Test", "Magenta.WannaPlay.Components.Test\Magenta.WannaPlay.Components.Test.csproj", "{F1FE86A5-728E-489B-A3CA-806125EE3F75}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Magenta.WannaPlay.UI.WinForms.Test", "Magenta.WannaPlay.UI.WinForms.Test\Magenta.WannaPlay.UI.WinForms.Test.csproj", "{D00F3985-9410-4751-9BB4-918B68E4C13E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Magenta.Shared.Testing", "Magenta.Shared.Testing\Magenta.Shared.Testing.csproj", "{B2DA52AB-F103-4865-8F39-71D076D85E25}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Magenta.Shared.Testing", "..\_shared\Magenta.Shared.Testing\Magenta.Shared.Testing.csproj", "{B2DA52AB-F103-4865-8F39-71D076D85E25}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Magents.Shared.Test", "Magents.Shared.Test\Magents.Shared.Test.csproj", "{F2CFB30D-6AA3-4DA1-ABC6-C75CEEFE3C59}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Magents.Shared.Test", "..\_shared\Magents.Shared.Test\Magents.Shared.Test.csproj", "{F2CFB30D-6AA3-4DA1-ABC6-C75CEEFE3C59}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{CCB624B0-A0E0-40FE-BEB1-A8837530DF11}"
 EndProject
