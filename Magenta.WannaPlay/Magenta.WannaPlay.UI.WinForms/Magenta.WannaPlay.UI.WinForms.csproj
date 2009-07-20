@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{EB6A9B6B-FC19-407C-80C6-2DC36A07BE58}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -33,7 +33,7 @@
   <ItemGroup>
     <Reference Include="Ninject.Core, Version=1.0.0.82, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\_externals\Bin\ninject\Ninject.Core.dll</HintPath>
+      <HintPath>..\..\_externals\Bin\ninject\Ninject.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -41,7 +41,7 @@
     </Reference>
     <Reference Include="System.Data.SQLite, Version=1.0.63.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\_externals\Bin\SQLite\_latest\System.Data.SQLite.DLL</HintPath>
+      <HintPath>..\..\_externals\Bin\SQLite\_latest\System.Data.SQLite.DLL</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -106,11 +106,11 @@
     <Content Include="Resources\WannaPlay.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Magenta.Shared.Ui.WinForms\Magenta.Shared.UI.WinForms.csproj">
+    <ProjectReference Include="..\..\_shared\Magenta.Shared.Ui.WinForms\Magenta.Shared.UI.WinForms.csproj">
       <Project>{7FE12FFC-99C6-40FC-9D9A-6A2700BEDA66}</Project>
       <Name>Magenta.Shared.UI.WinForms</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Magenta.Shared\Magenta.Shared.csproj">
+    <ProjectReference Include="..\..\_shared\Magenta.Shared\Magenta.Shared.csproj">
       <Project>{18D9C143-D91B-472A-A172-8632CCB6415E}</Project>
       <Name>Magenta.Shared</Name>
     </ProjectReference>

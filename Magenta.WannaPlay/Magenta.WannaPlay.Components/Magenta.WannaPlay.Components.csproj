@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{A7D0D4D2-64D1-4192-B35D-1D7C7FC1C6BE}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -33,23 +33,23 @@
   <ItemGroup>
     <Reference Include="FluentNHibernate, Version=0.1.0.524, Culture=neutral, PublicKeyToken=8aa435e3cb308880, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\_externals\Bin\nhibernate\_latest\FluentNHibernate.dll</HintPath>
+      <HintPath>..\..\_externals\Bin\nhibernate\_latest\FluentNHibernate.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\_externals\Bin\nhibernate\_latest\log4net.dll</HintPath>
+      <HintPath>..\..\_externals\Bin\nhibernate\_latest\log4net.dll</HintPath>
     </Reference>
     <Reference Include="NHibernate, Version=2.0.1.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\_externals\Bin\nhibernate\_latest\NHibernate.dll</HintPath>
+      <HintPath>..\..\_externals\Bin\nhibernate\_latest\NHibernate.dll</HintPath>
     </Reference>
     <Reference Include="NHibernate.Linq, Version=1.0.0.0, Culture=neutral, PublicKeyToken=444cf6a87fdab271, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\_externals\Bin\nhibernate\_latest\NHibernate.Linq.dll</HintPath>
+      <HintPath>..\..\_externals\Bin\nhibernate\_latest\NHibernate.Linq.dll</HintPath>
     </Reference>
     <Reference Include="Ninject.Core, Version=1.0.0.82, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\_externals\Bin\ninject\Ninject.Core.dll</HintPath>
+      <HintPath>..\..\_externals\Bin\ninject\Ninject.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -91,7 +91,7 @@
     <Compile Include="Services\Residence\ResidenceManager.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Magenta.Shared\Magenta.Shared.csproj">
+    <ProjectReference Include="..\..\_shared\Magenta.Shared\Magenta.Shared.csproj">
       <Project>{18D9C143-D91B-472A-A172-8632CCB6415E}</Project>
       <Name>Magenta.Shared</Name>
     </ProjectReference>

@@ -5,13 +5,15 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{F1FE86A5-728E-489B-A3CA-806125EE3F75}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{D00F3985-9410-4751-9BB4-918B68E4C13E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Magenta.WannaPlay.Components</RootNamespace>
-    <AssemblyName>Magenta.WannaPlay.Components.Test</AssemblyName>
+    <RootNamespace>Magenta.WannaPlay.UI.WinForms</RootNamespace>
+    <AssemblyName>Magenta.WannaPlay.UI.WinForms.Test</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <StartupObject>
+    </StartupObject>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,33 +33,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FluentNHibernate, Version=0.1.0.524, Culture=neutral, PublicKeyToken=8aa435e3cb308880, processorArchitecture=MSIL">
+    <Reference Include="Ninject.Core, Version=1.0.0.82, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\_externals\Bin\nhibernate\_latest\FluentNHibernate.dll</HintPath>
-    </Reference>
-    <Reference Include="HibernatingRhinos.NHibernate.Profiler.Appender, Version=0.9.0.0, Culture=neutral, PublicKeyToken=0774796e73ebf640, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\_externals\Bin\nhibernate\_latest\HibernatingRhinos.NHibernate.Profiler.Appender.dll</HintPath>
-    </Reference>
-    <Reference Include="NHibernate, Version=2.0.1.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\_externals\Bin\nhibernate\_latest\NHibernate.dll</HintPath>
-    </Reference>
-    <Reference Include="NHibernate.Linq, Version=1.0.0.0, Culture=neutral, PublicKeyToken=444cf6a87fdab271, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\_externals\Bin\nhibernate\_latest\NHibernate.Linq.dll</HintPath>
+      <HintPath>..\..\_externals\Bin\ninject\Ninject.Core.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework, Version=2.5.0.9122, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\_externals\Bin\nunit\_latest\nunit.framework.dll</HintPath>
+      <HintPath>..\..\_externals\Bin\nunit\_latest\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Data.SQLite, Version=1.0.63.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\_externals\Bin\SQLite\_latest\System.Data.SQLite.DLL</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -66,20 +52,25 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Domain\BookingSlotTest.cs" />
-    <Compile Include="Domain\SchemaGenerator.cs" />
+    <Compile Include="Domain\GranularBookingScheduleGeneratorTests.cs" />
+    <Compile Include="Ioc\MockComponentsConfiguration.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestEnvironment.cs" />
+    <Compile Include="Services\MockBookingService.cs" />
+    <Compile Include="Services\MockResidenceManager.cs" />
+    <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Magenta.Shared.Testing\Magenta.Shared.Testing.csproj">
+    <ProjectReference Include="..\..\_shared\Magenta.Shared.Testing\Magenta.Shared.Testing.csproj">
       <Project>{B2DA52AB-F103-4865-8F39-71D076D85E25}</Project>
       <Name>Magenta.Shared.Testing</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Magenta.Shared\Magenta.Shared.csproj">
+    <ProjectReference Include="..\..\_shared\Magenta.Shared\Magenta.Shared.csproj">
       <Project>{18D9C143-D91B-472A-A172-8632CCB6415E}</Project>
       <Name>Magenta.Shared</Name>
     </ProjectReference>
@@ -87,18 +78,10 @@
       <Project>{A7D0D4D2-64D1-4192-B35D-1D7C7FC1C6BE}</Project>
       <Name>Magenta.WannaPlay.Components</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Generated\Mappings\Magenta.WannaPlay.Domain.BookingSlot.hbm.xml" />
-    <Content Include="Generated\Mappings\Magenta.WannaPlay.Domain.DutyGuard.hbm.xml" />
-    <Content Include="Generated\Mappings\Magenta.WannaPlay.Domain.Facility.hbm.xml" />
-    <Content Include="Generated\Mappings\Magenta.WannaPlay.Domain.ResidenceAddress.hbm.xml" />
-    <Content Include="Generated\Mappings\Magenta.WannaPlay.Domain.Resident.hbm.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Generated\Schemas\DBSchema_MsSql2005.sql" />
-    <None Include="Generated\Schemas\DBSchema_MsSqlCE.sql" />
-    <None Include="Generated\Schemas\DBSchema_SqLite.sql" />
+    <ProjectReference Include="..\Magenta.WannaPlay.UI.WinForms\Magenta.WannaPlay.UI.WinForms.csproj">
+      <Project>{EB6A9B6B-FC19-407C-80C6-2DC36A07BE58}</Project>
+      <Name>Magenta.WannaPlay.UI.WinForms</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
