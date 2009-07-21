@@ -13,7 +13,7 @@ using Magenta.WannaPlay.Services.Residence;
 
 namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 {
-    public class BookingViewModel : INotifyPropertyChanged
+    public class BookingScheduleViewModel : INotifyPropertyChanged
     {
         public IBookingService BookingService { get; private set; }
         public IResidenceManager ResidenceManager { get; private set; }
@@ -25,7 +25,7 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
         public FacilityType FacilityType { get; set; }
 
 
-        public BookingViewModel(IBookingService bookingService, IResidenceManager residenceManager)
+        public BookingScheduleViewModel(IBookingService bookingService, IResidenceManager residenceManager)
         {
             BookingService = RequireArg.NotNull(bookingService);
             ResidenceManager = RequireArg.NotNull(residenceManager);
