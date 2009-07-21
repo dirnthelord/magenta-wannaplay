@@ -36,6 +36,20 @@ namespace Magenta.Shared
         }
 
 
+        public bool Contains(PeriodBoundaryType fromType, PeriodBoundaryType toType, DateTime moment)
+        {
+            var withinFrom =
+                (From < moment) ||
+                (fromType == PeriodBoundaryType.Inclusive && From == moment);
+
+            var withinTo =
+                (To > moment) ||
+                (toType == PeriodBoundaryType.Inclusive && To == moment);
+
+            return withinFrom && withinTo;
+        }
+
+
         public static DateTimePeriod FromHours(DateTime from, double hours)
         {
             return new DateTimePeriod(from, from.AddHours(hours));
@@ -44,6 +58,24 @@ namespace Magenta.Shared
         public static DateTimePeriod FromDays(DateTime from, double days)
         {
             return new DateTimePeriod(from, from.AddDays(days));
+        }
+
+        public static DateTimePeriod Empty
+        {
+            get { return new DateTimePeriod(); }
+        }
+
+        public DateTimePeriod Intersect(DateTimePeriod right)
+        {
+            if (From > right.From)
+                return right.Intersect(this);
+
+            var left = this;
+
+            if (left.To < right.From)
+                return DateTimePeriod.Empty;
+
+            return new DateTimePeriod(right.From, DateTimeHelper.Min(right.To, left.To));
         }
     }
 }

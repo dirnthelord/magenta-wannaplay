@@ -8,6 +8,7 @@ using Magenta.WannaPlay.UI.WinForms.ViewModels;
 using Magenta.Shared;
 using Magenta.WannaPlay.Domain;
 using Magenta.WannaPlay.UI.WinForms.Domain;
+using Magenta.WannaPlay.UI.WinForms.Domain.UI;
 
 namespace Magenta.WannaPlay.UI.WinForms.Services
 {
@@ -40,12 +41,26 @@ namespace Magenta.WannaPlay.UI.WinForms.Services
             }
         }
 
-        public IEnumerable<BookingSlot> GetFacilityBookings(DateTimePeriod fullPeriod, Facility facility)
+        public IEnumerable<BookingSlotDetailsUI> GetBookingDetails(DateTimePeriod fullPeriod, Facility facility)
         {
-            var facilityTypeBookings = BookingService.GetBookingEntries(fullPeriod, facility.FacilityType);
+            var facilityTypeBookings = BookingService.GetBookingEntries(fullPeriod, facility.ToEnumerable());
             var facilityBookings = facilityTypeBookings.Where(b => b.Facility == facility);
 
             return new BookingScheduleGenerator(facilityBookings, Granularity).GenerateSchedule(fullPeriod);
+        }
+
+        public IEnumerable<DateTimePeriod> GetSchedule(DateTimePeriod fullPeriod)
+        {
+            var start = fullPeriod.From;
+
+            while (start < fullPeriod.To)
+            {
+                var end = start.Add(Granularity);
+
+                yield return new DateTimePeriod(start, end);
+
+                start = end;
+            }
         }
     }
 }

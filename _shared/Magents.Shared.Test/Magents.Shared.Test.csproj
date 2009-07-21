@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DateTimePeriodTest.cs" />
     <Compile Include="Extentions\System\Collections\Generic\EnumerableExtensionsTest.cs" />
     <Compile Include="Extentions\System\DateTimeExtentionsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

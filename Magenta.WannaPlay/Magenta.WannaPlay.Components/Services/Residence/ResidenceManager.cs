@@ -16,11 +16,9 @@ namespace Magenta.WannaPlay.Services.Residence
 
         #region IResidenceManager Members
 
-        public IEnumerable<Facility> GetFacilities(FacilityType facilityType)
+        public IEnumerable<Facility> GetFacilities()
         {
-            return _persistenceRepository.Search<Facility>(
-                f => f.FacilityType == facilityType
-                );
+            return _persistenceRepository.Search<Facility>();
         }
 
         public IEnumerable<DutyGuard> GetDutyGuards()

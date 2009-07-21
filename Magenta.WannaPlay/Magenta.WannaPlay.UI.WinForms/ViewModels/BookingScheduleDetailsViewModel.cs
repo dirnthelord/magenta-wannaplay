@@ -9,21 +9,26 @@ using Magenta.Shared.DesignByContract;
 using Magenta.Shared;
 using Magenta.WannaPlay.UI.WinForms.Services;
 using Magenta.WannaPlay.UI.WinForms.Domain;
+using Magenta.WannaPlay.UI.WinForms.Domain.UI;
 
 namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 {
     public class BookingScheduleDetailsViewModel : INotifyPropertyChanged
     {
-        // TODO: Rename Entries to Slots
-        public BindingList<BookingSlot> BookingEntries { get; private set; }
-        public IBookingScheduleService BookingService { get; private set; }
+        public BindingList<BookingSlotDetailsUI> BookingSlots { get; private set; }
+        public IEnumerable<BookingEntry> BookingEntries { get; private set; }
+
+        public IBookingService BookingService { get; private set; }
+        public IBookingScheduleService BookingScheduleService { get; private set; }
+
         public DateTimePeriod Period { get; set; }
         public Facility Facility { get; set; }
 
 
-        public BookingScheduleDetailsViewModel(IBookingScheduleService bookingService)
+        public BookingScheduleDetailsViewModel(IBookingService bookingService, IBookingScheduleService bookingScheduleService)
         {
             BookingService = RequireArg.NotNull(bookingService);
+            BookingScheduleService = RequireArg.NotNull(bookingScheduleService);
 
             // TODO: Parametrize
             Facility = new Facility { FacilityType = FacilityType.TennisCourt, Name = "Court One", Id = 1 };
@@ -34,7 +39,8 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 
         private void InitializeDataContext()
         {
-            BookingEntries = BookingService.GetFacilityBookings(Period, Facility).ToBindingList();
+            BookingEntries = BookingService.GetBookingEntries(Period, Facility.ToEnumerable());
+            BookingSlots = BookingScheduleService.GetBookingDetails(Period, Facility).ToBindingList();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

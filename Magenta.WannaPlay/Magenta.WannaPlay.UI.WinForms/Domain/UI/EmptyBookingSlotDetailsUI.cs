@@ -4,15 +4,16 @@ using System.Linq;
 using System.Text;
 using Magenta.Shared;
 using Magenta.Shared.DesignByContract;
+using Magenta.WannaPlay.UI.WinForms.Domain.UI;
 
 namespace Magenta.WannaPlay.UI.WinForms.Domain
 {
-    public class EmptyBookingSlot : BookingSlot
+    public class EmptyBookingSlotDetailsUI : BookingSlotDetailsUI
     {
         readonly DateTimePeriod _period;
 
 
-        public EmptyBookingSlot(DateTimePeriod period)
+        public EmptyBookingSlotDetailsUI(DateTimePeriod period)
         {
             _period = RequireArg.NotNull(period);
         }

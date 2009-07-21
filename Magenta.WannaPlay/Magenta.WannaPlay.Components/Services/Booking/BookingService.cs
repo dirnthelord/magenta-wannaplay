@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Magenta.WannaPlay.Domain;
 using Magenta.WannaPlay.Infrastructure.Persistence;
 using Magenta.Shared;
+using System.Linq;
 
 namespace Magenta.WannaPlay.Services.Booking
 {
@@ -19,11 +20,11 @@ namespace Magenta.WannaPlay.Services.Booking
 
         #region IBookingService Members
 
-        public IEnumerable<BookingEntry> GetBookingEntries(DateTimePeriod period, FacilityType facilityType)
+        public IEnumerable<BookingEntry> GetBookingEntries(DateTimePeriod period, IEnumerable<Facility> facilities)
         {
             return _persistenceRepository.Search<BookingEntry>(e => e.Period.From >= period.From.RoundDateDown()
                     && e.Period.To <= period.To.RoundDateUp()
-                   && e.Facility.FacilityType == facilityType);
+                   && facilities.Contains(e.Facility));
         }
 
         public void SaveBookingEntry(BookingEntry bookingEntry)
