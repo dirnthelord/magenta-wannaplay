@@ -57,27 +57,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\FacilityTypeBookingControl.cs">
+    <Compile Include="Controls\BookingScheduleControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\FacilityTypeBookingControl.Designer.cs">
-      <DependentUpon>FacilityTypeBookingControl.cs</DependentUpon>
+    <Compile Include="Controls\BookingScheduleControl.Designer.cs">
+      <DependentUpon>BookingScheduleControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\GridCells\FacilityBookingIndicatorCell.cs" />
+    <Compile Include="Controls\GridCells\BookingIndicatorCell.cs" />
     <Compile Include="Domain\BookingScheduleGenerator.cs" />
-    <Compile Include="Domain\EmptyFacilityTypeBookingSlot.cs" />
     <Compile Include="Ioc\UIConfiguration.cs" />
-    <Compile Include="Controls\FacilityTypeSelector.cs">
+    <Compile Include="Controls\BookingScheduleDetailsControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\FacilityTypeSelector.Designer.cs">
-      <DependentUpon>FacilityTypeSelector.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\FacilityBookingControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\FacilityBookingControl.Designer.cs">
-      <DependentUpon>FacilityBookingControl.cs</DependentUpon>
+    <Compile Include="Controls\BookingScheduleDetailsControl.Designer.cs">
+      <DependentUpon>BookingScheduleDetailsControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\WannaPlayMainControl.cs">
       <SubType>UserControl</SubType>
@@ -94,12 +87,10 @@
     </Compile>
     <Compile Include="Services\BookingScheduleService.cs" />
     <Compile Include="Services\IBookingScheduleService.cs" />
-    <Compile Include="Domain\FacilityTypeBookingSlot.cs" />
-    <Compile Include="Shared\GenericPropertyDescriptor.cs" />
-    <Compile Include="ViewModels\FacilityTypeBookingViewModel.cs" />
-    <Compile Include="Domain\EmptyFacilityBookingSlot.cs" />
-    <Compile Include="Domain\FacilityBookingSlot.cs" />
-    <Compile Include="ViewModels\FacilityBookingViewModel.cs" />
+    <Compile Include="ViewModels\BookingViewModel.cs" />
+    <Compile Include="Domain\EmptyBookingSlot.cs" />
+    <Compile Include="Domain\BookingSlot.cs" />
+    <Compile Include="ViewModels\BookingDetailsViewModel.cs" />
     <Compile Include="WannaPlayApplication.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -123,16 +114,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Controls\FacilityTypeBookingControl.resx">
-      <DependentUpon>FacilityTypeBookingControl.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\BookingScheduleControl.resx">
+      <DependentUpon>BookingScheduleControl.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\FacilityTypeSelector.resx">
-      <DependentUpon>FacilityTypeSelector.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\FacilityBookingControl.resx">
-      <DependentUpon>FacilityBookingControl.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\BookingScheduleDetailsControl.resx">
+      <DependentUpon>BookingScheduleDetailsControl.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\WannaPlayMainControl.resx">

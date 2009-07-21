@@ -13,7 +13,7 @@ using Magenta.WannaPlay.Services.Residence;
 
 namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 {
-    public class FacilityTypeBookingViewModel : INotifyPropertyChanged
+    public class BookingViewModel : INotifyPropertyChanged
     {
         public IBookingService BookingService { get; private set; }
         public IResidenceManager ResidenceManager { get; private set; }
@@ -25,7 +25,7 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
         public FacilityType FacilityType { get; set; }
 
 
-        public FacilityTypeBookingViewModel(IBookingService bookingService, IResidenceManager residenceManager)
+        public BookingViewModel(IBookingService bookingService, IResidenceManager residenceManager)
         {
             BookingService = RequireArg.NotNull(bookingService);
             ResidenceManager = RequireArg.NotNull(residenceManager);
@@ -54,12 +54,12 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
                 handler(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public FacilityBookingSlot GetFacilityBookingSlot(Facility facility, DateTimePeriod period)
+        public BookingSlot GetFacilityBookingSlot(Facility facility, DateTimePeriod period)
         {
             if (period.From.Hour % 5 == facility.Id)
-                return new FacilityBookingSlot(BookingEntries.First());
+                return new BookingSlot(BookingEntries.First());
             else
-                return new EmptyFacilityBookingSlot(period);
+                return new EmptyBookingSlot(period);
         }
     }
 }

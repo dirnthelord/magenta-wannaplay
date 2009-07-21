@@ -28,7 +28,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
         private void WannaPlayMainControl_Load(object sender, EventArgs e)
         {
             // TODO: Remove hardcoding
-            facilityBookingControl1.ViewModel = Kernel.Get<FacilityBookingViewModel>();
+            facilityBookingControl1.ViewModel = Kernel.Get<BookingDetailsViewModel>();
         }
     }
 }

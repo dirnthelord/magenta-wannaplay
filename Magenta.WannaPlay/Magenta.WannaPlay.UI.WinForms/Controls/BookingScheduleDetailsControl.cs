@@ -12,9 +12,9 @@ using Magenta.WannaPlay.UI.WinForms.Domain;
 
 namespace Magenta.WannaPlay.UI.WinForms.Controls
 {
-    public partial class FacilityBookingControl : UserControl
+    public partial class BookingScheduleDetailsControl : UserControl
     {
-        public FacilityBookingControl()
+        public BookingScheduleDetailsControl()
         {
             InitializeComponent();
 
@@ -25,15 +25,15 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
         {
             foreach (var row in dataGridView1.Rows.Cast<DataGridViewRow>())
             {
-                row.Height = (int)((FacilityBookingSlot)row.DataBoundItem).Period.GetTimeSpan().TotalHours * 22;
+                row.Height = (int)((BookingSlot)row.DataBoundItem).Period.GetTimeSpan().TotalHours * 22;
                 row.DefaultCellStyle.BackColor = Color.Green;
             }
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public FacilityBookingViewModel ViewModel
+        public BookingDetailsViewModel ViewModel
         {
-            get { return (FacilityBookingViewModel)dataContext.DataSource; }
+            get { return (BookingDetailsViewModel)dataContext.DataSource; }
             set { dataContext.DataSource = value; }
         }
 

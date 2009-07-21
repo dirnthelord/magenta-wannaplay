@@ -30,9 +30,9 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.facilityBookingControl1 = new Magenta.WannaPlay.UI.WinForms.Controls.FacilityBookingControl();
+            this.facilityBookingControl1 = new Magenta.WannaPlay.UI.WinForms.Controls.BookingScheduleDetailsControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.facilityTypeBookingControl1 = new Magenta.WannaPlay.UI.WinForms.Controls.FacilityTypeBookingControl();
+            this.facilityTypeBookingControl1 = new Magenta.WannaPlay.UI.WinForms.Controls.BookingScheduleControl();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -106,9 +106,9 @@
 
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage2;
-        private FacilityBookingControl facilityBookingControl1;
+        private BookingScheduleDetailsControl facilityBookingControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private FacilityTypeBookingControl facilityTypeBookingControl1;
+        private BookingScheduleControl facilityTypeBookingControl1;
 
 
     }

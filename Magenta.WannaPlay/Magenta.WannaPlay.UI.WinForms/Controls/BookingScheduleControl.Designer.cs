@@ -2,7 +2,7 @@
 using Magenta.WannaPlay.UI.WinForms.ViewModels;
 namespace Magenta.WannaPlay.UI.WinForms.Controls
 {
-    partial class FacilityTypeBookingControl
+    partial class BookingScheduleControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -60,14 +60,14 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             // 
             // dataContext
             // 
-            this.dataContext.DataSource = typeof(Magenta.WannaPlay.UI.WinForms.ViewModels.FacilityTypeBookingViewModel);
+            this.dataContext.DataSource = typeof(Magenta.WannaPlay.UI.WinForms.ViewModels.BookingViewModel);
             // 
-            // FacilityTypeBookingControl
+            // BookingScheduleControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.dataGridView1);
-            this.Name = "FacilityTypeBookingControl";
+            this.Name = "BookingScheduleControl";
             this.Size = new System.Drawing.Size(509, 319);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookingEntriesBindingSource)).EndInit();
