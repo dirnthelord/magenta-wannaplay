@@ -129,7 +129,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             // 
             // dataContext
             // 
-            this.dataContext.DataSource = typeof(Magenta.WannaPlay.UI.WinForms.ViewModels.BookingDetailsViewModel);
+            this.dataContext.DataSource = typeof(Magenta.WannaPlay.UI.WinForms.ViewModels.BookingScheduleDetailsViewModel);
             // 
             // FacilityBookingControl
             // 

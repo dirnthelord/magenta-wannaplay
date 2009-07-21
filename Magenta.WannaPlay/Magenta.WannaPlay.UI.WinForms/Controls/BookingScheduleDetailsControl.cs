@@ -31,9 +31,9 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public BookingDetailsViewModel ViewModel
+        public BookingScheduleDetailsViewModel ViewModel
         {
-            get { return (BookingDetailsViewModel)dataContext.DataSource; }
+            get { return (BookingScheduleDetailsViewModel)dataContext.DataSource; }
             set { dataContext.DataSource = value; }
         }
 

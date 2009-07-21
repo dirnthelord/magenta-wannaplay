@@ -87,10 +87,10 @@
     </Compile>
     <Compile Include="Services\BookingScheduleService.cs" />
     <Compile Include="Services\IBookingScheduleService.cs" />
-    <Compile Include="ViewModels\BookingViewModel.cs" />
+    <Compile Include="ViewModels\BookingScheduleViewModel.cs" />
     <Compile Include="Domain\EmptyBookingSlot.cs" />
     <Compile Include="Domain\BookingSlot.cs" />
-    <Compile Include="ViewModels\BookingDetailsViewModel.cs" />
+    <Compile Include="ViewModels\BookingScheduleDetailsViewModel.cs" />
     <Compile Include="WannaPlayApplication.cs" />
   </ItemGroup>
   <ItemGroup>

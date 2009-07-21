@@ -60,9 +60,9 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
         }
 
         [Inject]
-        public BookingViewModel ViewModel
+        public BookingScheduleViewModel ViewModel
         {
-            get { return (BookingViewModel)dataContext.DataSource; }
+            get { return (BookingScheduleViewModel)dataContext.DataSource; }
             set { dataContext.DataSource = value; }
         }
     }

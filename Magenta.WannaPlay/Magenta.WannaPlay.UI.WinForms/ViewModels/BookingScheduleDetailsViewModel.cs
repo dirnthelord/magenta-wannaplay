@@ -12,7 +12,7 @@ using Magenta.WannaPlay.UI.WinForms.Domain;
 
 namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 {
-    public class BookingDetailsViewModel : INotifyPropertyChanged
+    public class BookingScheduleDetailsViewModel : INotifyPropertyChanged
     {
         // TODO: Rename Entries to Slots
         public BindingList<BookingSlot> BookingEntries { get; private set; }
@@ -21,7 +21,7 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
         public Facility Facility { get; set; }
 
 
-        public BookingDetailsViewModel(IBookingScheduleService bookingService)
+        public BookingScheduleDetailsViewModel(IBookingScheduleService bookingService)
         {
             BookingService = RequireArg.NotNull(bookingService);
 
