@@ -21,7 +21,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Domain
 
         TimeSpan Granularity { get; set; }
 
-        public IEnumerable<FacilityBookingSlot> GenerateSchedule(DateTimePeriod fullPeriod)
+        public IEnumerable<BookingSlot> GenerateSchedule(DateTimePeriod fullPeriod)
         {
             // TODO: Sort bookings by date
             // TODO: Make sure bookings do not intersect
@@ -46,8 +46,8 @@ namespace Magenta.WannaPlay.UI.WinForms.Domain
 
                 var bookingSlot =
                     currentBooking != null
-                    ? new FacilityBookingSlot(currentBooking)
-                    : new EmptyFacilityBookingSlot(new DateTimePeriod(currentFrom, currentFrom.Add(Granularity)));
+                    ? new BookingSlot(currentBooking)
+                    : new EmptyBookingSlot(new DateTimePeriod(currentFrom, currentFrom.Add(Granularity)));
 
                 yield return bookingSlot;
 

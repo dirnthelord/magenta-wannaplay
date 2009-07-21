@@ -3,7 +3,7 @@ using Magenta.WannaPlay.UI.WinForms.ViewModels;
 using System.Windows.Forms;
 namespace Magenta.WannaPlay.UI.WinForms.Controls
 {
-    partial class FacilityBookingControl
+    partial class BookingScheduleDetailsControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -129,7 +129,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             // 
             // dataContext
             // 
-            this.dataContext.DataSource = typeof(Magenta.WannaPlay.UI.WinForms.ViewModels.FacilityBookingViewModel);
+            this.dataContext.DataSource = typeof(Magenta.WannaPlay.UI.WinForms.ViewModels.BookingDetailsViewModel);
             // 
             // FacilityBookingControl
             // 
@@ -151,11 +151,6 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.BindingSource dataContext;
         private Button button1;
-        private DataGridViewTextBoxColumn periodStringDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn bookedByGuardDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn residentAddressDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn residentNameDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn residentPassNumberDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;

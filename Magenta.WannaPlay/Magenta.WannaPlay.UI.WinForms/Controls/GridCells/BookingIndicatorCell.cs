@@ -9,11 +9,11 @@ using Magenta.WannaPlay.UI.WinForms.Domain;
 
 namespace Magenta.WannaPlay.UI.WinForms.Controls.GridCells
 {
-    public class FacilityBookingIndicatorCell : DataGridViewTextBoxCell
+    public class BookingIndicatorCell : DataGridViewTextBoxCell
     {
         public override Type ValueType
         {
-            get { return typeof(FacilityBookingSlot); }
+            get { return typeof(BookingSlot); }
         }
 
         void BasePaint(Graphics graphics, Rectangle clipBounds, Rectangle cellBounds, int rowIndex, DataGridViewElementStates elementState, object value, object formattedValue, string errorText, DataGridViewCellStyle cellStyle, DataGridViewAdvancedBorderStyle advancedBorderStyle, DataGridViewPaintParts paintParts)
@@ -37,7 +37,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls.GridCells
 
         void PaintBookingIndicator(Graphics graphics, Rectangle cellBounds, object value)
         {
-            var bookingSlot = (FacilityBookingSlot)value;
+            var bookingSlot = (BookingSlot)value;
             if (!bookingSlot.IsEmpty)
             {
                 //var rectangle = new Rectangle(cellBounds.Location, new Size((int)(cellBounds.Width * ratio), cellBounds.Height));

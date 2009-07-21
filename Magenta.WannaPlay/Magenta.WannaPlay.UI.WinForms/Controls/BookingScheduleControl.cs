@@ -15,16 +15,16 @@ using Magenta.Shared;
 
 namespace Magenta.WannaPlay.UI.WinForms.Controls
 {
-    public partial class FacilityTypeBookingControl : UserControl
+    public partial class BookingScheduleControl : UserControl
     {
-        public FacilityTypeBookingControl()
+        public BookingScheduleControl()
         {
             InitializeComponent();
 
             dataContext.DataSourceChanged += delegate { OnViewModelChanged(); };
         }
 
-        FacilityBookingIndicatorCell _indicatorCellTemplate = new FacilityBookingIndicatorCell();
+        BookingIndicatorCell _indicatorCellTemplate = new BookingIndicatorCell();
 
         DataGridViewColumn CreateFacilityBookingColumn(Facility facility)
         {
@@ -60,9 +60,9 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
         }
 
         [Inject]
-        public FacilityTypeBookingViewModel ViewModel
+        public BookingViewModel ViewModel
         {
-            get { return (FacilityTypeBookingViewModel)dataContext.DataSource; }
+            get { return (BookingViewModel)dataContext.DataSource; }
             set { dataContext.DataSource = value; }
         }
     }
