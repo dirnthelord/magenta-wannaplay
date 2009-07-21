@@ -7,36 +7,21 @@ using Magenta.WannaPlay.Domain;
 
 namespace Magenta.WannaPlay.UI.WinForms.Services
 {
-    public class MockResidenceManager  : IResidenceManager
+    public class MockResidenceManager : IResidenceManager
     {
-        public IEnumerable<Facility> GetTennisCourts()
-        {
-            yield return new Facility { FacilityType = FacilityType.TennisCourt, Name = "Court One", Id = 1 };
-            yield return new Facility { FacilityType = FacilityType.TennisCourt, Name = "Court Two", Id = 2 };
-        }
-
-        public Resident GetResident(string number)
-        {
-            throw new NotImplementedException();
-        }
-
-        #region IResidenceManager Members
-
-
         public ResidenceUnit GetResidenceUnit(string unitBlock, string unitNumber)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Facility> GetFacilities(FacilityType facilityType)
+        public IEnumerable<Facility> GetFacilities()
         {
-            throw new NotImplementedException();
+            yield return new Facility { FacilityType = FacilityType.TennisCourt, Name = "Court One", Id = 1 };
+            yield return new Facility { FacilityType = FacilityType.TennisCourt, Name = "Court Two", Id = 2 };
+
+            yield return new Facility { FacilityType = FacilityType.SquashCourt, Name = "Court Two", Id = 3 };
+            yield return new Facility { FacilityType = FacilityType.SquashCourt, Name = "Court Two", Id = 4 };
         }
-
-        #endregion
-
-        #region IResidenceManager Members
-
 
         public IEnumerable<DutyGuard> GetDutyGuards()
         {
@@ -48,6 +33,9 @@ namespace Magenta.WannaPlay.UI.WinForms.Services
             throw new NotImplementedException();
         }
 
-        #endregion
+        public Resident GetResident(string passCardNumber)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

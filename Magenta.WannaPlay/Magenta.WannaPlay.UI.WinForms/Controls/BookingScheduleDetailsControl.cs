@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using Magenta.WannaPlay.UI.WinForms.ViewModels;
 using Magenta.Shared.DesignByContract;
 using Magenta.WannaPlay.UI.WinForms.Domain;
+using Magenta.WannaPlay.UI.WinForms.Domain.UI;
 
 namespace Magenta.WannaPlay.UI.WinForms.Controls
 {
@@ -25,7 +26,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
         {
             foreach (var row in dataGridView1.Rows.Cast<DataGridViewRow>())
             {
-                row.Height = (int)((BookingSlot)row.DataBoundItem).Period.GetTimeSpan().TotalHours * 22;
+                row.Height = (int)((BookingSlotDetailsUI)row.DataBoundItem).Period.GetTimeSpan().TotalHours * 22;
                 row.DefaultCellStyle.BackColor = Color.Green;
             }
         }

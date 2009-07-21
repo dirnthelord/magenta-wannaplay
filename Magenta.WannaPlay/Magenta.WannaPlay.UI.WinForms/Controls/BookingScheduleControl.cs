@@ -12,58 +12,88 @@ using Magenta.WannaPlay.Domain;
 using Ninject.Core;
 using Magenta.WannaPlay.UI.WinForms.Domain;
 using Magenta.Shared;
+using Magenta.WannaPlay.UI.WinForms.Domain.UI;
 
 namespace Magenta.WannaPlay.UI.WinForms.Controls
 {
     public partial class BookingScheduleControl : UserControl
     {
-        public BookingScheduleControl()
-        {
-            InitializeComponent();
-
-            dataContext.DataSourceChanged += delegate { OnViewModelChanged(); };
-        }
-
-        BookingIndicatorCell _indicatorCellTemplate = new BookingIndicatorCell();
-
-        DataGridViewColumn CreateFacilityBookingColumn(Facility facility)
-        {
-            return new DataGridViewColumn
-            {
-                CellTemplate = _indicatorCellTemplate,
-                HeaderText = facility.Name,
-                Tag = facility,
-            };
-        }
-
-        private void OnViewModelChanged()
-        {
-            dataGridView1.Columns.Clear();
-            dataGridView1.RowCount = (int)ViewModel.Period.GetTimeSpan().TotalHours;
-
-            foreach (var facility in ViewModel.Facilities)
-                dataGridView1.Columns.Add(CreateFacilityBookingColumn(facility));
-            //dataGridView1.Columns.Add(new DataGridViewColumn { Name = "Court Two", CellTemplate = _indicatorCellTemplate });
-        }
-
-        private void dataGridView1_CellValueNeeded(object sender, DataGridViewCellValueEventArgs e)
-        {
-            var column = dataGridView1.Columns[e.ColumnIndex];
-            var facility = (Facility)column.Tag;
-
-            if (facility != null)
-            {
-                var period = DateTimePeriod.FromHours(ViewModel.Period.From.AddHours(e.RowIndex), 1);
-
-                e.Value = ViewModel.GetFacilityBookingSlot(facility, period);
-            }
-        }
-
         [Inject]
         public BookingScheduleViewModel ViewModel
         {
             get { return (BookingScheduleViewModel)dataContext.DataSource; }
             set { dataContext.DataSource = value; }
+        }
+
+        public BookingScheduleControl()
+        {
+            InitializeComponent();
+
+            dataContext.DataSourceChanged += delegate { UpdateGridColumns(); };
+
+            bookingScheduleGrid.AddBooking += delegate { AddBooking(); };
+            bookingScheduleGrid.DeleteBooking += delegate { DeleteBooking(); };
+
+            bookingScheduleGrid.SelectionChanged += delegate { OnSelectedSlotsChanged(); };
+        }
+
+        IEnumerable<BookingEntry> SelectedBookingEntries
+        {
+            get { return ViewModel.GetBookingEntries(bookingScheduleGrid.SelectedSlots); }
+        }
+
+        bool CanAddBooking
+        {
+            get { return !SelectedBookingEntries.Any(); }
+        }
+
+        bool CanCancelBooking
+        {
+            get { return SelectedBookingEntries.Any(); }
+        }
+
+        void OnSelectedSlotsChanged()
+        {
+            addBookingButton.Enabled = CanAddBooking;
+            cancelBookingButton.Enabled = CanCancelBooking;
+        }
+
+
+        void UpdateGridColumns()
+        {
+            foreach (var facility in ViewModel.Facilities)
+                bookingScheduleGrid.AddFacilityColumn(facility);
+        }
+
+        private void addBookingButton_Click(object sender, EventArgs e)
+        {
+            AddBooking();
+        }
+
+        private void cancelBookingButton_Click(object sender, EventArgs e)
+        {
+            DeleteBooking();
+        }
+
+        private void DeleteBooking()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void AddBooking()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void bookingScheduleGrid_CellValueNeeded(object sender, DataGridViewCellValueEventArgs e)
+        {
+            var bookingSlot = bookingScheduleGrid.GetBookingSlot(e.RowIndex, e.ColumnIndex);
+
+            if (bookingSlot != null)
+            {
+                bool isBooked = ViewModel.GetBookingEntries(bookingSlot.ToEnumerable()).Any();
+                e.Value = isBooked;
+            }
         }
     }
 }

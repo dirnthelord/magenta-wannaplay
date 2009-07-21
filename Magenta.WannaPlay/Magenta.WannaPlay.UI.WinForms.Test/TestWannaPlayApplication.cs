@@ -18,7 +18,8 @@ namespace Magenta.WannaPlay.UI.WinForms
         protected override Control GetMainControl()
         {
             //return base.GetMainControl();
-            return Kernel.Get<BookingScheduleDetailsControl>();
+            //return Kernel.Get<BookingScheduleDetailsControl>();
+            return Kernel.Get<BookingScheduleControl>();
         }
     }
 }

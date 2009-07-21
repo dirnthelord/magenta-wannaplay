@@ -63,8 +63,13 @@
     <Compile Include="Controls\BookingScheduleControl.Designer.cs">
       <DependentUpon>BookingScheduleControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\BookingScheduleGrid.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\GridCells\BookingIndicatorCell.cs" />
     <Compile Include="Domain\BookingScheduleGenerator.cs" />
+    <Compile Include="Domain\UI\BookingPeriodUI.cs" />
+    <Compile Include="Domain\BookingSlot.cs" />
     <Compile Include="Ioc\UIConfiguration.cs" />
     <Compile Include="Controls\BookingScheduleDetailsControl.cs">
       <SubType>UserControl</SubType>
@@ -88,8 +93,8 @@
     <Compile Include="Services\BookingScheduleService.cs" />
     <Compile Include="Services\IBookingScheduleService.cs" />
     <Compile Include="ViewModels\BookingScheduleViewModel.cs" />
-    <Compile Include="Domain\EmptyBookingSlot.cs" />
-    <Compile Include="Domain\BookingSlot.cs" />
+    <Compile Include="Domain\UI\EmptyBookingSlotDetailsUI.cs" />
+    <Compile Include="Domain\UI\BookingSlotDetailsUI.cs" />
     <Compile Include="ViewModels\BookingScheduleDetailsViewModel.cs" />
     <Compile Include="WannaPlayApplication.cs" />
   </ItemGroup>

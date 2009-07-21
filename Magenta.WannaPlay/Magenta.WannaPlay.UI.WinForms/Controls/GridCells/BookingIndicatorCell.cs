@@ -13,7 +13,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls.GridCells
     {
         public override Type ValueType
         {
-            get { return typeof(BookingSlot); }
+            get { return typeof(bool); }
         }
 
         void BasePaint(Graphics graphics, Rectangle clipBounds, Rectangle cellBounds, int rowIndex, DataGridViewElementStates elementState, object value, object formattedValue, string errorText, DataGridViewCellStyle cellStyle, DataGridViewAdvancedBorderStyle advancedBorderStyle, DataGridViewPaintParts paintParts)
@@ -37,12 +37,10 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls.GridCells
 
         void PaintBookingIndicator(Graphics graphics, Rectangle cellBounds, object value)
         {
-            var bookingSlot = (BookingSlot)value;
-            if (!bookingSlot.IsEmpty)
-            {
-                //var rectangle = new Rectangle(cellBounds.Location, new Size((int)(cellBounds.Width * ratio), cellBounds.Height));
+            var isBooked = (bool)value;
+
+            if (isBooked)
                 graphics.FillRectangle(FullSlotBrush, cellBounds);
-            }
         }
     }
 }

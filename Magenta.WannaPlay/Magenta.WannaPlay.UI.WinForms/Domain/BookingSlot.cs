@@ -4,44 +4,14 @@ using System.Linq;
 using System.Text;
 using Magenta.Shared;
 using System.ComponentModel;
-using Magenta.WannaPlay.Domain;
 using Magenta.Shared.DesignByContract;
+using Magenta.WannaPlay.Domain;
 
 namespace Magenta.WannaPlay.UI.WinForms.Domain
 {
     public class BookingSlot
     {
-        [Browsable(false)]
-        public virtual DateTimePeriod Period { get { return Booking.Period; } }
-
-        [DisplayName("Period")]
-        public virtual string PeriodString { get { return string.Format("{0:h tt}", Period.From, Period.To); } }
-
-        [DisplayName("Booked By Guard")]
-        public virtual string BookedByGuard { get { return Booking.BookedByGuard.Name; } }
-
-        [DisplayName("Block & Number")]
-        public virtual string ResidentAddress { get { return string.Format("{0}, #{1}", Booking.Resident.Unit.Block, Booking.Resident.Unit.Number); } }
-
-        [DisplayName("Resident Name")]
-        public virtual string ResidentName { get { return Booking.Resident.Name; } }
-
-        [DisplayName("Resident Pass Number")]
-        public virtual string ResidentPassNumber { get { return Booking.Resident.PassCardNumber; } }
-
-        [Browsable(false)]
-        public virtual bool IsEmpty { get { return false; } }
-
-        [Browsable(false)]
-        public BookingEntry Booking { get; private set; }
-
-        public BookingSlot(BookingEntry booking)
-        {
-            Booking = RequireArg.NotNull(booking);
-        }
-
-        protected BookingSlot()
-        {
-        }
+        public DateTimePeriod Period { get; set; }
+        public Facility Facility { get; set; }
     }
 }

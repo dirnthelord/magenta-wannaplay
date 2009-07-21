@@ -9,7 +9,7 @@ namespace Magenta.WannaPlay.Services.Booking
 {
     public interface IBookingService
     {
-        IEnumerable<BookingEntry> GetBookingEntries(DateTimePeriod period, FacilityType facilityType);
+        IEnumerable<BookingEntry> GetBookingEntries(DateTimePeriod period, IEnumerable<Facility> facilities);
 
         /// <summary>
         /// Validates booking slot according to the current rules and saved it persistence storage
