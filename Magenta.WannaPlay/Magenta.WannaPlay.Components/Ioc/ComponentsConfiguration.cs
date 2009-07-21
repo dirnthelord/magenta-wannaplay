@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Magenta.WannaPlay.Infrastructure.NHibernate;
 using Magenta.WannaPlay.Infrastructure.Persistence;
 using Magenta.WannaPlay.Services.Booking;
 using Magenta.WannaPlay.Services.Residence;

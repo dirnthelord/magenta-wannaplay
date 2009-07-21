@@ -4,7 +4,7 @@ using NHibernate;
 using Ninject.Core.Activation;
 using Ninject.Core.Creation;
 
-namespace Magenta.WannaPlay.Infrastructure.NHibernate
+namespace Magenta.WannaPlay.Infrastructure.Persistence
 {
     public class SessionProvider : SimpleProvider<ISession>
     {
@@ -15,9 +15,9 @@ namespace Magenta.WannaPlay.Infrastructure.NHibernate
         public SessionProvider(string connectionString)
         {
             var configuration = Fluently.Configure()
-               .Database(MsSqlCeConfiguration.Standard.ConnectionString(b => b.Is(connectionString)))
+                .Database(MsSqlCeConfiguration.Standard.ConnectionString(b => b.Is(connectionString)))
                 //.ExposeConfiguration(x => x.SetProperty("adonet.batch_size", "1"))
-               .BuildConfiguration();
+                .BuildConfiguration();
 
             new WannaPlayPersistenceModel().Configure(configuration);
 

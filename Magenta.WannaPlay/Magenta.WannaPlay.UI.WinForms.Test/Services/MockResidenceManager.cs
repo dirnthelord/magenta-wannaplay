@@ -15,11 +15,6 @@ namespace Magenta.WannaPlay.UI.WinForms.Services
             yield return new Facility { FacilityType = FacilityType.TennisCourt, Name = "Court Two", Id = 2 };
         }
 
-        public void CreateDutyGuard(DutyGuard dutyGuard)
-        {
-            throw new NotImplementedException();
-        }
-
         public Resident GetResident(string number)
         {
             throw new NotImplementedException();
@@ -34,6 +29,21 @@ namespace Magenta.WannaPlay.UI.WinForms.Services
         }
 
         public IEnumerable<Facility> GetFacilities(FacilityType facilityType)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+
+        #region IResidenceManager Members
+
+
+        public IEnumerable<DutyGuard> GetDutyGuards()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SaveDutyGuard(DutyGuard dutyGuard)
         {
             throw new NotImplementedException();
         }

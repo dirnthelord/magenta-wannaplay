@@ -2,7 +2,7 @@ using System;
 using FluentNHibernate.Conventions;
 using FluentNHibernate.Mapping;
 
-namespace Magenta.WannaPlay.Infrastructure.NHibernate
+namespace Magenta.WannaPlay.Infrastructure.Persistence.Conventions
 {
     public class EnumConvention : IUserTypeConvention
     {

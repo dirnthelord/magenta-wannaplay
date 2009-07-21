@@ -5,7 +5,7 @@ using System.Text;
 using FluentNHibernate.Testing;
 using Magenta.Shared.Testing.NHibernate;
 using Magenta.WannaPlay.Domain;
-using Magenta.WannaPlay.Infrastructure.NHibernate;
+using Magenta.WannaPlay.Infrastructure.Persistence;
 using NUnit.Framework;
 using Magenta.Shared;
 
