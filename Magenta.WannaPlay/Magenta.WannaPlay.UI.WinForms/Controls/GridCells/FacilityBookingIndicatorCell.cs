@@ -33,13 +33,15 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls.GridCells
             BasePaintPart(DataGridViewPaintParts.Focus /*| DataGridViewPaintParts.ContentForeground*/);
         }
 
+        static readonly HatchBrush FullSlotBrush = new HatchBrush(HatchStyle.DiagonalCross, Color.Red, Color.Transparent);
+
         void PaintBookingIndicator(Graphics graphics, Rectangle cellBounds, object value)
         {
             var bookingSlot = (FacilityBookingSlot)value;
             if (!bookingSlot.IsEmpty)
             {
                 //var rectangle = new Rectangle(cellBounds.Location, new Size((int)(cellBounds.Width * ratio), cellBounds.Height));
-                graphics.FillRectangle(new HatchBrush(HatchStyle.DiagonalCross, Color.Red, Color.Transparent), cellBounds);
+                graphics.FillRectangle(FullSlotBrush, cellBounds);
             }
         }
     }
