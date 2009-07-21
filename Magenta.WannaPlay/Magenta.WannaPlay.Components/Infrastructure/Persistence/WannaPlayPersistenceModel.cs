@@ -10,8 +10,10 @@ using FluentNHibernate.Conventions;
 using FluentNHibernate.Mapping;
 using Magenta.WannaPlay.Domain;
 using Magenta.Shared;
+using Magenta.WannaPlay.Infrastructure.Persistence.Conventions;
+using ForeignKeyConvention=Magenta.WannaPlay.Infrastructure.Persistence.Conventions.ForeignKeyConvention;
 
-namespace Magenta.WannaPlay.Infrastructure.NHibernate
+namespace Magenta.WannaPlay.Infrastructure.Persistence
 {
     public class WannaPlayPersistenceModel : AutoPersistenceModel
     {
@@ -22,14 +24,13 @@ namespace Magenta.WannaPlay.Infrastructure.NHibernate
             AddEntityAssembly(Assembly.GetExecutingAssembly())
                 .Where(entity => entity.BaseType == typeof(Entity))
                 .ConventionDiscovery.Setup(c =>
-                {
-                    c.Add<ForeignKeyConvention>();
-                    c.Add<ManyToOneConvention>();
-                    c.Add<OneToManyConvention>();
-                    c.Add<EnumConvention>();
-
-                    //TODO: create not null convention
-                });
+                                               {
+                                                   c.Add<ForeignKeyConvention>();
+                                                   c.Add<ManyToOneConvention>();
+                                                   c.Add<OneToManyConvention>();
+                                                   c.Add<EnumConvention>();
+                                                   c.Add<NotNullPropertyConvention>();
+                                               });
 
             // TODO: Make it more generic?
             WithSetup(s => s.IsComponentType = type => _componentTypes.Contains(type));

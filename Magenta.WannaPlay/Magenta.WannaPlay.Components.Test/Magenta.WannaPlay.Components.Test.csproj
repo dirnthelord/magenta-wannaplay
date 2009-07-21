@@ -79,7 +79,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\BookingSlotTest.cs" />
-    <Compile Include="Domain\SchemaGenerator.cs" />
+    <Compile Include="Infrustructure\Persistence\SchemaGenerator.cs" />
+    <Compile Include="Infrustructure\Persistence\PersistenceRepositoryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestEnvironment.cs" />
   </ItemGroup>

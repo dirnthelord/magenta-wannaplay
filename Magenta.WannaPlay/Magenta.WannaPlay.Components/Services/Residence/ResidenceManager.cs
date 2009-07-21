@@ -28,7 +28,7 @@ namespace Magenta.WannaPlay.Services.Residence
             return _persistenceRepository.Search<DutyGuard>();
         }
 
-        public void CreateDutyGuard(DutyGuard dutyGuard)
+        public void SaveDutyGuard(DutyGuard dutyGuard)
         {
             _persistenceRepository.Save(dutyGuard);
         }

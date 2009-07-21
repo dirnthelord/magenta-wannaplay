@@ -9,49 +9,16 @@ using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using Magenta.Shared;
 using Magenta.WannaPlay.Domain;
-using Magenta.WannaPlay.Infrastructure.NHibernate;
 using Magenta.WannaPlay.Infrastructure.Persistence;
 using NHibernate;
-using NHibernate.Cfg;
-using NHibernate.Dialect;
 using NHibernate.Tool.hbm2ddl;
 using NUnit.Framework;
-using Environment=System.Environment;
 
-namespace Magenta.WannaPlay.Components.Domain
+namespace Magenta.WannaPlay.Components.Infrustructure.Persistence
 {
     [TestFixture]
-    public class SchemaGenerator
+    public class PersistenceRepositoryTest
     {
-        #region Tests
-
-        public void GenerateMsSql2005Script()
-        {
-            GenerateDatabaseScript(MsSqlConfiguration.MsSql2005, @"..\..\Generated\Schemas\DBSchema_MsSql2005.sql");
-        }
-
-        [Test]
-        public void GenerateMsSqlCeScript()
-        {
-            GenerateDatabaseScript(MsSqlCeConfiguration.Standard, @"..\..\Generated\Schemas\DBSchema_MsSqlCE.sql");
-        }
-
-        [Test]
-        public void GenerateSqLiteScript()
-        {
-            GenerateDatabaseScript(new SQLiteConfiguration().InMemory().ShowSql(), @"..\..\Generated\Schemas\DBSchema_SqLite.sql");
-        }
-
-        [Test]
-        public void GenerateMappings()
-        {
-            var model = new WannaPlayPersistenceModel();
-
-            model.CompileMappings();
-
-            model.WriteMappingsTo(@"..\..\Generated\Mappings\");
-        } 
-
         public void GenerateSampleDatabase()
         {
             const string databaseFilePath = @"..\..\Generated\Databases\WannaPlay.sdf";
@@ -67,12 +34,14 @@ namespace Magenta.WannaPlay.Components.Domain
             }
         }
 
+        #region Private
+
         private void CreateDatabaseFile(string databaseFilePath, string connectionString)
         {
-            if(File.Exists(databaseFilePath))
+            if (File.Exists(databaseFilePath))
                 File.Delete(databaseFilePath);
 
-            using(var sqlCeEngine = new SqlCeEngine(connectionString))
+            using (var sqlCeEngine = new SqlCeEngine(connectionString))
                 sqlCeEngine.CreateDatabase();
         }
 
@@ -80,7 +49,7 @@ namespace Magenta.WannaPlay.Components.Domain
         {
             using (var transaction = session.BeginTransaction(IsolationLevel.ReadCommitted))
             {
-                var tennisCourt1 = new Facility {FacilityType = FacilityType.TennisCourt, Name = "Tennis Court 1"};
+                var tennisCourt1 = new Facility { FacilityType = FacilityType.TennisCourt, Name = "Tennis Court 1" };
 
                 session.Save(tennisCourt1);
                 session.Save(new Facility { FacilityType = FacilityType.TennisCourt, Name = "Tennis Court 2" });
@@ -88,11 +57,11 @@ namespace Magenta.WannaPlay.Components.Domain
                 session.Save(new Facility { FacilityType = FacilityType.SquashCourt, Name = "Squash Court 2" });
 
                 var bradPit = new Resident
-                                  {
-                                      Name = "Brad Pit",
-                                      PassCardNumber = "0000",
-                                      Unit = new ResidenceUnit {Block = "10", Number = "#99-01"}
-                                  };
+                {
+                    Name = "Brad Pit",
+                    PassCardNumber = "0000",
+                    Unit = new ResidenceUnit { Block = "10", Number = "#99-01" }
+                };
 
                 var ross = new DutyGuard()
                 {
@@ -102,13 +71,13 @@ namespace Magenta.WannaPlay.Components.Domain
                 DateTime today = DateTime.UtcNow.Date;
 
                 var bookingEntry = new BookingEntry
-                                       {
-                                           Facility = tennisCourt1,
-                                           BookedByGuard = ross,
-                                           Resident = bradPit,
-                                           BookedAtDateTime = DateTime.UtcNow.AddDays(-1),
-                                           Period = new DateTimePeriod(today.AddHours(10), today.AddHours(11))
-                                       };
+                {
+                    Facility = tennisCourt1,
+                    BookedByGuard = ross,
+                    Resident = bradPit,
+                    BookedAtDateTime = DateTime.UtcNow.AddDays(-1),
+                    Period = new DateTimePeriod(today.AddHours(10), today.AddHours(11))
+                };
 
                 session.Save(bookingEntry);
 
@@ -125,24 +94,13 @@ namespace Magenta.WannaPlay.Components.Domain
             }
         }
 
-        #endregion
-
-        #region Private
-
-        private void GenerateDatabaseScript(IPersistenceConfigurer configurer, string filePath)
-        {           
-            var schemaExport = new SchemaExport(new WannaPlayPersistenceModel().Configure(configurer));
-
-            using (var output = new StreamWriter(File.Create(filePath)))
-                schemaExport.Execute(true, false, false, true, null, output);
-        }
 
         private void CreateDatabaseSchema(IPersistenceConfigurer configurer, IDbConnection connection)
         {
             var schemaExport = new SchemaExport(new WannaPlayPersistenceModel().Configure(configurer));
 
             schemaExport.Execute(false, true, false, true, connection, null);
-        } 
+        }  
 
         #endregion
     }

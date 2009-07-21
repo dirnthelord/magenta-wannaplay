@@ -11,7 +11,9 @@ namespace Magenta.WannaPlay.Services.Residence
     {
         IEnumerable<Facility> GetFacilities(FacilityType facilityType);
 
-        void CreateDutyGuard(DutyGuard dutyGuard);
+        IEnumerable<DutyGuard> GetDutyGuards();
+
+        void SaveDutyGuard(DutyGuard dutyGuard);
 
         /// <summary>
         /// If resident with the passCardNumber does not exist it will be created
