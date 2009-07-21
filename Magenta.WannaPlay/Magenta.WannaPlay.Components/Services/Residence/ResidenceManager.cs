@@ -16,17 +16,10 @@ namespace Magenta.WannaPlay.Services.Residence
 
         #region IResidenceManager Members
 
-        public IEnumerable<Facility> GetTennisCourts()
+        public IEnumerable<Facility> GetFacilities(FacilityType facilityType)
         {
             return _persistenceRepository.Search<Facility>(
-                f => f.FacilityType == FacilityType.TennisCourt
-                );
-        }
-
-        public IEnumerable<Facility> GetSquashCourts()
-        {
-            return _persistenceRepository.Search<Facility>(
-                f => f.FacilityType == FacilityType.SquashCourt
+                f => f.FacilityType == facilityType
                 );
         }
 

@@ -15,16 +15,6 @@ namespace Magenta.WannaPlay.UI.WinForms.Services
             yield return new Facility { FacilityType = FacilityType.TennisCourt, Name = "Court Two", Id = 2 };
         }
 
-        public IEnumerable<Facility> GetSquashCourts()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<DutyGuard> GetDutyGuards()
-        {
-            throw new NotImplementedException();
-        }
-
         public void CreateDutyGuard(DutyGuard dutyGuard)
         {
             throw new NotImplementedException();
@@ -39,6 +29,11 @@ namespace Magenta.WannaPlay.UI.WinForms.Services
 
 
         public ResidenceUnit GetResidenceUnit(string unitBlock, string unitNumber)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Facility> GetFacilities(FacilityType facilityType)
         {
             throw new NotImplementedException();
         }

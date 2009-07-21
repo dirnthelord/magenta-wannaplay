@@ -9,11 +9,7 @@ namespace Magenta.WannaPlay.Services.Residence
 {
     public interface IResidenceManager
     {
-        IEnumerable<Facility> GetTennisCourts();
-
-        IEnumerable<Facility> GetSquashCourts();
-
-        IEnumerable<DutyGuard> GetDutyGuards();
+        IEnumerable<Facility> GetFacilities(FacilityType facilityType);
 
         void CreateDutyGuard(DutyGuard dutyGuard);
 
