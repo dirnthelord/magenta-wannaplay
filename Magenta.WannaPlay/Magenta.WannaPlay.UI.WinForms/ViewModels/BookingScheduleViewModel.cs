@@ -40,7 +40,7 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
         private void InitializeDataContext()
         {
             //TODO: Load list of bookings
-            Facilities = ResidenceManager.GetTennisCourts().ToBindingList();
+            Facilities = ResidenceManager.GetFacilities(FacilityType.TennisCourt).ToBindingList();
             BookingEntries = BookingService.GetBookingEntries(Period, FacilityType).ToBindingList();
         }
 
