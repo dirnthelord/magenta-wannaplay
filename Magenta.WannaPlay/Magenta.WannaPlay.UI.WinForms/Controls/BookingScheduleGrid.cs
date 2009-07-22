@@ -8,6 +8,7 @@ using Magenta.WannaPlay.Domain;
 using Magenta.WannaPlay.UI.WinForms.ViewModels;
 using Magenta.WannaPlay.UI.WinForms.Controls.GridCells;
 using Magenta.WannaPlay.UI.WinForms.Domain;
+using System.Drawing;
 
 namespace Magenta.WannaPlay.UI.WinForms.Controls
 {
@@ -17,6 +18,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
         {
             VirtualMode = true;
             KeyDown += this_KeyDown;
+            ReadOnly = true;
         }
 
         BookingIndicatorCell _indicatorCellTemplate = new BookingIndicatorCell();
@@ -38,13 +40,20 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             Columns.Add(CreateFacilityBookingColumn(facility));
         }
 
+        #region Rows and columns values
         BookingPeriodUI GetBookingPeriodUI(int rowIndex)
         {
+            if (rowIndex < 0)
+                return null;
+
             return (BookingPeriodUI)Rows[rowIndex].DataBoundItem;
         }
 
         Facility GetFacility(int columnIndex)
         {
+            if (columnIndex < 0)
+                return null;
+
             var column = Columns[columnIndex];
             return column.Tag as Facility;
         }
@@ -58,7 +67,8 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
                 return null;
 
             return new BookingSlot { Period = period.Period, Facility = facility };
-        }
+        } 
+        #endregion
 
         protected override void SetSelectedCellCore(int columnIndex, int rowIndex, bool selected)
         {
@@ -76,7 +86,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
                     break;
 
                 case Keys.Control | Keys.Delete:
-                    OnDeleteBooking();
+                    OnCancelBooking();
                     e.Handled = true;
                     break;
             }
@@ -96,9 +106,10 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             }
         }
 
-        void OnDeleteBooking()
+        #region Events
+        void OnCancelBooking()
         {
-            var handler = DeleteBooking;
+            var handler = CancelBooking;
 
             if (handler != null)
                 handler(this, EventArgs.Empty);
@@ -113,6 +124,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
         }
 
         public event EventHandler AddBooking;
-        public event EventHandler DeleteBooking;
+        public event EventHandler CancelBooking; 
+        #endregion
     }
 }

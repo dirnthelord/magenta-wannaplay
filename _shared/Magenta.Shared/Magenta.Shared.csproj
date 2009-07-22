@@ -60,6 +60,7 @@
     <Compile Include="Exceptions\UserFriendlyException.cs" />
     <Compile Include="Extensions\FluentNHibernate\Cfg\PersistenceModelExtention.cs" />
     <Compile Include="Extensions\System\Collections\Generic\EnumerableExtensions.cs" />
+    <Compile Include="Extensions\System\ComponentModel\BindingListExtentions.cs" />
     <Compile Include="Extensions\System\DateTimeExtentions.cs" />
     <Compile Include="Extensions\System\RandomExtensions.cs" />
     <Compile Include="PeriodBoundaryType.cs" />
