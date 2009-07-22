@@ -11,26 +11,82 @@ using Magenta.WannaPlay.UI.WinForms.Services;
 using Magenta.WannaPlay.UI.WinForms.Domain;
 using Magenta.WannaPlay.Services.Residence;
 using Magenta.WannaPlay.UI.WinForms.Domain.UI;
+using Magenta.Shared.UI.WinForms.Mvvm;
+using Ninject.Core;
+using Magenta.WannaPlay.UI.WinForms.Controls;
 
 namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 {
-    public class BookingScheduleViewModel : INotifyPropertyChanged
+    public class BookingScheduleViewModel : ViewModelBase
     {
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public IBookingService BookingService { get; private set; }
-
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public IBookingScheduleService BookingScheduleService { get; private set; }
-
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public IResidenceManager ResidenceManager { get; private set; }
 
-        public IEnumerable<BookingEntry> BookingEntries { get; private set; }
-        public BindingList<BookingPeriodUI> BookingSlots { get; private set; }
-
+        public BindingList<BookingPeriodUI> BookingPeriods { get; private set; }
+        public BindingList<BookingEntry> BookingEntries { get; private set; }
         public BindingList<Facility> Facilities { get; private set; }
 
-        public DateTimePeriod Period { get; set; }
+        IEnumerable<BookingSlot> _selectedBookingSlots;
+        public IEnumerable<BookingSlot> SelectedBookingSlots
+        {
+            get { return _selectedBookingSlots; }
+            set { _selectedBookingSlots = value; OnSelectedBookingSlotsChanged(); }
+        }
+
+        private void OnSelectedBookingSlotsChanged()
+        {
+            OnPropertyChanged("SelectedBookingSlots");
+            OnPropertyChanged("SelectedBookingEntries");
+            OnPropertyChanged("CanAddBooking");
+            OnPropertyChanged("CanCancelBooking");
+        }
+
+        #region Booking period
+        public DateTime _day;
+        public DateTime Day
+        {
+            get { return _day.Date; }
+            set { _day = value; OnDayChanged(); }
+        }
+
+        TimeSpan StartHour { get { return TimeSpan.FromHours(7); } }
+        TimeSpan FinishHour { get { return TimeSpan.FromHours(22); } }
+
+        private void OnDayChanged()
+        {
+            Period = new DateTimePeriod(Day.Add(StartHour), Day.Add(FinishHour));
+        }
+
+        public DateTimePeriod _period;
+        public DateTimePeriod Period
+        {
+            get { return _period; }
+            private set { _period = value; OnPeriodChanged(); }
+        }
+
+        void OnPeriodChanged()
+        {
+            InitializeDataContext();
+            OnPropertyChanged("Period");
+        }
+        #endregion
+
+
+        IEnumerable<BookingEntry> SelectedBookingEntries
+        {
+            get { return GetBookingEntries(SelectedBookingSlots); }
+        }
+
+        public bool CanAddBooking
+        {
+            get { return !SelectedBookingEntries.Any(); }
+        }
+
+        public bool CanCancelBooking
+        {
+            get { return SelectedBookingEntries.Any(); }
+        }
 
 
         public BookingScheduleViewModel(IBookingService bookingService,
@@ -41,37 +97,38 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
             BookingScheduleService = RequireArg.NotNull(bookingScheduleService);
             ResidenceManager = RequireArg.NotNull(residenceManager);
 
-            // TODO: Parametrize
-            Facilities = ResidenceManager.GetFacilities().ToBindingList();
+            Facilities = new BindingList<Facility>();
+            BookingEntries = new BindingList<BookingEntry>();
+            BookingPeriods = new BindingList<BookingPeriodUI>();
 
-            Period = DateTimePeriod.FromDays(DateTime.UtcNow.AddDays(-1), 1);
-
-            InitializeDataContext();
+            Day = DateTime.UtcNow.Date;
         }
 
         private void InitializeDataContext()
         {
-            //TODO: Load list of bookings
-            BookingEntries = BookingService.GetBookingEntries(Period, Facilities).ToBindingList();
-            BookingSlots = BookingScheduleService.GetSchedule(Period).Select(p => new BookingPeriodUI(p)).ToBindingList();
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        void OnPropertyChanged(string propertyName)
-        {
-            var handler = PropertyChanged;
-
-            if (handler != null)
-                handler(this, new PropertyChangedEventArgs(propertyName));
+            Facilities.ReplaceWith(ResidenceManager.GetFacilities());
+            BookingEntries.ReplaceWith(BookingService.GetBookingEntries(Period, Facilities));
+            BookingPeriods.ReplaceWith(BookingScheduleService.GetSchedule(Period).Select(p => new BookingPeriodUI(p)));
         }
 
         public IEnumerable<BookingEntry> GetBookingEntries(IEnumerable<BookingSlot> slots)
         {
+            if (slots == null)
+                return Enumerable.Empty<BookingEntry>();
+
             return BookingEntries.Where(entry => slots.Any(slot =>
                 slot.Facility == entry.Facility &&
                 slot.Period.Intersect(entry.Period).GetTimeSpan().Ticks > 0));
         }
 
+        internal void CancelSelectedBooking()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void AddSelectedBooking()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

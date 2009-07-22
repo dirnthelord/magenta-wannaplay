@@ -14,7 +14,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Domain.UI
         public DateTimePeriod Period { get; private set; }
 
         [DisplayName("Period")]
-        public virtual string PeriodString { get { return string.Format("{0:h tt}", Period.From, Period.To); } }
+        public virtual string PeriodString { get { return string.Format("{0:h tt} - {1:h tt}", Period.From, Period.To); } }
 
         public BookingPeriodUI(DateTimePeriod period)
         {

@@ -29,60 +29,35 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
         {
             InitializeComponent();
 
-            dataContext.DataSourceChanged += delegate { UpdateGridColumns(); };
+            dataContext.DataSourceChanged += delegate { CreateFacilityColumns(); FillGridWithData(); };
 
-            bookingScheduleGrid.AddBooking += delegate { AddBooking(); };
-            bookingScheduleGrid.DeleteBooking += delegate { DeleteBooking(); };
+            bookingScheduleGrid.AddBooking += delegate { ViewModel.AddSelectedBooking(); };
+            bookingScheduleGrid.CancelBooking += delegate { ViewModel.CancelSelectedBooking(); };
 
             bookingScheduleGrid.SelectionChanged += delegate { OnSelectedSlotsChanged(); };
+
+            addBookingButton.Click += delegate { ViewModel.AddSelectedBooking(); };
+            cancelBookingButton.Click += delegate { ViewModel.CancelSelectedBooking(); };
+
+            dayPicker.ValueChanged += delegate { ViewModel.Day = dayPicker.Value; };
         }
 
-        IEnumerable<BookingEntry> SelectedBookingEntries
+        private void FillGridWithData()
         {
-            get { return ViewModel.GetBookingEntries(bookingScheduleGrid.SelectedSlots); }
-        }
-
-        bool CanAddBooking
-        {
-            get { return !SelectedBookingEntries.Any(); }
-        }
-
-        bool CanCancelBooking
-        {
-            get { return SelectedBookingEntries.Any(); }
+            bookingScheduleGrid.DataMember = null;
+            bookingScheduleGrid.DataSource = ViewModel.BookingPeriods;
         }
 
         void OnSelectedSlotsChanged()
         {
-            addBookingButton.Enabled = CanAddBooking;
-            cancelBookingButton.Enabled = CanCancelBooking;
+            ViewModel.SelectedBookingSlots = bookingScheduleGrid.SelectedSlots;
         }
 
 
-        void UpdateGridColumns()
+        void CreateFacilityColumns()
         {
             foreach (var facility in ViewModel.Facilities)
                 bookingScheduleGrid.AddFacilityColumn(facility);
-        }
-
-        private void addBookingButton_Click(object sender, EventArgs e)
-        {
-            AddBooking();
-        }
-
-        private void cancelBookingButton_Click(object sender, EventArgs e)
-        {
-            DeleteBooking();
-        }
-
-        private void DeleteBooking()
-        {
-            throw new NotImplementedException();
-        }
-
-        private void AddBooking()
-        {
-            throw new NotImplementedException();
         }
 
         private void bookingScheduleGrid_CellValueNeeded(object sender, DataGridViewCellValueEventArgs e)

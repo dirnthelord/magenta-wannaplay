@@ -16,11 +16,11 @@ namespace Magenta.WannaPlay.UI.WinForms.Services
 
         public IEnumerable<Facility> GetFacilities()
         {
-            yield return new Facility { FacilityType = FacilityType.TennisCourt, Name = "Court One", Id = 1 };
-            yield return new Facility { FacilityType = FacilityType.TennisCourt, Name = "Court Two", Id = 2 };
+            yield return new Facility { FacilityType = FacilityType.TennisCourt, Name = "Tennis Court One", Id = 1 };
+            yield return new Facility { FacilityType = FacilityType.TennisCourt, Name = "Tennis Court Two", Id = 2 };
 
-            yield return new Facility { FacilityType = FacilityType.SquashCourt, Name = "Court Two", Id = 3 };
-            yield return new Facility { FacilityType = FacilityType.SquashCourt, Name = "Court Two", Id = 4 };
+            yield return new Facility { FacilityType = FacilityType.SquashCourt, Name = "Squash Court Two", Id = 3 };
+            yield return new Facility { FacilityType = FacilityType.SquashCourt, Name = "Squash Court Two", Id = 4 };
         }
 
         public IEnumerable<DutyGuard> GetDutyGuards()

@@ -13,7 +13,7 @@ using Magenta.WannaPlay.UI.WinForms.Domain.UI;
 
 namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 {
-    public class BookingScheduleDetailsViewModel : INotifyPropertyChanged
+    public class BookingScheduleDetailsViewModel// : INotifyPropertyChanged
     {
         public BindingList<BookingSlotDetailsUI> BookingSlots { get; private set; }
         public IEnumerable<BookingEntry> BookingEntries { get; private set; }

@@ -12,20 +12,40 @@ namespace Magenta.WannaPlay.UI.WinForms.Services
     {
         public IEnumerable<BookingEntry> GetBookingEntries(DateTimePeriod period, IEnumerable<Facility> facilities)
         {
-            //var squashCourtOne = new Facility { FacilityType = FacilityType.SquashCourt, Name = "Court One", Id = 1 };
-            //var squashCourtTwo = new Facility { FacilityType = FacilityType.SquashCourt, Name = "Court Two", Id = 2 };
-            //var tennisCourtOne = new Facility { FacilityType = FacilityType.TennisCourt, Name = "Court One", Id = 3 };
+            var residents = new[]
+            {
+                new Resident { PassCardNumber = "125", Name = "Konstantin Spirin", Unit = new ResidenceUnit { Block = "143", Number = "12-08" } },
+                new Resident { PassCardNumber = "9875", Name = "Jeffrey Hi", Unit = new ResidenceUnit { Block = "145", Number = "12-08" } },
+                new Resident { PassCardNumber = "43", Name = "Nick Bully", Unit = new ResidenceUnit { Block = "143", Number = "3-8" } },
+            };
 
-            var residentOne = new Resident { PassCardNumber = "125", Name = "Konstantin Spirin", Unit = new ResidenceUnit { Block = "143", Number = "12-08" } };
-            var residentTwo = new Resident { PassCardNumber = "9875", Name = "Jeffrey Hi", Unit = new ResidenceUnit { Block = "145", Number = "12-08" } };
-            var residentThree = new Resident { PassCardNumber = "43", Name = "Nick Bully", Unit = new ResidenceUnit { Block = "143", Number = "3-8" } };
+            var guards = new[] 
+            {
+                new DutyGuard { Name = "Chin Hua" },
+                new DutyGuard { Name = "Sick One Keng" }
+            };
 
-            var guardOne = new DutyGuard { Name = "Chin Hua" };
-            var guardTwo = new DutyGuard { Name = "Sick One Keng" };
+            Random random = new Random(period.From.DayOfYear + period.From.Year * 366);
 
-            yield return new BookingEntry { Period = DateTimePeriod.FromHours(period.From.AddHours(2), 1), Facility = facilities.First(), Resident = residentOne, BookedByGuard = guardOne };
-            yield return new BookingEntry { Period = DateTimePeriod.FromHours(period.From.AddHours(4), 2), Facility = facilities.First(), Resident = residentTwo, BookedByGuard = guardOne };
-            yield return new BookingEntry { Period = DateTimePeriod.FromHours(period.From.AddHours(9), 1), Facility = facilities.Last(), Resident = residentThree, BookedByGuard = guardTwo };
+            foreach (var facility in facilities)
+            {
+                var lastEntry = new BookingEntry { Period = DateTimePeriod.FromHours(period.From, 0) };
+
+                for (var hour = period.From; hour < period.To; hour = hour.AddHours(1))
+                {
+                    var entry = new BookingEntry
+                    {
+                        Period = DateTimePeriod.FromHours(lastEntry.Period.To.AddHours(random.Next(4)), random.Next(3)),
+                        Facility = facility,
+                        Resident = random.NextItem(residents),
+                        BookedByGuard = random.NextItem(guards),
+                    };
+
+                    yield return entry;
+
+                    lastEntry = entry;
+                }
+            }
         }
 
         public void SaveBookingEntry(BookingEntry bookingSlot)
