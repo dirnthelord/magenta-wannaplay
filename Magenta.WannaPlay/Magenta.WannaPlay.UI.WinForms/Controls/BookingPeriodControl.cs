@@ -55,6 +55,9 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             }
             set
             {
+                if (value == null)
+                    return;
+
                 RequireArg.Complies(value.From.Date == value.To.Date);
 
                 SelectedDay = value.From.Date;

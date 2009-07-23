@@ -19,13 +19,15 @@ namespace Magenta.WannaPlay.UI.WinForms.Services
             yield return new Facility { FacilityType = FacilityType.TennisCourt, Name = "Tennis Court One", Id = 1 };
             yield return new Facility { FacilityType = FacilityType.TennisCourt, Name = "Tennis Court Two", Id = 2 };
 
-            yield return new Facility { FacilityType = FacilityType.SquashCourt, Name = "Squash Court Two", Id = 3 };
+            yield return new Facility { FacilityType = FacilityType.SquashCourt, Name = "Squash Court One", Id = 3 };
             yield return new Facility { FacilityType = FacilityType.SquashCourt, Name = "Squash Court Two", Id = 4 };
         }
 
         public IEnumerable<DutyGuard> GetDutyGuards()
         {
-            throw new NotImplementedException();
+            yield return new DutyGuard { Id = 1, Name = "Harry" };
+            yield return new DutyGuard { Id = 2, Name = "Simon" };
+            yield return new DutyGuard { Id = 3, Name = "Vinay" };
         }
 
         public void SaveDutyGuard(DutyGuard dutyGuard)
@@ -33,9 +35,17 @@ namespace Magenta.WannaPlay.UI.WinForms.Services
             throw new NotImplementedException();
         }
 
+        public IEnumerable<Resident> GetResidents()
+        {
+            yield return new Resident { Id = 1, Name = "Oliver", PassCardNumber = "999", Unit = new ResidenceUnit { Id = 1, Block = "143", Number = "#12-08" } };
+            yield return new Resident { Id = 1, Name = "Michael", PassCardNumber = "1", Unit = new ResidenceUnit { Id = 2, Block = "34", Number = "#98" } };
+            yield return new Resident { Id = 1, Name = "Glen", PassCardNumber = "9999", Unit = new ResidenceUnit { Id = 3, Block = "124", Number = "#13-02" } };
+            yield return new Resident { Id = 1, Name = "Andrey", PassCardNumber = "2", Unit = new ResidenceUnit { Id = 4, Block = "9034A", Number = "#02-03" } };
+        }
+
         public Resident GetResident(string passCardNumber)
         {
-            throw new NotImplementedException();
+            return GetResidents().Where(r => r.PassCardNumber == passCardNumber).FirstOrDefault();
         }
     }
 }

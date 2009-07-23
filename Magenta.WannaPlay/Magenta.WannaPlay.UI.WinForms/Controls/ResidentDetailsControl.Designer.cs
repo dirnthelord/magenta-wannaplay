@@ -56,12 +56,12 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             // 
             this.name.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.name.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dataContext, "Name", true));
+            this.name.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dataContext, "Name", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.name.Location = new System.Drawing.Point(75, 43);
             this.name.Margin = new System.Windows.Forms.Padding(6);
             this.name.Name = "name";
             this.name.Size = new System.Drawing.Size(307, 31);
-            this.name.TabIndex = 6;
+            this.name.TabIndex = 1;
             this.name.Text = "Weis Mei Yunis Semenovich";
             // 
             // label7
@@ -78,12 +78,12 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             // 
             this.addressUnitNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.addressUnitNumber.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dataContext, "AddressUnitNumber", true));
+            this.addressUnitNumber.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dataContext, "AddressUnitNumber", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.addressUnitNumber.Location = new System.Drawing.Point(252, 86);
             this.addressUnitNumber.Margin = new System.Windows.Forms.Padding(6);
             this.addressUnitNumber.Name = "addressUnitNumber";
             this.addressUnitNumber.Size = new System.Drawing.Size(130, 31);
-            this.addressUnitNumber.TabIndex = 4;
+            this.addressUnitNumber.TabIndex = 3;
             this.addressUnitNumber.Text = "#12-08";
             // 
             // label6
@@ -98,7 +98,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             // 
             // addressBlockNumber
             // 
-            this.addressBlockNumber.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dataContext, "AddressBlockNumber", true));
+            this.addressBlockNumber.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dataContext, "AddressBlockNumber", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.addressBlockNumber.Location = new System.Drawing.Point(75, 86);
             this.addressBlockNumber.Margin = new System.Windows.Forms.Padding(6);
             this.addressBlockNumber.Name = "addressBlockNumber";
@@ -120,7 +120,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             // 
             this.facilityCardNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.facilityCardNumber.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dataContext, "FactilityCardNumber", true));
+            this.facilityCardNumber.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dataContext, "FactilityCardNumber", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.facilityCardNumber.Location = new System.Drawing.Point(213, 0);
             this.facilityCardNumber.Margin = new System.Windows.Forms.Padding(6);
             this.facilityCardNumber.Name = "facilityCardNumber";
