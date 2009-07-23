@@ -57,6 +57,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\AddBookingControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\AddBookingControl.Designer.cs">
+      <DependentUpon>AddBookingControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\BookingPeriodControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\BookingPeriodControl.Designer.cs">
+      <DependentUpon>BookingPeriodControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\BookingScheduleControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -67,9 +79,16 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\GridCells\BookingIndicatorCell.cs" />
+    <Compile Include="Controls\ResidentDetailsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ResidentDetailsControl.Designer.cs">
+      <DependentUpon>ResidentDetailsControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Domain\BookingScheduleGenerator.cs" />
     <Compile Include="Domain\UI\BookingPeriodUI.cs" />
     <Compile Include="Domain\BookingSlot.cs" />
+    <Compile Include="Domain\UI\ResidentDetailsUI.cs" />
     <Compile Include="Ioc\UIConfiguration.cs" />
     <Compile Include="Controls\BookingScheduleDetailsControl.cs">
       <SubType>UserControl</SubType>
@@ -119,6 +138,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Controls\AddBookingControl.resx">
+      <DependentUpon>AddBookingControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\BookingPeriodControl.resx">
+      <DependentUpon>BookingPeriodControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\BookingScheduleControl.resx">
       <DependentUpon>BookingScheduleControl.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -126,6 +151,9 @@
     <EmbeddedResource Include="Controls\BookingScheduleDetailsControl.resx">
       <DependentUpon>BookingScheduleDetailsControl.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ResidentDetailsControl.resx">
+      <DependentUpon>ResidentDetailsControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\WannaPlayMainControl.resx">
       <DependentUpon>WannaPlayMainControl.cs</DependentUpon>
