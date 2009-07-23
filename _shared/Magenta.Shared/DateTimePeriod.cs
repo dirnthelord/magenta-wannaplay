@@ -50,6 +50,11 @@ namespace Magenta.Shared
         }
 
 
+        public static DateTimePeriod FromTimeSpan(DateTime from, TimeSpan timeSpan)
+        {
+            return new DateTimePeriod(from, from.Add(timeSpan));
+        }
+
         public static DateTimePeriod FromHours(DateTime from, double hours)
         {
             return new DateTimePeriod(from, from.AddHours(hours));
