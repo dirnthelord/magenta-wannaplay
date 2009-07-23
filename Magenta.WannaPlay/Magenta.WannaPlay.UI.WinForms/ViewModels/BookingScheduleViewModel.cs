@@ -14,11 +14,15 @@ using Magenta.WannaPlay.UI.WinForms.Domain.UI;
 using Magenta.Shared.UI.WinForms.Mvvm;
 using Ninject.Core;
 using Magenta.WannaPlay.UI.WinForms.Controls;
+using Magenta.Shared.Ui.WinForms;
 
 namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 {
     public class BookingScheduleViewModel : ViewModelBase
     {
+        [Inject]
+        public IKernel Kernel { get; set; }
+
         public IBookingService BookingService { get; private set; }
         public IBookingScheduleService BookingScheduleService { get; private set; }
         public IResidenceManager ResidenceManager { get; private set; }
@@ -121,14 +125,22 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
                 slot.Period.Intersect(entry.Period).GetTimeSpan().Ticks > 0));
         }
 
-        internal void CancelSelectedBooking()
+        public void CancelSelectedBooking()
         {
             throw new NotImplementedException();
         }
 
-        internal void AddSelectedBooking()
+        public void AddSelectedBooking()
         {
-            throw new NotImplementedException();
+            var firstSlot = SelectedBookingSlots.OrderBy(s => s.Period.From).First();
+            var length =  Math.Min(2, SelectedBookingSlots.Count());
+
+            //throw new NotImplementedException();
+            var addBookingView = Kernel.Get<AddBookingControl>();
+            addBookingView.ViewModel.BookingPeriod = DateTimePeriod.FromHours(firstSlot.Period.From, length);
+
+            var form = ControlHoster.HostInForm(null, "Add booking", addBookingView);
+            form.ShowDialog();
         }
     }
 }

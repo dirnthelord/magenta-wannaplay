@@ -70,7 +70,6 @@
             // 
             this.timePeriodLength.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.timePeriodLength.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.timePeriodLength.FormattingEnabled = true;
             this.timePeriodLength.Items.AddRange(new object[] {
             "1 hour",
@@ -79,11 +78,10 @@
             this.timePeriodLength.Margin = new System.Windows.Forms.Padding(6);
             this.timePeriodLength.Name = "timePeriodLength";
             this.timePeriodLength.Size = new System.Drawing.Size(109, 33);
-            this.timePeriodLength.TabIndex = 10;
+            this.timePeriodLength.TabIndex = 2;
             // 
             // timeFrom
             // 
-            this.timeFrom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.timeFrom.FormattingEnabled = true;
             this.timeFrom.Items.AddRange(new object[] {
             "7 AM",
@@ -106,7 +104,7 @@
             this.timeFrom.Margin = new System.Windows.Forms.Padding(6);
             this.timeFrom.Name = "timeFrom";
             this.timeFrom.Size = new System.Drawing.Size(115, 33);
-            this.timeFrom.TabIndex = 9;
+            this.timeFrom.TabIndex = 1;
             this.timeFrom.SelectedIndexChanged += new System.EventHandler(this.timeFrom_SelectedIndexChanged);
             // 
             // dayPicker
@@ -118,7 +116,7 @@
             this.dayPicker.Margin = new System.Windows.Forms.Padding(6);
             this.dayPicker.Name = "dayPicker";
             this.dayPicker.Size = new System.Drawing.Size(285, 31);
-            this.dayPicker.TabIndex = 8;
+            this.dayPicker.TabIndex = 0;
             // 
             // BookingPeriodControl
             // 

@@ -15,7 +15,7 @@ namespace Magenta.Shared.Ui.WinForms
             {
                 Text = title,
                 ClientSize = content.Size,
-                Icon = Icon.FromHandle( icon.GetHicon()),
+                Icon = icon == null ? null : Icon.FromHandle( icon.GetHicon()),
             };
 
             content.Dock = DockStyle.Fill;

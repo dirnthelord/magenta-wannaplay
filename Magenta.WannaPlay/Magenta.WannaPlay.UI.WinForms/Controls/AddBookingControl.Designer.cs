@@ -1,4 +1,5 @@
-﻿namespace Magenta.WannaPlay.UI.WinForms.Controls
+﻿using Magenta.WannaPlay.UI.WinForms.ViewModels;
+namespace Magenta.WannaPlay.UI.WinForms.Controls
 {
     partial class AddBookingControl
     {
@@ -28,14 +29,23 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label4 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.dutyGuard = new System.Windows.Forms.ComboBox();
+            this.dutyGuardsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataContext = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.resident = new Magenta.WannaPlay.UI.WinForms.Controls.ResidentDetailsControl();
+            this.comment = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.residentDetailsControl1 = new Magenta.WannaPlay.UI.WinForms.Controls.ResidentDetailsControl();
-            this.bookingPeriodControl1 = new Magenta.WannaPlay.UI.WinForms.Controls.BookingPeriodControl();
+            this.bookingPeriod = new Magenta.WannaPlay.UI.WinForms.Controls.BookingPeriodControl();
+            this.label2 = new System.Windows.Forms.Label();
+            this.facility = new System.Windows.Forms.ComboBox();
+            this.facilitiesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.dutyGuardsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataContext)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.facilitiesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label4
@@ -45,90 +55,142 @@
             this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(101, 24);
-            this.label4.TabIndex = 8;
+            this.label4.TabIndex = 5;
             this.label4.Text = "Duty guard";
             // 
-            // comboBox3
+            // dutyGuard
             // 
-            this.comboBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.dutyGuard.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(109, 0);
-            this.comboBox3.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(238, 32);
-            this.comboBox3.TabIndex = 9;
-            this.comboBox3.Text = "Thomas";
+            this.dutyGuard.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.dutyGuard.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.dutyGuard.DataSource = this.dutyGuardsBindingSource;
+            this.dutyGuard.DisplayMember = "Name";
+            this.dutyGuard.FormatString = "Name";
+            this.dutyGuard.FormattingEnabled = true;
+            this.dutyGuard.Location = new System.Drawing.Point(109, 0);
+            this.dutyGuard.Margin = new System.Windows.Forms.Padding(6);
+            this.dutyGuard.Name = "dutyGuard";
+            this.dutyGuard.Size = new System.Drawing.Size(238, 32);
+            this.dutyGuard.TabIndex = 0;
+            // 
+            // dutyGuardsBindingSource
+            // 
+            this.dutyGuardsBindingSource.DataMember = "DutyGuards";
+            this.dutyGuardsBindingSource.DataSource = this.dataContext;
+            // 
+            // dataContext
+            // 
+            this.dataContext.DataSource = typeof(Magenta.WannaPlay.UI.WinForms.ViewModels.AddBookingViewModel);
             // 
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.residentDetailsControl1);
-            this.groupBox1.Location = new System.Drawing.Point(0, 131);
+            this.groupBox1.Controls.Add(this.resident);
+            this.groupBox1.Location = new System.Drawing.Point(0, 175);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(10);
             this.groupBox1.Size = new System.Drawing.Size(347, 166);
-            this.groupBox1.TabIndex = 13;
+            this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Resident";
             // 
-            // richTextBox1
+            // resident
             // 
-            this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            this.resident.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.dataContext, "Resident", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.resident.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.resident.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.resident.Location = new System.Drawing.Point(10, 32);
+            this.resident.Margin = new System.Windows.Forms.Padding(6);
+            this.resident.Name = "resident";
+            this.resident.Size = new System.Drawing.Size(327, 124);
+            this.resident.TabIndex = 0;
+            this.resident.AutoSuggestRequired += new System.EventHandler(this.resident_AutoSuggestRequired);
+            // 
+            // comment
+            // 
+            this.comment.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBox1.Location = new System.Drawing.Point(0, 327);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(347, 120);
-            this.richTextBox1.TabIndex = 14;
-            this.richTextBox1.Text = "";
+            this.comment.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dataContext, "Comment", true));
+            this.comment.Location = new System.Drawing.Point(0, 371);
+            this.comment.Name = "comment";
+            this.comment.Size = new System.Drawing.Size(347, 76);
+            this.comment.TabIndex = 4;
+            this.comment.Text = "";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(-4, 300);
+            this.label1.Location = new System.Drawing.Point(-4, 344);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(163, 24);
             this.label1.TabIndex = 15;
             this.label1.Text = "Booking comment";
             // 
-            // residentDetailsControl1
+            // bookingPeriod
             // 
-            this.residentDetailsControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.residentDetailsControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.residentDetailsControl1.Location = new System.Drawing.Point(10, 32);
-            this.residentDetailsControl1.Margin = new System.Windows.Forms.Padding(6);
-            this.residentDetailsControl1.Name = "residentDetailsControl1";
-            this.residentDetailsControl1.Size = new System.Drawing.Size(327, 124);
-            this.residentDetailsControl1.TabIndex = 12;
-            // 
-            // bookingPeriodControl1
-            // 
-            this.bookingPeriodControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.bookingPeriod.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.bookingPeriodControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bookingPeriodControl1.Location = new System.Drawing.Point(0, 44);
-            this.bookingPeriodControl1.Margin = new System.Windows.Forms.Padding(6);
-            this.bookingPeriodControl1.Name = "bookingPeriodControl1";
-            this.bookingPeriodControl1.Size = new System.Drawing.Size(347, 78);
-            this.bookingPeriodControl1.TabIndex = 11;
+            this.bookingPeriod.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.dataContext, "BookingPeriod", true));
+            this.bookingPeriod.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.bookingPeriod.Location = new System.Drawing.Point(0, 88);
+            this.bookingPeriod.Margin = new System.Windows.Forms.Padding(6);
+            this.bookingPeriod.Name = "bookingPeriod";
+            this.bookingPeriod.Size = new System.Drawing.Size(347, 78);
+            this.bookingPeriod.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(-4, 47);
+            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(67, 24);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "Facility";
+            // 
+            // facility
+            // 
+            this.facility.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.facility.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.facility.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.facility.DataSource = this.facilitiesBindingSource;
+            this.facility.DisplayMember = "Name";
+            this.facility.FormattingEnabled = true;
+            this.facility.Location = new System.Drawing.Point(109, 44);
+            this.facility.Margin = new System.Windows.Forms.Padding(6);
+            this.facility.Name = "facility";
+            this.facility.Size = new System.Drawing.Size(238, 32);
+            this.facility.TabIndex = 1;
+            // 
+            // facilitiesBindingSource
+            // 
+            this.facilitiesBindingSource.DataMember = "Facilities";
+            this.facilitiesBindingSource.DataSource = this.dataContext;
             // 
             // AddBookingControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.facility);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.comment);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.bookingPeriodControl1);
-            this.Controls.Add(this.comboBox3);
+            this.Controls.Add(this.bookingPeriod);
+            this.Controls.Add(this.dutyGuard);
             this.Controls.Add(this.label4);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "AddBookingControl";
             this.Size = new System.Drawing.Size(347, 447);
+            ((System.ComponentModel.ISupportInitialize)(this.dutyGuardsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataContext)).EndInit();
             this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.facilitiesBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -137,11 +199,16 @@
         #endregion
 
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private BookingPeriodControl bookingPeriodControl1;
-        private ResidentDetailsControl residentDetailsControl1;
+        private System.Windows.Forms.ComboBox dutyGuard;
+        private BookingPeriodControl bookingPeriod;
+        private ResidentDetailsControl resident;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox comment;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox facility;
+        private System.Windows.Forms.BindingSource dataContext;
+        private System.Windows.Forms.BindingSource dutyGuardsBindingSource;
+        private System.Windows.Forms.BindingSource facilitiesBindingSource;
     }
 }

@@ -19,8 +19,8 @@ namespace Magenta.WannaPlay.UI.WinForms
         {
             //return base.GetMainControl();
             //return Kernel.Get<BookingScheduleDetailsControl>();
-            //return Kernel.Get<BookingScheduleControl>();
-            return Kernel.Get<AddBookingControl>();
+            return Kernel.Get<BookingScheduleControl>();
+            //return Kernel.Get<AddBookingControl>();
             //return Kernel.Get<BookingPeriodControl>();
             //return Kernel.Get<ResidentDetailsControl>();
         }

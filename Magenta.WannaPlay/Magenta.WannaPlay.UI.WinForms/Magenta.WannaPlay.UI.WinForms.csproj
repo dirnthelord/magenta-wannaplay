@@ -111,6 +111,7 @@
     </Compile>
     <Compile Include="Services\BookingScheduleService.cs" />
     <Compile Include="Services\IBookingScheduleService.cs" />
+    <Compile Include="ViewModels\AddBookingViewModel.cs" />
     <Compile Include="ViewModels\BookingScheduleViewModel.cs" />
     <Compile Include="Domain\UI\EmptyBookingSlotDetailsUI.cs" />
     <Compile Include="Domain\UI\BookingSlotDetailsUI.cs" />
