@@ -84,7 +84,18 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 
         public bool CanAddBooking
         {
-            get { return !SelectedBookingEntries.Any(); }
+            get
+            {
+                if (SelectedBookingSlots == null)
+                    return false;
+
+                var firstSlot = SelectedBookingSlots.OrderBy(s => s.Period.From).First();
+
+                var allForTheSameFacility = SelectedBookingSlots.All(s => s.Facility == firstSlot.Facility);
+                var allEmpty = !SelectedBookingEntries.Any();
+
+                return allEmpty && allForTheSameFacility;
+            }
         }
 
         public bool CanCancelBooking
@@ -133,11 +144,14 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
         public void AddSelectedBooking()
         {
             var firstSlot = SelectedBookingSlots.OrderBy(s => s.Period.From).First();
-            var length =  Math.Min(2, SelectedBookingSlots.Count());
+            var length = Math.Min(2, SelectedBookingSlots.Count());
 
             //throw new NotImplementedException();
-            var addBookingView = Kernel.Get<AddBookingControl>();
-            addBookingView.ViewModel.BookingPeriod = DateTimePeriod.FromHours(firstSlot.Period.From, length);
+            var addBookingView = Kernel.Get<BookingEntryEditorControl>();
+            addBookingView.ViewModel.BookingPeriod = new DateTimePeriodUI
+            {
+                Model = DateTimePeriod.FromHours(firstSlot.Period.From, length),
+            };
 
             var form = ControlHoster.HostInForm(null, "Add booking", addBookingView);
             form.ShowDialog();

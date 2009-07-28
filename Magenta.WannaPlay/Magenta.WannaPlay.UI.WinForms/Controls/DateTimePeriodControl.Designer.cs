@@ -1,6 +1,7 @@
-﻿namespace Magenta.WannaPlay.UI.WinForms.Controls
+﻿using Magenta.WannaPlay.UI.WinForms.Domain.UI;
+namespace Magenta.WannaPlay.UI.WinForms.Controls
 {
-    partial class BookingPeriodControl
+    partial class DateTimePeriodControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,12 +29,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.timePeriodLength = new System.Windows.Forms.ComboBox();
+            this.dataContext = new System.Windows.Forms.BindingSource(this.components);
             this.timeFrom = new System.Windows.Forms.ComboBox();
             this.dayPicker = new System.Windows.Forms.DateTimePicker();
+            ((System.ComponentModel.ISupportInitialize)(this.dataContext)).BeginInit();
             this.SuspendLayout();
             // 
             // label3
@@ -70,6 +74,8 @@
             // 
             this.timePeriodLength.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.timePeriodLength.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.dataContext, "PeriodFor", true));
+            this.timePeriodLength.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.timePeriodLength.FormattingEnabled = true;
             this.timePeriodLength.Items.AddRange(new object[] {
             "1 hour",
@@ -80,45 +86,35 @@
             this.timePeriodLength.Size = new System.Drawing.Size(109, 33);
             this.timePeriodLength.TabIndex = 2;
             // 
+            // dataContext
+            // 
+            this.dataContext.DataSource = typeof(Magenta.WannaPlay.UI.WinForms.Domain.UI.DateTimePeriodUI);
+            // 
             // timeFrom
             // 
+            this.timeFrom.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.dataContext, "PeriodFrom", true));
+            this.timeFrom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.timeFrom.FormattingEnabled = true;
-            this.timeFrom.Items.AddRange(new object[] {
-            "7 AM",
-            "8 AM",
-            "9 AM",
-            "10 AM",
-            "11 AM",
-            "12 PM",
-            "1 PM",
-            "2 PM",
-            "3 PM",
-            "4 PM",
-            "5 PM",
-            "6 PM",
-            "7 PM",
-            "8 PM",
-            "9 PM",
-            "10 PM"});
             this.timeFrom.Location = new System.Drawing.Point(64, 43);
             this.timeFrom.Margin = new System.Windows.Forms.Padding(6);
             this.timeFrom.Name = "timeFrom";
             this.timeFrom.Size = new System.Drawing.Size(115, 33);
             this.timeFrom.TabIndex = 1;
-            this.timeFrom.SelectedIndexChanged += new System.EventHandler(this.timeFrom_SelectedIndexChanged);
             // 
             // dayPicker
             // 
             this.dayPicker.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.dayPicker.CausesValidation = false;
             this.dayPicker.CustomFormat = "";
             this.dayPicker.Location = new System.Drawing.Point(64, 0);
             this.dayPicker.Margin = new System.Windows.Forms.Padding(6);
             this.dayPicker.Name = "dayPicker";
             this.dayPicker.Size = new System.Drawing.Size(285, 31);
             this.dayPicker.TabIndex = 0;
+            this.dayPicker.ValueChanged += new System.EventHandler(this.dayPicker_ValueChanged);
             // 
-            // BookingPeriodControl
+            // DateTimePeriodControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -130,8 +126,9 @@
             this.Controls.Add(this.dayPicker);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(6);
-            this.Name = "BookingPeriodControl";
+            this.Name = "DateTimePeriodControl";
             this.Size = new System.Drawing.Size(349, 78);
+            ((System.ComponentModel.ISupportInitialize)(this.dataContext)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -145,5 +142,6 @@
         private System.Windows.Forms.ComboBox timePeriodLength;
         private System.Windows.Forms.ComboBox timeFrom;
         private System.Windows.Forms.DateTimePicker dayPicker;
+        private System.Windows.Forms.BindingSource dataContext;
     }
 }

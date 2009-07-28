@@ -63,11 +63,23 @@
     <Compile Include="Controls\AddBookingControl.Designer.cs">
       <DependentUpon>AddBookingControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\BookingPeriodControl.cs">
+    <Compile Include="Controls\BookingEntryEditorControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\BookingPeriodControl.Designer.cs">
-      <DependentUpon>BookingPeriodControl.cs</DependentUpon>
+    <Compile Include="Controls\BookingEntryEditorControl.Designer.cs">
+      <DependentUpon>BookingEntryEditorControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\BookingEntryListControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\BookingEntryListControl.Designer.cs">
+      <DependentUpon>BookingEntryListControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DateTimePeriodControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\DateTimePeriodControl.Designer.cs">
+      <DependentUpon>DateTimePeriodControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\BookingScheduleControl.cs">
       <SubType>UserControl</SubType>
@@ -88,6 +100,8 @@
     <Compile Include="Domain\BookingScheduleGenerator.cs" />
     <Compile Include="Domain\UI\BookingPeriodUI.cs" />
     <Compile Include="Domain\BookingSlot.cs" />
+    <Compile Include="Domain\UI\DateTimePeriodUI.cs" />
+    <Compile Include="Domain\UI\TimeSpanUI.cs" />
     <Compile Include="Domain\UI\ResidentDetailsUI.cs" />
     <Compile Include="Ioc\UIConfiguration.cs" />
     <Compile Include="Controls\BookingScheduleDetailsControl.cs">
@@ -111,7 +125,10 @@
     </Compile>
     <Compile Include="Services\BookingScheduleService.cs" />
     <Compile Include="Services\IBookingScheduleService.cs" />
+    <Compile Include="Services\IWannaPlayContextService.cs" />
+    <Compile Include="Services\WannaPlayContextService.cs" />
     <Compile Include="ViewModels\AddBookingViewModel.cs" />
+    <Compile Include="ViewModels\BookingEntryEditorViewModel.cs" />
     <Compile Include="ViewModels\BookingScheduleViewModel.cs" />
     <Compile Include="Domain\UI\EmptyBookingSlotDetailsUI.cs" />
     <Compile Include="Domain\UI\BookingSlotDetailsUI.cs" />
@@ -142,8 +159,14 @@
     <EmbeddedResource Include="Controls\AddBookingControl.resx">
       <DependentUpon>AddBookingControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\BookingPeriodControl.resx">
-      <DependentUpon>BookingPeriodControl.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\BookingEntryEditorControl.resx">
+      <DependentUpon>BookingEntryEditorControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\BookingEntryListControl.resx">
+      <DependentUpon>BookingEntryListControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\DateTimePeriodControl.resx">
+      <DependentUpon>DateTimePeriodControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\BookingScheduleControl.resx">
       <DependentUpon>BookingScheduleControl.cs</DependentUpon>

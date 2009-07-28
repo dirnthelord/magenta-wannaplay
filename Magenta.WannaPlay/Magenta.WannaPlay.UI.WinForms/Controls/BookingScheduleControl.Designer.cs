@@ -165,7 +165,6 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dayPicker;
         private System.Windows.Forms.BindingSource dataContext;
-        private System.Windows.Forms.DataGridViewTextBoxColumn periodStringDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
     }
 }

@@ -6,26 +6,22 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using Magenta.WannaPlay.UI.WinForms.ViewModels;
+using Magenta.WannaPlay.UI.WinForms.Domain.UI;
 
 namespace Magenta.WannaPlay.UI.WinForms.Controls
 {
-    public partial class AddBookingControl : UserControl
+    public partial class BookingEntryListControl : UserControl
     {
-        public AddBookingControl()
+        public BookingEntryListControl()
         {
             InitializeComponent();
         }
 
-        public AddBookingViewModel ViewModel
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public BindingList<BookingSlotDetailsUI> ItemsSource
         {
-            get { return (AddBookingViewModel)dataContext.DataSource; }
+            get { return (BindingList<BookingSlotDetailsUI>)dataContext.DataSource; }
             set { dataContext.DataSource = value; }
-        }
-
-        private void addBooking_Click(object sender, EventArgs e)
-        {
-            ViewModel.AddBooking();
         }
     }
 }

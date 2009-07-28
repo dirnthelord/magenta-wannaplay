@@ -2,50 +2,63 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Magenta.WannaPlay.Services.Residence;
 using Magenta.WannaPlay.Services.Booking;
-using Magenta.Shared.DesignByContract;
+using Ninject.Core;
 using Magenta.WannaPlay.Domain;
-using System.ComponentModel;
-using Magenta.Shared;
-using Magenta.WannaPlay.UI.WinForms.Domain.UI;
+using Magenta.WannaPlay.UI.WinForms.Services;
+using Magenta.WannaPlay.Services.Residence;
 
 namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 {
     public class AddBookingViewModel
     {
-        public IBookingService BookingService { get; private set; }
-        public IResidenceManager ResidenceManager { get; private set; }
+        [Inject]
+        public IBookingService BookingService { get; set; }
 
-        public BindingList<Facility> Facilities { get; private set; }
-        public BindingList<DutyGuard> DutyGuards { get; private set; }
+        [Inject]
+        public IResidenceManager ResidenceManager { get; set; }
 
-        public DateTimePeriod BookingPeriod { get; set; }
-        public ResidentDetailsUI Resident { get; set; }
-        public string Comment { get; set; }
+        [Inject]
+        public BookingEntryEditorViewModel BookingEntry { get; set; }
 
-        public AddBookingViewModel(IBookingService bookingService, IResidenceManager residenceManager)
+
+        public void AddBooking()
         {
-            BookingService = RequireArg.NotNull(bookingService);
-            ResidenceManager = RequireArg.NotNull(residenceManager);
+            var bookingEntry = new BookingEntry
+            {
+                BookedAtDateTime = DateTime.UtcNow,
+                BookedByGuard = BookingEntry.SelectedDutyGuard,
+                Facility = BookingEntry.SelectedFacility,
+                Resident = GetSelectedResident(),
+                Period = BookingEntry.BookingPeriod.Model,
+            };
 
-            Facilities = ResidenceManager.GetFacilities().ToBindingList();
-            DutyGuards = ResidenceManager.GetDutyGuards().ToBindingList();
-
-            // TODO: Replace with Resident from Model (?)
-            Resident = new ResidentDetailsUI();
+            BookingService.SaveBookingEntry(bookingEntry);
         }
 
-        public void ResidentAutoFillRequired()
+        private Resident GetSelectedResident()
         {
-            var resident = ResidenceManager.GetResident(Resident.FactilityCardNumber);
+            var existingResident = ResidenceManager.GetResident(BookingEntry.Resident.FactilityCardNumber);
 
-            if (resident == null)
-                return;
+            var resident = existingResident ?? new Resident();
 
-            Resident.AddressBlockNumber = resident.Unit.Block;
-            Resident.AddressUnitNumber = resident.Unit.Number;
-            Resident.Name = resident.Name;
+            resident.Name = BookingEntry.Resident.Name;
+            resident.PassCardNumber = BookingEntry.Resident.FactilityCardNumber;
+            resident.Unit = GetSelectedUnit();
+
+            return resident;
+        }
+
+        private ResidenceUnit GetSelectedUnit()
+        {
+            var existingUnit = ResidenceManager.GetResidenceUnit(BookingEntry.Resident.AddressBlockNumber, BookingEntry.Resident.AddressUnitNumber);
+
+            var unit = existingUnit ?? new ResidenceUnit();
+
+            unit.Block = BookingEntry.Resident.AddressBlockNumber;
+            unit.Number = BookingEntry.Resident.AddressUnitNumber;
+
+            return unit;
         }
     }
 }
