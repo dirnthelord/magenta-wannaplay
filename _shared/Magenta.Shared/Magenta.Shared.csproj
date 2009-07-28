@@ -63,7 +63,6 @@
     <Compile Include="Extensions\System\ComponentModel\BindingListExtentions.cs" />
     <Compile Include="Extensions\System\DateTimeExtentions.cs" />
     <Compile Include="Extensions\System\RandomExtensions.cs" />
-    <Compile Include="FormattableTimeSpan.cs" />
     <Compile Include="PeriodBoundaryType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DateTimePeriod.cs" />

@@ -2,33 +2,31 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Magenta.Shared;
 
-namespace Magenta.Shared
+namespace Magenta.WannaPlay.UI.WinForms.Domain.UI
 {
-    public class FormattableTimeSpan : EquatableBase<FormattableTimeSpan>, IFormattable
+    public class TimeSpanUI : EquatableBase<TimeSpanUI>, IFormattable
     {
         public TimeSpan TimeSpan { get; set; }
 
-        public override string ToString()
-        {
-            return TimeSpan.ToString();
-        }
-
-        public FormattableTimeSpan()
-        {
-        }
-
-        public FormattableTimeSpan(TimeSpan timeSpan)
+        public TimeSpanUI(TimeSpan timeSpan)
         {
             TimeSpan = timeSpan;
         }
 
-        #region IFormattable Members
+        public override string ToString()
+        {
+            return ToString(null, null);
+        }
 
         public string ToString(string format, IFormatProvider formatProvider)
         {
+            if (format == "nHours")
+                return string.Format("{0} {1}", TimeSpan.TotalHours, TimeSpan.TotalHours == 1 ? "hour" : "hours");
+
             var result = format;
-            
+
             var h = TimeSpan.Hours;
 
             if (h >= 13)
@@ -43,11 +41,9 @@ namespace Magenta.Shared
             return result;
         }
 
-        #endregion
-
-        protected override bool EqualsCoreNotNull(FormattableTimeSpan other)
+        protected override bool EqualsCoreNotNull(TimeSpanUI other)
         {
-            return TimeSpan == other.TimeSpan;
+            return this.TimeSpan == other.TimeSpan;
         }
     }
 }
