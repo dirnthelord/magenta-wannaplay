@@ -12,5 +12,10 @@ namespace Magenta.WannaPlay.UI.WinForms.Services
         {
             get { throw new NotImplementedException(); }
         }
+
+        public DateTime SelectedBookingDay
+        {
+            get { return DateTime.Today; }
+        }
     }
 }
