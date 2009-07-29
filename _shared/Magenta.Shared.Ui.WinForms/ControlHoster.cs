@@ -16,6 +16,7 @@ namespace Magenta.Shared.Ui.WinForms
             {
                 Text = title,
                 ClientSize = content.Size,
+                StartPosition = FormStartPosition.CenterParent,
                 Icon = icon == null ? null : Icon.FromHandle(icon.GetHicon()),
             };
 

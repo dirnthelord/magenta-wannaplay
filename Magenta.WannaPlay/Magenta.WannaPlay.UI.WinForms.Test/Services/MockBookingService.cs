@@ -25,7 +25,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Services
                 new DutyGuard { Name = "Sick One Keng" }
             };
 
-            Random random = new Random(period.From.DayOfYear + period.From.Year * 366);
+            Random random = new Random(period.From.DayOfYear + period.From.Year * 366 + facilities.Aggregate(0, (acc, f) => acc ^= f.GetHashCode()));
 
             foreach (var facility in facilities)
             {
