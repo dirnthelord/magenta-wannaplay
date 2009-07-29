@@ -9,5 +9,6 @@ namespace Magenta.WannaPlay.UI.WinForms.Services
     public interface IWannaPlayContextService
     {
         DutyGuard CurrentGuard { get; }
+        DateTime SelectedBookingDay { get; }
     }
 }

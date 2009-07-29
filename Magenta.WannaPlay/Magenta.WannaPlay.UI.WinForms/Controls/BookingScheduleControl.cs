@@ -19,6 +19,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
     public partial class BookingScheduleControl : UserControl
     {
         [Inject]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public BookingScheduleViewModel ViewModel
         {
             get { return (BookingScheduleViewModel)dataContext.DataSource; }
@@ -38,13 +39,10 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
 
             addBookingButton.Click += delegate { ViewModel.AddSelectedBooking(); };
             cancelBookingButton.Click += delegate { ViewModel.CancelSelectedBooking(); };
-
-            dayPicker.ValueChanged += delegate { ViewModel.Day = dayPicker.Value; };
         }
 
         private void FillGridWithData()
         {
-            bookingScheduleGrid.DataMember = null;
             bookingScheduleGrid.DataSource = ViewModel.BookingPeriods;
         }
 

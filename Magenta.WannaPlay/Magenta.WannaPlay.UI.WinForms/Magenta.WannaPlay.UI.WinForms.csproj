@@ -133,6 +133,7 @@
     <Compile Include="Domain\UI\EmptyBookingSlotDetailsUI.cs" />
     <Compile Include="Domain\UI\BookingSlotDetailsUI.cs" />
     <Compile Include="ViewModels\BookingScheduleDetailsViewModel.cs" />
+    <Compile Include="ViewModels\WannaPlayMainViewModel.cs" />
     <Compile Include="WannaPlayApplication.cs" />
   </ItemGroup>
   <ItemGroup>
