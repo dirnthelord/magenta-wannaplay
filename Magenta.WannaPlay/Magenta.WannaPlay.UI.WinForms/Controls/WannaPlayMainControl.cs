@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using Magenta.WannaPlay.Services.Residence;
 using Ninject.Core;
 using Magenta.WannaPlay.UI.WinForms.ViewModels;
+using Magenta.Shared.Ui.WinForms;
 
 namespace Magenta.WannaPlay.UI.WinForms.Controls
 {
@@ -56,10 +57,14 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
 
         private void WannaPlayMainControl_Load(object sender, EventArgs e)
         {
-            Kernel.Inject(tennisBookingSchedule);
-            tennisBookingSchedule.ViewModel.Day = ViewModel.SelectedDay;
+            tennisBookingSchedule.ViewModel = ViewModel.TennisSchedule;
+            squashBookingSchedule.ViewModel = ViewModel.SquashSchedule;
+        }
 
-            Kernel.Inject(squashBookingSchedule);
+        public void PromptForCurrentDutyGuard()
+        {
+            var view = Kernel.Get<CurrentDutyGuardControl>();
+            ControlHoster.HostInForm(null, "Select current duty guard", view).ShowDialog();
         }
     }
 }

@@ -36,6 +36,13 @@ namespace Magenta.WannaPlay.UI.WinForms
 
                 var wannaPlayMain = GetMainControl();
                 var form = ControlHoster.HostInForm(Resources.WannaPlay, "Wanna Play", wannaPlayMain);
+                
+                // TODO: Dirty coding
+                form.Shown += delegate 
+                {
+                    var currentDutyGuardView = Kernel.Get<CurrentDutyGuardControl>();
+                    ControlHoster.HostInForm(null, "Select guard on duty", currentDutyGuardView).ShowDialog(form);
+                };
 
                 Application.Run(form);
             }

@@ -31,16 +31,16 @@
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tennisTabPage = new System.Windows.Forms.TabPage();
-            this.tennisBookingSchedule = new Magenta.WannaPlay.UI.WinForms.Controls.BookingScheduleControl();
             this.squashTabPage = new System.Windows.Forms.TabPage();
-            this.squashBookingSchedule = new Magenta.WannaPlay.UI.WinForms.Controls.BookingScheduleControl();
             this.panel1 = new System.Windows.Forms.Panel();
             this.setDayToToday = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.dayPicker = new System.Windows.Forms.DateTimePicker();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.facilityTypeBookingControl1 = new Magenta.WannaPlay.UI.WinForms.Controls.BookingScheduleControl();
             this.dataContext = new System.Windows.Forms.BindingSource(this.components);
+            this.tennisBookingSchedule = new Magenta.WannaPlay.UI.WinForms.Controls.BookingScheduleControl();
+            this.squashBookingSchedule = new Magenta.WannaPlay.UI.WinForms.Controls.BookingScheduleControl();
+            this.facilityTypeBookingControl1 = new Magenta.WannaPlay.UI.WinForms.Controls.BookingScheduleControl();
             this.tabControl1.SuspendLayout();
             this.tennisTabPage.SuspendLayout();
             this.squashTabPage.SuspendLayout();
@@ -58,7 +58,7 @@
             this.tabControl1.Margin = new System.Windows.Forms.Padding(6);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(786, 343);
+            this.tabControl1.Size = new System.Drawing.Size(612, 472);
             this.tabControl1.TabIndex = 0;
             // 
             // tennisTabPage
@@ -68,42 +68,22 @@
             this.tennisTabPage.Margin = new System.Windows.Forms.Padding(6);
             this.tennisTabPage.Name = "tennisTabPage";
             this.tennisTabPage.Padding = new System.Windows.Forms.Padding(6);
-            this.tennisTabPage.Size = new System.Drawing.Size(778, 305);
+            this.tennisTabPage.Size = new System.Drawing.Size(604, 434);
             this.tennisTabPage.TabIndex = 1;
             this.tennisTabPage.Text = "Tennis";
             this.tennisTabPage.UseVisualStyleBackColor = true;
             // 
-            // tennisBookingSchedule
-            // 
-            this.tennisBookingSchedule.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tennisBookingSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tennisBookingSchedule.Location = new System.Drawing.Point(6, 6);
-            this.tennisBookingSchedule.Margin = new System.Windows.Forms.Padding(6);
-            this.tennisBookingSchedule.Name = "tennisBookingSchedule";
-            this.tennisBookingSchedule.Size = new System.Drawing.Size(766, 293);
-            this.tennisBookingSchedule.TabIndex = 0;
-            // 
             // squashTabPage
             // 
             this.squashTabPage.Controls.Add(this.squashBookingSchedule);
-            this.squashTabPage.Location = new System.Drawing.Point(4, 34);
+            this.squashTabPage.Location = new System.Drawing.Point(4, 22);
             this.squashTabPage.Margin = new System.Windows.Forms.Padding(6);
             this.squashTabPage.Name = "squashTabPage";
             this.squashTabPage.Padding = new System.Windows.Forms.Padding(6);
-            this.squashTabPage.Size = new System.Drawing.Size(778, 305);
+            this.squashTabPage.Size = new System.Drawing.Size(541, 446);
             this.squashTabPage.TabIndex = 2;
             this.squashTabPage.Text = "Squash";
             this.squashTabPage.UseVisualStyleBackColor = true;
-            // 
-            // squashBookingSchedule
-            // 
-            this.squashBookingSchedule.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.squashBookingSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.squashBookingSchedule.Location = new System.Drawing.Point(6, 6);
-            this.squashBookingSchedule.Margin = new System.Windows.Forms.Padding(6);
-            this.squashBookingSchedule.Name = "squashBookingSchedule";
-            this.squashBookingSchedule.Size = new System.Drawing.Size(766, 293);
-            this.squashBookingSchedule.TabIndex = 0;
             // 
             // panel1
             // 
@@ -116,7 +96,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(6);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(786, 56);
+            this.panel1.Size = new System.Drawing.Size(612, 56);
             this.panel1.TabIndex = 1;
             // 
             // setDayToToday
@@ -161,6 +141,26 @@
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // tennisBookingSchedule
+            // 
+            this.tennisBookingSchedule.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tennisBookingSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tennisBookingSchedule.Location = new System.Drawing.Point(6, 6);
+            this.tennisBookingSchedule.Margin = new System.Windows.Forms.Padding(6);
+            this.tennisBookingSchedule.Name = "tennisBookingSchedule";
+            this.tennisBookingSchedule.Size = new System.Drawing.Size(592, 422);
+            this.tennisBookingSchedule.TabIndex = 0;
+            // 
+            // squashBookingSchedule
+            // 
+            this.squashBookingSchedule.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.squashBookingSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.squashBookingSchedule.Location = new System.Drawing.Point(6, 6);
+            this.squashBookingSchedule.Margin = new System.Windows.Forms.Padding(6);
+            this.squashBookingSchedule.Name = "squashBookingSchedule";
+            this.squashBookingSchedule.Size = new System.Drawing.Size(529, 434);
+            this.squashBookingSchedule.TabIndex = 0;
+            // 
             // facilityTypeBookingControl1
             // 
             this.facilityTypeBookingControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -179,7 +179,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "WannaPlayMainControl";
-            this.Size = new System.Drawing.Size(786, 399);
+            this.Size = new System.Drawing.Size(612, 528);
             this.Load += new System.EventHandler(this.WannaPlayMainControl_Load);
             this.tabControl1.ResumeLayout(false);
             this.tennisTabPage.ResumeLayout(false);
