@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Magenta.Shared.DesignByContract;
 
 namespace Magenta.Shared.UI.WinForms
 {
@@ -27,20 +28,59 @@ namespace Magenta.Shared.UI.WinForms
             }
         }
 
-        public void SetButtons(IEnumerable<Button> buttons)
+        public void SetButtons(IEnumerable<DialogButtonDescription> buttonDescriptions)
         {
-            buttonsTable.ColumnCount = buttons.Count();
+            RequireArg.Complies(buttonDescriptions.Where(d => d.IsAcceptButton).Count() <= 1);
+            RequireArg.Complies(buttonDescriptions.Where(d => d.IsCancelButton).Count() <= 1);
 
-            int columnIndex = 0;
-
-            foreach (var button in buttons)
+            foreach (var buttonDescription in buttonDescriptions)
             {
-                buttonsTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100.0f / buttons.Count()));
+                var button = new Button
+                {
+                    Text = buttonDescription.Text,
+                    Tag = buttonDescription,
+                    Anchor = AnchorStyles.None,
+                    AutoSize = true,
+                    AutoSizeMode = AutoSizeMode.GrowOnly,
+                };
 
-                buttonsTable.Controls.Add(button, columnIndex, 0);
+                if (buttonDescription.IsAcceptButton)
+                    AcceptButton = button;
 
-                columnIndex++;
+                if (buttonDescription.IsCancelButton)
+                    CancelButton = button;
+
+                button.Click += button_Click;
+                var columnStyle = new ColumnStyle(SizeType.Percent, 100.0f / buttonDescriptions.Count());
+                buttonsPanel.ColumnStyles.Add(columnStyle);
+
+                buttonsPanel.Controls.Add(button);
             }
+        }
+
+        void button_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                InvokeDialogButtonClickHandler((DialogButtonDescription)((Button)sender).Tag);
+            }
+            finally
+            {
+                Close(); // Close() must be _after_ invoking button handler, otherwise BindingSource.DataSource will be null in Content control
+            }
+        }
+
+        private void InvokeDialogButtonClickHandler(DialogButtonDescription clickedButtonDescription)
+        {
+            var handler = clickedButtonDescription.OnClick;
+
+            if (handler != null)
+                handler();
+        }
+
+        public Panel ButtonsPanel
+        {
+            get { return buttonsPanel; }
         }
     }
 }

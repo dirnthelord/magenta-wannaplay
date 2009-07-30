@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ControlHoster.cs" />
+    <Compile Include="DialogButtonDescription.cs" />
     <Compile Include="HostingDialog.cs">
       <SubType>Form</SubType>
     </Compile>
