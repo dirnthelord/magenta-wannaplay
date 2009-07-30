@@ -15,6 +15,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Ioc
     {
         public override void Load()
         {
+            Bind<ICommonUIService>().To<CommonUIService>().Using<SingletonBehavior>();
             Bind<IBookingScheduleService>().To<BookingScheduleService>().Using<SingletonBehavior>();
             Bind<IWannaPlayContextService>().To<WannaPlayContextService>().Using<SingletonBehavior>();
         }

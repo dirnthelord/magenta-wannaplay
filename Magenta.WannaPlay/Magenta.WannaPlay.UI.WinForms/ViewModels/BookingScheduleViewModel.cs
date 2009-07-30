@@ -95,7 +95,10 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
                 if (SelectedBookingSlots == null)
                     return false;
 
-                var firstSlot = SelectedBookingSlots.OrderBy(s => s.Period.From).First();
+                var firstSlot = SelectedBookingSlots.OrderBy(s => s.Period.From).FirstOrDefault();
+
+                if (firstSlot == null)
+                    return false;
 
                 var allForTheSameFacility = SelectedBookingSlots.All(s => s.Facility == firstSlot.Facility);
                 var allEmpty = !SelectedBookingEntries.Any();

@@ -13,7 +13,6 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
 {
     public partial class CurrentDutyGuardControl : UserControl
     {
-        [Inject]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public CurrentDutyGuardViewModel ViewModel
         {

@@ -32,8 +32,6 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.dutyGuards = new System.Windows.Forms.ComboBox();
-            this.ok = new System.Windows.Forms.Button();
-            this.cancel = new System.Windows.Forms.Button();
             this.dataContext = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataContext)).BeginInit();
             this.SuspendLayout();
@@ -60,26 +58,6 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.dutyGuards.Size = new System.Drawing.Size(263, 33);
             this.dutyGuards.TabIndex = 1;
             // 
-            // ok
-            // 
-            this.ok.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.ok.Location = new System.Drawing.Point(72, 66);
-            this.ok.Name = "ok";
-            this.ok.Size = new System.Drawing.Size(120, 35);
-            this.ok.TabIndex = 3;
-            this.ok.Text = "OK";
-            this.ok.UseVisualStyleBackColor = true;
-            // 
-            // cancel
-            // 
-            this.cancel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.cancel.Location = new System.Drawing.Point(258, 66);
-            this.cancel.Name = "cancel";
-            this.cancel.Size = new System.Drawing.Size(120, 35);
-            this.cancel.TabIndex = 4;
-            this.cancel.Text = "Cancel";
-            this.cancel.UseVisualStyleBackColor = true;
-            // 
             // dataContext
             // 
             this.dataContext.DataSource = typeof(Magenta.WannaPlay.UI.WinForms.ViewModels.CurrentDutyGuardViewModel);
@@ -88,14 +66,12 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.cancel);
-            this.Controls.Add(this.ok);
             this.Controls.Add(this.dutyGuards);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "CurrentDutyGuardControl";
-            this.Size = new System.Drawing.Size(451, 104);
+            this.Size = new System.Drawing.Size(451, 39);
             ((System.ComponentModel.ISupportInitialize)(this.dataContext)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -106,8 +82,6 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox dutyGuards;
-        private System.Windows.Forms.Button ok;
-        private System.Windows.Forms.Button cancel;
         private System.Windows.Forms.BindingSource dataContext;
     }
 }
