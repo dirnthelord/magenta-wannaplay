@@ -26,17 +26,28 @@ namespace Magenta.Shared.Ui.WinForms
             return form;
         }
 
-        public static HostingDialog HostInDialog(Bitmap icon, string title, Control content, params Button[] buttons)
+        public static HostingDialog HostInDialog(Form parent, string title, Control content, params DialogButtonDescription[] buttonDescriptions)
         {
             var dialog = new HostingDialog
             {
                 Text = title,
-                Icon = icon == null ? null : Icon.FromHandle(icon.GetHicon()),
             };
 
+            dialog.Owner = parent;
+
+            dialog.ClientSize = new Size { Width = content.Width, Height = content.Height + dialog.ButtonsPanel.Height };
             dialog.Content = content;
 
-            dialog.SetButtons(buttons);
+            if (parent != null)
+                dialog.Load += delegate
+                {
+                    dialog.StartPosition = FormStartPosition.Manual;
+                    var x = parent.Location.X + (parent.Width / 2) - (dialog.Width / 2);
+                    var y = parent.Location.Y + (parent.Height / 2) - (dialog.Height / 2);
+                    dialog.Location = new Point(x, y);
+                };
+
+            dialog.SetButtons(buttonDescriptions);
 
             return dialog;
         }
