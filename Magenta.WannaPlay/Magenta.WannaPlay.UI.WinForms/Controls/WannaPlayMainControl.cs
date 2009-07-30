@@ -33,6 +33,8 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
         {
             InitializeComponent();
 
+            Load += delegate { ViewModel.MainFormLoaded(); };
+
             dataContext.DataSourceChanged += dataContext_DataSourceChanged;
         }
 
@@ -61,10 +63,9 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             squashBookingSchedule.ViewModel = ViewModel.SquashSchedule;
         }
 
-        public void PromptForCurrentDutyGuard()
+        private void changeCurrentDutyGuard_Click(object sender, EventArgs e)
         {
-            var view = Kernel.Get<CurrentDutyGuardControl>();
-            ControlHoster.HostInForm(null, "Select current duty guard", view).ShowDialog();
+            ViewModel.AskToSelectCurrentDutyGuard();
         }
     }
 }

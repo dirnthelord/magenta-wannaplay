@@ -8,7 +8,9 @@ namespace Magenta.WannaPlay.UI.WinForms.Services
 {
     public interface IWannaPlayContextService
     {
-        DutyGuard CurrentGuard { get; }
-        DateTime SelectedBookingDay { get; }
+        DutyGuard CurrentGuard { get; set; }
+        event Action CurrentGuardChanged;
+
+        DateTime SelectedBookingDay { get; set; }
     }
 }

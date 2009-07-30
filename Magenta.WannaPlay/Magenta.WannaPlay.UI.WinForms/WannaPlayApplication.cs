@@ -10,9 +10,16 @@ using Magenta.WannaPlay.UI.WinForms.Properties;
 using Magenta.WannaPlay.UI.WinForms.Controls;
 using Ninject.Core;
 using Magenta.Shared.DesignByContract;
+using Magenta.WannaPlay.UI.WinForms.ViewModels;
+using Magenta.Shared.UI.WinForms;
+using Magenta.WannaPlay.UI.WinForms.Services;
 
 namespace Magenta.WannaPlay.UI.WinForms
 {
+    /// <summary>
+    /// Entry point.
+    /// Initializes Kernel and shows main application window.
+    /// </summary>
     public class WannaPlayApplication
     {
         protected IKernel Kernel { get; private set; }
@@ -35,16 +42,11 @@ namespace Magenta.WannaPlay.UI.WinForms
                 Application.SetCompatibleTextRenderingDefault(false);
 
                 var wannaPlayMain = GetMainControl();
-                var form = ControlHoster.HostInForm(Resources.WannaPlay, "Wanna Play", wannaPlayMain);
-                
-                // TODO: Dirty coding
-                form.Shown += delegate 
-                {
-                    var currentDutyGuardView = Kernel.Get<CurrentDutyGuardControl>();
-                    ControlHoster.HostInForm(null, "Select guard on duty", currentDutyGuardView).ShowDialog(form);
-                };
+                var mainForm = ControlHoster.HostInForm(Resources.WannaPlay, "Wanna Play", wannaPlayMain);
 
-                Application.Run(form);
+                Kernel.Get<ICommonUIService>().MainForm = mainForm;
+
+                Application.Run(mainForm);
             }
             catch (Exception e)
             {

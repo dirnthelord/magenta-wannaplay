@@ -8,14 +8,30 @@ namespace Magenta.WannaPlay.UI.WinForms.Services
 {
     public class WannaPlayContextService : IWannaPlayContextService
     {
+        #region CurrentGuard
+        DutyGuard _currentGuard;
+
         public DutyGuard CurrentGuard
         {
-            get { throw new NotImplementedException(); }
+            get { return _currentGuard; }
+            set { _currentGuard = value; OnCurrentGuardChanged(); }
         }
+
+        public event Action CurrentGuardChanged;
+
+        void OnCurrentGuardChanged()
+        {
+            var handler = CurrentGuardChanged;
+
+            if (handler != null)
+                handler();
+        }
+        #endregion
 
         public DateTime SelectedBookingDay
         {
             get { return DateTime.Today; }
+            set { throw new NotImplementedException(); }
         }
     }
 }
