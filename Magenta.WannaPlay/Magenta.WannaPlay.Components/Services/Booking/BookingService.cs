@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Magenta.Shared.Validation;
 using Magenta.WannaPlay.Domain;
 using Magenta.WannaPlay.Infrastructure.Persistence;
 using Magenta.Shared;
@@ -10,12 +11,12 @@ namespace Magenta.WannaPlay.Services.Booking
     public class BookingService : IBookingService
     {
         private readonly IPersistenceRepository _persistenceRepository;
-        private readonly IBookingValidator _validator;
+        private readonly IValidationRules<BookingEntry> _rules;
 
-        public BookingService(IPersistenceRepository persistenceRepository, IBookingValidator validator)
+        public BookingService(IPersistenceRepository persistenceRepository, IValidationRules<BookingEntry> rules)
         {
             _persistenceRepository = persistenceRepository;
-            _validator = validator;
+            _rules = rules;
         }
 
         #region IBookingService Members
@@ -29,7 +30,10 @@ namespace Magenta.WannaPlay.Services.Booking
 
         public void SaveBookingEntry(BookingEntry bookingEntry)
         {
-            _validator.Validate(bookingEntry);
+            var failures = _rules.Validate(bookingEntry);
+
+            if (failures.Count() > 0)
+                throw new ValidationException(failures);
 
             _persistenceRepository.Save(bookingEntry);
         }

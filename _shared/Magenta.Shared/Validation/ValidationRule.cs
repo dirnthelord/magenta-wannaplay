@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Magenta.WannaPlay.Services.Booking.Validation
+namespace Magenta.Shared.Validation
 {
     public class ValidationRule<T>
     {
