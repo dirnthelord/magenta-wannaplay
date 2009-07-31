@@ -15,6 +15,7 @@ using Magenta.Shared.UI.WinForms.Mvvm;
 using Ninject.Core;
 using Magenta.WannaPlay.UI.WinForms.Controls;
 using Magenta.Shared.Ui.WinForms;
+using Magenta.Shared.UI.WinForms;
 
 namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 {
@@ -23,18 +24,31 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
         [Inject]
         public IKernel Kernel { get; set; }
 
-        [Inject]
-        public IWannaPlayContextService WannaPlayContext { get; set; }
-
-
+        public IWannaPlayContextService WannaPlayContextService { get; private set; }
         public IBookingService BookingService { get; private set; }
         public IBookingScheduleService BookingScheduleService { get; private set; }
         public IResidenceManager ResidenceManager { get; private set; }
+        public ICommonUIService CommonUIService { get; private set; }
 
         public BindingList<BookingPeriodUI> BookingPeriods { get; private set; }
         public BindingList<BookingEntry> BookingEntries { get; private set; }
         public BindingList<Facility> Facilities { get; private set; }
 
+
+        Func<Facility, bool> _facilityFilter;
+        public Func<Facility, bool> FacilityFilter
+        {
+            get { return _facilityFilter; }
+            set { _facilityFilter = value; OnFacilityFilterChanged(); }
+        }
+
+        void OnFacilityFilterChanged()
+        {
+            UpdateFaciltyList();
+            UpdateBookingData();
+        }
+
+        
         IEnumerable<BookingSlot> _selectedBookingSlots;
         public IEnumerable<BookingSlot> SelectedBookingSlots
         {
@@ -42,7 +56,6 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
             set { _selectedBookingSlots = value; OnSelectedBookingSlotsChanged(); }
         }
 
-        public Func<Facility, bool> FacilityFilter { get; set; }
 
         private void OnSelectedBookingSlotsChanged()
         {
@@ -51,37 +64,6 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
             OnPropertyChanged("CanAddBooking");
             OnPropertyChanged("CanCancelBooking");
         }
-
-        #region Booking period
-        TimeSpan StartHour { get { return TimeSpan.FromHours(7); } }
-        TimeSpan FinishHour { get { return TimeSpan.FromHours(22); } }
-
-        DateTime _day;
-        public DateTime Day
-        {
-            get { return _day; }
-            set { _day = value; OnDayChanged(); }
-        }
-
-        private void OnDayChanged()
-        {
-            Period = new DateTimePeriod(Day.Add(StartHour), Day.Add(FinishHour));
-        }
-
-        public DateTimePeriod _period;
-        public DateTimePeriod Period
-        {
-            get { return _period; }
-            private set { _period = value; OnPeriodChanged(); }
-        }
-
-        void OnPeriodChanged()
-        {
-            InitializeDataContext();
-            OnPropertyChanged("Period");
-        }
-        #endregion
-
 
         IEnumerable<BookingEntry> SelectedBookingEntries
         {
@@ -92,13 +74,10 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
         {
             get
             {
-                if (SelectedBookingSlots == null)
+                if (SelectedBookingSlots == null || !SelectedBookingSlots.Any())
                     return false;
 
-                var firstSlot = SelectedBookingSlots.OrderBy(s => s.Period.From).FirstOrDefault();
-
-                if (firstSlot == null)
-                    return false;
+                var firstSlot = SelectedBookingSlots.OrderBy(s => s.Period.From).First();
 
                 var allForTheSameFacility = SelectedBookingSlots.All(s => s.Facility == firstSlot.Facility);
                 var allEmpty = !SelectedBookingEntries.Any();
@@ -113,26 +92,59 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
         }
 
 
-        public BookingScheduleViewModel(IBookingService bookingService,
-            IBookingScheduleService bookingScheduleService,
-            IResidenceManager residenceManager)
-        {
-            FacilityFilter = f => true;
+        #region Booking period
+        TimeSpan StartHour { get { return TimeSpan.FromHours(7); } }
+        TimeSpan FinishHour { get { return TimeSpan.FromHours(22); } }
 
+        DateTime BookingDay
+        {
+            get { return WannaPlayContextService.SelectedDay; }
+        }
+
+        DateTimePeriod Period
+        {
+            get { return new DateTimePeriod(BookingDay.Add(StartHour), BookingDay.Add(FinishHour)); }
+        }
+        #endregion
+
+
+        public BookingScheduleViewModel
+            (
+                IBookingService bookingService,
+                IBookingScheduleService bookingScheduleService,
+                IResidenceManager residenceManager,
+                IWannaPlayContextService wannaPlayContextService,
+                ICommonUIService commonUIService
+            )
+        {
             BookingService = RequireArg.NotNull(bookingService);
             BookingScheduleService = RequireArg.NotNull(bookingScheduleService);
             ResidenceManager = RequireArg.NotNull(residenceManager);
+            WannaPlayContextService = RequireArg.NotNull(wannaPlayContextService);
+            CommonUIService = RequireArg.NotNull(commonUIService);
+
+            // TODO: Should be weak event subscription
+            WannaPlayContextService.SelectedDayChanged += OnSelectedDayChanged;
 
             Facilities = new BindingList<Facility>();
             BookingEntries = new BindingList<BookingEntry>();
             BookingPeriods = new BindingList<BookingPeriodUI>();
         }
 
-        private void InitializeDataContext()
+        void OnSelectedDayChanged()
         {
-            Facilities.ReplaceWith(ResidenceManager.GetFacilities().Where(FacilityFilter));
+            UpdateBookingData();
+        }
+
+        private void UpdateBookingData()
+        {
             BookingEntries.ReplaceWith(BookingService.GetBookingEntries(Period, Facilities));
             BookingPeriods.ReplaceWith(BookingScheduleService.GetSchedule(Period).Select(p => new BookingPeriodUI(p)));
+        }
+
+        private void UpdateFaciltyList()
+        {
+            Facilities.ReplaceWith(ResidenceManager.GetFacilities().Where(FacilityFilter));
         }
 
         public IEnumerable<BookingEntry> GetBookingEntries(IEnumerable<BookingSlot> slots)
@@ -153,15 +165,26 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
         public void AddSelectedBooking()
         {
             var firstSlot = SelectedBookingSlots.OrderBy(s => s.Period.From).First();
+
+            // TODO: Remove hardcoded max number of hours to book
             var length = Math.Min(2, SelectedBookingSlots.Count());
 
-            var addBookingView = Kernel.Get<BookingEntryEditorControl>();
-            addBookingView.ViewModel.BookingPeriod = new DateTimePeriodUI
+            // TODO: Remove UI dependency from this ViewModel
+            var addBookingViewModel = Kernel.Get<AddBookingViewModel>();
+            var bookingEntryView = Kernel.Get<BookingEntryEditorControl>();
+
+            bookingEntryView.ViewModel = addBookingViewModel.BookingEntryViewModel;
+
+            bookingEntryView.ViewModel.BookingPeriod = new DateTimePeriodUI
             {
                 Model = DateTimePeriod.FromHours(firstSlot.Period.From, length),
             };
 
-            var form = ControlHoster.HostInForm(null, "Add booking", addBookingView);
+            var form = ControlHoster.HostInDialog(CommonUIService.MainForm, "Add booking", bookingEntryView,
+                new DialogButtonDescription { Text = "Add", OnClick = () => addBookingViewModel.AddBooking() },
+                new DialogButtonDescription { Text = "Cancel", IsCancelButton = true }
+                );
+
             form.ShowDialog();
         }
     }

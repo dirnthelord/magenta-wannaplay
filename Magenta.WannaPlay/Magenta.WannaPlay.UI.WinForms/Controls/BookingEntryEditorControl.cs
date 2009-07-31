@@ -27,7 +27,6 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        [Inject]
         public BookingEntryEditorViewModel ViewModel
         {
             get { return (BookingEntryEditorViewModel)dataContext.DataSource; }

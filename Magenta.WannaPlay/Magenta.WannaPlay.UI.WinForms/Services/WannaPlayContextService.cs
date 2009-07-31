@@ -28,10 +28,28 @@ namespace Magenta.WannaPlay.UI.WinForms.Services
         }
         #endregion
 
-        public DateTime SelectedBookingDay
+        #region SelectedDay
+        DateTime _selectedDay;
+        public DateTime SelectedDay
         {
-            get { return DateTime.Today; }
-            set { throw new NotImplementedException(); }
+            get { return _selectedDay; }
+            set { _selectedDay = value; OnSelectedDayChanged(); }
+        }
+
+        public event Action SelectedDayChanged;
+
+        void OnSelectedDayChanged()
+        {
+            var handler = SelectedDayChanged;
+
+            if (handler != null)
+                handler();
+        }
+        #endregion
+
+        public WannaPlayContextService()
+        {
+            SelectedDay = DateTime.Today;
         }
     }
 }
