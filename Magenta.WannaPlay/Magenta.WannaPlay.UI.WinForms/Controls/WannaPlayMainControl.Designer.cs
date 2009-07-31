@@ -282,7 +282,6 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "WannaPlayMainControl";
             this.Size = new System.Drawing.Size(597, 528);
-            this.Load += new System.EventHandler(this.WannaPlayMainControl_Load);
             this.tabControl1.ResumeLayout(false);
             this.tennisTabPage.ResumeLayout(false);
             this.squashTabPage.ResumeLayout(false);

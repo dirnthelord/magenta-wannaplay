@@ -7,56 +7,68 @@ using Ninject.Core;
 using Magenta.WannaPlay.Domain;
 using Magenta.WannaPlay.UI.WinForms.Services;
 using Magenta.WannaPlay.Services.Residence;
+using Magenta.Shared.DesignByContract;
 
 namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 {
     public class AddBookingViewModel
     {
-        [Inject]
-        public IBookingService BookingService { get; set; }
+        public IKernel Kernel { get; private set; }
+        public IBookingService BookingService { get; private set; }
+        public IResidenceManager ResidenceManager { get; private set; }
 
-        [Inject]
-        public IResidenceManager ResidenceManager { get; set; }
+        public BookingEntryEditorViewModel BookingEntryViewModel { get; private set; }
 
-        [Inject]
-        public BookingEntryEditorViewModel BookingEntry { get; set; }
 
+        public AddBookingViewModel
+            (
+                IKernel kernel,
+                IBookingService bookingService,
+                IResidenceManager residenceManager
+            )
+        {
+            Kernel = RequireArg.NotNull(kernel);
+            BookingService = RequireArg.NotNull(bookingService);
+            ResidenceManager = RequireArg.NotNull(residenceManager);
+
+            BookingEntryViewModel = Kernel.Get<BookingEntryEditorViewModel>();
+        }
 
         public void AddBooking()
         {
             var bookingEntry = new BookingEntry
             {
                 BookedAtDateTime = DateTime.UtcNow,
-                BookedByGuard = BookingEntry.SelectedDutyGuard,
-                Facility = BookingEntry.SelectedFacility,
+                BookedByGuard = BookingEntryViewModel.SelectedDutyGuard,
+                Facility = BookingEntryViewModel.SelectedFacility,
                 Resident = GetSelectedResident(),
-                Period = BookingEntry.BookingPeriod.Model,
+                Period = BookingEntryViewModel.BookingPeriod.Model,
             };
 
             BookingService.SaveBookingEntry(bookingEntry);
         }
 
-        private Resident GetSelectedResident()
+        Resident GetSelectedResident()
         {
-            var existingResident = ResidenceManager.GetResident(BookingEntry.Resident.FactilityCardNumber);
+            var existingResident = ResidenceManager.GetResident(BookingEntryViewModel.Resident.FactilityCardNumber);
 
             var resident = existingResident ?? new Resident();
 
-            resident.Name = BookingEntry.Resident.Name;
-            resident.PassCardNumber = BookingEntry.Resident.FactilityCardNumber;
+            resident.Name = BookingEntryViewModel.Resident.Name;
+            resident.PassCardNumber = BookingEntryViewModel.Resident.FactilityCardNumber;
             resident.Unit = GetSelectedUnit();
 
             return resident;
         }
 
-        private ResidenceUnit GetSelectedUnit()
+        ResidenceUnit GetSelectedUnit()
         {
-            var existingUnit = ResidenceManager.GetResidenceUnit(BookingEntry.Resident.AddressBlockNumber, BookingEntry.Resident.AddressUnitNumber);
+            var existingUnit = ResidenceManager.GetResidenceUnit(BookingEntryViewModel.Resident.AddressBlockNumber, BookingEntryViewModel.Resident.AddressUnitNumber);
 
             var unit = existingUnit ?? new ResidenceUnit();
 
-            unit.Block = BookingEntry.Resident.AddressBlockNumber;
-            unit.Number = BookingEntry.Resident.AddressUnitNumber;
+            unit.Block = BookingEntryViewModel.Resident.AddressBlockNumber;
+            unit.Number = BookingEntryViewModel.Resident.AddressUnitNumber;
 
             return unit;
         }

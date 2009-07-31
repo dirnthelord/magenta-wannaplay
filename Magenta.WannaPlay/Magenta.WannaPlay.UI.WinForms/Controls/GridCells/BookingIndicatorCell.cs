@@ -23,6 +23,8 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls.GridCells
 
         protected override void Paint(Graphics graphics, Rectangle clipBounds, Rectangle cellBounds, int rowIndex, DataGridViewElementStates elementState, object value, object formattedValue, string errorText, DataGridViewCellStyle cellStyle, DataGridViewAdvancedBorderStyle advancedBorderStyle, DataGridViewPaintParts paintParts)
         {
+            // TODO: Change tooltip
+
             Action<DataGridViewPaintParts> BasePaintPart =
                 p => BasePaint(graphics, clipBounds, cellBounds, rowIndex, elementState, value, formattedValue, errorText, cellStyle, advancedBorderStyle, p);
 

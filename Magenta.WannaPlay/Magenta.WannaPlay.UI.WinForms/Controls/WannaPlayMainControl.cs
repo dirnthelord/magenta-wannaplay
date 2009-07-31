@@ -10,6 +10,7 @@ using Magenta.WannaPlay.Services.Residence;
 using Ninject.Core;
 using Magenta.WannaPlay.UI.WinForms.ViewModels;
 using Magenta.Shared.Ui.WinForms;
+using Magenta.WannaPlay.Domain;
 
 namespace Magenta.WannaPlay.UI.WinForms.Controls
 {
@@ -21,7 +22,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
         [Inject]
         public IKernel Kernel { get; set; }
 
-        [Inject]
+
         public WannaPlayMainViewModel ViewModel
         {
             get { return (WannaPlayMainViewModel)dataContext.DataSource; }
@@ -33,21 +34,27 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
         {
             InitializeComponent();
 
-            Load += delegate { ViewModel.MainFormLoaded(); };
-
             dataContext.DataSourceChanged += dataContext_DataSourceChanged;
         }
 
         void dataContext_DataSourceChanged(object sender, EventArgs e)
         {
             dayPicker.Value = ViewModel.SelectedDay;
+
+            UpdateBookingSchedules();
+        }
+
+        private void UpdateBookingSchedules()
+        {
+            tennisBookingSchedule.ViewModel = ViewModel.CreateScheduleViewModel(FacilityType.TennisCourt);
+            squashBookingSchedule.ViewModel = ViewModel.CreateScheduleViewModel(FacilityType.SquashCourt);
         }
 
         DateTime Today { get { return DateTime.Today; } }
 
         private void setDayToToday_Click(object sender, EventArgs e)
         {
-            dayPicker.Value = Today;
+            ViewModel.SetSelectedDayToToday();
         }
 
         private void dayPicker_ValueChanged(object sender, EventArgs e)
@@ -55,12 +62,6 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             ViewModel.SelectedDay = dayPicker.Value;
 
             setDayToToday.Enabled = dayPicker.Value != Today;
-        }
-
-        private void WannaPlayMainControl_Load(object sender, EventArgs e)
-        {
-            tennisBookingSchedule.ViewModel = ViewModel.TennisSchedule;
-            squashBookingSchedule.ViewModel = ViewModel.SquashSchedule;
         }
 
         private void changeCurrentDutyGuard_Click(object sender, EventArgs e)

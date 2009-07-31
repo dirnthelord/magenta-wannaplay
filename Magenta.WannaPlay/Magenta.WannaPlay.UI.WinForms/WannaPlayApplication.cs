@@ -31,7 +31,11 @@ namespace Magenta.WannaPlay.UI.WinForms
 
         protected virtual Control GetMainControl()
         {
-            return Kernel.Get<WannaPlayMainControl>();
+            var mainControl = Kernel.Get<WannaPlayMainControl>();
+
+            mainControl.ViewModel = Kernel.Get<WannaPlayMainViewModel>();
+
+            return mainControl;
         }
 
         public void Run()

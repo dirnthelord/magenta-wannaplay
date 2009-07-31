@@ -11,6 +11,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Services
         DutyGuard CurrentGuard { get; set; }
         event Action CurrentGuardChanged;
 
-        DateTime SelectedBookingDay { get; set; }
+        DateTime SelectedDay { get; set; }
+        event Action SelectedDayChanged;
     }
 }

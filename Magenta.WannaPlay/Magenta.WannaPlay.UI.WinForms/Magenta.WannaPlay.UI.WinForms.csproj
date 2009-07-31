@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{EB6A9B6B-FC19-407C-80C6-2DC36A07BE58}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -57,12 +57,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\AddBookingControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\AddBookingControl.Designer.cs">
-      <DependentUpon>AddBookingControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="Controls\BookingEntryEditorControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -95,6 +89,12 @@
     </Compile>
     <Compile Include="Controls\CurrentDutyGuardControl.Designer.cs">
       <DependentUpon>CurrentDutyGuardControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DutyGuardsManagerControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\DutyGuardsManagerControl.Designer.cs">
+      <DependentUpon>DutyGuardsManagerControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\GridCells\BookingIndicatorCell.cs" />
     <Compile Include="Controls\ResidentDetailsControl.cs">
@@ -166,21 +166,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Controls\AddBookingControl.resx">
-      <DependentUpon>AddBookingControl.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="Controls\BookingEntryEditorControl.resx">
       <DependentUpon>BookingEntryEditorControl.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\BookingEntryListControl.resx">
       <DependentUpon>BookingEntryListControl.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\DateTimePeriodControl.resx">
       <DependentUpon>DateTimePeriodControl.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\BookingScheduleControl.resx">
       <DependentUpon>BookingScheduleControl.cs</DependentUpon>
@@ -192,11 +185,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\CurrentDutyGuardControl.resx">
       <DependentUpon>CurrentDutyGuardControl.cs</DependentUpon>
-      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\DutyGuardsManagerControl.resx">
+      <DependentUpon>DutyGuardsManagerControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\ResidentDetailsControl.resx">
       <DependentUpon>ResidentDetailsControl.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\WannaPlayMainControl.resx">
       <DependentUpon>WannaPlayMainControl.cs</DependentUpon>

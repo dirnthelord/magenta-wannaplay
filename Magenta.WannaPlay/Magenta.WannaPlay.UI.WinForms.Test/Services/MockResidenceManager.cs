@@ -11,7 +11,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Services
     {
         public ResidenceUnit GetResidenceUnit(string unitBlock, string unitNumber)
         {
-            throw new NotImplementedException();
+            return new ResidenceUnit { Block = unitBlock, Number = unitNumber };
         }
 
         public IEnumerable<Facility> GetFacilities()
