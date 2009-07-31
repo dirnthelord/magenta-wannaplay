@@ -48,8 +48,14 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
             if (resident == null)
                 return;
 
-            Resident.AddressBlockNumber = resident.Unit.Block;
-            Resident.AddressUnitNumber = resident.Unit.Number;
+            var unit = resident.Unit;
+
+            if (unit != null)
+            {
+                Resident.AddressBlockNumber = unit.Block;
+                Resident.AddressUnitNumber = unit.Number;
+            }
+
             Resident.Name = resident.Name;
         }
     }
