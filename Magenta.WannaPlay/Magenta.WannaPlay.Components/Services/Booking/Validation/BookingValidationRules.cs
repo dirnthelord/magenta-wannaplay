@@ -6,6 +6,7 @@ using Magenta.Shared;
 using Magenta.Shared.Validation;
 using Magenta.WannaPlay.Domain;
 using Magenta.WannaPlay.Infrastructure.Persistence;
+using Magenta.Shared.DesignByContract;
 
 namespace Magenta.WannaPlay.Services.Booking.Validation
 {
@@ -29,6 +30,9 @@ namespace Magenta.WannaPlay.Services.Booking.Validation
 
         private bool IsPeriodAvailable(Facility facility, DateTimePeriod period)
         {
+            RequireArg.NotNull(facility);
+            RequireArg.NotNull(period);
+
             var entries = _persistenceRepository.Search<BookingEntry>(
                 x => x.Facility.Id == facility.Id,
                 x => (x.Period.From >= period.From && x.Period.From < period.To) ||

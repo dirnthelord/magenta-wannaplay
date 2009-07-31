@@ -21,7 +21,7 @@ namespace Magenta.WannaPlay.Infrastructure.Persistence
 
         public void Save<T>(T entity)
         {
-            _session.Save(entity);
+            _session.SaveOrUpdate(entity);
         }
 
         public void Delete<T>(T entity)
