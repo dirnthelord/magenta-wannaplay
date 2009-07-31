@@ -31,8 +31,8 @@ namespace Magenta.WannaPlay.Services.Booking.Validation
         {
             var entries = _persistenceRepository.Search<BookingEntry>(
                 x => x.Facility.Id == facility.Id,
-                x => (x.Period.From <= period.From && x.Period.To > period.From) ||
-                    (x.Period.From < period.To && x.Period.To >= period.To)
+                x => (x.Period.From >= period.From && x.Period.From < period.To) ||
+                    (x.Period.To > period.From && x.Period.To <= period.To)
                 );
 
             return entries.Count() == 0;

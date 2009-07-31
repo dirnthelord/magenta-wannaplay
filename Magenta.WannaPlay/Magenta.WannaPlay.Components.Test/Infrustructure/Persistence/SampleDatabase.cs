@@ -54,7 +54,7 @@ namespace Magenta.WannaPlay.Components.Infrustructure.Persistence
                                         BookedByGuard = DutyGuardRoss,
                                         Resident = ResidentBradPit,
                                         BookedAtDateTime = Today.AddHours(6.5),
-                                        Period = new DateTimePeriod(Today.AddHours(12), Today.AddHours(13))
+                                        Period = new DateTimePeriod(Today.AddHours(13), Today.AddHours(14))
                                     };
 
             session.Save(bookingEntry1);

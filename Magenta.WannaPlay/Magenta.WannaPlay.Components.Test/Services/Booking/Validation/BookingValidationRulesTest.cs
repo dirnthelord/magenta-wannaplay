@@ -29,19 +29,39 @@ namespace Magenta.WannaPlay.Components.Services.Booking.Validation
         }
 
         [Test]
-        public void BooksNotAvailable()
+        public void BookingIsAvailable()
         {
+            // Booked from 10am to 11 am and from 13pm to 14pm
+            AssertBookingIsAvailable(9, 10);
             AssertBookingIsAvailable(11, 12);
+            AssertBookingIsAvailable(11, 13);
+            AssertBookingIsAvailable(12, 13);
+            AssertBookingIsAvailable(14, 15);
+            AssertBookingIsAvailable(15, 15);
+                    }
 
-            AssertBookingIsNotAvailable(12, 13);
-            AssertBookingIsNotAvailable(11, 13);
+        [Test]
+        public void BookingIsNotAvailable()
+        {
+            // Booked from 10am to 11 am and from 13pm to 14pm
+
+            AssertBookingIsNotAvailable(9, 11);
+            AssertBookingIsNotAvailable(9, 12);
+            AssertBookingIsNotAvailable(9, 13);
+            AssertBookingIsNotAvailable(9, 14);
+            AssertBookingIsNotAvailable(9, 15);
 
             AssertBookingIsNotAvailable(10, 11);
+            AssertBookingIsNotAvailable(10, 12);
             AssertBookingIsNotAvailable(10, 13);
+            AssertBookingIsNotAvailable(10, 14);
+            AssertBookingIsNotAvailable(10, 15);
 
-            AssertBookingIsAvailable(9, 10);
-            AssertBookingIsNotAvailable(9, 11);
-            AssertBookingIsNotAvailable(9, 13);
+            AssertBookingIsNotAvailable(11, 14);
+            AssertBookingIsNotAvailable(11, 15);
+
+            AssertBookingIsNotAvailable(12, 14);
+            AssertBookingIsNotAvailable(12, 15);
         }
 
         private void AssertBookingIsAvailable(int from, int to)
