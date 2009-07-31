@@ -36,6 +36,24 @@ namespace Magenta.WannaPlay.Infrastructure.Persistence
             WithSetup(s => s.IsComponentType = type => _componentTypes.Contains(type));
 
             WithSetup(s => s.IsBaseType = type => type == typeof(Entity));
+
+            ForTypesThatDeriveFrom<DutyGuard>(map =>
+                map.Map(x => x.Name).SetAttribute("unique-key", "IX_DutyGuard_Name_Unique"));
+
+            ForTypesThatDeriveFrom<Resident>(map =>
+                map.Map(x => x.PassCardNumber).SetAttribute("unique-key", "IX_DutyGuard_PassCardNumber_Unique"));
+
+            ForTypesThatDeriveFrom<ResidenceUnit>(map =>
+            {
+                map.Map(x => x.Block).SetAttribute("unique-key", "IX_DutyGuard_BlockNumber_Unique");
+                map.Map(x => x.Number).SetAttribute("unique-key", "IX_DutyGuard_BlockNumber_Unique");
+            });
+
+            ForTypesThatDeriveFrom<Facility>(map =>
+            {
+                map.Map(x => x.Name).SetAttribute("unique-key", "IX_DutyGuard_NameFacilityType_Unique");
+                map.Map(x => x.FacilityType).SetAttribute("unique-key", "IX_DutyGuard_NameFacilityType_Unique");
+            });
         }
     }
 }
