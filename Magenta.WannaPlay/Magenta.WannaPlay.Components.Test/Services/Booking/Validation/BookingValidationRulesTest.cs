@@ -37,8 +37,8 @@ namespace Magenta.WannaPlay.Components.Services.Booking.Validation
             AssertBookingIsAvailable(11, 13);
             AssertBookingIsAvailable(12, 13);
             AssertBookingIsAvailable(14, 15);
-            AssertBookingIsAvailable(15, 15);
-                    }
+            AssertBookingIsAvailable(15, 16);
+        }
 
         [Test]
         public void BookingIsNotAvailable()
