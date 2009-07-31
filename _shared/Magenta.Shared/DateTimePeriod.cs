@@ -65,11 +65,6 @@ namespace Magenta.Shared
             return new DateTimePeriod(from, from.AddDays(days));
         }
 
-        public static DateTimePeriod Empty
-        {
-            get { return new DateTimePeriod(); }
-        }
-
         public DateTimePeriod Intersect(DateTimePeriod right)
         {
             if (From > right.From)
@@ -78,7 +73,7 @@ namespace Magenta.Shared
             var left = this;
 
             if (left.To < right.From)
-                return DateTimePeriod.Empty;
+                return new DateTimePeriod();
 
             return new DateTimePeriod(right.From, DateTimeHelper.Min(right.To, left.To));
         }

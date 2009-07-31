@@ -1,4 +1,4 @@
-namespace Magenta.WannaPlay.Services.Booking.Validation
+namespace Magenta.Shared.Validation
 {
     public class ValidationFailure
     {

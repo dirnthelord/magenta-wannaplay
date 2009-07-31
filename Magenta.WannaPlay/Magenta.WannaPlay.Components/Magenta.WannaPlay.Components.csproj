@@ -84,15 +84,10 @@
     <Compile Include="Infrastructure\Persistence\IPersistenceRepository.cs" />
     <Compile Include="Infrastructure\Persistence\PersistenceRepository.cs" />
     <Compile Include="Services\Booking\BookingService.cs" />
-    <Compile Include="Services\Booking\BookingValidationException.cs" />
-    <Compile Include="Services\Booking\Validation\ValidationFailure.cs" />
-    <Compile Include="Services\Booking\Validation\ValidationRule.cs" />
-    <Compile Include="Services\Booking\Validation\ValidationRules.cs" />
-    <Compile Include="Services\Booking\Validation\ValidationRulesAssert.cs" />
-    <Compile Include="Services\Residence\IResidenceManager.cs" />
     <Compile Include="Services\Booking\IBookingService.cs" />
-    <Compile Include="Services\Booking\BookingValidator.cs" />
-    <Compile Include="Services\Booking\IBookingValidator.cs" />
+    <Compile Include="Services\Booking\Validation\BookingValidationRules.cs" />
+    <Compile Include="Services\Booking\Validation\KnownBookingErrors.cs" />
+    <Compile Include="Services\Residence\IResidenceManager.cs" />
     <Compile Include="Services\Residence\ResidenceManager.cs" />
   </ItemGroup>
   <ItemGroup>

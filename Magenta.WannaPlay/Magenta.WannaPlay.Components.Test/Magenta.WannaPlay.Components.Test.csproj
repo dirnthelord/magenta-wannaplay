@@ -79,9 +79,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\BookingSlotTest.cs" />
+    <Compile Include="Infrustructure\Persistence\SampleDatabase.cs" />
     <Compile Include="Infrustructure\Persistence\SchemaGenerator.cs" />
     <Compile Include="Infrustructure\Persistence\PersistenceRepositoryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Booking\Validation\BookingValidationRulesTest.cs" />
     <Compile Include="TestEnvironment.cs" />
   </ItemGroup>
   <ItemGroup>

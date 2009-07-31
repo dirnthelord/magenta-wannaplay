@@ -30,7 +30,11 @@ namespace Magenta.WannaPlay.Components.Infrustructure.Persistence
             {
                 CreateDatabaseSchema(session);
 
-                InsertData(session);
+                using (var transaction = session.BeginTransaction(IsolationLevel.ReadCommitted))
+                {
+                    new SampleDatabase(session);
+                    transaction.Commit();
+                }     
             }
         }
 
@@ -43,46 +47,6 @@ namespace Magenta.WannaPlay.Components.Infrustructure.Persistence
 
             using (var sqlCeEngine = new SqlCeEngine(connectionString))
                 sqlCeEngine.CreateDatabase();
-        }
-
-        private void InsertData(ISession session)
-        {
-            using (var transaction = session.BeginTransaction(IsolationLevel.ReadCommitted))
-            {
-                var tennisCourt1 = new Facility { FacilityType = FacilityType.TennisCourt, Name = "Tennis Court 1" };
-
-                session.Save(tennisCourt1);
-                session.Save(new Facility { FacilityType = FacilityType.TennisCourt, Name = "Tennis Court 2" });
-                session.Save(new Facility { FacilityType = FacilityType.SquashCourt, Name = "Squash Court 1" });
-                session.Save(new Facility { FacilityType = FacilityType.SquashCourt, Name = "Squash Court 2" });
-
-                var bradPit = new Resident
-                {
-                    Name = "Brad Pit",
-                    PassCardNumber = "0000",
-                    Unit = new ResidenceUnit { Block = "10", Number = "#99-01" }
-                };
-
-                var ross = new DutyGuard()
-                {
-                    Name = "Ross"
-                };
-
-                DateTime today = DateTime.UtcNow.Date;
-
-                var bookingEntry = new BookingEntry
-                {
-                    Facility = tennisCourt1,
-                    BookedByGuard = ross,
-                    Resident = bradPit,
-                    BookedAtDateTime = DateTime.UtcNow.AddDays(-1),
-                    Period = new DateTimePeriod(today.AddHours(10), today.AddHours(11))
-                };
-
-                session.Save(bookingEntry);
-
-                transaction.Commit();
-            }
         }
 
         private void CreateDatabaseSchema(ISession session)

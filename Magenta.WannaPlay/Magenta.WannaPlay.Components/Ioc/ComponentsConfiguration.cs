@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Magenta.Shared.Validation;
+using Magenta.WannaPlay.Domain;
 using Magenta.WannaPlay.Infrastructure.Persistence;
 using Magenta.WannaPlay.Services.Booking;
+using Magenta.WannaPlay.Services.Booking.Validation;
 using Magenta.WannaPlay.Services.Residence;
 using NHibernate;
 using Ninject.Core;
@@ -21,8 +24,9 @@ namespace Magenta.WannaPlay.Ioc
 
             // Business services
             Bind<IResidenceManager>().To<ResidenceManager>().Using<SingletonBehavior>();
-            Bind<IBookingValidator>().To<BookingValidator>().Using<SingletonBehavior>();
+            
             Bind<IBookingService>().To<BookingService>().Using<SingletonBehavior>();
+            Bind<IValidationRules<BookingEntry>>().To<BookingValidationRules>().Using<SingletonBehavior>();
         }
     }
 }
