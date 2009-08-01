@@ -10,6 +10,8 @@ using Magenta.WannaPlay.UI.WinForms.Domain.UI;
 
 namespace Magenta.WannaPlay.UI.WinForms.Controls
 {
+    [ComplexBindingProperties("ItemsSource")]
+    //[DefaultBindingProperty("ItemsSource")]
     public partial class BookingEntryListControl : UserControl
     {
         public BookingEntryListControl()

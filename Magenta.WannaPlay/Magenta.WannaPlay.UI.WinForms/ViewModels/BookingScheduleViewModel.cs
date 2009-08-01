@@ -164,7 +164,14 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
         public void CancelSelectedBooking()
         {
             // TODO: Remove UI depencency
-            //SelectedBookingEntries
+            var bookingSearchView = Kernel.Get<BookingSearchControl>();
+            bookingSearchView.ViewModel = Kernel.Get<BookingSearchViewModel>();
+
+            var form = ControlHoster.HostInForm(null, "Add booking", bookingSearchView);
+
+            form.ShowDialog();
+
+            UpdateBookingData();
         }
 
         public void AddSelectedBooking()
