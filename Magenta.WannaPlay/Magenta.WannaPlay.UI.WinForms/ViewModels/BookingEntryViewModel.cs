@@ -13,26 +13,32 @@ using Magenta.WannaPlay.UI.WinForms.Services;
 
 namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 {
-    public class BookingEntryEditorViewModel
+    public class BookingEntryViewModel
     {
+        [Browsable(false)]
         public IBookingService BookingService { get; private set; }
+
+        [Browsable(false)]
         public IResidenceManager ResidenceManager { get; private set; }
+
+        [Browsable(false)]
         public IWannaPlayContextService WannaPlayContextService { get; private set; }
+
 
         public string BookingDetails
         {
             get
             {
-                return string.Format("{0} on {1:dd MMMM} at {2:$h $tt} for {3:$h $hour(s)}", Facility.Name, BookingPeriod.PeriodDay, BookingPeriod.PeriodFrom, BookingPeriod.PeriodFor);
+                return string.Format(@"{0} on {1:dd MMMM} at {2:$h $tt} for {3:$h $hour(s)}", Facility.Name, BookingPeriod.PeriodDay, BookingPeriod.PeriodFrom, BookingPeriod.PeriodFor);
             }
         }
 
         public Facility Facility { get; set; }
         public DateTimePeriodUI BookingPeriod { get; set; }
-        public ResidentDetailsUI Resident { get; set; }
+        public ResidentUI Resident { get; set; }
         public string Comment { get; set; }
 
-        public BookingEntryEditorViewModel
+        public BookingEntryViewModel
             (
                 IBookingService bookingService,
                 IResidenceManager residenceManager,
@@ -44,7 +50,7 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
             WannaPlayContextService = RequireArg.NotNull(wannaPlayContextService);
 
             BookingPeriod = new DateTimePeriodUI();
-            Resident = new ResidentDetailsUI();
+            Resident = new ResidentUI();
         }
 
         public void ResidentAutoFillRequired()

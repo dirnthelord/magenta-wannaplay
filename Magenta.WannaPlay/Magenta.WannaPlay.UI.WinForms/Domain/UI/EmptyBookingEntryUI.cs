@@ -8,7 +8,7 @@ using Magenta.WannaPlay.UI.WinForms.Domain.UI;
 
 namespace Magenta.WannaPlay.UI.WinForms.Domain
 {
-    public class EmptyBookingSlotDetailsUI : BookingSlotDetailsUI
+    public class EmptyBookingSlotDetailsUI : BookingEntryUI
     {
         readonly DateTimePeriod _period;
 

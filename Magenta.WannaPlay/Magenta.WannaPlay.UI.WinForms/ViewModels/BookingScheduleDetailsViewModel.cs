@@ -15,7 +15,7 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 {
     public class BookingScheduleDetailsViewModel// : INotifyPropertyChanged
     {
-        public BindingList<BookingSlotDetailsUI> BookingSlots { get; private set; }
+        public BindingList<BookingEntryUI> BookingSlots { get; private set; }
         public IEnumerable<BookingEntry> BookingEntries { get; private set; }
 
         public IBookingService BookingService { get; private set; }

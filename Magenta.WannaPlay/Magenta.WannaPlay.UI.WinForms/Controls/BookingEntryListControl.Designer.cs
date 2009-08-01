@@ -69,7 +69,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             // 
             // dataContext
             // 
-            this.dataContext.DataSource = typeof(Magenta.WannaPlay.UI.WinForms.Domain.UI.BookingSlotDetailsUI);
+            this.dataContext.DataSource = typeof(Magenta.WannaPlay.UI.WinForms.Domain.UI.BookingEntryUI);
             // 
             // periodStringDataGridViewTextBoxColumn
             // 

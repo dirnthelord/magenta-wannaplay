@@ -90,7 +90,7 @@ namespace Magenta.WannaPlay.UI.WinForms
             //        Facility = new Facility { Name = "Squash Court One" }
             //    },
             //}
-            //.Select(e => new BookingSlotDetailsUI(e))
+            //.Select(e => new BookingEntryUI(e))
             //.ToBindingList();
 
 

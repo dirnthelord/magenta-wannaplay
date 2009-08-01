@@ -1,6 +1,6 @@
 ﻿namespace Magenta.WannaPlay.UI.WinForms.Controls
 {
-    partial class UnitNumberEditorControl
+    partial class HtmlBrowserControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,35 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.unitNumber = new System.Windows.Forms.MaskedTextBox();
+            this.webBrowser = new System.Windows.Forms.WebBrowser();
             this.SuspendLayout();
             // 
-            // unitNumber
+            // webBrowser
             // 
-            this.unitNumber.Culture = new System.Globalization.CultureInfo("");
-            this.unitNumber.Location = new System.Drawing.Point(0, 0);
-            this.unitNumber.Margin = new System.Windows.Forms.Padding(0);
-            this.unitNumber.Mask = "00-00";
-            this.unitNumber.Name = "unitNumber";
-            this.unitNumber.Size = new System.Drawing.Size(35, 20);
-            this.unitNumber.TabIndex = 20;
+            this.webBrowser.AllowWebBrowserDrop = false;
+            this.webBrowser.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webBrowser.Location = new System.Drawing.Point(0, 0);
+            this.webBrowser.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser.Name = "webBrowser";
+            this.webBrowser.ScrollBarsEnabled = false;
+            this.webBrowser.Size = new System.Drawing.Size(237, 20);
+            this.webBrowser.AllowNavigation = false;
+            this.webBrowser.TabIndex = 0;
             // 
-            // UnitNumberEditorControl
+            // HtmlBrowserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Controls.Add(this.unitNumber);
-            this.Name = "UnitNumberEditorControl";
-            this.Size = new System.Drawing.Size(35, 20);
+            this.Controls.Add(this.webBrowser);
+            this.Name = "HtmlBrowserControl";
+            this.Size = new System.Drawing.Size(237, 20);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.MaskedTextBox unitNumber;
+        private System.Windows.Forms.WebBrowser webBrowser;
     }
 }

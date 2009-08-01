@@ -26,7 +26,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
         {
             foreach (var row in dataGridView1.Rows.Cast<DataGridViewRow>())
             {
-                row.Height = (int)((BookingSlotDetailsUI)row.DataBoundItem).Period.GetTimeSpan().TotalHours * 22;
+                row.Height = (int)((BookingEntryUI)row.DataBoundItem).Period.GetTimeSpan().TotalHours * 22;
                 row.DefaultCellStyle.BackColor = Color.Green;
             }
         }
