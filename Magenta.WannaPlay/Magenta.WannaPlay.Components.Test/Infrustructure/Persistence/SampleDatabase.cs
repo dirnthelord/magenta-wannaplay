@@ -23,18 +23,13 @@ namespace Magenta.WannaPlay.Components.Infrustructure.Persistence
         {
             Today = DateTime.UtcNow.Date;
 
-            //using (var transaction = session.BeginTransaction(IsolationLevel.ReadCommitted))
-            //{
-                CreateFacilities(session);
+            CreateFacilities(session);
 
-                CreateResidents();
+            CreateResidents();
 
-                CreateDutyGuards();
+            CreateDutyGuards();
 
-                CreateBookings(session);
-
-                //transaction.Commit();
-            //}
+            CreateBookings(session);
         }
 
         private void CreateBookings(ISession session)

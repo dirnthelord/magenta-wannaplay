@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
 using Magenta.WannaPlay.Domain;
@@ -21,12 +22,20 @@ namespace Magenta.WannaPlay.Infrastructure.Persistence
 
         public void Save<T>(T entity)
         {
-            _session.SaveOrUpdate(entity);
+            using (var transaction = _session.BeginTransaction(IsolationLevel.ReadCommitted))
+            {
+                _session.SaveOrUpdate(entity); 
+                transaction.Commit();
+            }
         }
 
         public void Delete<T>(T entity)
         {
-            _session.Delete(entity);
+            using (var transaction = _session.BeginTransaction(IsolationLevel.ReadCommitted))
+            {
+                _session.Delete(entity);
+                transaction.Commit();
+            }
         }
 
         public IEnumerable<T> Search<T>(params Expression<Func<T, bool>>[] filters)
