@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using HibernatingRhinos.NHibernate.Profiler.Appender;
+using log4net;
 using Magenta.WannaPlay.Ioc;
 using System.Threading;
 using System.Globalization;
@@ -14,8 +15,6 @@ namespace Magenta.WannaPlay.UI.WinForms
         [STAThread]
         static void Main()
         {
-            //NHibernateProfiler.Initialize();
-
             // TODO: Remove
             Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("en-SG");
             Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("en-SG");

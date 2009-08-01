@@ -38,5 +38,11 @@ namespace System.Collections.Generic
         {
             yield return value;
         }
+
+        public static void ForEach<T>(this IEnumerable<T> collection, Action<T> action)
+        {
+            foreach (var item in collection)
+                action(item);
+        }
     }
 }

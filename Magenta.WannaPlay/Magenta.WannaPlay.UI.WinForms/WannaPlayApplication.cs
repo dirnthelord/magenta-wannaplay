@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using HibernatingRhinos.NHibernate.Profiler.Appender;
+using log4net;
 using Magenta.Shared.Ui.WinForms;
 using Magenta.WannaPlay.Ioc;
+using Magenta.WannaPlay.UI.WinForms.Diagnostics;
 using Magenta.WannaPlay.UI.WinForms.Ioc;
 using Magenta.WannaPlay.UI.WinForms.Properties;
 using Magenta.WannaPlay.UI.WinForms.Controls;
@@ -23,6 +26,11 @@ namespace Magenta.WannaPlay.UI.WinForms
     /// </summary>
     public class WannaPlayApplication
     {
+        /// <summary>
+        /// LogManager should be called from main assembly
+        /// </summary>
+        private static readonly ILog Log = LogManager.GetLogger(typeof(WannaPlayApplication));
+
         protected IKernel Kernel { get; private set; }
 
         public WannaPlayApplication(ComponentsConfiguration componentConfiguration)
@@ -41,8 +49,12 @@ namespace Magenta.WannaPlay.UI.WinForms
 
         public void Run()
         {
-            //try
-            //{
+            Log.Info("Application has started");
+
+            try
+            {
+                NHibernateProfiler.Initialize();
+
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
 
@@ -53,13 +65,16 @@ namespace Magenta.WannaPlay.UI.WinForms
 
                 Kernel.Get<ICommonUIService>().MainForm = mainForm;
 
+                Kernel.Get<ExceptionManager>(); // initialize exception manager                
+
                 Application.Run(mainForm);
-            //}
-            //catch (Exception e)
-            //{
-            //    // TODO: Process unhandled exceptions more user-friendly
-            //    MessageBox.Show(e.StackTrace, e.Message);
-            //}
+            }
+            catch (Exception e)
+            {
+                Kernel.Get<ExceptionManager>().HandleException(e);
+            }
+
+            Log.Info("Application has stopped");
         }
     }
 }
