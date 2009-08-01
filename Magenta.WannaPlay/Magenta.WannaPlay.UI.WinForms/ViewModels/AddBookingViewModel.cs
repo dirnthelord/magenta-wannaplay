@@ -34,7 +34,7 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
             BookingEntryViewModel = Kernel.Get<BookingEntryEditorViewModel>();
         }
 
-        public void AddBooking()
+        public void SaveBooking()
         {
             var bookingEntry = new BookingEntry
             {
