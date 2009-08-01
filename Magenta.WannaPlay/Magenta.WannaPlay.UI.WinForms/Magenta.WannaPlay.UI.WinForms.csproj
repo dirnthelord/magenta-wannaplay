@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{EB6A9B6B-FC19-407C-80C6-2DC36A07BE58}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -34,6 +34,10 @@
     <Reference Include="HibernatingRhinos.NHibernate.Profiler.Appender, Version=0.9.0.0, Culture=neutral, PublicKeyToken=0774796e73ebf640, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\_externals\Bin\nhibernate\_latest\HibernatingRhinos.NHibernate.Profiler.Appender.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\_externals\Bin\nhibernate\_latest\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Ninject.Core, Version=1.0.0.82, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -107,6 +111,16 @@
     <Compile Include="Controls\ResidentDetailsControl.Designer.cs">
       <DependentUpon>ResidentDetailsControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Diagnostics\ApplicationInfo.cs" />
+    <Compile Include="Diagnostics\EmailExceptionNotifier.cs" />
+    <Compile Include="Diagnostics\ExceptionManager.cs" />
+    <Compile Include="Diagnostics\ExceptionMessageBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Diagnostics\ExceptionMessageBox.Designer.cs">
+      <DependentUpon>ExceptionMessageBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Diagnostics\IExceptionNotifier.cs" />
     <Compile Include="Domain\BookingScheduleGenerator.cs" />
     <Compile Include="Domain\UI\BookingPeriodUI.cs" />
     <Compile Include="Domain\BookingSlot.cs" />
@@ -151,6 +165,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Badminton.png" />
+    <None Include="Log4Net.Config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Error.ico" />
+    <None Include="Resources\Copy.ico" />
+    <None Include="Resources\EMail.ico" />
     <Content Include="Resources\Squash.png" />
     <Content Include="Resources\Tennis2.png" />
     <Content Include="Resources\WannaPlay.png" />
@@ -205,6 +225,9 @@
     <EmbeddedResource Include="Controls\WannaPlayMainControl.resx">
       <DependentUpon>WannaPlayMainControl.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Diagnostics\ExceptionMessageBox.resx">
+      <DependentUpon>ExceptionMessageBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

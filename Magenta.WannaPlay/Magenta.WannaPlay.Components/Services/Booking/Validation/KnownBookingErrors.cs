@@ -7,8 +7,8 @@ namespace Magenta.WannaPlay.Services.Booking.Validation
 {
     public static class KnownBookingErrors
     {
-        public static readonly string FromLaterThanTo = "error.from.laterthanto";
+        public static readonly string FromLaterThanTo = "From should be less than To";
 
-        public static readonly string PeriodIsNotAvailable = "error.period.isnotavaileble";
+        public static readonly string PeriodIsNotAvailable = "Booking period is not available";
     }
 }
