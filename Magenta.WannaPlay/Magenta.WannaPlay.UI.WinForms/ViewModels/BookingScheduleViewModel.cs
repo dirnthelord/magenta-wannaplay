@@ -62,7 +62,6 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
             OnPropertyChanged("SelectedBookingSlots");
             OnPropertyChanged("SelectedBookingEntries");
             OnPropertyChanged("CanAddBooking");
-            OnPropertyChanged("CanCancelBooking");
         }
 
         IEnumerable<BookingEntry> SelectedBookingEntries
@@ -85,12 +84,6 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
                 return allEmpty && allForTheSameFacility;
             }
         }
-
-        public bool CanCancelBooking
-        {
-            get { return SelectedBookingEntries.Any(); }
-        }
-
 
         #region Booking period
         TimeSpan StartHour { get { return TimeSpan.FromHours(7); } }
@@ -166,9 +159,9 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
         public void AddSelectedBooking()
         {
             var firstSlot = SelectedBookingSlots.OrderBy(s => s.Period.From).First();
+            var slots = SelectedBookingSlots.Where(s => s.Facility == firstSlot.Facility);
 
-            // TODO: Remove hardcoded max number of hours to book
-            var length = Math.Min(2, SelectedBookingSlots.Count());
+            var length = slots.Count();
 
             // TODO: Remove UI dependency from this ViewModel
             var addBookingViewModel = Kernel.Get<AddBookingViewModel>();

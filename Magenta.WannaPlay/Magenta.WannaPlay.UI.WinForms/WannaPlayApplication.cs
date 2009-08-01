@@ -44,7 +44,7 @@ namespace Magenta.WannaPlay.UI.WinForms
 
         public void Run()
         {
-            NHibernateProfiler.Initialize();
+            //NHibernateProfiler.Initialize();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

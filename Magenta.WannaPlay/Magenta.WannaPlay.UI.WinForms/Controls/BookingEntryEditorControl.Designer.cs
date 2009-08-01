@@ -45,9 +45,10 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.resident);
-            this.groupBox1.Location = new System.Drawing.Point(1, 26);
+            this.groupBox1.Location = new System.Drawing.Point(0, 31);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(213, 90);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(8);
+            this.groupBox1.Size = new System.Drawing.Size(271, 101);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Resident";
@@ -58,16 +59,17 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.comment.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dataContext, "Comment", true));
-            this.comment.Location = new System.Drawing.Point(0, 132);
+            this.comment.Location = new System.Drawing.Point(0, 159);
             this.comment.Name = "comment";
-            this.comment.Size = new System.Drawing.Size(215, 81);
+            this.comment.Size = new System.Drawing.Size(272, 54);
             this.comment.TabIndex = 4;
             this.comment.Text = "";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(-2, 116);
+            this.label1.Location = new System.Drawing.Point(0, 143);
+            this.label1.Margin = new System.Windows.Forms.Padding(0, 8, 3, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(92, 13);
             this.label1.TabIndex = 15;
@@ -77,11 +79,13 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             // 
             this.bookingDetails.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.bookingDetails.BackColor = System.Drawing.SystemColors.Info;
             this.bookingDetails.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dataContext, "BookingDetails", true));
             this.bookingDetails.Location = new System.Drawing.Point(0, 0);
+            this.bookingDetails.Margin = new System.Windows.Forms.Padding(0, 0, 0, 8);
             this.bookingDetails.Name = "bookingDetails";
             this.bookingDetails.ReadOnly = true;
-            this.bookingDetails.Size = new System.Drawing.Size(215, 20);
+            this.bookingDetails.Size = new System.Drawing.Size(272, 20);
             this.bookingDetails.TabIndex = 17;
             // 
             // dataContext
@@ -90,11 +94,13 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             // 
             // resident
             // 
+            this.resident.AutoSize = true;
+            this.resident.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.resident.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.dataContext, "Resident", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.resident.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.resident.Location = new System.Drawing.Point(3, 16);
+            this.resident.Location = new System.Drawing.Point(8, 21);
             this.resident.Name = "resident";
-            this.resident.Size = new System.Drawing.Size(207, 71);
+            this.resident.Size = new System.Drawing.Size(255, 72);
             this.resident.TabIndex = 0;
             this.resident.AutoSuggestRequired += new System.EventHandler(this.resident_AutoSuggestRequired);
             // 
@@ -107,8 +113,9 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.Controls.Add(this.comment);
             this.Controls.Add(this.groupBox1);
             this.Name = "BookingEntryEditorControl";
-            this.Size = new System.Drawing.Size(213, 213);
+            this.Size = new System.Drawing.Size(271, 213);
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataContext)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -37,7 +37,7 @@
             this.content.Dock = System.Windows.Forms.DockStyle.Fill;
             this.content.Location = new System.Drawing.Point(0, 0);
             this.content.Name = "content";
-            this.content.Size = new System.Drawing.Size(568, 358);
+            this.content.Size = new System.Drawing.Size(568, 334);
             this.content.TabIndex = 0;
             // 
             // buttonsPanel
@@ -48,11 +48,12 @@
             this.buttonsPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.buttonsPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.buttonsPanel.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.AddColumns;
-            this.buttonsPanel.Location = new System.Drawing.Point(0, 358);
+            this.buttonsPanel.Location = new System.Drawing.Point(0, 334);
             this.buttonsPanel.Name = "buttonsPanel";
+            this.buttonsPanel.Padding = new System.Windows.Forms.Padding(16, 8, 16, 16);
             this.buttonsPanel.RowCount = 1;
             this.buttonsPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.buttonsPanel.Size = new System.Drawing.Size(568, 0);
+            this.buttonsPanel.Size = new System.Drawing.Size(568, 24);
             this.buttonsPanel.TabIndex = 1;
             // 
             // HostingDialog

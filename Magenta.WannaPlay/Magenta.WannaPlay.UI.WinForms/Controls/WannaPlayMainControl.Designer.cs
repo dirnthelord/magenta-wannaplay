@@ -32,7 +32,9 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tennisTabPage = new System.Windows.Forms.TabPage();
+            this.tennisBookingSchedule = new Magenta.WannaPlay.UI.WinForms.Controls.BookingScheduleControl();
             this.squashTabPage = new System.Windows.Forms.TabPage();
+            this.squashBookingSchedule = new Magenta.WannaPlay.UI.WinForms.Controls.BookingScheduleControl();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -42,12 +44,11 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.changeCurrentDutyGuard = new System.Windows.Forms.Button();
             this.currentDutyGuard = new System.Windows.Forms.TextBox();
             this.currentDutyGuardBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataContext = new System.Windows.Forms.BindingSource(this.components);
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tennisBookingSchedule = new Magenta.WannaPlay.UI.WinForms.Controls.BookingScheduleControl();
-            this.squashBookingSchedule = new Magenta.WannaPlay.UI.WinForms.Controls.BookingScheduleControl();
-            this.dataContext = new System.Windows.Forms.BindingSource(this.components);
             this.facilityTypeBookingControl1 = new Magenta.WannaPlay.UI.WinForms.Controls.BookingScheduleControl();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.tabControl1.SuspendLayout();
             this.tennisTabPage.SuspendLayout();
             this.squashTabPage.SuspendLayout();
@@ -56,8 +57,9 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.currentDutyGuardBindingSource)).BeginInit();
-            this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataContext)).BeginInit();
+            this.tabPage1.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -65,11 +67,10 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.tabControl1.Controls.Add(this.tennisTabPage);
             this.tabControl1.Controls.Add(this.squashTabPage);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 25);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
+            this.tabControl1.Location = new System.Drawing.Point(0, 8);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(384, 436);
+            this.tabControl1.Size = new System.Drawing.Size(384, 428);
             this.tabControl1.TabIndex = 0;
             // 
             // tennisTabPage
@@ -78,10 +79,18 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.tennisTabPage.Location = new System.Drawing.Point(4, 22);
             this.tennisTabPage.Name = "tennisTabPage";
             this.tennisTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.tennisTabPage.Size = new System.Drawing.Size(376, 410);
+            this.tennisTabPage.Size = new System.Drawing.Size(376, 402);
             this.tennisTabPage.TabIndex = 1;
             this.tennisTabPage.Text = "Tennis";
             this.tennisTabPage.UseVisualStyleBackColor = true;
+            // 
+            // tennisBookingSchedule
+            // 
+            this.tennisBookingSchedule.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tennisBookingSchedule.Location = new System.Drawing.Point(3, 3);
+            this.tennisBookingSchedule.Name = "tennisBookingSchedule";
+            this.tennisBookingSchedule.Size = new System.Drawing.Size(370, 396);
+            this.tennisBookingSchedule.TabIndex = 0;
             // 
             // squashTabPage
             // 
@@ -89,10 +98,18 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.squashTabPage.Location = new System.Drawing.Point(4, 22);
             this.squashTabPage.Name = "squashTabPage";
             this.squashTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.squashTabPage.Size = new System.Drawing.Size(376, 355);
+            this.squashTabPage.Size = new System.Drawing.Size(376, 410);
             this.squashTabPage.TabIndex = 2;
             this.squashTabPage.Text = "Squash";
             this.squashTabPage.UseVisualStyleBackColor = true;
+            // 
+            // squashBookingSchedule
+            // 
+            this.squashBookingSchedule.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.squashBookingSchedule.Location = new System.Drawing.Point(3, 3);
+            this.squashBookingSchedule.Name = "squashBookingSchedule";
+            this.squashBookingSchedule.Size = new System.Drawing.Size(370, 404);
+            this.squashBookingSchedule.TabIndex = 0;
             // 
             // panel1
             // 
@@ -205,6 +222,10 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.currentDutyGuardBindingSource.DataMember = "CurrentDutyGuard";
             this.currentDutyGuardBindingSource.DataSource = this.dataContext;
             // 
+            // dataContext
+            // 
+            this.dataContext.DataSource = typeof(Magenta.WannaPlay.UI.WinForms.ViewModels.WannaPlayMainViewModel);
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -227,26 +248,6 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // tennisBookingSchedule
-            // 
-            this.tennisBookingSchedule.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tennisBookingSchedule.Location = new System.Drawing.Point(3, 3);
-            this.tennisBookingSchedule.Name = "tennisBookingSchedule";
-            this.tennisBookingSchedule.Size = new System.Drawing.Size(370, 404);
-            this.tennisBookingSchedule.TabIndex = 0;
-            // 
-            // squashBookingSchedule
-            // 
-            this.squashBookingSchedule.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.squashBookingSchedule.Location = new System.Drawing.Point(3, 3);
-            this.squashBookingSchedule.Name = "squashBookingSchedule";
-            this.squashBookingSchedule.Size = new System.Drawing.Size(370, 349);
-            this.squashBookingSchedule.TabIndex = 0;
-            // 
-            // dataContext
-            // 
-            this.dataContext.DataSource = typeof(Magenta.WannaPlay.UI.WinForms.ViewModels.WannaPlayMainViewModel);
-            // 
             // facilityTypeBookingControl1
             // 
             this.facilityTypeBookingControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -256,11 +257,21 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.facilityTypeBookingControl1.Size = new System.Drawing.Size(1768, 820);
             this.facilityTypeBookingControl1.TabIndex = 0;
             // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.tabControl1);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(0, 25);
+            this.panel4.Name = "panel4";
+            this.panel4.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
+            this.panel4.Size = new System.Drawing.Size(384, 436);
+            this.panel4.TabIndex = 1;
+            // 
             // WannaPlayMainControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel1);
             this.Name = "WannaPlayMainControl";
             this.Size = new System.Drawing.Size(384, 461);
@@ -276,8 +287,9 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.currentDutyGuardBindingSource)).EndInit();
-            this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataContext)).EndInit();
+            this.tabPage1.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -303,6 +315,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Panel panel4;
 
 
     }
