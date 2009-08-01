@@ -40,8 +40,8 @@ namespace Magenta.WannaPlay.UI.WinForms
 
         public void Run()
         {
-            try
-            {
+            //try
+            //{
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
 
@@ -51,13 +51,12 @@ namespace Magenta.WannaPlay.UI.WinForms
                 Kernel.Get<ICommonUIService>().MainForm = mainForm;
 
                 Application.Run(mainForm);
-            }
-            catch (Exception)
-            {
-                throw;
-                // TODO: Process unhandled exceptions more user-friendly
-                //MessageBox.Show(e.StackTrace, e.Message);
-            }
+            //}
+            //catch (Exception e)
+            //{
+            //    // TODO: Process unhandled exceptions more user-friendly
+            //    MessageBox.Show(e.StackTrace, e.Message);
+            //}
         }
     }
 }

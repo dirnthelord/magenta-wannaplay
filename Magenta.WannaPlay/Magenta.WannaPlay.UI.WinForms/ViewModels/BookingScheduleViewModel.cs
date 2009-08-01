@@ -175,17 +175,18 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 
             bookingEntryView.ViewModel = addBookingViewModel.BookingEntryViewModel;
 
-            bookingEntryView.ViewModel.BookingPeriod = new DateTimePeriodUI
-            {
-                Model = DateTimePeriod.FromHours(firstSlot.Period.From, length),
-            };
+            var period = DateTimePeriod.FromHours(firstSlot.Period.From, length);
+            bookingEntryView.ViewModel.BookingPeriod.Model = period;
+            bookingEntryView.ViewModel.SelectedFacility = firstSlot.Facility;
 
             var form = ControlHoster.HostInDialog(CommonUIService.MainForm, "Add booking", bookingEntryView,
-                new DialogButtonDescription { Text = "Add", OnClick = () => addBookingViewModel.AddBooking() },
+                new DialogButtonDescription { Text = "Add", OnClick = () => addBookingViewModel.SaveBooking() },
                 new DialogButtonDescription { Text = "Cancel", IsCancelButton = true }
                 );
 
             form.ShowDialog();
+
+            UpdateBookingData();
         }
     }
 }

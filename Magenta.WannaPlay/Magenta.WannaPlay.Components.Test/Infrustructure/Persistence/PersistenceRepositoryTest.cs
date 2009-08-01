@@ -13,6 +13,7 @@ using Magenta.WannaPlay.Infrastructure.Persistence;
 using NHibernate;
 using NHibernate.Tool.hbm2ddl;
 using NUnit.Framework;
+using System.Data.SqlClient;
 
 namespace Magenta.WannaPlay.Components.Infrustructure.Persistence
 {
@@ -22,7 +23,14 @@ namespace Magenta.WannaPlay.Components.Infrustructure.Persistence
         public void GenerateSampleDatabase()
         {
             const string databaseFilePath = @"..\..\Generated\Databases\WannaPlay.sdf";
-            var connectionString = string.Format(@"Data Source={0};Persist Security Info=False;", databaseFilePath);
+
+            var connectionStringBuilder = new SqlConnectionStringBuilder
+            {
+                DataSource = databaseFilePath,
+                PersistSecurityInfo = false
+            };
+
+            var connectionString = connectionStringBuilder.ToString();
 
             CreateDatabaseFile(databaseFilePath, connectionString);
 
@@ -34,7 +42,32 @@ namespace Magenta.WannaPlay.Components.Infrustructure.Persistence
                 {
                     new SampleDatabase(session);
                     transaction.Commit();
-                }     
+                }
+            }
+        }
+
+        public void GenerateSqliteSampleDatabase()
+        {
+            string databaseFilePath = @"..\..\Generated\Databases\WannaPlay.sqlite3";
+            
+            var connectionStringBuilder = new SqlConnectionStringBuilder
+            {
+                DataSource = databaseFilePath,
+            };
+
+            var connectionString = connectionStringBuilder.ToString();
+
+            CreateDatabaseFile(databaseFilePath, connectionString);
+
+            using (var session = new SessionProvider(connectionString).Session)
+            {
+                CreateDatabaseSchema(session);
+
+                using (var transaction = session.BeginTransaction(IsolationLevel.ReadCommitted))
+                {
+                    new SampleDatabase(session);
+                    transaction.Commit();
+                }
             }
         }
 
@@ -64,7 +97,7 @@ namespace Magenta.WannaPlay.Components.Infrustructure.Persistence
             var schemaExport = new SchemaExport(new WannaPlayPersistenceModel().Configure(configurer));
 
             schemaExport.Execute(false, true, false, true, connection, null);
-        }  
+        }
 
         #endregion
     }
