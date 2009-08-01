@@ -26,11 +26,6 @@ namespace Magenta.WannaPlay.UI.WinForms
     /// </summary>
     public class WannaPlayApplication
     {
-        /// <summary>
-        /// LogManager should be called from main assembly
-        /// </summary>
-        private static readonly ILog Log = LogManager.GetLogger(typeof(WannaPlayApplication));
-
         protected IKernel Kernel { get; private set; }
 
         public WannaPlayApplication(ComponentsConfiguration componentConfiguration)
@@ -49,32 +44,21 @@ namespace Magenta.WannaPlay.UI.WinForms
 
         public void Run()
         {
-            Log.Info("Application has started");
+            NHibernateProfiler.Initialize();
 
-            try
-            {
-                NHibernateProfiler.Initialize();
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
 
-                Application.EnableVisualStyles();
-                Application.SetCompatibleTextRenderingDefault(false);
+            var wannaPlayMain = GetMainControl();
+            var mainForm = ControlHoster.HostInForm(Resources.WannaPlay, "Wanna Play", wannaPlayMain);
+            mainForm.StartPosition = FormStartPosition.CenterScreen;
+            //mainForm.Font = new Font(mainForm.Font.FontFamily, 16);
 
-                var wannaPlayMain = GetMainControl();
-                var mainForm = ControlHoster.HostInForm(Resources.WannaPlay, "Wanna Play", wannaPlayMain);
-                mainForm.StartPosition = FormStartPosition.CenterScreen;
-                //mainForm.Font = new Font(mainForm.Font.FontFamily, 16);
+            Kernel.Get<ICommonUIService>().MainForm = mainForm;
 
-                Kernel.Get<ICommonUIService>().MainForm = mainForm;
+            Kernel.Get<ExceptionManager>(); // initialize exception manager                
 
-                Kernel.Get<ExceptionManager>(); // initialize exception manager                
-
-                Application.Run(mainForm);
-            }
-            catch (Exception e)
-            {
-                Kernel.Get<ExceptionManager>().HandleException(e);
-            }
-
-            Log.Info("Application has stopped");
+            Application.Run(mainForm);
         }
     }
 }
