@@ -104,12 +104,24 @@
     <Compile Include="Controls\DutyGuardsManagerControl.Designer.cs">
       <DependentUpon>DutyGuardsManagerControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\FindBookingsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\FindBookingsControl.Designer.cs">
+      <DependentUpon>FindBookingsControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\GridCells\BookingIndicatorCell.cs" />
     <Compile Include="Controls\ResidentDetailsControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Controls\ResidentDetailsControl.Designer.cs">
       <DependentUpon>ResidentDetailsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\UnitNumberEditorControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\UnitNumberEditorControl.Designer.cs">
+      <DependentUpon>UnitNumberEditorControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Diagnostics\ApplicationInfo.cs" />
     <Compile Include="Diagnostics\EmailExceptionNotifier.cs" />
@@ -125,6 +137,7 @@
     <Compile Include="Domain\UI\BookingPeriodUI.cs" />
     <Compile Include="Domain\BookingSlot.cs" />
     <Compile Include="Domain\UI\DateTimePeriodUI.cs" />
+    <Compile Include="Domain\UI\FindBookingRequestUI.cs" />
     <Compile Include="Domain\UI\TimeSpanUI.cs" />
     <Compile Include="Domain\UI\ResidentDetailsUI.cs" />
     <Compile Include="Ioc\UIConfiguration.cs" />
@@ -159,7 +172,9 @@
     <Compile Include="Domain\UI\EmptyBookingSlotDetailsUI.cs" />
     <Compile Include="Domain\UI\BookingSlotDetailsUI.cs" />
     <Compile Include="ViewModels\BookingScheduleDetailsViewModel.cs" />
+    <Compile Include="ViewModels\CancelBookingViewModel.cs" />
     <Compile Include="ViewModels\CurrentDutyGuardViewModel.cs" />
+    <Compile Include="ViewModels\FindBookingViewModel.cs" />
     <Compile Include="ViewModels\WannaPlayMainViewModel.cs" />
     <Compile Include="WannaPlayApplication.cs" />
   </ItemGroup>
@@ -168,6 +183,9 @@
     <None Include="Log4Net.Config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Properties\DataSources\Magenta.WannaPlay.UI.WinForms.Domain.UI.FindBookingRequestUI.datasource" />
+    <None Include="Properties\DataSources\Magenta.WannaPlay.UI.WinForms.Domain.UI.ResidentDetailsUI.datasource" />
+    <None Include="Properties\DataSources\Magenta.WannaPlay.UI.WinForms.ViewModels.BookingEntryEditorViewModel.datasource" />
     <None Include="Resources\Error.ico" />
     <None Include="Resources\Copy.ico" />
     <None Include="Resources\EMail.ico" />
@@ -218,9 +236,15 @@
       <DependentUpon>DutyGuardsManagerControl.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FindBookingsControl.resx">
+      <DependentUpon>FindBookingsControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\ResidentDetailsControl.resx">
       <DependentUpon>ResidentDetailsControl.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\UnitNumberEditorControl.resx">
+      <DependentUpon>UnitNumberEditorControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\WannaPlayMainControl.resx">
       <DependentUpon>WannaPlayMainControl.cs</DependentUpon>

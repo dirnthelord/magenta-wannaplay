@@ -5,6 +5,7 @@ using System.Text;
 using System.Drawing;
 using System.Windows.Forms;
 using Magenta.Shared.UI.WinForms;
+using Magenta.Shared.Validation;
 
 namespace Magenta.Shared.Ui.WinForms
 {
@@ -12,10 +13,16 @@ namespace Magenta.Shared.Ui.WinForms
     {
         public static HostingForm HostInForm(Bitmap icon, string title, Control content)
         {
+            content.Padding = new Padding(16);
+
             var form = new HostingForm
             {
                 Text = title,
-                ClientSize = content.Size,
+                ClientSize = new Size 
+                {
+                    Width = content.Size.Width + content.Padding.Horizontal, 
+                    Height = content.Size.Height + content.Padding.Vertical
+                },
                 StartPosition = FormStartPosition.CenterParent,
                 Icon = icon == null ? null : Icon.FromHandle(icon.GetHicon()),
             };
@@ -37,7 +44,12 @@ namespace Magenta.Shared.Ui.WinForms
 
             dialog.SetButtons(buttonDescriptions);
 
-            dialog.ClientSize = new Size { Width = content.Width, Height = content.Height + dialog.ButtonsPanel.Height };
+            content.Padding = new Padding(18, 16, 16, 8);
+            dialog.ClientSize = new Size
+            {
+                Width = content.Width + content.Padding.Horizontal,
+                Height = content.Height + dialog.ButtonsPanel.Height + content.Padding.Vertical
+            };
             dialog.Content = content;
 
             if (parent != null)

@@ -10,6 +10,7 @@ using Magenta.WannaPlay.UI.WinForms.Domain.UI;
 
 namespace Magenta.WannaPlay.UI.WinForms.Controls
 {
+    [DefaultBindingProperty("Value")]
     public partial class ResidentDetailsControl : UserControl
     {
         public ResidentDetailsControl()
@@ -24,16 +25,6 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             set { dataContext.DataSource = value; }
         }
 
-        private void facilityCardNumber_Leave(object sender, EventArgs e)
-        {
-            RequestForAutoSuggest();
-        }
-
-        private void RequestForAutoSuggest()
-        {
-            OnAutoSuggestRequired();
-        }
-
         public event EventHandler AutoSuggestRequired;
 
         void OnAutoSuggestRequired()
@@ -42,6 +33,11 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
 
             if (handler != null)
                 handler(this, EventArgs.Empty);
+        }
+
+        private void facilityCardNumber_Validated(object sender, EventArgs e)
+        {
+            OnAutoSuggestRequired();
         }
     }
 }

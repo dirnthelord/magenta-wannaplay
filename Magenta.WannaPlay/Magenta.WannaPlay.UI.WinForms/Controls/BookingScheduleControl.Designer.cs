@@ -36,13 +36,13 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cancelBookingButton = new System.Windows.Forms.Button();
-            this.dataContext = new System.Windows.Forms.BindingSource(this.components);
             this.addBookingButton = new System.Windows.Forms.Button();
             this.bookingScheduleGrid = new Magenta.WannaPlay.UI.WinForms.Controls.BookingScheduleGrid();
             this.periodStringColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataContext = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataContext)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookingScheduleGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataContext)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -52,33 +52,32 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.panel1.Controls.Add(this.cancelBookingButton);
             this.panel1.Controls.Add(this.addBookingButton);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 181);
+            this.panel1.Location = new System.Drawing.Point(0, 315);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(212, 29);
+            this.panel1.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
+            this.panel1.Size = new System.Drawing.Size(273, 37);
             this.panel1.TabIndex = 1;
             // 
             // cancelBookingButton
             // 
             this.cancelBookingButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cancelBookingButton.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.dataContext, "CanCancelBooking", true));
-            this.cancelBookingButton.Location = new System.Drawing.Point(112, 3);
+            this.cancelBookingButton.AutoSize = true;
+            this.cancelBookingButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.cancelBookingButton.Location = new System.Drawing.Point(170, 11);
             this.cancelBookingButton.Name = "cancelBookingButton";
-            this.cancelBookingButton.Size = new System.Drawing.Size(97, 23);
+            this.cancelBookingButton.Size = new System.Drawing.Size(100, 23);
             this.cancelBookingButton.TabIndex = 1;
-            this.cancelBookingButton.Text = "Cancel booking";
+            this.cancelBookingButton.Text = "Cancel booking...";
             this.cancelBookingButton.UseVisualStyleBackColor = true;
-            // 
-            // dataContext
-            // 
-            this.dataContext.DataSource = typeof(Magenta.WannaPlay.UI.WinForms.ViewModels.BookingScheduleViewModel);
             // 
             // addBookingButton
             // 
-            this.addBookingButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.addBookingButton.AutoSize = true;
+            this.addBookingButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.addBookingButton.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.dataContext, "CanAddBooking", true));
-            this.addBookingButton.Location = new System.Drawing.Point(9, 3);
+            this.addBookingButton.Location = new System.Drawing.Point(3, 11);
             this.addBookingButton.Name = "addBookingButton";
-            this.addBookingButton.Size = new System.Drawing.Size(97, 23);
+            this.addBookingButton.Size = new System.Drawing.Size(77, 23);
             this.addBookingButton.TabIndex = 0;
             this.addBookingButton.Text = "Add booking";
             this.addBookingButton.UseVisualStyleBackColor = true;
@@ -102,7 +101,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.bookingScheduleGrid.ReadOnly = true;
             this.bookingScheduleGrid.RowHeadersVisible = false;
             this.bookingScheduleGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.bookingScheduleGrid.Size = new System.Drawing.Size(212, 181);
+            this.bookingScheduleGrid.Size = new System.Drawing.Size(273, 315);
             this.bookingScheduleGrid.TabIndex = 0;
             this.bookingScheduleGrid.VirtualMode = true;
             this.bookingScheduleGrid.CellValueNeeded += new System.Windows.Forms.DataGridViewCellValueEventHandler(this.bookingScheduleGrid_CellValueNeeded);
@@ -116,6 +115,10 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.periodStringColumn.ReadOnly = true;
             this.periodStringColumn.Width = 62;
             // 
+            // dataContext
+            // 
+            this.dataContext.DataSource = typeof(Magenta.WannaPlay.UI.WinForms.ViewModels.BookingScheduleViewModel);
+            // 
             // BookingScheduleControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -123,10 +126,11 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.Controls.Add(this.bookingScheduleGrid);
             this.Controls.Add(this.panel1);
             this.Name = "BookingScheduleControl";
-            this.Size = new System.Drawing.Size(212, 210);
+            this.Size = new System.Drawing.Size(273, 352);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataContext)).EndInit();
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bookingScheduleGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataContext)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
