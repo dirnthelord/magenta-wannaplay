@@ -36,9 +36,6 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             bookingScheduleGrid.CancelBooking += delegate { ViewModel.CancelSelectedBooking(); };
 
             bookingScheduleGrid.SelectionChanged += delegate { OnSelectedSlotsChanged(); };
-
-            addBookingButton.Click += delegate { ViewModel.AddSelectedBooking(); };
-            cancelBookingButton.Click += delegate { ViewModel.CancelSelectedBooking(); };
         }
 
         private void FillGridWithData()
@@ -67,6 +64,16 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
                 bool isBooked = ViewModel.GetBookingEntries(bookingSlot.ToEnumerable()).Any();
                 e.Value = isBooked;
             }
+        }
+
+        private void cancelBookingButton_Click(object sender, EventArgs e)
+        {
+            ViewModel.CancelSelectedBooking();
+        }
+
+        private void addBookingButton_Click(object sender, EventArgs e)
+        {
+            ViewModel.AddSelectedBooking();
         }
     }
 }

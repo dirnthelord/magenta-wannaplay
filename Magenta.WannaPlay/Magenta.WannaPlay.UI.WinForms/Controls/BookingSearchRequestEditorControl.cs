@@ -11,17 +11,17 @@ using Magenta.WannaPlay.UI.WinForms.Domain.UI;
 namespace Magenta.WannaPlay.UI.WinForms.Controls
 {
     [DefaultBindingProperty("Value")]
-    public partial class FindBookingsRequestEditorControl : UserControl
+    public partial class BookingSearchRequestEditorControl : UserControl
     {
-        public FindBookingsRequestEditorControl()
+        public BookingSearchRequestEditorControl()
         {
             InitializeComponent();
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public FindBookingRequestUI Value
+        public BookingSearchRequestUI Value
         {
-            get { return (FindBookingRequestUI)dataContext.DataSource; }
+            get { return (BookingSearchRequestUI)dataContext.DataSource; }
             set { dataContext.DataSource = value; }
         }
     }

@@ -5,10 +5,14 @@ using System.Text;
 
 namespace Magenta.WannaPlay.UI.WinForms.Domain.UI
 {
-    public class FindBookingRequestUI
+    public class ResidenceUnitSearchRequestUI
     {
-        public string FacilityCardNumber { get; set; }
         public string BlockNumber { get; set; }
         public string UnitNumber { get; set; }
+
+        public bool IsSpecified
+        {
+            get { return !string.IsNullOrEmpty(BlockNumber) || !string.IsNullOrEmpty(UnitNumber); }
+        }
     }
 }

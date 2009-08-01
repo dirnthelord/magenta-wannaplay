@@ -21,7 +21,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Domain.UI
         public virtual string PeriodString { get { return string.Format("{0:h tt} - {1:h tt}", Period.From, Period.To); } }
 
         [DisplayName("Booked By Guard")]
-        public virtual string BookedByGuard { get { return Booking.BookedByGuard.Name; } }
+        public virtual string BookedByGuard { get { return Booking.BookedByGuard == null ? "<unknown>" : Booking.BookedByGuard.Name; } }
 
         [DisplayName("Block & Number")]
         public virtual string ResidentAddress { get { return string.Format("{0}, #{1}", Booking.Resident.Unit.Block, Booking.Resident.Unit.Number); } }
