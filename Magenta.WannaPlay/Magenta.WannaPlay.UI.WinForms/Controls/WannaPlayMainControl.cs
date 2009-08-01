@@ -52,21 +52,14 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
 
         DateTime Today { get { return DateTime.Today; } }
 
-        private void setDayToToday_Click(object sender, EventArgs e)
-        {
-            ViewModel.SetSelectedDayToToday();
-        }
-
         private void dayPicker_ValueChanged(object sender, EventArgs e)
         {
             ViewModel.SelectedDay = dayPicker.Value;
-
-            setDayToToday.Enabled = dayPicker.Value != Today;
         }
 
         private void changeCurrentDutyGuard_Click(object sender, EventArgs e)
         {
-            ViewModel.AskToSelectCurrentDutyGuard();
+            ViewModel.ChangeDutyGuard();
         }
     }
 }

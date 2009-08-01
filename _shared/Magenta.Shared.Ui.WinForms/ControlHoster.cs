@@ -35,6 +35,8 @@ namespace Magenta.Shared.Ui.WinForms
 
             dialog.Owner = parent;
 
+            dialog.SetButtons(buttonDescriptions);
+
             dialog.ClientSize = new Size { Width = content.Width, Height = content.Height + dialog.ButtonsPanel.Height };
             dialog.Content = content;
 
@@ -46,8 +48,6 @@ namespace Magenta.Shared.Ui.WinForms
                     var y = parent.Location.Y + (parent.Height / 2) - (dialog.Height / 2);
                     dialog.Location = new Point(x, y);
                 };
-
-            dialog.SetButtons(buttonDescriptions);
 
             return dialog;
         }

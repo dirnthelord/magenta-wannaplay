@@ -33,7 +33,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
         {
             InitializeComponent();
 
-            timeFrom.FormatString = "$h $tt";
+            timeFrom.FormatString = "h tt";
             timePeriodLength.FormatString = "nHours";
         }
 

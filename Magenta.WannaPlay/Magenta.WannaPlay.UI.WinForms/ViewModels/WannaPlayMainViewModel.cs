@@ -47,14 +47,9 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
             return scheduleViewModel;
         }
 
-        public void AskToSelectCurrentDutyGuard()
+        public void ChangeDutyGuard()
         {
-            CommonUIService.AskToSelectCurrentDutyGuard();
-        }
-
-        public void SetSelectedDayToToday()
-        {
-            SelectedDay = DateTime.Today;
+            CommonUIService.ChangeDutyGuard();
         }
     }
 }

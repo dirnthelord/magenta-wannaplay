@@ -32,17 +32,18 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.dutyGuards = new System.Windows.Forms.ComboBox();
-            this.manageDutyGuards = new System.Windows.Forms.Button();
             this.dataContext = new System.Windows.Forms.BindingSource(this.components);
+            this.manageDutyGuards = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataContext)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(-5, 5);
+            this.label1.Location = new System.Drawing.Point(-3, 6);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(176, 25);
+            this.label1.Size = new System.Drawing.Size(86, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Currently on duty";
             // 
@@ -54,10 +55,15 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.dutyGuards.DisplayMember = "Name";
             this.dutyGuards.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.dutyGuards.FormattingEnabled = true;
-            this.dutyGuards.Location = new System.Drawing.Point(177, 1);
+            this.dutyGuards.Location = new System.Drawing.Point(87, 2);
+            this.dutyGuards.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dutyGuards.Name = "dutyGuards";
-            this.dutyGuards.Size = new System.Drawing.Size(180, 33);
+            this.dutyGuards.Size = new System.Drawing.Size(85, 21);
             this.dutyGuards.TabIndex = 1;
+            // 
+            // dataContext
+            // 
+            this.dataContext.DataSource = typeof(Magenta.WannaPlay.UI.WinForms.ViewModels.CurrentDutyGuardViewModel);
             // 
             // manageDutyGuards
             // 
@@ -65,28 +71,23 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.manageDutyGuards.AutoSize = true;
             this.manageDutyGuards.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.manageDutyGuards.Enabled = false;
-            this.manageDutyGuards.Location = new System.Drawing.Point(363, 0);
+            this.manageDutyGuards.Location = new System.Drawing.Point(176, 1);
+            this.manageDutyGuards.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.manageDutyGuards.Name = "manageDutyGuards";
-            this.manageDutyGuards.Size = new System.Drawing.Size(118, 35);
+            this.manageDutyGuards.Size = new System.Drawing.Size(65, 23);
             this.manageDutyGuards.TabIndex = 2;
             this.manageDutyGuards.Text = "Manage...";
             this.manageDutyGuards.UseVisualStyleBackColor = true;
             // 
-            // dataContext
-            // 
-            this.dataContext.DataSource = typeof(Magenta.WannaPlay.UI.WinForms.ViewModels.CurrentDutyGuardViewModel);
-            // 
             // CurrentDutyGuardControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.manageDutyGuards);
             this.Controls.Add(this.dutyGuards);
             this.Controls.Add(this.label1);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "CurrentDutyGuardControl";
-            this.Size = new System.Drawing.Size(481, 36);
+            this.Size = new System.Drawing.Size(240, 24);
             ((System.ComponentModel.ISupportInitialize)(this.dataContext)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

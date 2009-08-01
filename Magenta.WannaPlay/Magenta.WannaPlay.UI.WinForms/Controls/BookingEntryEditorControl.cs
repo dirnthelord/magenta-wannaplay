@@ -16,14 +16,6 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
         public BookingEntryEditorControl()
         {
             InitializeComponent();
-
-            dataContext.DataSourceChanged += dataContext_DataSourceChanged;
-        }
-
-        void dataContext_DataSourceChanged(object sender, EventArgs e)
-        {
-            dutyGuard.DataSource = ViewModel.DutyGuards;
-            facility.DataSource = ViewModel.Facilities;
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
