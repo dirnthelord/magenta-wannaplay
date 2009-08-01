@@ -20,6 +20,11 @@ namespace Magenta.WannaPlay.UI.WinForms.Domain.UI
             return ToString(null, null);
         }
 
+        public string ToString(string format)
+        {
+            return ToString(format, null);
+        }
+
         public string ToString(string format, IFormatProvider formatProvider)
         {
             if (string.IsNullOrEmpty(format))
