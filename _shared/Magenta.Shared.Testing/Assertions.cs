@@ -6,7 +6,7 @@ namespace NUnit.Framework
     {
         public static void AssertIsEqual<T>(this T actual, T expected)
         {
-            Assert.AreEqual(actual, expected);
+            Assert.AreEqual(expected, actual);
         }
 
         public static void AssertIsNull(this object left)

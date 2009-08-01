@@ -19,12 +19,15 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
         public IResidenceManager ResidenceManager { get; private set; }
         public IWannaPlayContextService WannaPlayContextService { get; private set; }
 
-        public BindingList<Facility> Facilities { get; private set; }
-        public BindingList<DutyGuard> DutyGuards { get; private set; }
+        public string BookingDetails
+        {
+            get
+            {
+                return string.Format("{0} on {1:dd MMMM} at {2:$h $tt} for {3:$h $hour(s)}", Facility.Name, BookingPeriod.PeriodDay, BookingPeriod.PeriodFrom, BookingPeriod.PeriodFor);
+            }
+        }
 
-        public DutyGuard SelectedDutyGuard { get; set; }
-        public Facility SelectedFacility { get; set; }
-
+        public Facility Facility { get; set; }
         public DateTimePeriodUI BookingPeriod { get; set; }
         public ResidentDetailsUI Resident { get; set; }
         public string Comment { get; set; }
@@ -40,13 +43,7 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
             ResidenceManager = RequireArg.NotNull(residenceManager);
             WannaPlayContextService = RequireArg.NotNull(wannaPlayContextService);
 
-            Facilities = ResidenceManager.GetFacilities().ToBindingList();
-            DutyGuards = ResidenceManager.GetDutyGuards().ToBindingList();
-
             BookingPeriod = new DateTimePeriodUI();
-            SelectedDutyGuard = WannaPlayContextService.CurrentGuard;
-
-            // TODO: Replace with Resident from Model (?)
             Resident = new ResidentDetailsUI();
         }
 

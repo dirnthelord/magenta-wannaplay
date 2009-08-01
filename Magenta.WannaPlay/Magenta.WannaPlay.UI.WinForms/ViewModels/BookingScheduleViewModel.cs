@@ -159,7 +159,8 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 
         public void CancelSelectedBooking()
         {
-            throw new NotImplementedException();
+            // TODO: Remove UI depencency
+            //SelectedBookingEntries
         }
 
         public void AddSelectedBooking()
@@ -177,7 +178,7 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 
             var period = DateTimePeriod.FromHours(firstSlot.Period.From, length);
             bookingEntryView.ViewModel.BookingPeriod.Model = period;
-            bookingEntryView.ViewModel.SelectedFacility = firstSlot.Facility;
+            bookingEntryView.ViewModel.Facility = firstSlot.Facility;
 
             var form = ControlHoster.HostInDialog(CommonUIService.MainForm, "Add booking", bookingEntryView,
                 new DialogButtonDescription { Text = "Add", OnClick = () => addBookingViewModel.SaveBooking() },

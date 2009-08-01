@@ -10,6 +10,6 @@ namespace Magenta.WannaPlay.UI.WinForms.Services
     public interface ICommonUIService
     {
         Form MainForm { get; set; }
-        void AskToSelectCurrentDutyGuard();
+        void ChangeDutyGuard();
     }
 }

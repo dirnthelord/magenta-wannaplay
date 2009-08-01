@@ -13,6 +13,7 @@ using Magenta.Shared.DesignByContract;
 using Magenta.WannaPlay.UI.WinForms.ViewModels;
 using Magenta.Shared.UI.WinForms;
 using Magenta.WannaPlay.UI.WinForms.Services;
+using System.Drawing;
 
 namespace Magenta.WannaPlay.UI.WinForms
 {
@@ -47,6 +48,8 @@ namespace Magenta.WannaPlay.UI.WinForms
 
                 var wannaPlayMain = GetMainControl();
                 var mainForm = ControlHoster.HostInForm(Resources.WannaPlay, "Wanna Play", wannaPlayMain);
+                mainForm.StartPosition = FormStartPosition.CenterScreen;
+                //mainForm.Font = new Font(mainForm.Font.FontFamily, 16);
 
                 Kernel.Get<ICommonUIService>().MainForm = mainForm;
 

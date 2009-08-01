@@ -21,7 +21,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Services
             Kernel = RequireArg.NotNull(kernel);
         }
 
-        public void AskToSelectCurrentDutyGuard()
+        public void ChangeDutyGuard()
         {
             var dutyGuardSelector = Kernel.Get<CurrentDutyGuardControl>();
             dutyGuardSelector.ViewModel = Kernel.Get<CurrentDutyGuardViewModel>();

@@ -52,20 +52,18 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.panel1.Controls.Add(this.cancelBookingButton);
             this.panel1.Controls.Add(this.addBookingButton);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 347);
-            this.panel1.Margin = new System.Windows.Forms.Padding(6);
+            this.panel1.Location = new System.Drawing.Point(0, 181);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(424, 56);
+            this.panel1.Size = new System.Drawing.Size(212, 29);
             this.panel1.TabIndex = 1;
             // 
             // cancelBookingButton
             // 
             this.cancelBookingButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cancelBookingButton.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.dataContext, "CanCancelBooking", true));
-            this.cancelBookingButton.Location = new System.Drawing.Point(224, 6);
-            this.cancelBookingButton.Margin = new System.Windows.Forms.Padding(6);
+            this.cancelBookingButton.Location = new System.Drawing.Point(112, 3);
             this.cancelBookingButton.Name = "cancelBookingButton";
-            this.cancelBookingButton.Size = new System.Drawing.Size(194, 44);
+            this.cancelBookingButton.Size = new System.Drawing.Size(97, 23);
             this.cancelBookingButton.TabIndex = 1;
             this.cancelBookingButton.Text = "Cancel booking";
             this.cancelBookingButton.UseVisualStyleBackColor = true;
@@ -78,10 +76,9 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             // 
             this.addBookingButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.addBookingButton.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.dataContext, "CanAddBooking", true));
-            this.addBookingButton.Location = new System.Drawing.Point(18, 6);
-            this.addBookingButton.Margin = new System.Windows.Forms.Padding(6);
+            this.addBookingButton.Location = new System.Drawing.Point(9, 3);
             this.addBookingButton.Name = "addBookingButton";
-            this.addBookingButton.Size = new System.Drawing.Size(194, 44);
+            this.addBookingButton.Size = new System.Drawing.Size(97, 23);
             this.addBookingButton.TabIndex = 0;
             this.addBookingButton.Text = "Add booking";
             this.addBookingButton.UseVisualStyleBackColor = true;
@@ -101,12 +98,11 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.bookingScheduleGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bookingScheduleGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.bookingScheduleGrid.Location = new System.Drawing.Point(0, 0);
-            this.bookingScheduleGrid.Margin = new System.Windows.Forms.Padding(6);
             this.bookingScheduleGrid.Name = "bookingScheduleGrid";
             this.bookingScheduleGrid.ReadOnly = true;
             this.bookingScheduleGrid.RowHeadersVisible = false;
             this.bookingScheduleGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.bookingScheduleGrid.Size = new System.Drawing.Size(424, 347);
+            this.bookingScheduleGrid.Size = new System.Drawing.Size(212, 181);
             this.bookingScheduleGrid.TabIndex = 0;
             this.bookingScheduleGrid.VirtualMode = true;
             this.bookingScheduleGrid.CellValueNeeded += new System.Windows.Forms.DataGridViewCellValueEventHandler(this.bookingScheduleGrid_CellValueNeeded);
@@ -118,18 +114,16 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.periodStringColumn.HeaderText = "Period";
             this.periodStringColumn.Name = "periodStringColumn";
             this.periodStringColumn.ReadOnly = true;
-            this.periodStringColumn.Width = 99;
+            this.periodStringColumn.Width = 62;
             // 
             // BookingScheduleControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.bookingScheduleGrid);
             this.Controls.Add(this.panel1);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "BookingScheduleControl";
-            this.Size = new System.Drawing.Size(424, 403);
+            this.Size = new System.Drawing.Size(212, 210);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataContext)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookingScheduleGrid)).EndInit();

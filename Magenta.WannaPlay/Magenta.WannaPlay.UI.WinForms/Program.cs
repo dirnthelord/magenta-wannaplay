@@ -4,6 +4,8 @@ using System.Linq;
 using System.Windows.Forms;
 using HibernatingRhinos.NHibernate.Profiler.Appender;
 using Magenta.WannaPlay.Ioc;
+using System.Threading;
+using System.Globalization;
 
 namespace Magenta.WannaPlay.UI.WinForms
 {
@@ -12,9 +14,12 @@ namespace Magenta.WannaPlay.UI.WinForms
         [STAThread]
         static void Main()
         {
-            NHibernateProfiler.Initialize();
+            //NHibernateProfiler.Initialize();
 
-            // TODO: Add ninject resolution
+            // TODO: Remove
+            Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("en-SG");
+            Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("en-SG");
+
             new WannaPlayApplication(new ComponentsConfiguration()).Run();
         }
     }

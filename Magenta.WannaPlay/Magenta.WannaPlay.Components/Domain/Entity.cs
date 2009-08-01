@@ -11,8 +11,10 @@ namespace Magenta.WannaPlay.Domain
 
         static public bool operator ==(Entity x, Entity y)
         {
-            if ((object)x == null) return (object)y == null;
-            return x.Equals(y);
+            return object.Equals(x, y);
+            //if ((object)x == null) return (object)y == null;
+            //if ((object)y == null) return false;
+            //return x.Equals(y);
         }
 
         static public bool operator !=(Entity x, Entity y)

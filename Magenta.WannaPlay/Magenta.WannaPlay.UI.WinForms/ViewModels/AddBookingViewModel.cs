@@ -16,6 +16,7 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
         public IKernel Kernel { get; private set; }
         public IBookingService BookingService { get; private set; }
         public IResidenceManager ResidenceManager { get; private set; }
+        public IWannaPlayContextService WannaPlayContextService { get; private set; }
 
         public BookingEntryEditorViewModel BookingEntryViewModel { get; private set; }
 
@@ -24,23 +25,27 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
             (
                 IKernel kernel,
                 IBookingService bookingService,
-                IResidenceManager residenceManager
+                IResidenceManager residenceManager,
+                IWannaPlayContextService wannaPlayContextService
             )
         {
             Kernel = RequireArg.NotNull(kernel);
             BookingService = RequireArg.NotNull(bookingService);
             ResidenceManager = RequireArg.NotNull(residenceManager);
+            WannaPlayContextService = RequireArg.NotNull(wannaPlayContextService);
 
             BookingEntryViewModel = Kernel.Get<BookingEntryEditorViewModel>();
         }
 
         public void SaveBooking()
         {
+            var currentDutyGuard = WannaPlayContextService.CurrentGuard;
+
             var bookingEntry = new BookingEntry
             {
                 BookedAtDateTime = DateTime.UtcNow,
-                BookedByGuard = BookingEntryViewModel.SelectedDutyGuard,
-                Facility = BookingEntryViewModel.SelectedFacility,
+                BookedByGuard = currentDutyGuard,
+                Facility = BookingEntryViewModel.Facility,
                 Resident = GetSelectedResident(),
                 Period = BookingEntryViewModel.BookingPeriod.Model,
             };
