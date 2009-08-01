@@ -196,8 +196,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Properties\DataSources\Magenta.WannaPlay.UI.WinForms.Domain.UI.FindBookingRequestUI.datasource" />
-    <None Include="Properties\DataSources\Magenta.WannaPlay.UI.WinForms.Domain.UI.ResidentDetailsUI.datasource" />
-    <None Include="Properties\DataSources\Magenta.WannaPlay.UI.WinForms.ViewModels.BookingEntryEditorViewModel.datasource" />
+    <None Include="Properties\DataSources\Magenta.WannaPlay.UI.WinForms.Domain.UI.ResidentUI.datasource" />
+    <None Include="Properties\DataSources\Magenta.WannaPlay.UI.WinForms.ViewModels.BookingEntryViewModel.datasource" />
     <None Include="Resources\Error.ico" />
     <None Include="Resources\Copy.ico" />
     <None Include="Resources\EMail.ico" />

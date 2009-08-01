@@ -31,11 +31,11 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.resident = new Magenta.WannaPlay.UI.WinForms.Controls.ResidentEditorControl();
-            this.dataContext = new System.Windows.Forms.BindingSource(this.components);
             this.comment = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.bookingDetailsTextBox = new System.Windows.Forms.TextBox();
+            this.bookingDetailsTextBox = new System.Windows.Forms.RichTextBox();
+            this.dataContext = new System.Windows.Forms.BindingSource(this.components);
+            this.resident = new Magenta.WannaPlay.UI.WinForms.Controls.ResidentEditorControl();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataContext)).BeginInit();
             this.SuspendLayout();
@@ -52,22 +52,6 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Resident";
-            // 
-            // resident
-            // 
-            this.resident.AutoSize = true;
-            this.resident.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.resident.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.dataContext, "Resident", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.resident.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.resident.Location = new System.Drawing.Point(8, 21);
-            this.resident.Name = "resident";
-            this.resident.Size = new System.Drawing.Size(275, 72);
-            this.resident.TabIndex = 0;
-            this.resident.AutoSuggestRequired += new System.EventHandler(this.resident_AutoSuggestRequired);
-            // 
-            // dataContext
-            // 
-            this.dataContext.DataSource = typeof(Magenta.WannaPlay.UI.WinForms.ViewModels.BookingEntryViewModel);
             // 
             // comment
             // 
@@ -103,6 +87,23 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.bookingDetailsTextBox.ReadOnly = true;
             this.bookingDetailsTextBox.Size = new System.Drawing.Size(291, 20);
             this.bookingDetailsTextBox.TabIndex = 16;
+            this.bookingDetailsTextBox.Text = "";
+            // 
+            // dataContext
+            // 
+            this.dataContext.DataSource = typeof(Magenta.WannaPlay.UI.WinForms.ViewModels.BookingEntryViewModel);
+            // 
+            // resident
+            // 
+            this.resident.AutoSize = true;
+            this.resident.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.resident.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.dataContext, "Resident", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.resident.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.resident.Location = new System.Drawing.Point(8, 21);
+            this.resident.Name = "resident";
+            this.resident.Size = new System.Drawing.Size(275, 72);
+            this.resident.TabIndex = 0;
+            this.resident.AutoSuggestRequired += new System.EventHandler(this.resident_AutoSuggestRequired);
             // 
             // BookingEntryEditorControl
             // 
@@ -129,6 +130,6 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
         private System.Windows.Forms.RichTextBox comment;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.BindingSource dataContext;
-        private System.Windows.Forms.TextBox bookingDetailsTextBox;
+        private System.Windows.Forms.RichTextBox bookingDetailsTextBox;
     }
 }
