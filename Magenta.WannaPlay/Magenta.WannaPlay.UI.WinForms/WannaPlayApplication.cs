@@ -52,10 +52,11 @@ namespace Magenta.WannaPlay.UI.WinForms
 
                 Application.Run(mainForm);
             }
-            catch (Exception e)
+            catch (Exception)
             {
+                throw;
                 // TODO: Process unhandled exceptions more user-friendly
-                MessageBox.Show(e.StackTrace, e.Message);
+                //MessageBox.Show(e.StackTrace, e.Message);
             }
         }
     }

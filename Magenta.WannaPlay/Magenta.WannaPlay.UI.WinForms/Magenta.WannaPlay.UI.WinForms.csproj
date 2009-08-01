@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{EB6A9B6B-FC19-407C-80C6-2DC36A07BE58}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HibernatingRhinos.NHibernate.Profiler.Appender, Version=0.9.0.0, Culture=neutral, PublicKeyToken=0774796e73ebf640, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\_externals\Bin\nhibernate\_latest\HibernatingRhinos.NHibernate.Profiler.Appender.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject.Core, Version=1.0.0.82, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\_externals\Bin\ninject\Ninject.Core.dll</HintPath>
@@ -168,12 +172,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Controls\BookingEntryEditorControl.resx">
       <DependentUpon>BookingEntryEditorControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\BookingEntryListControl.resx">
       <DependentUpon>BookingEntryListControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\DateTimePeriodControl.resx">
       <DependentUpon>DateTimePeriodControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\BookingScheduleControl.resx">
       <DependentUpon>BookingScheduleControl.cs</DependentUpon>
@@ -185,12 +192,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\CurrentDutyGuardControl.resx">
       <DependentUpon>CurrentDutyGuardControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\DutyGuardsManagerControl.resx">
       <DependentUpon>DutyGuardsManagerControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\ResidentDetailsControl.resx">
       <DependentUpon>ResidentDetailsControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\WannaPlayMainControl.resx">
       <DependentUpon>WannaPlayMainControl.cs</DependentUpon>

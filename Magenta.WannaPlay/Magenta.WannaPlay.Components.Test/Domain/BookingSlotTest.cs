@@ -56,5 +56,23 @@ namespace Magenta.WannaPlay.Components.Domain
                 .CheckProperty(x => x.BookedAtDateTime, now)
                 .VerifyTheMappings();
         }
+
+        [Test]
+        public void InsertBookingWithNewInnerEntities()
+        {
+            var now = DateTime.UtcNow.RoundToSeconds();
+
+            var bookingEntry = new BookingEntry
+            {
+                Facility = _facility,
+                BookedByGuard = new DutyGuard { Name = "Test" },
+                Resident = new Resident { Name= "new", PassCardNumber = "123",
+                    Unit = new ResidenceUnit { Block = "1", Number = "234"}},
+                BookedAtDateTime = now,
+                Period = DateTimePeriod.FromHours(now.AddDays(1), 1)
+            };
+
+            Session.Save(bookingEntry);
+        }
     }
 }
