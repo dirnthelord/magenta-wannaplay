@@ -6,28 +6,23 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using Ninject.Core;
-using Magenta.WannaPlay.UI.WinForms.ViewModels;
+using Magenta.WannaPlay.UI.WinForms.Domain.UI;
 
 namespace Magenta.WannaPlay.UI.WinForms.Controls
 {
-    public partial class BookingEntryEditorControl : UserControl
+    [DefaultBindingProperty("Value")]
+    public partial class FindBookingsRequestEditorControl : UserControl
     {
-        public BookingEntryEditorControl()
+        public FindBookingsRequestEditorControl()
         {
             InitializeComponent();
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public BookingEntryViewModel ViewModel
+        public FindBookingRequestUI Value
         {
-            get { return (BookingEntryViewModel)dataContext.DataSource; }
+            get { return (FindBookingRequestUI)dataContext.DataSource; }
             set { dataContext.DataSource = value; }
-        }
-
-        private void resident_AutoSuggestRequired(object sender, EventArgs e)
-        {
-            ViewModel.ResidentAutoFillRequired();
         }
     }
 }

@@ -11,17 +11,17 @@ using Magenta.WannaPlay.UI.WinForms.Domain.UI;
 namespace Magenta.WannaPlay.UI.WinForms.Controls
 {
     [DefaultBindingProperty("Value")]
-    public partial class ResidentDetailsControl : UserControl
+    public partial class ResidentEditorControl : UserControl
     {
-        public ResidentDetailsControl()
+        public ResidentEditorControl()
         {
             InitializeComponent();
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public ResidentDetailsUI Value
+        public ResidentUI Value
         {
-            get { return (ResidentDetailsUI)dataContext.DataSource; }
+            get { return (ResidentUI)dataContext.DataSource; }
             set { dataContext.DataSource = value; }
         }
 

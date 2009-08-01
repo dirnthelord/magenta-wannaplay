@@ -1,0 +1,6 @@
+ToDo:
+- Rename ResidentPass to FacilityCard
+- Add cancel booking functionality
+
+Done:
+- Restore standard fonts

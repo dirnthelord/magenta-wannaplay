@@ -13,11 +13,15 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 {
     public class CurrentDutyGuardViewModel
     {
+        [Browsable(false)]
         public IResidenceManager ResidenceManager { get; private set; }
+
+        [Browsable(false)]
         public IWannaPlayContextService WannaPlayContextService { get; private set; }
 
         public DutyGuard SelectedDutyGuard { get; set; }
         public BindingList<DutyGuard> AllGuards { get; private set; }
+
 
         public CurrentDutyGuardViewModel(IResidenceManager residenceManager, IWannaPlayContextService wannaPlayContextService)
         {

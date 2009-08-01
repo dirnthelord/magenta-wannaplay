@@ -1,7 +1,7 @@
 ﻿using Magenta.WannaPlay.UI.WinForms.Domain.UI;
 namespace Magenta.WannaPlay.UI.WinForms.Controls
 {
-    partial class ResidentDetailsControl
+    partial class ResidentEditorControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -124,7 +124,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             // 
             // dataContext
             // 
-            this.dataContext.DataSource = typeof(Magenta.WannaPlay.UI.WinForms.Domain.UI.ResidentDetailsUI);
+            this.dataContext.DataSource = typeof(Magenta.WannaPlay.UI.WinForms.Domain.UI.ResidentUI);
             // 
             // ResidentDetailsControl
             // 

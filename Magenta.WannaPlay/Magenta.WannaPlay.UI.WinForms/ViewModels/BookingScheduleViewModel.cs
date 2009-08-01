@@ -21,14 +21,25 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 {
     public class BookingScheduleViewModel : ViewModelBase
     {
+        [Browsable(false)]
         [Inject]
         public IKernel Kernel { get; set; }
 
+        [Browsable(false)]
         public IWannaPlayContextService WannaPlayContextService { get; private set; }
+
+        [Browsable(false)]
         public IBookingService BookingService { get; private set; }
+        
+        [Browsable(false)]
         public IBookingScheduleService BookingScheduleService { get; private set; }
+        
+        [Browsable(false)]
         public IResidenceManager ResidenceManager { get; private set; }
+        
+        [Browsable(false)]
         public ICommonUIService CommonUIService { get; private set; }
+
 
         public BindingList<BookingPeriodUI> BookingPeriods { get; private set; }
         public BindingList<BookingEntry> BookingEntries { get; private set; }

@@ -8,17 +8,25 @@ using Magenta.WannaPlay.Domain;
 using Magenta.WannaPlay.UI.WinForms.Services;
 using Magenta.WannaPlay.Services.Residence;
 using Magenta.Shared.DesignByContract;
+using System.ComponentModel;
 
 namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 {
     public class AddBookingViewModel
     {
+        [Browsable(false)]
         public IKernel Kernel { get; private set; }
+        
+        [Browsable(false)]
         public IBookingService BookingService { get; private set; }
+        
+        [Browsable(false)]
         public IResidenceManager ResidenceManager { get; private set; }
+
+        [Browsable(false)]
         public IWannaPlayContextService WannaPlayContextService { get; private set; }
 
-        public BookingEntryEditorViewModel BookingEntryViewModel { get; private set; }
+        public BookingEntryViewModel BookingEntryViewModel { get; private set; }
 
 
         public AddBookingViewModel
@@ -34,7 +42,7 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
             ResidenceManager = RequireArg.NotNull(residenceManager);
             WannaPlayContextService = RequireArg.NotNull(wannaPlayContextService);
 
-            BookingEntryViewModel = Kernel.Get<BookingEntryEditorViewModel>();
+            BookingEntryViewModel = Kernel.Get<BookingEntryViewModel>();
         }
 
         public void SaveBooking()

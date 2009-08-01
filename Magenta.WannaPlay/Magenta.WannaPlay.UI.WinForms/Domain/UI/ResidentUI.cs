@@ -6,7 +6,7 @@ using System.ComponentModel;
 
 namespace Magenta.WannaPlay.UI.WinForms.Domain.UI
 {
-    public class ResidentDetailsUI : INotifyPropertyChanged
+    public class ResidentUI : INotifyPropertyChanged
     {
         string _factilityCardNumber;
         string _name;
