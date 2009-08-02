@@ -47,7 +47,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Diagnostics
             this._okBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this._okBtn.DialogResult = System.Windows.Forms.DialogResult.OK;
             this._okBtn.Location = new System.Drawing.Point(477, 135);
-            this._okBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this._okBtn.Margin = new System.Windows.Forms.Padding(4);
             this._okBtn.Name = "_okBtn";
             this._okBtn.Size = new System.Drawing.Size(100, 28);
             this._okBtn.TabIndex = 0;
@@ -60,7 +60,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Diagnostics
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this._tabControl.Location = new System.Drawing.Point(13, 172);
-            this._tabControl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this._tabControl.Margin = new System.Windows.Forms.Padding(4);
             this._tabControl.Name = "_tabControl";
             this._tabControl.SelectedIndex = 0;
             this._tabControl.Size = new System.Drawing.Size(567, 0);
@@ -74,7 +74,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Diagnostics
             this._panel.Controls.Add(this._pictureBox);
             this._panel.Dock = System.Windows.Forms.DockStyle.Top;
             this._panel.Location = new System.Drawing.Point(0, 0);
-            this._panel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this._panel.Margin = new System.Windows.Forms.Padding(4);
             this._panel.Name = "_panel";
             this._panel.Size = new System.Drawing.Size(593, 121);
             this._panel.TabIndex = 2;
@@ -88,7 +88,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Diagnostics
             this._tbErrorMessage.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this._tbErrorMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this._tbErrorMessage.Location = new System.Drawing.Point(104, 15);
-            this._tbErrorMessage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this._tbErrorMessage.Margin = new System.Windows.Forms.Padding(4);
             this._tbErrorMessage.Name = "_tbErrorMessage";
             this._tbErrorMessage.ReadOnly = true;
             this._tbErrorMessage.Size = new System.Drawing.Size(472, 101);
@@ -98,7 +98,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Diagnostics
             // _pictureBox
             // 
             this._pictureBox.Location = new System.Drawing.Point(16, 15);
-            this._pictureBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this._pictureBox.Margin = new System.Windows.Forms.Padding(4);
             this._pictureBox.Name = "_pictureBox";
             this._pictureBox.Size = new System.Drawing.Size(67, 62);
             this._pictureBox.TabIndex = 8;
@@ -107,7 +107,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Diagnostics
             // _btDetails
             // 
             this._btDetails.Location = new System.Drawing.Point(16, 135);
-            this._btDetails.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this._btDetails.Margin = new System.Windows.Forms.Padding(4);
             this._btDetails.Name = "_btDetails";
             this._btDetails.Size = new System.Drawing.Size(100, 28);
             this._btDetails.TabIndex = 1;
@@ -120,7 +120,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Diagnostics
             // _btSend
             // 
             this._btSend.Location = new System.Drawing.Point(172, 135);
-            this._btSend.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this._btSend.Margin = new System.Windows.Forms.Padding(4);
             this._btSend.Name = "_btSend";
             this._btSend.Size = new System.Drawing.Size(40, 28);
             this._btSend.TabIndex = 2;
@@ -131,7 +131,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Diagnostics
             // _btCopy
             // 
             this._btCopy.Location = new System.Drawing.Point(124, 135);
-            this._btCopy.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this._btCopy.Margin = new System.Windows.Forms.Padding(4);
             this._btCopy.Name = "_btCopy";
             this._btCopy.Size = new System.Drawing.Size(40, 28);
             this._btCopy.TabIndex = 4;
@@ -151,7 +151,8 @@ namespace Magenta.WannaPlay.UI.WinForms.Diagnostics
             this.Controls.Add(this._btSend);
             this.Controls.Add(this._btDetails);
             this.Controls.Add(this._panel);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(415, 183);

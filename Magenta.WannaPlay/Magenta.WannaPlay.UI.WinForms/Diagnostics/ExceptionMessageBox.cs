@@ -100,6 +100,8 @@ namespace Magenta.WannaPlay.UI.WinForms.Diagnostics
             if (!showDetails)
                 WindowState = FormWindowState.Normal;
 
+            FormBorderStyle = showDetails ? FormBorderStyle.Sizable : FormBorderStyle.Fixed3D;
+
             _showDetails = !showDetails;
         }
 
