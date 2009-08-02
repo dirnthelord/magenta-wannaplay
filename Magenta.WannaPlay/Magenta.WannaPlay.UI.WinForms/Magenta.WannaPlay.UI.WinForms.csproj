@@ -211,6 +211,9 @@
     <None Include="Resources\Error.ico" />
     <None Include="Resources\Copy.ico" />
     <None Include="Resources\EMail.ico" />
+    <Content Include="Resources\Clock.png" />
+    <Content Include="Resources\Remarks.png" />
+    <Content Include="Resources\Resident.png" />
     <Content Include="Resources\Squash.png" />
     <Content Include="Resources\Tennis2.png" />
     <Content Include="Resources\WannaPlay.png" />

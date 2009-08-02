@@ -67,6 +67,13 @@ namespace Magenta.WannaPlay.UI.WinForms.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap Clock {
+            get {
+                object obj = ResourceManager.GetObject("Clock", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Icon Copy {
             get {
                 object obj = ResourceManager.GetObject("Copy", resourceCulture);
@@ -85,6 +92,20 @@ namespace Magenta.WannaPlay.UI.WinForms.Properties {
             get {
                 object obj = ResourceManager.GetObject("Error", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap Remarks {
+            get {
+                object obj = ResourceManager.GetObject("Remarks", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap Resident {
+            get {
+                object obj = ResourceManager.GetObject("Resident", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

@@ -13,7 +13,7 @@ namespace Magenta.Shared.Ui.WinForms
     {
         public static HostingForm HostInForm(Bitmap icon, string title, Control content)
         {
-            content.Padding = new Padding(16);
+            content.Padding = new Padding(8);
 
             var form = new HostingForm
             {
@@ -44,7 +44,7 @@ namespace Magenta.Shared.Ui.WinForms
 
             dialog.SetButtons(buttonDescriptions);
 
-            content.Padding = new Padding(18, 16, 16, 8);
+            content.Padding = new Padding(8, 8, 8, 8);
             dialog.ClientSize = new Size
             {
                 Width = content.Width + content.Padding.Horizontal,
