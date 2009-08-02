@@ -199,6 +199,7 @@
     <Compile Include="WannaPlayApplication.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\AddBookingEntry.ico" />
     <Content Include="Resources\Badminton.png" />
     <None Include="Log4Net.Config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

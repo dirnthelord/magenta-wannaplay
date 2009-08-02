@@ -33,31 +33,46 @@ namespace Magenta.Shared.Ui.WinForms
             return form;
         }
 
+        [Obsolete]
         public static HostingDialog HostInDialog(Form parent, string title, Control content, params DialogButtonDescription[] buttonDescriptions)
+        {
+            return HostInDialog(new DialogDescription
+                                    {
+                                        Content = content,
+                                        Parent = parent,
+                                        Title = title,
+                                        ButtonDescriptions = buttonDescriptions
+                                    });
+        }
+
+        public static HostingDialog HostInDialog(DialogDescription dialogDescription)
         {
             var dialog = new HostingDialog
             {
-                Text = title,
+                Text = dialogDescription.Title,
             };
 
-            dialog.Owner = parent;
+            dialog.Icon = dialogDescription.Icon;
+            dialog.ShowIcon = dialogDescription.Icon != null;
 
-            dialog.SetButtons(buttonDescriptions);
+            dialog.Owner = dialogDescription.Parent;
 
-            content.Padding = new Padding(8, 8, 8, 8);
+            dialog.SetButtons(dialogDescription.ButtonDescriptions);
+
+            dialogDescription.Content.Padding = new Padding(8, 8, 8, 8);
             dialog.ClientSize = new Size
             {
-                Width = content.Width + content.Padding.Horizontal,
-                Height = content.Height + dialog.ButtonsPanel.Height + content.Padding.Vertical
+                Width = dialogDescription.Content.Width + dialogDescription.Content.Padding.Horizontal,
+                Height = dialogDescription.Content.Height + dialog.ButtonsPanel.Height + dialogDescription.Content.Padding.Vertical
             };
-            dialog.Content = content;
+            dialog.Content = dialogDescription.Content;
 
-            if (parent != null)
+            if (dialogDescription.Parent != null)
                 dialog.Load += delegate
                 {
                     dialog.StartPosition = FormStartPosition.Manual;
-                    var x = parent.Location.X + (parent.Width / 2) - (dialog.Width / 2);
-                    var y = parent.Location.Y + (parent.Height / 2) - (dialog.Height / 2);
+                    var x = dialogDescription.Parent.Location.X + (dialogDescription.Parent.Width / 2) - (dialog.Width / 2);
+                    var y = dialogDescription.Parent.Location.Y + (dialogDescription.Parent.Height / 2) - (dialog.Height / 2);
                     dialog.Location = new Point(x, y);
                 };
 
