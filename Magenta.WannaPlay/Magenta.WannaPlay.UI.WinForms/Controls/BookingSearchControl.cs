@@ -10,6 +10,7 @@ using Magenta.WannaPlay.UI.WinForms.ViewModels;
 
 namespace Magenta.WannaPlay.UI.WinForms.Controls
 {
+    [DefaultBindingProperty("ViewModel")]
     public partial class BookingSearchControl : UserControl
     {
         public BookingSearchControl()
@@ -27,11 +28,6 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
         private void findBookingsButton_Click(object sender, EventArgs e)
         {
             ViewModel.FindBookings();
-        }
-
-        private void dataContext_CurrentChanged(object sender, EventArgs e)
-        {
-            bookingSearchResults.ItemsSource = ViewModel.SearchResults;
         }
     }
 }

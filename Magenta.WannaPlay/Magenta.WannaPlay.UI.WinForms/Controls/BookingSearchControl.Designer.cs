@@ -34,13 +34,11 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.bookingSearchResults = new Magenta.WannaPlay.UI.WinForms.Controls.BookingEntryListControl();
-            this.findBookingsRequestEditorControl1 = new Magenta.WannaPlay.UI.WinForms.Controls.BookingSearchRequestEditorControl();
             this.dataContext = new System.Windows.Forms.BindingSource(this.components);
-            this.searchResultsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.findBookingsRequestEditorControl1 = new Magenta.WannaPlay.UI.WinForms.Controls.BookingSearchRequestEditorControl();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataContext)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.searchResultsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // findBookingsButton
@@ -65,7 +63,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(564, 125);
+            this.panel1.Size = new System.Drawing.Size(630, 125);
             this.panel1.TabIndex = 3;
             // 
             // panel2
@@ -76,7 +74,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 125);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
-            this.panel2.Size = new System.Drawing.Size(564, 278);
+            this.panel2.Size = new System.Drawing.Size(630, 278);
             this.panel2.TabIndex = 4;
             // 
             // label1
@@ -93,10 +91,15 @@
             this.bookingSearchResults.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.bookingSearchResults.DataBindings.Add(new System.Windows.Forms.Binding("ItemsSource", this.dataContext, "SearchResults", true));
             this.bookingSearchResults.Location = new System.Drawing.Point(0, 24);
             this.bookingSearchResults.Name = "bookingSearchResults";
-            this.bookingSearchResults.Size = new System.Drawing.Size(564, 254);
+            this.bookingSearchResults.Size = new System.Drawing.Size(630, 254);
             this.bookingSearchResults.TabIndex = 2;
+            // 
+            // dataContext
+            // 
+            this.dataContext.DataSource = typeof(Magenta.WannaPlay.UI.WinForms.ViewModels.BookingSearchViewModel);
             // 
             // findBookingsRequestEditorControl1
             // 
@@ -108,16 +111,6 @@
             this.findBookingsRequestEditorControl1.Size = new System.Drawing.Size(153, 85);
             this.findBookingsRequestEditorControl1.TabIndex = 0;
             // 
-            // dataContext
-            // 
-            this.dataContext.DataSource = typeof(Magenta.WannaPlay.UI.WinForms.ViewModels.BookingSearchViewModel);
-            this.dataContext.CurrentChanged += new System.EventHandler(this.dataContext_CurrentChanged);
-            // 
-            // searchResultsBindingSource
-            // 
-            this.searchResultsBindingSource.DataMember = "SearchResults";
-            this.searchResultsBindingSource.DataSource = this.dataContext;
-            // 
             // BookingSearchControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -125,13 +118,12 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "BookingSearchControl";
-            this.Size = new System.Drawing.Size(564, 403);
+            this.Size = new System.Drawing.Size(630, 403);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataContext)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.searchResultsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -146,6 +138,5 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.BindingSource dataContext;
-        private System.Windows.Forms.BindingSource searchResultsBindingSource;
     }
 }

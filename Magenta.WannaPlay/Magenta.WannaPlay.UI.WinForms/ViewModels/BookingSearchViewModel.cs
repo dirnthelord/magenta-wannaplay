@@ -23,7 +23,7 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 
 
         public BookingSearchRequestUI BookingSearchRequest { get; set; }
-        public BindingList<BookingEntryUI> SearchResults { get; private set; }
+        public BindingList<BookingEntryUI> SearchResults { get; set; }
 
         public BookingSearchViewModel
             (

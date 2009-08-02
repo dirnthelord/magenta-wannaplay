@@ -98,7 +98,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.squashTabPage.Location = new System.Drawing.Point(4, 22);
             this.squashTabPage.Name = "squashTabPage";
             this.squashTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.squashTabPage.Size = new System.Drawing.Size(376, 410);
+            this.squashTabPage.Size = new System.Drawing.Size(376, 402);
             this.squashTabPage.TabIndex = 2;
             this.squashTabPage.Text = "Squash";
             this.squashTabPage.UseVisualStyleBackColor = true;
@@ -108,7 +108,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.squashBookingSchedule.Dock = System.Windows.Forms.DockStyle.Fill;
             this.squashBookingSchedule.Location = new System.Drawing.Point(3, 3);
             this.squashBookingSchedule.Name = "squashBookingSchedule";
-            this.squashBookingSchedule.Size = new System.Drawing.Size(370, 404);
+            this.squashBookingSchedule.Size = new System.Drawing.Size(370, 396);
             this.squashBookingSchedule.TabIndex = 0;
             // 
             // panel1

@@ -167,7 +167,7 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
             var bookingSearchView = Kernel.Get<BookingSearchControl>();
             bookingSearchView.ViewModel = Kernel.Get<BookingSearchViewModel>();
 
-            var form = ControlHoster.HostInForm(null, "Add booking", bookingSearchView);
+            var form = ControlHoster.HostInForm(null, "Find booking", bookingSearchView);
 
             form.ShowDialog();
 
