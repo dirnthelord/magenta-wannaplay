@@ -180,18 +180,21 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
             var slots = SelectedBookingSlots.Where(s => s.Facility == firstSlot.Facility);
 
             var length = slots.Count();
+            var period = DateTimePeriod.FromHours(firstSlot.Period.From, length);
 
+            
             // TODO: Remove UI dependency from this ViewModel
             var addBookingViewModel = Kernel.Get<AddBookingViewModel>();
+
+            addBookingViewModel.BookingEntryViewModel.BookingPeriod.Model = period;
+            addBookingViewModel.BookingEntryViewModel.Facility = firstSlot.Facility;
+
+
             var bookingEntryView = Kernel.Get<BookingEntryEditorControl>();
 
             bookingEntryView.ViewModel = addBookingViewModel.BookingEntryViewModel;
 
-            var period = DateTimePeriod.FromHours(firstSlot.Period.From, length);
-            bookingEntryView.ViewModel.BookingPeriod.Model = period;
-            bookingEntryView.ViewModel.Facility = firstSlot.Facility;
 
-            //var title = string.Format("Book {0}", bookingEntryView.ViewModel.Facility.Name);
             var form = ControlHoster.HostInDialog(CommonUIService.MainForm, "Add booking", bookingEntryView,
                 new DialogButtonDescription { Text = "Add", OnClick = () => addBookingViewModel.SaveBooking() },
                 new DialogButtonDescription { Text = "Cancel", IsCancelButton = true }

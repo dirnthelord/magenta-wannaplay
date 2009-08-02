@@ -37,10 +37,11 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.comment = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.periodDayTextBox = new System.Windows.Forms.TextBox();
-            this.periodForTextBox = new System.Windows.Forms.TextBox();
             this.periodFromTextBox = new System.Windows.Forms.TextBox();
+            this.periodForTextBox = new System.Windows.Forms.TextBox();
+            this.periodDayTextBox = new System.Windows.Forms.TextBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.bookingPeriodBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataContext = new System.Windows.Forms.BindingSource(this.components);
             this.resident = new Magenta.WannaPlay.UI.WinForms.Controls.ResidentEditorControl();
             periodDayLabel = new System.Windows.Forms.Label();
@@ -49,8 +50,36 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bookingPeriodBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataContext)).BeginInit();
             this.SuspendLayout();
+            // 
+            // periodDayLabel
+            // 
+            periodDayLabel.AutoSize = true;
+            periodDayLabel.Location = new System.Drawing.Point(3, 3);
+            periodDayLabel.Name = "periodDayLabel";
+            periodDayLabel.Size = new System.Drawing.Size(26, 13);
+            periodDayLabel.TabIndex = 16;
+            periodDayLabel.Text = "Day";
+            // 
+            // periodForLabel
+            // 
+            periodForLabel.AutoSize = true;
+            periodForLabel.Location = new System.Drawing.Point(3, 55);
+            periodForLabel.Name = "periodForLabel";
+            periodForLabel.Size = new System.Drawing.Size(40, 13);
+            periodForLabel.TabIndex = 17;
+            periodForLabel.Text = "Length";
+            // 
+            // periodFromLabel
+            // 
+            periodFromLabel.AutoSize = true;
+            periodFromLabel.Location = new System.Drawing.Point(3, 29);
+            periodFromLabel.Name = "periodFromLabel";
+            periodFromLabel.Size = new System.Drawing.Size(30, 13);
+            periodFromLabel.TabIndex = 18;
+            periodFromLabel.Text = "Time";
             // 
             // groupBox1
             // 
@@ -103,6 +132,36 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.panel1.Size = new System.Drawing.Size(214, 83);
             this.panel1.TabIndex = 17;
             // 
+            // periodFromTextBox
+            // 
+            this.periodFromTextBox.BackColor = System.Drawing.SystemColors.Info;
+            this.periodFromTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bookingPeriodBindingSource, "PeriodFrom", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "$hh $tt"));
+            this.periodFromTextBox.Location = new System.Drawing.Point(49, 26);
+            this.periodFromTextBox.Name = "periodFromTextBox";
+            this.periodFromTextBox.ReadOnly = true;
+            this.periodFromTextBox.Size = new System.Drawing.Size(92, 20);
+            this.periodFromTextBox.TabIndex = 19;
+            // 
+            // periodForTextBox
+            // 
+            this.periodForTextBox.BackColor = System.Drawing.SystemColors.Info;
+            this.periodForTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bookingPeriodBindingSource, "PeriodFor", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "$h $hour(s)"));
+            this.periodForTextBox.Location = new System.Drawing.Point(49, 52);
+            this.periodForTextBox.Name = "periodForTextBox";
+            this.periodForTextBox.ReadOnly = true;
+            this.periodForTextBox.Size = new System.Drawing.Size(92, 20);
+            this.periodForTextBox.TabIndex = 18;
+            // 
+            // periodDayTextBox
+            // 
+            this.periodDayTextBox.BackColor = System.Drawing.SystemColors.Info;
+            this.periodDayTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bookingPeriodBindingSource, "PeriodDay", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "d MMMM"));
+            this.periodDayTextBox.Location = new System.Drawing.Point(49, 0);
+            this.periodDayTextBox.Name = "periodDayTextBox";
+            this.periodDayTextBox.ReadOnly = true;
+            this.periodDayTextBox.Size = new System.Drawing.Size(92, 20);
+            this.periodDayTextBox.TabIndex = 17;
+            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.label1);
@@ -114,62 +173,10 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.panel2.Size = new System.Drawing.Size(214, 99);
             this.panel2.TabIndex = 18;
             // 
-            // periodDayLabel
+            // bookingPeriodBindingSource
             // 
-            periodDayLabel.AutoSize = true;
-            periodDayLabel.Location = new System.Drawing.Point(3, 3);
-            periodDayLabel.Name = "periodDayLabel";
-            periodDayLabel.Size = new System.Drawing.Size(26, 13);
-            periodDayLabel.TabIndex = 16;
-            periodDayLabel.Text = "Day";
-            // 
-            // periodDayTextBox
-            // 
-            this.periodDayTextBox.BackColor = System.Drawing.SystemColors.Info;
-            this.periodDayTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dataContext, "BookingPeriod.PeriodDay", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "d MMMM"));
-            this.periodDayTextBox.Location = new System.Drawing.Point(49, 0);
-            this.periodDayTextBox.Name = "periodDayTextBox";
-            this.periodDayTextBox.ReadOnly = true;
-            this.periodDayTextBox.Size = new System.Drawing.Size(92, 20);
-            this.periodDayTextBox.TabIndex = 17;
-            // 
-            // periodForLabel
-            // 
-            periodForLabel.AutoSize = true;
-            periodForLabel.Location = new System.Drawing.Point(3, 55);
-            periodForLabel.Name = "periodForLabel";
-            periodForLabel.Size = new System.Drawing.Size(40, 13);
-            periodForLabel.TabIndex = 17;
-            periodForLabel.Text = "Length";
-            // 
-            // periodForTextBox
-            // 
-            this.periodForTextBox.BackColor = System.Drawing.SystemColors.Info;
-            this.periodForTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dataContext, "BookingPeriod.PeriodFor", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "$h $hour(s)"));
-            this.periodForTextBox.Location = new System.Drawing.Point(49, 52);
-            this.periodForTextBox.Name = "periodForTextBox";
-            this.periodForTextBox.ReadOnly = true;
-            this.periodForTextBox.Size = new System.Drawing.Size(92, 20);
-            this.periodForTextBox.TabIndex = 18;
-            // 
-            // periodFromLabel
-            // 
-            periodFromLabel.AutoSize = true;
-            periodFromLabel.Location = new System.Drawing.Point(3, 29);
-            periodFromLabel.Name = "periodFromLabel";
-            periodFromLabel.Size = new System.Drawing.Size(30, 13);
-            periodFromLabel.TabIndex = 18;
-            periodFromLabel.Text = "Time";
-            // 
-            // periodFromTextBox
-            // 
-            this.periodFromTextBox.BackColor = System.Drawing.SystemColors.Info;
-            this.periodFromTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dataContext, "BookingPeriod.PeriodFrom", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "$hh $tt"));
-            this.periodFromTextBox.Location = new System.Drawing.Point(49, 26);
-            this.periodFromTextBox.Name = "periodFromTextBox";
-            this.periodFromTextBox.ReadOnly = true;
-            this.periodFromTextBox.Size = new System.Drawing.Size(92, 20);
-            this.periodFromTextBox.TabIndex = 19;
+            this.bookingPeriodBindingSource.DataMember = "BookingPeriod";
+            this.bookingPeriodBindingSource.DataSource = this.dataContext;
             // 
             // dataContext
             // 
@@ -202,6 +209,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bookingPeriodBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataContext)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -220,5 +228,6 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
         private System.Windows.Forms.TextBox periodFromTextBox;
         private System.Windows.Forms.TextBox periodForTextBox;
         private System.Windows.Forms.TextBox periodDayTextBox;
+        private System.Windows.Forms.BindingSource bookingPeriodBindingSource;
     }
 }
