@@ -16,10 +16,10 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
     {
         [Browsable(false)]
         public IKernel Kernel { get; private set; }
-        
+
         [Browsable(false)]
         public IBookingService BookingService { get; private set; }
-        
+
         [Browsable(false)]
         public IResidenceManager ResidenceManager { get; private set; }
 
@@ -27,6 +27,11 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
         public IWannaPlayContextService WannaPlayContextService { get; private set; }
 
         public BookingEntryViewModel BookingEntryViewModel { get; private set; }
+
+        public string BookingTitle
+        {
+            get { return string.Format("Book {0}", BookingEntryViewModel.Facility.Name); }
+        }
 
 
         public AddBookingViewModel

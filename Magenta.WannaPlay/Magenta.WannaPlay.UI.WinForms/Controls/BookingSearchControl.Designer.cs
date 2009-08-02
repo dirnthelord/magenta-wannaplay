@@ -36,9 +36,11 @@
             this.bookingSearchResults = new Magenta.WannaPlay.UI.WinForms.Controls.BookingEntryListControl();
             this.findBookingsRequestEditorControl1 = new Magenta.WannaPlay.UI.WinForms.Controls.BookingSearchRequestEditorControl();
             this.dataContext = new System.Windows.Forms.BindingSource(this.components);
+            this.searchResultsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataContext)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchResultsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // findBookingsButton
@@ -111,6 +113,11 @@
             this.dataContext.DataSource = typeof(Magenta.WannaPlay.UI.WinForms.ViewModels.BookingSearchViewModel);
             this.dataContext.CurrentChanged += new System.EventHandler(this.dataContext_CurrentChanged);
             // 
+            // searchResultsBindingSource
+            // 
+            this.searchResultsBindingSource.DataMember = "SearchResults";
+            this.searchResultsBindingSource.DataSource = this.dataContext;
+            // 
             // BookingSearchControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -124,6 +131,7 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataContext)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchResultsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -138,5 +146,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.BindingSource dataContext;
+        private System.Windows.Forms.BindingSource searchResultsBindingSource;
     }
 }
