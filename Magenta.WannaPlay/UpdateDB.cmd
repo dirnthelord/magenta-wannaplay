@@ -1,0 +1,1 @@
+xcopy Magenta.WannaPlay.Components.Test\Generated\Databases\WannaPlay.sdf Magenta.WannaPlay.UI.WinForms\bin\Debug\ /Y

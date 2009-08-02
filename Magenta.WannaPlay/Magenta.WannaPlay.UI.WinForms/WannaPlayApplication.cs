@@ -28,9 +28,9 @@ namespace Magenta.WannaPlay.UI.WinForms
     {
         protected IKernel Kernel { get; private set; }
 
-        public WannaPlayApplication(ComponentsConfiguration componentConfiguration)
+        public WannaPlayApplication(IKernel kernel)
         {
-            Kernel = new StandardKernel(new IModule[] { componentConfiguration, new UIConfiguration() });
+            Kernel = kernel;
         }
 
         protected virtual Control GetMainControl()
@@ -46,17 +46,12 @@ namespace Magenta.WannaPlay.UI.WinForms
         {
             //NHibernateProfiler.Initialize();
 
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-
             var wannaPlayMain = GetMainControl();
             var mainForm = ControlHoster.HostInForm(Resources.WannaPlay, "Wanna Play", wannaPlayMain);
             mainForm.StartPosition = FormStartPosition.CenterScreen;
             //mainForm.Font = new Font(mainForm.Font.FontFamily, 16);
 
-            Kernel.Get<ICommonUIService>().MainForm = mainForm;
-
-            Kernel.Get<ExceptionManager>(); // initialize exception manager                
+            Kernel.Get<ICommonUIService>().MainForm = mainForm;          
 
             Application.Run(mainForm);
         }

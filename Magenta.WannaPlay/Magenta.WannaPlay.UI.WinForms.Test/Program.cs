@@ -5,6 +5,7 @@ using System.Text;
 using Magenta.WannaPlay.UI.WinForms.Ioc;
 using System.Threading;
 using System.Globalization;
+using Ninject.Core;
 
 namespace Magenta.WannaPlay.UI.WinForms.Test
 {
@@ -15,7 +16,9 @@ namespace Magenta.WannaPlay.UI.WinForms.Test
         {
             Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("en-SG");
 
-            new TestWannaPlayApplication().Run();
+            var kernel = new StandardKernel(new IModule[] { new MockComponentsConfiguration(), new UIConfiguration() });
+
+            new WannaPlayApplication(kernel).Run();
         }
     }
 }
