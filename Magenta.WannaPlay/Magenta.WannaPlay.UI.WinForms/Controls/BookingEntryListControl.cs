@@ -11,6 +11,7 @@ using Magenta.WannaPlay.UI.WinForms.Domain.UI;
 namespace Magenta.WannaPlay.UI.WinForms.Controls
 {
     [ComplexBindingProperties("ItemsSource")]
+    [DefaultBindingProperty("ItemsSource")]
     public partial class BookingEntryListControl : UserControl
     {
         public BookingEntryListControl()
@@ -19,9 +20,9 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public object ItemsSource
+        public BindingList<BookingEntryUI> ItemsSource
         {
-            get { return dataContext.DataSource ; }
+            get { return dataContext.DataSource as BindingList<BookingEntryUI>; }
             set { dataContext.DataSource = value; }
         }
     }
