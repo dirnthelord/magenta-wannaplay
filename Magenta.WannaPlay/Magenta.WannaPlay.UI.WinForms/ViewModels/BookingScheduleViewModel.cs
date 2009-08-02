@@ -191,10 +191,13 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
             bookingEntryView.ViewModel.BookingPeriod.Model = period;
             bookingEntryView.ViewModel.Facility = firstSlot.Facility;
 
+            //var title = string.Format("Book {0}", bookingEntryView.ViewModel.Facility.Name);
             var form = ControlHoster.HostInDialog(CommonUIService.MainForm, "Add booking", bookingEntryView,
                 new DialogButtonDescription { Text = "Add", OnClick = () => addBookingViewModel.SaveBooking() },
                 new DialogButtonDescription { Text = "Cancel", IsCancelButton = true }
                 );
+
+            form.DataBindings.Add("Text", addBookingViewModel, "BookingTitle");
 
             form.ShowDialog();
 

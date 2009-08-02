@@ -24,7 +24,6 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
         [Browsable(false)]
         public IWannaPlayContextService WannaPlayContextService { get; private set; }
 
-
         public string BookingDetails
         {
             get

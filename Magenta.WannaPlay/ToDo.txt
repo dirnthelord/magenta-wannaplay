@@ -1,6 +1,7 @@
 ToDo:
 - Rename ResidentPass to FacilityCard
 - Add cancel booking functionality
+- Align buttons in dialogs to bottom right corner
 
 Done:
 - Restore standard fonts
