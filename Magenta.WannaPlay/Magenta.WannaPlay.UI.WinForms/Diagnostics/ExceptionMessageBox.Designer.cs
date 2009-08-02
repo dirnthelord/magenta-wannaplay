@@ -158,7 +158,6 @@ namespace Magenta.WannaPlay.UI.WinForms.Diagnostics
             this.MinimumSize = new System.Drawing.Size(415, 183);
             this.Name = "ExceptionMessageBox";
             this.ShowIcon = false;
-            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Exception";
             this._panel.ResumeLayout(false);

@@ -75,5 +75,15 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
         {
             ViewModel.AddSelectedBooking();
         }
+
+        private void bookingScheduleGrid_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex != 0
+                && e.ColumnIndex != bookingScheduleGrid.Columns.Count -1
+                && ViewModel.CanAddBooking)
+            {
+                ViewModel.AddSelectedBooking();  
+            }
+        }
     }
 }
