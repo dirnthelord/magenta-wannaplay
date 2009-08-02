@@ -33,6 +33,8 @@ namespace Magenta.Shared.UI.WinForms
             RequireArg.Complies(buttonDescriptions.Where(d => d.IsAcceptButton).Count() <= 1);
             RequireArg.Complies(buttonDescriptions.Where(d => d.IsCancelButton).Count() <= 1);
 
+            var columnIndex = 1;
+
             foreach (var buttonDescription in buttonDescriptions)
             {
                 var button = new Button
@@ -51,10 +53,11 @@ namespace Magenta.Shared.UI.WinForms
                     CancelButton = button;
 
                 button.Click += button_Click;
-                var columnStyle = new ColumnStyle(SizeType.Percent, 100.0f / buttonDescriptions.Count());
+                var columnStyle = new ColumnStyle(SizeType.AutoSize);
                 buttonsPanel.ColumnStyles.Add(columnStyle);
 
-                buttonsPanel.Controls.Add(button);
+                buttonsPanel.Controls.Add(button, columnIndex, 0);
+                columnIndex++;
             }
         }
 
