@@ -7,6 +7,9 @@ using log4net;
 using Magenta.WannaPlay.Ioc;
 using System.Threading;
 using System.Globalization;
+using Magenta.WannaPlay.UI.WinForms.Diagnostics;
+using Magenta.WannaPlay.UI.WinForms.Ioc;
+using Ninject.Core;
 
 namespace Magenta.WannaPlay.UI.WinForms
 {
@@ -22,20 +25,31 @@ namespace Magenta.WannaPlay.UI.WinForms
         {
             Log.Info("Application has started");
 
+            StandardKernel kernel = null;
+
             try
             {
                 // TODO: Remove
                 //Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("en-SG");
                 //Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("en-SG");
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
 
-                new WannaPlayApplication(new ComponentsConfiguration()).Run();
+                kernel = new StandardKernel(new IModule[] { new ComponentsConfiguration(), new UIConfiguration() });
+                kernel.Get<ExceptionManager>(); // initialize exception manager      
+
+                new WannaPlayApplication(kernel).Run();
 
                 Log.Info("Application has stopped");
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message, "Initialization error");
                 Log.Error("Initialization exception", e);
+
+                if (kernel != null)
+                    kernel.Get<ExceptionManager>().HandleException(e);
+                else
+                    throw;
             }
         }
     }

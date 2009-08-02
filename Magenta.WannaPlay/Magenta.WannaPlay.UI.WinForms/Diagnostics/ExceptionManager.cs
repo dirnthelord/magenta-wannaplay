@@ -19,6 +19,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Diagnostics
             _exceptionMessageBox = exceptionMessageBox;
 
             Application.ThreadException += ThreadExceptionOccured;
+            AppDomain.CurrentDomain.UnhandledException += DomainUnhandledException;
         }
 
         public void HandleException(Exception e)
@@ -31,9 +32,15 @@ namespace Magenta.WannaPlay.UI.WinForms.Diagnostics
         private void ThreadExceptionOccured(object sender, ThreadExceptionEventArgs e)
         {
             if (e.Exception != null)
-            {
                 HandleException(e.Exception);
-            }
+        }
+
+        void DomainUnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            Exception exception = e.ExceptionObject as Exception;
+
+            if(exception != null)
+                HandleException(exception);
         }
     }
 }

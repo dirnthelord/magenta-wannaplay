@@ -9,13 +9,17 @@ using Magenta.WannaPlay.UI.WinForms.Domain.UI;
 using Magenta.Shared;
 using Magenta.WannaPlay.UI.WinForms.ViewModels;
 using Magenta.WannaPlay.Domain;
+using Ninject.Core;
 
 namespace Magenta.WannaPlay.UI.WinForms
 {
+    /// <summary>
+    /// TODO: Remove this type
+    /// </summary>
     class TestWannaPlayApplication : WannaPlayApplication
     {
-        public TestWannaPlayApplication()
-            : base(new MockComponentsConfiguration())
+        public TestWannaPlayApplication(StandardKernel kernel)
+            : base(kernel)
         {
         }
 
