@@ -77,7 +77,6 @@
             this.Controls.Add(this.buttonsPanel);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "HostingDialog";
-            this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = "HostingDialog";
             this.ResumeLayout(false);

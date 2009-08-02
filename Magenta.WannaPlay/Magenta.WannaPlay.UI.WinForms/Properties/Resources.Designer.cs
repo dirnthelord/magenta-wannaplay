@@ -60,6 +60,13 @@ namespace Magenta.WannaPlay.UI.WinForms.Properties {
             }
         }
         
+        internal static System.Drawing.Icon AddBookingEntry {
+            get {
+                object obj = ResourceManager.GetObject("AddBookingEntry", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap Badminton {
             get {
                 object obj = ResourceManager.GetObject("Badminton", resourceCulture);

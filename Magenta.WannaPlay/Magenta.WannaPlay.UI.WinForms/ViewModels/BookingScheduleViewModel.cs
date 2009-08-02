@@ -7,6 +7,7 @@ using Magenta.WannaPlay.Domain;
 using Magenta.WannaPlay.Services.Booking;
 using Magenta.Shared.DesignByContract;
 using Magenta.Shared;
+using Magenta.WannaPlay.UI.WinForms.Properties;
 using Magenta.WannaPlay.UI.WinForms.Services;
 using Magenta.WannaPlay.UI.WinForms.Domain;
 using Magenta.WannaPlay.Services.Residence;
@@ -195,10 +196,18 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
             bookingEntryView.ViewModel = addBookingViewModel.BookingEntryViewModel;
 
 
-            var form = ControlHoster.HostInDialog(CommonUIService.MainForm, "Add booking", bookingEntryView,
-                new DialogButtonDescription { Text = "Add", OnClick = () => addBookingViewModel.SaveBooking() },
-                new DialogButtonDescription { Text = "Cancel", IsCancelButton = true }
-                );
+            var form = ControlHoster.HostInDialog(new DialogDescription
+            {
+                Parent = CommonUIService.MainForm,
+                Title = "Add booking",
+                Content = bookingEntryView,
+                ButtonDescriptions = new[]
+                {
+                    new DialogButtonDescription { Text = "Add", OnClick = () => addBookingViewModel.SaveBooking() },
+                    new DialogButtonDescription { Text = "Cancel", IsCancelButton = true }     
+                },
+                Icon = Resources.AddBookingEntry
+            });
 
             form.DataBindings.Add("Text", addBookingViewModel, "BookingTitle");
 
