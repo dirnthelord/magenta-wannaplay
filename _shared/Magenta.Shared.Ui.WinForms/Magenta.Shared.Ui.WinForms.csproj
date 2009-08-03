@@ -48,6 +48,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ControlHoster.cs" />
+    <Compile Include="Controls\DataGridViewEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\GridSelectionChangingEventArgs.cs" />
     <Compile Include="DialogButtonDescription.cs" />
     <Compile Include="DialogDescription.cs" />
     <Compile Include="HostingDialog.cs">

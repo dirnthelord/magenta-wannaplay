@@ -8,12 +8,12 @@ using Magenta.WannaPlay.UI.WinForms.Domain.UI;
 
 namespace Magenta.WannaPlay.UI.WinForms.Domain
 {
-    public class EmptyBookingSlotDetailsUI : BookingEntryUI
+    public class EmptyBookingEntryUI : BookingEntryUI
     {
         readonly DateTimePeriod _period;
 
 
-        public EmptyBookingSlotDetailsUI(DateTimePeriod period)
+        public EmptyBookingEntryUI(DateTimePeriod period)
         {
             _period = RequireArg.NotNull(period);
         }
@@ -30,6 +30,8 @@ namespace Magenta.WannaPlay.UI.WinForms.Domain
         public override string ResidentName { get { return ""; } }
 
         public override string ResidentPassNumber { get { return ""; } }
+
+        public override string FacilityName { get { return ""; } }
 
     }
 }

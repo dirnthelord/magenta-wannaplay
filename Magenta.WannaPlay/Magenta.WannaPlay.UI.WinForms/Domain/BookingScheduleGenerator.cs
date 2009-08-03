@@ -48,7 +48,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Domain
                 var bookingSlot =
                     currentBooking != null
                     ? new BookingEntryUI(currentBooking)
-                    : new EmptyBookingSlotDetailsUI(new DateTimePeriod(currentFrom, currentFrom.Add(Granularity)));
+                    : new EmptyBookingEntryUI(new DateTimePeriod(currentFrom, currentFrom.Add(Granularity)));
 
                 yield return bookingSlot;
 
