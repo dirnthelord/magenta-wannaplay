@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Magenta.WannaPlay.UI.WinForms.Domain.UI;
+using Magenta.WannaPlay.UI.WinForms.Controls.GridCells;
+using Magenta.WannaPlay.Domain;
 
 namespace Magenta.WannaPlay.UI.WinForms.Controls
 {

@@ -37,7 +37,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.panel1 = new System.Windows.Forms.Panel();
             this.cancelBookingButton = new System.Windows.Forms.Button();
             this.addBookingButton = new System.Windows.Forms.Button();
-            this.bookingScheduleGrid = new Magenta.WannaPlay.UI.WinForms.Controls.BookingScheduleGrid();
+            this.bookingScheduleGrid = new DataGridViewEx();
             this.periodStringColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataContext = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
@@ -150,7 +150,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button cancelBookingButton;
         private System.Windows.Forms.Button addBookingButton;
-        private BookingScheduleGrid bookingScheduleGrid;
+        private DataGridViewEx bookingScheduleGrid;
         private System.Windows.Forms.BindingSource dataContext;
         private System.Windows.Forms.DataGridViewTextBoxColumn periodStringColumn;
     }

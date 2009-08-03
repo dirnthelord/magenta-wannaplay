@@ -28,29 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.bookingSearchControl1 = new Magenta.WannaPlay.UI.WinForms.Controls.BookingSearchControl();
+            this.components = new System.ComponentModel.Container();
             this.cancelSelectedBooking = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.bookingSearchControl1 = new Magenta.WannaPlay.UI.WinForms.Controls.BookingSearchControl();
+            this.dataContext = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.dataContext)).BeginInit();
             this.SuspendLayout();
-            // 
-            // bookingSearchControl1
-            // 
-            this.bookingSearchControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bookingSearchControl1.Location = new System.Drawing.Point(0, 0);
-            this.bookingSearchControl1.Name = "bookingSearchControl1";
-            this.bookingSearchControl1.Size = new System.Drawing.Size(580, 437);
-            this.bookingSearchControl1.TabIndex = 0;
             // 
             // cancelSelectedBooking
             // 
             this.cancelSelectedBooking.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cancelSelectedBooking.AutoSize = true;
             this.cancelSelectedBooking.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.cancelSelectedBooking.Location = new System.Drawing.Point(435, 119);
+            this.cancelSelectedBooking.Location = new System.Drawing.Point(452, 119);
             this.cancelSelectedBooking.Name = "cancelSelectedBooking";
             this.cancelSelectedBooking.Size = new System.Drawing.Size(142, 23);
             this.cancelSelectedBooking.TabIndex = 1;
-            this.cancelSelectedBooking.Text = "Cancel Selected Bookings";
+            this.cancelSelectedBooking.Text = "Cancel TargetSelectionState Bookings";
             this.cancelSelectedBooking.UseVisualStyleBackColor = true;
             this.cancelSelectedBooking.Click += new System.EventHandler(this.cancelSelectedBooking_Click);
             // 
@@ -59,10 +54,23 @@
             this.panel1.AutoSize = true;
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 437);
+            this.panel1.Location = new System.Drawing.Point(0, 456);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(580, 0);
+            this.panel1.Size = new System.Drawing.Size(597, 0);
             this.panel1.TabIndex = 2;
+            // 
+            // bookingSearchControl1
+            // 
+            this.bookingSearchControl1.DataBindings.Add(new System.Windows.Forms.Binding("ViewModel", this.dataContext, "BookingSearch", true));
+            this.bookingSearchControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.bookingSearchControl1.Location = new System.Drawing.Point(0, 0);
+            this.bookingSearchControl1.Name = "bookingSearchControl1";
+            this.bookingSearchControl1.Size = new System.Drawing.Size(597, 456);
+            this.bookingSearchControl1.TabIndex = 0;
+            // 
+            // dataContext
+            // 
+            this.dataContext.DataSource = typeof(Magenta.WannaPlay.UI.WinForms.ViewModels.CancelBookingViewModel);
             // 
             // CancelBookingControl
             // 
@@ -72,7 +80,8 @@
             this.Controls.Add(this.bookingSearchControl1);
             this.Controls.Add(this.panel1);
             this.Name = "CancelBookingControl";
-            this.Size = new System.Drawing.Size(580, 437);
+            this.Size = new System.Drawing.Size(597, 456);
+            ((System.ComponentModel.ISupportInitialize)(this.dataContext)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -83,5 +92,6 @@
         private BookingSearchControl bookingSearchControl1;
         private System.Windows.Forms.Button cancelSelectedBooking;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.BindingSource dataContext;
     }
 }

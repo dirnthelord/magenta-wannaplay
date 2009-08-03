@@ -19,6 +19,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        [Bindable(true)]
         public BookingSearchViewModel ViewModel
         {
             get { return (BookingSearchViewModel)dataContext.DataSource; }

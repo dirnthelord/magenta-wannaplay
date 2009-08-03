@@ -162,11 +162,11 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
                 slot.Period.Intersect(entry.Period).GetTimeSpan().Ticks > 0));
         }
 
-        public void CancelSelectedBooking()
+        public void CancelBookings()
         {
             // TODO: Remove UI depencency
-            var bookingSearchView = Kernel.Get<BookingSearchControl>();
-            bookingSearchView.ViewModel = Kernel.Get<BookingSearchViewModel>();
+            var bookingSearchView = Kernel.Get<CancelBookingControl>();
+            bookingSearchView.ViewModel = Kernel.Get<CancelBookingViewModel>();
 
             var form = ControlHoster.HostInForm(null, "Find booking", bookingSearchView);
 
@@ -175,7 +175,7 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
             UpdateBookingData();
         }
 
-        public void AddSelectedBooking()
+        public void AddBookingToSelected()
         {
             var firstSlot = SelectedBookingSlots.OrderBy(s => s.Period.From).First();
             var slots = SelectedBookingSlots.Where(s => s.Facility == firstSlot.Facility);
