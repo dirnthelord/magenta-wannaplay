@@ -96,6 +96,7 @@
             this.bookingSearchResults.Name = "bookingSearchResults";
             this.bookingSearchResults.Size = new System.Drawing.Size(630, 254);
             this.bookingSearchResults.TabIndex = 2;
+            this.bookingSearchResults.SelectionChanged += new System.EventHandler(this.bookingSearchResults_SelectionChanged);
             // 
             // dataContext
             // 
