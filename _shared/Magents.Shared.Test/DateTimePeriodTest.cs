@@ -5,7 +5,7 @@ using System.Text;
 using NUnit.Framework;
 using Magenta.Shared;
 
-namespace Magents.Shared.Test
+namespace Magenta.Shared
 {
     [TestFixture]
     public class DateTimePeriodTest

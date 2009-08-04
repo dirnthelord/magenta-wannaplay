@@ -8,8 +8,8 @@
     <ProjectGuid>{F2CFB30D-6AA3-4DA1-ABC6-C75CEEFE3C59}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Magents.Shared.Test</RootNamespace>
-    <AssemblyName>Magents.Shared.Test</AssemblyName>
+    <RootNamespace>Magenta.Shared</RootNamespace>
+    <AssemblyName>Magenta.Shared.Test</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DateTimePeriodTest.cs" />
+    <Compile Include="ExpressionHelperTests.cs" />
     <Compile Include="Extentions\System\Collections\Generic\EnumerableExtensionsTest.cs" />
     <Compile Include="Extentions\System\DateTimeExtentionsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
