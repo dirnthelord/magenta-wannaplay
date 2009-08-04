@@ -11,5 +11,13 @@ namespace System
         {
             return string.IsNullOrEmpty(value);
         }
+
+        public static string Join(this IEnumerable<string> values, string separator)
+        {
+            if (values == null)
+                return null;
+
+            return string.Join(separator, values.ToArray());
+        }
     }
 }

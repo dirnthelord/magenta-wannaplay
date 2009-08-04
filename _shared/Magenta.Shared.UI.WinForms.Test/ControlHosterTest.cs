@@ -22,12 +22,16 @@ namespace Magenta.Shared.UI.WinForms
                 TextAlign = ContentAlignment.MiddleCenter 
             };
 
-            HostingDialog dialog = null;
-            dialog = ControlHoster.HostInDialog(null, "Test", controlToHost,
-                new DialogButtonDescription { Text = "OK", OnClick = () => MessageBox.Show(dialog, "OK") },
-                new DialogButtonDescription { Text = "Not OK", OnClick = () => MessageBox.Show(dialog, "Not OK") });
-
-            dialog.ShowDialog();
+            ControlHoster.HostInModalDialog(new DialogDescription
+            {
+                Title = "Test",
+                Content = controlToHost,
+                ButtonDescriptions = new[]
+                {
+                    new DialogButtonDescription { Text = "OK", OnClick = () => MessageBox.Show("OK") },
+                    new DialogButtonDescription { Text = "Not OK", OnClick = () => MessageBox.Show("Not OK") }
+                }
+            });
         }
     }
 }

@@ -54,6 +54,7 @@
     <Compile Include="Controls\GridSelectionChangingEventArgs.cs" />
     <Compile Include="DialogButtonDescription.cs" />
     <Compile Include="DialogDescription.cs" />
+    <Compile Include="Extensions\System\Windows\Forms\ControlExtensions.cs" />
     <Compile Include="HostingDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,9 +82,6 @@
       <DependentUpon>HostingDialog.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Extensions\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
