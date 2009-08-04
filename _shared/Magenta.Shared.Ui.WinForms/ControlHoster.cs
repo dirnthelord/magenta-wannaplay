@@ -18,9 +18,9 @@ namespace Magenta.Shared.Ui.WinForms
             var form = new HostingForm
             {
                 Text = title,
-                ClientSize = new Size 
+                ClientSize = new Size
                 {
-                    Width = content.Size.Width + content.Padding.Horizontal, 
+                    Width = content.Size.Width + content.Padding.Horizontal,
                     Height = content.Size.Height + content.Padding.Vertical
                 },
                 StartPosition = FormStartPosition.CenterParent,
@@ -33,40 +33,45 @@ namespace Magenta.Shared.Ui.WinForms
             return form;
         }
 
-        [Obsolete]
-        public static HostingDialog HostInDialog(Form parent, string title, Control content, params DialogButtonDescription[] buttonDescriptions)
+        public static void HostInModalDialog(DialogDescription dialogDescription)
         {
-            return HostInDialog(new DialogDescription
-                                    {
-                                        Content = content,
-                                        Parent = parent,
-                                        Title = title,
-                                        ButtonDescriptions = buttonDescriptions
-                                    });
+            using (var dialogForm = CreateDialog(dialogDescription))
+                dialogForm.ShowDialog();
         }
 
-        public static HostingDialog HostInDialog(DialogDescription dialogDescription)
+        public static HostingDialog CreateDialog(DialogDescription dialogDescription)
         {
             var dialog = new HostingDialog
             {
                 Text = dialogDescription.Title,
+
+                Icon = Icon.FromHandle(dialogDescription.Icon.GetHicon()),
+                ShowIcon = dialogDescription.Icon != null,
+
+                Owner = dialogDescription.Parent,
             };
 
-            dialog.Icon = dialogDescription.Icon;
-            dialog.ShowIcon = dialogDescription.Icon != null;
 
-            dialog.Owner = dialogDescription.Parent;
-
+            // Add buttons first to understand how much space they will take
+            // ButtonsPanel's size is later used to calculate dialogForm client size
             dialog.SetButtons(dialogDescription.ButtonDescriptions);
 
-            dialogDescription.Content.Padding = new Padding(8, 8, 8, 8);
+
+            var content = dialogDescription.Content;
+
+            content.Padding = new Padding(8, 8, 8, 8);
+
             dialog.ClientSize = new Size
             {
-                Width = dialogDescription.Content.Width + dialogDescription.Content.Padding.Horizontal,
-                Height = dialogDescription.Content.Height + dialog.ButtonsPanel.Height + dialogDescription.Content.Padding.Vertical
+                Width = content.Width + content.Padding.Horizontal,
+                Height = content.Height + content.Padding.Vertical + dialog.ButtonsPanel.Height
             };
+
+
             dialog.Content = dialogDescription.Content;
 
+
+            // Workaround to emulate FormStartPosition.CenterParent which does not work for non-modal dialogs
             if (dialogDescription.Parent != null)
                 dialog.Load += delegate
                 {

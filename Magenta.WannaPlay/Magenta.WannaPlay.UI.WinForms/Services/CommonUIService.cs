@@ -32,7 +32,13 @@ namespace Magenta.WannaPlay.UI.WinForms.Services
                 new DialogButtonDescription { Text = "Cancel", IsCancelButton = true }
             };
 
-            ControlHoster.HostInDialog(MainForm, "Select guard on duty", dutyGuardSelector, buttons).Show();
+            ControlHoster.HostInModalDialog(new DialogDescription
+            {
+                Parent = MainForm,
+                Title = "Select guard on duty",
+                Content = dutyGuardSelector,
+                ButtonDescriptions = buttons,
+            });
         }
 
         public Form MainForm { get; set; }

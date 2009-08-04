@@ -165,7 +165,7 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
         public void CancelBookings()
         {
             // TODO: Remove UI depencency
-            var bookingSearchView = Kernel.Get<CancelBookingControl>();
+            var bookingSearchView = Kernel.Get<CancelBookingsControl>();
             bookingSearchView.ViewModel = Kernel.Get<CancelBookingViewModel>();
 
             var form = ControlHoster.HostInForm(null, "Find booking", bookingSearchView);
@@ -196,7 +196,7 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
             bookingEntryView.ViewModel = addBookingViewModel.BookingEntryViewModel;
 
 
-            var form = ControlHoster.HostInDialog(new DialogDescription
+            var form = ControlHoster.CreateDialog(new DialogDescription
             {
                 Parent = CommonUIService.MainForm,
                 Title = "Add booking",
@@ -206,9 +206,10 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
                     new DialogButtonDescription { Text = "Add", OnClick = () => addBookingViewModel.SaveBooking() },
                     new DialogButtonDescription { Text = "Cancel", IsCancelButton = true }     
                 },
-                Icon = Resources.AddBookingEntry
+                Icon = Resources.AddBooking.ToBitmap()
             });
 
+            // TODO: Replace with strongly-typed AddBinding helper method call
             form.DataBindings.Add("Text", addBookingViewModel, "BookingTitle");
 
             form.ShowDialog();

@@ -11,9 +11,9 @@ using Magenta.WannaPlay.UI.WinForms.ViewModels;
 namespace Magenta.WannaPlay.UI.WinForms.Controls
 {
     [DefaultBindingProperty("ViewModel")]
-    public partial class CancelBookingControl : UserControl
+    public partial class CancelBookingsControl : UserControl
     {
-        public CancelBookingControl()
+        public CancelBookingsControl()
         {
             InitializeComponent();
         }

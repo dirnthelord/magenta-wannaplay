@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Magenta.WannaPlay.UI.WinFor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Magenta.Shared.Testing", "..\_shared\Magenta.Shared.Testing\Magenta.Shared.Testing.csproj", "{B2DA52AB-F103-4865-8F39-71D076D85E25}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Magents.Shared.Test", "..\_shared\Magents.Shared.Test\Magents.Shared.Test.csproj", "{F2CFB30D-6AA3-4DA1-ABC6-C75CEEFE3C59}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Magenta.Shared.Test", "..\_shared\Magents.Shared.Test\Magenta.Shared.Test.csproj", "{F2CFB30D-6AA3-4DA1-ABC6-C75CEEFE3C59}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{CCB624B0-A0E0-40FE-BEB1-A8837530DF11}"
 EndProject

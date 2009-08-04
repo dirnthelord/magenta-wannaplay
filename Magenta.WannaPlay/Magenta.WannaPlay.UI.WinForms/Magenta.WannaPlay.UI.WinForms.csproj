@@ -77,11 +77,11 @@
     <Compile Include="Controls\BookingEntryListControl.Designer.cs">
       <DependentUpon>BookingEntryListControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\CancelBookingControl.cs">
+    <Compile Include="Controls\CancelBookingsControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\CancelBookingControl.Designer.cs">
-      <DependentUpon>CancelBookingControl.cs</DependentUpon>
+    <Compile Include="Controls\CancelBookingsControl.Designer.cs">
+      <DependentUpon>CancelBookingsControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\DateTimePeriodControl.cs">
       <SubType>UserControl</SubType>
@@ -196,7 +196,7 @@
     <Compile Include="WannaPlayApplication.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\AddBookingEntry.ico" />
+    <Content Include="Resources\AddBooking.ico" />
     <Content Include="Resources\Badminton.png" />
     <None Include="Log4Net.Config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -212,6 +212,7 @@
     <None Include="Resources\Copy.ico" />
     <None Include="Resources\EMail.ico" />
     <Content Include="Resources\Clock.png" />
+    <Content Include="Resources\CancelBooking.bmp" />
     <Content Include="Resources\Remarks.png" />
     <Content Include="Resources\Resident.png" />
     <Content Include="Resources\Squash.png" />
@@ -241,8 +242,8 @@
       <DependentUpon>BookingEntryListControl.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\CancelBookingControl.resx">
-      <DependentUpon>CancelBookingControl.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\CancelBookingsControl.resx">
+      <DependentUpon>CancelBookingsControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\DateTimePeriodControl.resx">
       <DependentUpon>DateTimePeriodControl.cs</DependentUpon>

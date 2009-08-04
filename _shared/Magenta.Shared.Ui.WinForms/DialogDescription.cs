@@ -12,7 +12,7 @@ namespace Magenta.Shared.Ui.WinForms
 
         public string Title { get; set; }
 
-        public Icon Icon { get; set; }
+        public Bitmap Icon { get; set; }
 
         public DialogButtonDescription[] ButtonDescriptions { get; set; }
     }
