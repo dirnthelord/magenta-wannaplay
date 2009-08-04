@@ -27,5 +27,18 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             get { return dataContext.DataSource as BindingList<BookingEntryUI>; }
             set { dataContext.DataSource = value; }
         }
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public IEnumerable<T> GetSelectedRowsDataItems<T>()
+        {
+            // TODO: Ensure this code is not duplicated
+            return bookingEntries.SelectedRows.Cast<DataGridViewRow>().Select(r => (T)r.DataBoundItem);
+        }
+
+        public event EventHandler SelectionChanged
+        {
+            add { bookingEntries.SelectionChanged += value; }
+            remove { bookingEntries.SelectionChanged -= value; }
+        }
     }
 }

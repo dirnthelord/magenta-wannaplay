@@ -26,6 +26,30 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
         public BindingList<BookingEntryUI> SearchResults { get; private set; }
 
 
+        IEnumerable<BookingEntryUI> _selectedBookings = Enumerable.Empty<BookingEntryUI>();
+        public IEnumerable<BookingEntryUI> SelectedBookings
+        {
+            get { return _selectedBookings; }
+            set
+            {
+                _selectedBookings = value ?? Enumerable.Empty<BookingEntryUI>();
+                OnSelectedBookingsChanged();
+            }
+        }
+
+        public event EventHandler SelectedBookingsChanged;
+
+        private void OnSelectedBookingsChanged()
+        {
+            OnPropertyChanged("SelectedBookings");
+
+            var handler = SelectedBookingsChanged;
+
+            if (handler != null)
+                handler(this, EventArgs.Empty);
+        }
+
+
         public BookingSearchViewModel
             (
                 IBookingService bookingService, 

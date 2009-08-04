@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Magenta.WannaPlay.UI.WinForms.ViewModels;
+using Magenta.WannaPlay.UI.WinForms.Domain.UI;
 
 namespace Magenta.WannaPlay.UI.WinForms.Controls
 {
@@ -29,6 +30,11 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
         private void findBookingsButton_Click(object sender, EventArgs e)
         {
             ViewModel.FindBookings();
+        }
+
+        private void bookingSearchResults_SelectionChanged(object sender, EventArgs e)
+        {
+            ViewModel.SelectedBookings = bookingSearchResults.GetSelectedRowsDataItems<BookingEntryUI>();
         }
     }
 }

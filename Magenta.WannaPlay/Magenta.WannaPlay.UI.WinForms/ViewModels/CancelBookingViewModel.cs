@@ -30,28 +30,35 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 
         public BookingSearchViewModel BookingSearch { get; private set; }
 
-        IEnumerable<BookingEntryUI> _selectedBookings = Enumerable.Empty<BookingEntryUI>();
+        #region SelectedBookings
+        IEnumerable<BookingEntryUI> _selectedBookings;
         public IEnumerable<BookingEntryUI> SelectedBookings
         {
-            get { return _selectedBookings; }
-            set
-            {
-                _selectedBookings = value ?? Enumerable.Empty<BookingEntryUI>();
-                OnSelectedBookingsChanged();
-            }
+            get { return BookingSearch.SelectedBookings; }
         }
 
         private void OnSelectedBookingsChanged()
         {
-            OnPropertyChanged("SelectedBookings");
-            OnPropertyChanged("CanCacelSelectedBookings");
-        }
+            OnCanCacelSelectedBookingsChanged();
+        } 
+        #endregion
 
+        #region CanCacelSelectedBookings
         public bool CanCacelSelectedBookings
         {
             get { return SelectedBookings.Count() > 0; }
         }
 
+        public event EventHandler CanCacelSelectedBookingsChanged;
+
+        void OnCanCacelSelectedBookingsChanged()
+        {
+            var handler = CanCacelSelectedBookingsChanged;
+
+            if (handler != null)
+                handler(this, EventArgs.Empty);
+        }
+        #endregion
 
         public CancelBookingViewModel(IKernel kernel, ICommonUIService commonUIService, IBookingService bookingService)
         {
@@ -60,6 +67,7 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
             BookingService = RequireArg.NotNull(bookingService);
 
             BookingSearch = Kernel.Get<BookingSearchViewModel>();
+            BookingSearch.SelectedBookingsChanged += delegate { OnSelectedBookingsChanged(); };
         }
 
         public void CancelSelectedBookings()

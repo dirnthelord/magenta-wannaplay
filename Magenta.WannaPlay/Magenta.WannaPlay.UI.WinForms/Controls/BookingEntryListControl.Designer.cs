@@ -60,13 +60,12 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.bookingEntries.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bookingEntries.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.bookingEntries.Location = new System.Drawing.Point(0, 0);
-            this.bookingEntries.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bookingEntries.Name = "bookingEntries";
             this.bookingEntries.ReadOnly = true;
             this.bookingEntries.RowHeadersVisible = false;
             this.bookingEntries.RowTemplate.Height = 24;
             this.bookingEntries.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.bookingEntries.Size = new System.Drawing.Size(755, 382);
+            this.bookingEntries.Size = new System.Drawing.Size(566, 310);
             this.bookingEntries.TabIndex = 0;
             // 
             // periodStringDataGridViewTextBoxColumn
@@ -75,7 +74,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.periodStringDataGridViewTextBoxColumn.HeaderText = "Period";
             this.periodStringDataGridViewTextBoxColumn.Name = "periodStringDataGridViewTextBoxColumn";
             this.periodStringDataGridViewTextBoxColumn.ReadOnly = true;
-            this.periodStringDataGridViewTextBoxColumn.Width = 74;
+            this.periodStringDataGridViewTextBoxColumn.Width = 62;
             // 
             // residentPassNumberDataGridViewTextBoxColumn
             // 
@@ -83,7 +82,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.residentPassNumberDataGridViewTextBoxColumn.HeaderText = "Resident Pass Number";
             this.residentPassNumberDataGridViewTextBoxColumn.Name = "residentPassNumberDataGridViewTextBoxColumn";
             this.residentPassNumberDataGridViewTextBoxColumn.ReadOnly = true;
-            this.residentPassNumberDataGridViewTextBoxColumn.Width = 162;
+            this.residentPassNumberDataGridViewTextBoxColumn.Width = 95;
             // 
             // residentNameDataGridViewTextBoxColumn
             // 
@@ -91,7 +90,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.residentNameDataGridViewTextBoxColumn.HeaderText = "Resident Name";
             this.residentNameDataGridViewTextBoxColumn.Name = "residentNameDataGridViewTextBoxColumn";
             this.residentNameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.residentNameDataGridViewTextBoxColumn.Width = 119;
+            this.residentNameDataGridViewTextBoxColumn.Width = 97;
             // 
             // residentAddressDataGridViewTextBoxColumn
             // 
@@ -99,7 +98,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.residentAddressDataGridViewTextBoxColumn.HeaderText = "Block & Number";
             this.residentAddressDataGridViewTextBoxColumn.Name = "residentAddressDataGridViewTextBoxColumn";
             this.residentAddressDataGridViewTextBoxColumn.ReadOnly = true;
-            this.residentAddressDataGridViewTextBoxColumn.Width = 123;
+            this.residentAddressDataGridViewTextBoxColumn.Width = 99;
             // 
             // bookedByGuardDataGridViewTextBoxColumn
             // 
@@ -107,7 +106,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.bookedByGuardDataGridViewTextBoxColumn.HeaderText = "Booked By Guard";
             this.bookedByGuardDataGridViewTextBoxColumn.Name = "bookedByGuardDataGridViewTextBoxColumn";
             this.bookedByGuardDataGridViewTextBoxColumn.ReadOnly = true;
-            this.bookedByGuardDataGridViewTextBoxColumn.Width = 97;
+            this.bookedByGuardDataGridViewTextBoxColumn.Width = 80;
             // 
             // dataContext
             // 
@@ -115,12 +114,11 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             // 
             // BookingEntryListControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.bookingEntries);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "BookingEntryListControl";
-            this.Size = new System.Drawing.Size(755, 382);
+            this.Size = new System.Drawing.Size(566, 310);
             ((System.ComponentModel.ISupportInitialize)(this.bookingEntries)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataContext)).EndInit();
             this.ResumeLayout(false);

@@ -67,7 +67,6 @@
             this.bookingSearchControl.Name = "bookingSearchControl";
             this.bookingSearchControl.Size = new System.Drawing.Size(597, 456);
             this.bookingSearchControl.TabIndex = 0;
-            this.bookingSearchControl.Load += new System.EventHandler(this.bookingSearchControl_Load);
             // 
             // dataContext
             // 
