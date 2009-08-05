@@ -11,6 +11,8 @@ namespace Magenta.WannaPlay.Infrastructure.Persistence
 {
     public interface IPersistenceRepository
     {
+        T GetById<T>(object id);
+
         IEnumerable<T> Search<T>(params Expression<Func<T, bool>>[] filters);
 
         void Save<T>(T entity);
