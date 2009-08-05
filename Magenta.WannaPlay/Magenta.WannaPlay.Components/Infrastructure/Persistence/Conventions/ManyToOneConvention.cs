@@ -14,7 +14,7 @@ namespace Magenta.WannaPlay.Infrastructure.Persistence.Conventions
 
         public void Apply(IManyToOnePart target)
         {
-            target.Cascade.All();
+            target.Cascade.SaveUpdate();
         }
 
         #endregion

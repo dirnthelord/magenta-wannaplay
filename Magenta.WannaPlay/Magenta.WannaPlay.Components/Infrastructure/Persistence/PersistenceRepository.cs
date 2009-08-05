@@ -45,6 +45,11 @@ namespace Magenta.WannaPlay.Infrastructure.Persistence
                 .ToList();
         }
 
+        public T GetById<T>(object id)
+        {
+            return _session.Get<T>(id);
+        }
+
         #endregion
     }
 }

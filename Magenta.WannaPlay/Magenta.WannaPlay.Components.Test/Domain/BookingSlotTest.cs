@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using FluentNHibernate.Testing;
@@ -73,6 +74,30 @@ namespace Magenta.WannaPlay.Components.Domain
             };
 
             Session.Save(bookingEntry);
+        }
+
+        [Test]
+        public void InsertAndDelete()
+        {
+            var now = DateTime.UtcNow.RoundToSeconds();
+
+            var repository = new PersistenceRepository(Session);
+
+            var bookingEntry = new BookingEntry
+                {
+                    Facility = _facility,
+                    BookedByGuard = _dutyGuard,
+                    Resident = _resident,
+                    BookedAtDateTime = now,
+                    Period = DateTimePeriod.FromHours(now.AddDays(1), 1)
+                };
+
+            repository.Save(bookingEntry);
+
+            repository.Delete(repository.GetById<BookingEntry>(bookingEntry.Id));
+
+            repository.GetById<BookingEntry>(bookingEntry.Id).AssertIsNull();
+
         }
     }
 }
