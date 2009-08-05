@@ -111,10 +111,9 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             // 
             this._clockPicture.Image = global::Magenta.WannaPlay.UI.WinForms.Properties.Resources.Clock;
             this._clockPicture.Location = new System.Drawing.Point(0, 3);
-            this._clockPicture.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this._clockPicture.Name = "_clockPicture";
             this._clockPicture.Size = new System.Drawing.Size(64, 64);
-            this._clockPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this._clockPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this._clockPicture.TabIndex = 20;
             this._clockPicture.TabStop = false;
             // 
@@ -165,7 +164,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.groupBox1.Controls.Add(this.resident);
             this.groupBox1.Location = new System.Drawing.Point(76, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(8);
             this.groupBox1.Size = new System.Drawing.Size(237, 99);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
@@ -177,7 +176,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.resident.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.dataContext, "Resident", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.resident.Dock = System.Windows.Forms.DockStyle.Fill;
             this.resident.Location = new System.Drawing.Point(8, 21);
-            this.resident.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.resident.Margin = new System.Windows.Forms.Padding(4);
             this.resident.Name = "resident";
             this.resident.Size = new System.Drawing.Size(221, 70);
             this.resident.TabIndex = 0;
@@ -190,7 +189,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.panel3.Controls.Add(this.groupBox1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 83);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(315, 102);
             this.panel3.TabIndex = 18;
@@ -199,10 +198,9 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             // 
             this._residentPicture.Image = global::Magenta.WannaPlay.UI.WinForms.Properties.Resources.Resident;
             this._residentPicture.Location = new System.Drawing.Point(0, 6);
-            this._residentPicture.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this._residentPicture.Name = "_residentPicture";
             this._residentPicture.Size = new System.Drawing.Size(64, 64);
-            this._residentPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this._residentPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this._residentPicture.TabIndex = 4;
             this._residentPicture.TabStop = false;
             // 
@@ -214,7 +212,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.panel4.Controls.Add(this.comment);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 185);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(315, 99);
             this.panel4.TabIndex = 20;
@@ -223,10 +221,9 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             // 
             this._remarksPicture.Image = global::Magenta.WannaPlay.UI.WinForms.Properties.Resources.Remarks;
             this._remarksPicture.Location = new System.Drawing.Point(2, 5);
-            this._remarksPicture.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this._remarksPicture.Name = "_remarksPicture";
             this._remarksPicture.Size = new System.Drawing.Size(64, 64);
-            this._remarksPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this._remarksPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this._remarksPicture.TabIndex = 18;
             this._remarksPicture.TabStop = false;
             // 
@@ -269,6 +266,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this._residentPicture)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
