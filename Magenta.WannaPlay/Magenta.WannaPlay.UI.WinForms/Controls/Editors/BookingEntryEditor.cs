@@ -9,11 +9,11 @@ using System.Windows.Forms;
 using Ninject.Core;
 using Magenta.WannaPlay.UI.WinForms.ViewModels;
 
-namespace Magenta.WannaPlay.UI.WinForms.Controls
+namespace Magenta.WannaPlay.UI.WinForms.Controls.Editors
 {
-    public partial class BookingEntryEditorControl : UserControl
+    public partial class BookingEntryEditor : UserControl
     {
-        public BookingEntryEditorControl()
+        public BookingEntryEditor()
         {
             InitializeComponent();
         }

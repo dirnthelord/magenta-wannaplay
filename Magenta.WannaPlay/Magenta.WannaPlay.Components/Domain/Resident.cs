@@ -11,5 +11,10 @@ namespace Magenta.WannaPlay.Domain
         public virtual string Name { get; set; }
 
         public virtual ResidenceUnit Unit { get; set; }
+
+        public Resident()
+        {
+            Unit = new ResidenceUnit();
+        }
     }
 }

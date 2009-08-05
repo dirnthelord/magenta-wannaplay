@@ -1,4 +1,5 @@
-﻿namespace Magenta.WannaPlay.UI.WinForms.Controls
+﻿using Magenta.WannaPlay.UI.WinForms.Controls.Editors;
+namespace Magenta.WannaPlay.UI.WinForms.Controls
 {
     partial class BookingSearchControl
     {
@@ -35,7 +36,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.bookingSearchResults = new Magenta.WannaPlay.UI.WinForms.Controls.BookingEntryListControl();
             this.dataContext = new System.Windows.Forms.BindingSource(this.components);
-            this.findBookingsRequestEditorControl1 = new Magenta.WannaPlay.UI.WinForms.Controls.BookingSearchRequestEditorControl();
+            this.findBookingsRequestEditorControl1 = new BookingSearchRequestEditor();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataContext)).BeginInit();
@@ -132,7 +133,7 @@
 
         #endregion
 
-        private BookingSearchRequestEditorControl findBookingsRequestEditorControl1;
+        private BookingSearchRequestEditor findBookingsRequestEditorControl1;
         private System.Windows.Forms.Button findBookingsButton;
         private BookingEntryListControl bookingSearchResults;
         private System.Windows.Forms.Panel panel1;

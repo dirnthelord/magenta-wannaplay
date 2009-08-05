@@ -1,7 +1,7 @@
 ﻿using Magenta.WannaPlay.UI.WinForms.ViewModels;
-namespace Magenta.WannaPlay.UI.WinForms.Controls
+namespace Magenta.WannaPlay.UI.WinForms.Controls.Editors
 {
-    partial class BookingEntryEditorControl
+    partial class BookingEntryEditor
     {
         /// <summary> 
         /// Required designer variable.
@@ -34,32 +34,32 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             System.Windows.Forms.Label periodForLabel;
             System.Windows.Forms.Label periodFromLabel;
             this.panel1 = new System.Windows.Forms.Panel();
-            this._clockPicture = new System.Windows.Forms.PictureBox();
             this.periodFromTextBox = new System.Windows.Forms.TextBox();
-            this.bookingPeriodBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataContext = new System.Windows.Forms.BindingSource(this.components);
             this.periodForTextBox = new System.Windows.Forms.TextBox();
             this.periodDayTextBox = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.resident = new Magenta.WannaPlay.UI.WinForms.Controls.ResidentEditorControl();
             this.panel3 = new System.Windows.Forms.Panel();
-            this._residentPicture = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
-            this._remarksPicture = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.comment = new System.Windows.Forms.RichTextBox();
+            this._remarksPicture = new System.Windows.Forms.PictureBox();
+            this._residentPicture = new System.Windows.Forms.PictureBox();
+            this._clockPicture = new System.Windows.Forms.PictureBox();
+            this.bookingPeriodBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataContext = new System.Windows.Forms.BindingSource(this.components);
+            this.resident = new ResidentEditor();
             periodDayLabel = new System.Windows.Forms.Label();
             periodForLabel = new System.Windows.Forms.Label();
             periodFromLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._remarksPicture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._residentPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._clockPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookingPeriodBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataContext)).BeginInit();
-            this.groupBox1.SuspendLayout();
-            this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this._residentPicture)).BeginInit();
-            this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this._remarksPicture)).BeginInit();
             this.SuspendLayout();
             // 
             // periodDayLabel
@@ -107,16 +107,6 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.panel1.Size = new System.Drawing.Size(315, 83);
             this.panel1.TabIndex = 17;
             // 
-            // _clockPicture
-            // 
-            this._clockPicture.Image = global::Magenta.WannaPlay.UI.WinForms.Properties.Resources.Clock;
-            this._clockPicture.Location = new System.Drawing.Point(0, 3);
-            this._clockPicture.Name = "_clockPicture";
-            this._clockPicture.Size = new System.Drawing.Size(64, 64);
-            this._clockPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this._clockPicture.TabIndex = 20;
-            this._clockPicture.TabStop = false;
-            // 
             // periodFromTextBox
             // 
             this.periodFromTextBox.BackColor = System.Drawing.SystemColors.Info;
@@ -126,15 +116,6 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.periodFromTextBox.ReadOnly = true;
             this.periodFromTextBox.Size = new System.Drawing.Size(92, 20);
             this.periodFromTextBox.TabIndex = 19;
-            // 
-            // bookingPeriodBindingSource
-            // 
-            this.bookingPeriodBindingSource.DataMember = "BookingPeriod";
-            this.bookingPeriodBindingSource.DataSource = this.dataContext;
-            // 
-            // dataContext
-            // 
-            this.dataContext.DataSource = typeof(Magenta.WannaPlay.UI.WinForms.ViewModels.BookingEntryViewModel);
             // 
             // periodForTextBox
             // 
@@ -170,18 +151,6 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Resident";
             // 
-            // resident
-            // 
-            this.resident.AutoSize = true;
-            this.resident.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.dataContext, "Resident", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.resident.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.resident.Location = new System.Drawing.Point(8, 21);
-            this.resident.Margin = new System.Windows.Forms.Padding(4);
-            this.resident.Name = "resident";
-            this.resident.Size = new System.Drawing.Size(221, 70);
-            this.resident.TabIndex = 0;
-            this.resident.AutoSuggestRequired += new System.EventHandler(this.resident_AutoSuggestRequired);
-            // 
             // panel3
             // 
             this.panel3.AutoSize = true;
@@ -193,16 +162,6 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(315, 102);
             this.panel3.TabIndex = 18;
-            // 
-            // _residentPicture
-            // 
-            this._residentPicture.Image = global::Magenta.WannaPlay.UI.WinForms.Properties.Resources.Resident;
-            this._residentPicture.Location = new System.Drawing.Point(0, 6);
-            this._residentPicture.Name = "_residentPicture";
-            this._residentPicture.Size = new System.Drawing.Size(64, 64);
-            this._residentPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this._residentPicture.TabIndex = 4;
-            this._residentPicture.TabStop = false;
             // 
             // panel4
             // 
@@ -216,16 +175,6 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(315, 99);
             this.panel4.TabIndex = 20;
-            // 
-            // _remarksPicture
-            // 
-            this._remarksPicture.Image = global::Magenta.WannaPlay.UI.WinForms.Properties.Resources.Remarks;
-            this._remarksPicture.Location = new System.Drawing.Point(2, 5);
-            this._remarksPicture.Name = "_remarksPicture";
-            this._remarksPicture.Size = new System.Drawing.Size(64, 64);
-            this._remarksPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this._remarksPicture.TabIndex = 18;
-            this._remarksPicture.TabStop = false;
             // 
             // label1
             // 
@@ -243,11 +192,63 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.comment.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dataContext, "Comment", true));
+            this.comment.DataBindings.Add(new System.Windows.Forms.Binding("ReadOnly", this.dataContext, "IsReadOnly", true));
             this.comment.Location = new System.Drawing.Point(76, 17);
             this.comment.Name = "comment";
             this.comment.Size = new System.Drawing.Size(238, 80);
             this.comment.TabIndex = 16;
             this.comment.Text = "";
+            // 
+            // _remarksPicture
+            // 
+            this._remarksPicture.Image = global::Magenta.WannaPlay.UI.WinForms.Properties.Resources.Remarks;
+            this._remarksPicture.Location = new System.Drawing.Point(2, 5);
+            this._remarksPicture.Name = "_remarksPicture";
+            this._remarksPicture.Size = new System.Drawing.Size(64, 64);
+            this._remarksPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this._remarksPicture.TabIndex = 18;
+            this._remarksPicture.TabStop = false;
+            // 
+            // _residentPicture
+            // 
+            this._residentPicture.Image = global::Magenta.WannaPlay.UI.WinForms.Properties.Resources.Resident;
+            this._residentPicture.Location = new System.Drawing.Point(0, 6);
+            this._residentPicture.Name = "_residentPicture";
+            this._residentPicture.Size = new System.Drawing.Size(64, 64);
+            this._residentPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this._residentPicture.TabIndex = 4;
+            this._residentPicture.TabStop = false;
+            // 
+            // _clockPicture
+            // 
+            this._clockPicture.Image = global::Magenta.WannaPlay.UI.WinForms.Properties.Resources.Clock;
+            this._clockPicture.Location = new System.Drawing.Point(0, 3);
+            this._clockPicture.Name = "_clockPicture";
+            this._clockPicture.Size = new System.Drawing.Size(64, 64);
+            this._clockPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this._clockPicture.TabIndex = 20;
+            this._clockPicture.TabStop = false;
+            // 
+            // bookingPeriodBindingSource
+            // 
+            this.bookingPeriodBindingSource.DataMember = "BookingPeriod";
+            this.bookingPeriodBindingSource.DataSource = this.dataContext;
+            // 
+            // dataContext
+            // 
+            this.dataContext.DataSource = typeof(Magenta.WannaPlay.UI.WinForms.ViewModels.BookingEntryViewModel);
+            // 
+            // resident
+            // 
+            this.resident.AutoSize = true;
+            this.resident.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.dataContext, "Resident", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.resident.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.resident.Location = new System.Drawing.Point(8, 21);
+            this.resident.Margin = new System.Windows.Forms.Padding(4);
+            this.resident.Name = "resident";
+            this.resident.Size = new System.Drawing.Size(221, 70);
+            this.resident.TabIndex = 0;
+            this.resident.AutoSuggestRequired += new System.EventHandler(this.resident_AutoSuggestRequired);
             // 
             // BookingEntryEditorControl
             // 
@@ -260,17 +261,17 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.Size = new System.Drawing.Size(315, 284);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this._clockPicture)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bookingPeriodBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataContext)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this._residentPicture)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this._remarksPicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._residentPicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._clockPicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bookingPeriodBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataContext)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -286,7 +287,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
         private System.Windows.Forms.BindingSource bookingPeriodBindingSource;
         private System.Windows.Forms.PictureBox _clockPicture;
         private System.Windows.Forms.GroupBox groupBox1;
-        private ResidentEditorControl resident;
+        private ResidentEditor resident;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.PictureBox _residentPicture;
         private System.Windows.Forms.Panel panel4;

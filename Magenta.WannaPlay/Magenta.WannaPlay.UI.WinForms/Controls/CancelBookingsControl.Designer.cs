@@ -1,4 +1,5 @@
-﻿namespace Magenta.WannaPlay.UI.WinForms.Controls
+﻿using Magenta.WannaPlay.UI.WinForms.Controls.Editors;
+namespace Magenta.WannaPlay.UI.WinForms.Controls
 {
     partial class CancelBookingsControl
     {
@@ -31,7 +32,7 @@
             this.components = new System.ComponentModel.Container();
             this.cancelSelectedBooking = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.bookingSearchControl = new Magenta.WannaPlay.UI.WinForms.Controls.BookingSearchControl();
+            this.bookingSearchControl = new BookingSearchControl();
             this.dataContext = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataContext)).BeginInit();
             this.SuspendLayout();

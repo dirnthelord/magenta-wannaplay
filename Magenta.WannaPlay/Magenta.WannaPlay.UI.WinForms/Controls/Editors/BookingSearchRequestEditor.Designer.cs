@@ -1,6 +1,6 @@
-﻿namespace Magenta.WannaPlay.UI.WinForms.Controls
+﻿namespace Magenta.WannaPlay.UI.WinForms.Controls.Editors
 {
-    partial class BookingSearchRequestEditorControl
+    partial class BookingSearchRequestEditor
     {
         /// <summary> 
         /// Required designer variable.
@@ -36,7 +36,7 @@
             this.blockNumberTextBox = new System.Windows.Forms.TextBox();
             this.facilityCardNumberTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.unitNumberEditorControl1 = new Magenta.WannaPlay.UI.WinForms.Controls.UnitNumberEditorControl();
+            this.unitNumberEditorControl1 = new UnitNumberEditor();
             blockNumberLabel = new System.Windows.Forms.Label();
             facilityCardNumberLabel = new System.Windows.Forms.Label();
             unitNumberLabel = new System.Windows.Forms.Label();
@@ -140,7 +140,7 @@
         private System.Windows.Forms.TextBox blockNumberTextBox;
         private System.Windows.Forms.TextBox facilityCardNumberTextBox;
         private System.Windows.Forms.Label label1;
-        private UnitNumberEditorControl unitNumberEditorControl1;
+        private UnitNumberEditor unitNumberEditorControl1;
 
 
     }
