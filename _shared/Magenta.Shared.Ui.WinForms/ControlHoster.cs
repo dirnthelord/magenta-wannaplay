@@ -45,7 +45,7 @@ namespace Magenta.Shared.Ui.WinForms
             {
                 Text = dialogDescription.Title,
 
-                Icon = Icon.FromHandle(dialogDescription.Icon.GetHicon()),
+                Icon = dialogDescription.Icon == null ? null : Icon.FromHandle(dialogDescription.Icon.GetHicon()),
                 ShowIcon = dialogDescription.Icon != null,
 
                 Owner = dialogDescription.Parent,
