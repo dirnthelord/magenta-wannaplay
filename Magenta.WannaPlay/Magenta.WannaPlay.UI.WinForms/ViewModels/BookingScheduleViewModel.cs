@@ -17,6 +17,7 @@ using Ninject.Core;
 using Magenta.WannaPlay.UI.WinForms.Controls;
 using Magenta.Shared.Ui.WinForms;
 using Magenta.Shared.UI.WinForms;
+using Magenta.WannaPlay.UI.WinForms.Controls.Editors;
 
 namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 {
@@ -191,16 +192,16 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
             addBookingViewModel.BookingEntryViewModel.Facility = firstSlot.Facility;
 
 
-            var bookingEntryView = Kernel.Get<BookingEntryEditorControl>();
+            var bookingEntryEditor = Kernel.Get<BookingEntryEditor>();
 
-            bookingEntryView.ViewModel = addBookingViewModel.BookingEntryViewModel;
+            bookingEntryEditor.ViewModel = addBookingViewModel.BookingEntryViewModel;
 
 
             var form = ControlHoster.CreateDialog(new DialogDescription
             {
                 Parent = CommonUIService.MainForm,
                 Title = "Add booking",
-                Content = bookingEntryView,
+                Content = bookingEntryEditor,
                 ButtonDescriptions = new[]
                 {
                     new DialogButtonDescription { Text = "Add", OnClick = () => addBookingViewModel.SaveBooking() },

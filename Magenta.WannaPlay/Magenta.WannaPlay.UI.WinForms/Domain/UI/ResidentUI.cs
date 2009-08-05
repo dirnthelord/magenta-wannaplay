@@ -3,49 +3,58 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ComponentModel;
+using Magenta.Shared.UI.WinForms.Mvvm;
+using Magenta.WannaPlay.Domain;
+using Magenta.Shared.DesignByContract;
 
 namespace Magenta.WannaPlay.UI.WinForms.Domain.UI
 {
-    public class ResidentUI : INotifyPropertyChanged
+    public class ResidentUI : ViewModelBase
     {
-        string _factilityCardNumber;
-        string _name;
-        string _addressBlockNumber;
-        string _addressUnitNumber;
+        [Browsable(false)]
+        public Resident Resident { get; private set; }
+
+        public ResidentUI(Resident resident)
+        {
+            Resident = RequireArg.NotNull(resident);
+        }
 
         public string FactilityCardNumber
         {
-            get { return _factilityCardNumber; }
-            set { _factilityCardNumber = value; OnPropertyChanged("FactilityCardNumber"); }
+            get { return Resident.PassCardNumber; }
+            set { Resident.PassCardNumber = value; OnPropertyChanged("FactilityCardNumber"); }
         }
 
         public string Name
         {
-            get { return _name; }
-            set { _name = value; OnPropertyChanged("Name"); }
+            get { return Resident.Name; }
+            set { Resident.Name = value; OnPropertyChanged("Name"); }
         }
 
         public string AddressBlockNumber
         {
-            get { return _addressBlockNumber; }
-            set { _addressBlockNumber = value; OnPropertyChanged("AddressBlockNumber"); }
+            get { return Resident.Unit.Block; }
+            set { Resident.Unit.Block = value; OnPropertyChanged("AddressBlockNumber"); }
         }
 
         public string AddressUnitNumber
         {
-            get { return _addressUnitNumber; }
-            set { _addressUnitNumber = value; OnPropertyChanged("AddressUnitNumber"); }
+            get { return Resident.Unit.Number; }
+            set { Resident.Unit.Number = value; OnPropertyChanged("AddressUnitNumber"); }
         }
 
+        bool _isReadOnly;
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        void OnPropertyChanged(string propertyName)
+        public bool IsReadOnly
         {
-            var handler = PropertyChanged;
+            get { return _isReadOnly; }
+            set { _isReadOnly = value; OnPropertyChanged("IsReadOnly"); }
+        }
 
-            if (handler != null)
-                handler(this, new PropertyChangedEventArgs(propertyName));
+        public bool IsWritable
+        {
+            get { return !IsReadOnly; }
+            set { IsReadOnly = !value; OnPropertyChanged("IsWritable"); }
         }
     }
 }

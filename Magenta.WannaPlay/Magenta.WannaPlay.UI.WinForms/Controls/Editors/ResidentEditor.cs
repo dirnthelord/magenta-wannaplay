@@ -8,12 +8,12 @@ using System.Text;
 using System.Windows.Forms;
 using Magenta.WannaPlay.UI.WinForms.Domain.UI;
 
-namespace Magenta.WannaPlay.UI.WinForms.Controls
+namespace Magenta.WannaPlay.UI.WinForms.Controls.Editors
 {
     [DefaultBindingProperty("Value")]
-    public partial class ResidentEditorControl : UserControl
+    public partial class ResidentEditor : UserControl
     {
-        public ResidentEditorControl()
+        public ResidentEditor()
         {
             InitializeComponent();
         }

@@ -1,7 +1,7 @@
 ﻿using Magenta.WannaPlay.UI.WinForms.Domain.UI;
-namespace Magenta.WannaPlay.UI.WinForms.Controls
+namespace Magenta.WannaPlay.UI.WinForms.Controls.Editors
 {
-    partial class DateTimePeriodControl
+    partial class DateTimePeriodEditor
     {
         /// <summary> 
         /// Required designer variable.

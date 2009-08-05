@@ -11,9 +11,9 @@ using Magenta.Shared.DesignByContract;
 using System.Text.RegularExpressions;
 using Magenta.WannaPlay.UI.WinForms.Domain.UI;
 
-namespace Magenta.WannaPlay.UI.WinForms.Controls
+namespace Magenta.WannaPlay.UI.WinForms.Controls.Editors
 {
-    public partial class DateTimePeriodControl : UserControl
+    public partial class DateTimePeriodEditor : UserControl
     {
         public DateTimePeriodUI ViewModel
         {
@@ -29,7 +29,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             FromDay = ViewModel.PeriodDay;
         }
 
-        public DateTimePeriodControl()
+        public DateTimePeriodEditor()
         {
             InitializeComponent();
 

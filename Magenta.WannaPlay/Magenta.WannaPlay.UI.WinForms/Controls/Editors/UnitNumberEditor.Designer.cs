@@ -1,6 +1,6 @@
-﻿namespace Magenta.WannaPlay.UI.WinForms.Controls
+﻿namespace Magenta.WannaPlay.UI.WinForms.Controls.Editors
 {
-    partial class UnitNumberEditorControl
+    partial class UnitNumberEditor
     {
         /// <summary> 
         /// Required designer variable.

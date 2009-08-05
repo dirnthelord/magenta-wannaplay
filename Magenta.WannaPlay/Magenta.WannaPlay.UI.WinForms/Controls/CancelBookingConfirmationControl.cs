@@ -6,22 +6,21 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using Magenta.WannaPlay.UI.WinForms.Domain.UI;
+using Magenta.WannaPlay.UI.WinForms.ViewModels;
 
 namespace Magenta.WannaPlay.UI.WinForms.Controls
 {
-    [DefaultBindingProperty("Value")]
-    public partial class BookingSearchRequestEditorControl : UserControl
+    public partial class CancelBookingConfirmationControl : UserControl
     {
-        public BookingSearchRequestEditorControl()
+        public CancelBookingConfirmationControl()
         {
             InitializeComponent();
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public BookingSearchRequestUI Value
+        public CancelBookingConfirmationViewModel ViewModel
         {
-            get { return (BookingSearchRequestUI)dataContext.DataSource; }
+            get { return (CancelBookingConfirmationViewModel)dataContext.DataSource; }
             set { dataContext.DataSource = value; }
         }
     }

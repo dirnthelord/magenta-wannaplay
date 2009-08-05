@@ -65,11 +65,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\BookingEntryEditorControl.cs">
+    <Compile Include="Controls\Editors\BookingEntryEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\BookingEntryEditorControl.Designer.cs">
-      <DependentUpon>BookingEntryEditorControl.cs</DependentUpon>
+    <Compile Include="Controls\Editors\BookingEntryEditor.Designer.cs">
+      <DependentUpon>BookingEntryEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\BookingEntryListControl.cs">
       <SubType>UserControl</SubType>
@@ -77,17 +77,23 @@
     <Compile Include="Controls\BookingEntryListControl.Designer.cs">
       <DependentUpon>BookingEntryListControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\CancelBookingConfirmationControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CancelBookingConfirmationControl.Designer.cs">
+      <DependentUpon>CancelBookingConfirmationControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\CancelBookingsControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Controls\CancelBookingsControl.Designer.cs">
       <DependentUpon>CancelBookingsControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\DateTimePeriodControl.cs">
+    <Compile Include="Controls\Editors\DateTimePeriodEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\DateTimePeriodControl.Designer.cs">
-      <DependentUpon>DateTimePeriodControl.cs</DependentUpon>
+    <Compile Include="Controls\Editors\DateTimePeriodEditor.Designer.cs">
+      <DependentUpon>DateTimePeriodEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\BookingScheduleControl.cs">
       <SubType>UserControl</SubType>
@@ -113,11 +119,17 @@
     <Compile Include="Controls\BookingSearchControl.Designer.cs">
       <DependentUpon>BookingSearchControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\BookingSearchRequestEditorControl.cs">
+    <Compile Include="Controls\Editors\BookingSearchRequestEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\BookingSearchRequestEditorControl.Designer.cs">
-      <DependentUpon>BookingSearchRequestEditorControl.cs</DependentUpon>
+    <Compile Include="Controls\Editors\BookingSearchRequestEditor.Designer.cs">
+      <DependentUpon>BookingSearchRequestEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Editors\UnitNumberEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Editors\UnitNumberEditor.Designer.cs">
+      <DependentUpon>UnitNumberEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\GridCells\BookingIndicatorCell.cs" />
     <Compile Include="Controls\HtmlBrowserControl.cs">
@@ -126,17 +138,11 @@
     <Compile Include="Controls\HtmlBrowserControl.Designer.cs">
       <DependentUpon>HtmlBrowserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\ResidentEditorControl.cs">
+    <Compile Include="Controls\Editors\ResidentEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\ResidentEditorControl.Designer.cs">
-      <DependentUpon>ResidentEditorControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\UnitNumberEditorControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\UnitNumberEditorControl.Designer.cs">
-      <DependentUpon>UnitNumberEditorControl.cs</DependentUpon>
+    <Compile Include="Controls\Editors\ResidentEditor.Designer.cs">
+      <DependentUpon>ResidentEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="Diagnostics\ApplicationInfo.cs" />
     <Compile Include="Diagnostics\EmailExceptionNotifier.cs" />
@@ -189,6 +195,7 @@
     <Compile Include="Domain\UI\EmptyBookingEntryUI.cs" />
     <Compile Include="Domain\UI\BookingEntryUI.cs" />
     <Compile Include="ViewModels\BookingScheduleDetailsViewModel.cs" />
+    <Compile Include="ViewModels\CancelBookingConfirmationViewModel.cs" />
     <Compile Include="ViewModels\CancelBookingViewModel.cs" />
     <Compile Include="ViewModels\CurrentDutyGuardViewModel.cs" />
     <Compile Include="ViewModels\BookingSearchViewModel.cs" />
@@ -234,19 +241,22 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Controls\BookingEntryEditorControl.resx">
-      <DependentUpon>BookingEntryEditorControl.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\Editors\BookingEntryEditor.resx">
+      <DependentUpon>BookingEntryEditor.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\BookingEntryListControl.resx">
       <DependentUpon>BookingEntryListControl.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\CancelBookingConfirmationControl.resx">
+      <DependentUpon>CancelBookingConfirmationControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\CancelBookingsControl.resx">
       <DependentUpon>CancelBookingsControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\DateTimePeriodControl.resx">
-      <DependentUpon>DateTimePeriodControl.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\Editors\DateTimePeriodEditor.resx">
+      <DependentUpon>DateTimePeriodEditor.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\BookingScheduleControl.resx">
@@ -268,18 +278,18 @@
     <EmbeddedResource Include="Controls\BookingSearchControl.resx">
       <DependentUpon>BookingSearchControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\BookingSearchRequestEditorControl.resx">
-      <DependentUpon>BookingSearchRequestEditorControl.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\Editors\BookingSearchRequestEditor.resx">
+      <DependentUpon>BookingSearchRequestEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Editors\UnitNumberEditor.resx">
+      <DependentUpon>UnitNumberEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\HtmlBrowserControl.resx">
       <DependentUpon>HtmlBrowserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\ResidentEditorControl.resx">
-      <DependentUpon>ResidentEditorControl.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\Editors\ResidentEditor.resx">
+      <DependentUpon>ResidentEditor.cs</DependentUpon>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\UnitNumberEditorControl.resx">
-      <DependentUpon>UnitNumberEditorControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\WannaPlayMainControl.resx">
       <DependentUpon>WannaPlayMainControl.cs</DependentUpon>

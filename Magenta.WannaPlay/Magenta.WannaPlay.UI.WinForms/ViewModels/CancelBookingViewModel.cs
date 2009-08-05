@@ -84,8 +84,8 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
                 Content = bookingListControl,
                 ButtonDescriptions = new[]
                 {
-                    new DialogButtonDescription { Text = "Yes", IsAcceptButton = true, OnClick = () => CancelBookings(bookingsToCancel) },
-                    new DialogButtonDescription { Text = "No", IsCancelButton = true }     
+                    new DialogButtonDescription { Text = "Cancel booking", IsAcceptButton = true, OnClick = () => CancelBookings(bookingsToCancel) },
+                    new DialogButtonDescription { Text = "Don't cancel", IsCancelButton = true }     
                 },
                 Icon = Resources.CancelBooking
             });

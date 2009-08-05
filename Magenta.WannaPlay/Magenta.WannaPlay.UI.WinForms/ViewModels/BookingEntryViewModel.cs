@@ -10,25 +10,25 @@ using System.ComponentModel;
 using Magenta.Shared;
 using Magenta.WannaPlay.UI.WinForms.Domain.UI;
 using Magenta.WannaPlay.UI.WinForms.Services;
+using Magenta.Shared.UI.WinForms.Mvvm;
 
 namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 {
-    public class BookingEntryViewModel
+    public class BookingEntryViewModel : ViewModelBase
     {
-        [Browsable(false)]
-        public IBookingService BookingService { get; private set; }
-
         [Browsable(false)]
         public IResidenceManager ResidenceManager { get; private set; }
 
-        [Browsable(false)]
-        public IWannaPlayContextService WannaPlayContextService { get; private set; }
-
-        public string BookingDetails
+        bool _isReadOnly;
+        public bool IsReadOnly
         {
-            get
+            get { return _isReadOnly; }
+            set
             {
-                return string.Format(@"{0} on {1:dd MMMM} at {2:$h $tt} for {3:$h $hour(s)}", Facility.Name, BookingPeriod.PeriodDay, BookingPeriod.PeriodFrom, BookingPeriod.PeriodFor);
+                Resident.IsReadOnly = value;
+
+                _isReadOnly = value;
+                OnPropertyChanged("IsReadOnly");
             }
         }
 
@@ -37,19 +37,12 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
         public ResidentUI Resident { get; set; }
         public string Comment { get; set; }
 
-        public BookingEntryViewModel
-            (
-                IBookingService bookingService,
-                IResidenceManager residenceManager,
-                IWannaPlayContextService wannaPlayContextService
-            )
+        public BookingEntryViewModel(IResidenceManager residenceManager)
         {
-            BookingService = RequireArg.NotNull(bookingService);
             ResidenceManager = RequireArg.NotNull(residenceManager);
-            WannaPlayContextService = RequireArg.NotNull(wannaPlayContextService);
 
             BookingPeriod = new DateTimePeriodUI();
-            Resident = new ResidentUI();
+            Resident = new ResidentUI(new Resident());
         }
 
         public void ResidentAutoFillRequired()

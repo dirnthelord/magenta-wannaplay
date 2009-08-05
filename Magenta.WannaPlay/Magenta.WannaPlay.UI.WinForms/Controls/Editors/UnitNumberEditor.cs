@@ -7,14 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Magenta.WannaPlay.UI.WinForms.Controls
+namespace Magenta.WannaPlay.UI.WinForms.Controls.Editors
 {
     [DefaultEvent("ValueChanged")]
     [DefaultProperty("Value")]
     [DefaultBindingProperty("Value")]
-    public partial class UnitNumberEditorControl : UserControl
+    public partial class UnitNumberEditor : UserControl
     {
-        public UnitNumberEditorControl()
+        public UnitNumberEditor()
         {
             InitializeComponent();
         }
