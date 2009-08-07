@@ -47,7 +47,7 @@ namespace Magenta.WannaPlay.UI.WinForms
             //NHibernateProfiler.Initialize();
 
             var wannaPlayMain = GetMainControl();
-            var mainForm = ControlHoster.HostInForm(Resources.WannaPlay, "Wanna Play", wannaPlayMain);
+            var mainForm = ControlHoster.CreateForm(Resources.WannaPlay, "Wanna Play", wannaPlayMain);
             mainForm.StartPosition = FormStartPosition.CenterScreen;
             //mainForm.Font = new Font(mainForm.Font.FontFamily, 16);
 

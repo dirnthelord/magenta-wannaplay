@@ -14,6 +14,7 @@ using Magenta.Shared.UI.WinForms.Mvvm;
 using Magenta.Shared.UI.WinForms;
 using Magenta.WannaPlay.UI.WinForms.Properties;
 using Magenta.WannaPlay.Services.Booking;
+using Magenta.WannaPlay.UI.WinForms.Controls.Editors;
 
 namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 {
@@ -40,7 +41,7 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
         private void OnSelectedBookingsChanged()
         {
             OnCanCacelSelectedBookingsChanged();
-        } 
+        }
         #endregion
 
         #region CanCacelSelectedBookings
@@ -74,29 +75,38 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
         {
             var bookingsToCancel = SelectedBookings.ToBindingList();
 
-            var bookingListControl = new BookingEntryListControl();
-            bookingListControl.ItemsSource = bookingsToCancel;
+            if (bookingsToCancel.Count == 0)
+                return;
+
+            CancelSingleBooking(bookingsToCancel.First());
+        }
+
+        private void CancelSingleBooking(BookingEntryUI bookingToCancel)
+        {
+            var bookingControl = new CancelBookingConfirmationControl();
+
+            var viewModel = Kernel.Get<CancelBookingConfirmationViewModel>();
+            viewModel.BookingUI = bookingToCancel;
+
+            bookingControl.ViewModel = viewModel;
 
             ControlHoster.HostInModalDialog(new DialogDescription
             {
                 Parent = CommonUIService.MainForm,
-                Title = "Cancel bookings?",
-                Content = bookingListControl,
+                Title = "Cancel booking?",
+                Content = bookingControl,
                 ButtonDescriptions = new[]
                 {
-                    new DialogButtonDescription { Text = "Cancel booking", IsAcceptButton = true, OnClick = () => CancelBookings(bookingsToCancel) },
+                    new DialogButtonDescription { Text = "Cancel booking", IsAcceptButton = true, OnClick = () => CancelBooking(bookingToCancel) },
                     new DialogButtonDescription { Text = "Don't cancel", IsCancelButton = true }     
                 },
                 Icon = Resources.CancelBooking
             });
-
-            // TODO: Remove UI references
         }
 
-        private void CancelBookings(IEnumerable<BookingEntryUI> bookings)
+        private void CancelBooking(BookingEntryUI booking)
         {
-            foreach (var booking in bookings)
-                BookingService.CancelBookingEntry(booking.Booking);
+            BookingService.CancelBookingEntry(booking.Booking);
         }
     }
 }

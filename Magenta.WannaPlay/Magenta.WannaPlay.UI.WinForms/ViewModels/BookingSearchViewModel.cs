@@ -37,6 +37,13 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
             }
         }
 
+        bool _allowMultipleSelection;
+        public bool AllowMultipleSelection
+        {
+            get { return _allowMultipleSelection; }
+            set { _allowMultipleSelection = value; OnPropertyChanged("AllowMultipleSelection"); }
+        }
+
         public event EventHandler SelectedBookingsChanged;
 
         private void OnSelectedBookingsChanged()

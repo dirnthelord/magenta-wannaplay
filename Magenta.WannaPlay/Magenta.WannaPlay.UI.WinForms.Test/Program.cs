@@ -6,10 +6,15 @@ using Magenta.WannaPlay.UI.WinForms.Ioc;
 using System.Threading;
 using System.Globalization;
 using Ninject.Core;
+using Magenta.WannaPlay.UI.WinForms.Domain.UI;
+using Magenta.Shared;
+using Magenta.Shared.Ui.WinForms;
+using System.Windows.Forms;
+using Magenta.WannaPlay.UI.WinForms.Controls.Viewers;
 
 namespace Magenta.WannaPlay.UI.WinForms.Test
 {
-    class Program
+    public class Program
     {
         [STAThread]
         static void Main()
@@ -19,6 +24,18 @@ namespace Magenta.WannaPlay.UI.WinForms.Test
             var kernel = new StandardKernel(new IModule[] { new MockComponentsConfiguration(), new UIConfiguration() });
 
             new WannaPlayApplication(kernel).Run();
+        }
+
+        [STAThread]
+        public static void ControlTest()
+        {
+            var control = new DateTimePeriodViewer();
+            control.Value = new DateTimePeriodUI 
+            { 
+                Model = DateTimePeriod.FromHours(new DateTime(2009, 08, 06, 9, 0, 0), 3)
+            };
+
+            Application.Run(ControlHoster.CreateForm(null, null, control));
         }
     }
 }

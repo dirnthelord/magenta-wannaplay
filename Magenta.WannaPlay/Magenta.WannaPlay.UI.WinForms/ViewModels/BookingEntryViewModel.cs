@@ -11,6 +11,7 @@ using Magenta.Shared;
 using Magenta.WannaPlay.UI.WinForms.Domain.UI;
 using Magenta.WannaPlay.UI.WinForms.Services;
 using Magenta.Shared.UI.WinForms.Mvvm;
+using Ninject.Core;
 
 namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 {
@@ -18,6 +19,9 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
     {
         [Browsable(false)]
         public IResidenceManager ResidenceManager { get; private set; }
+
+        [Browsable(false)]
+        public IKernel Kernel { get; private set; }
 
         bool _isReadOnly;
         public bool IsReadOnly
@@ -37,30 +41,16 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
         public ResidentUI Resident { get; set; }
         public string Comment { get; set; }
 
-        public BookingEntryViewModel(IResidenceManager residenceManager)
+        public BookingEntryViewModel(IResidenceManager residenceManager, IKernel kernel)
         {
             ResidenceManager = RequireArg.NotNull(residenceManager);
+            Kernel = RequireArg.NotNull(kernel);
 
-            BookingPeriod = new DateTimePeriodUI();
-            Resident = new ResidentUI(new Resident());
-        }
+            BookingPeriod = kernel.Get<DateTimePeriodUI>();
 
-        public void ResidentAutoFillRequired()
-        {
-            var resident = ResidenceManager.GetResident(Resident.FactilityCardNumber);
-
-            if (resident == null)
-                return;
-
-            var unit = resident.Unit;
-
-            if (unit != null)
-            {
-                Resident.AddressBlockNumber = unit.Block;
-                Resident.AddressUnitNumber = unit.Number;
-            }
-
-            Resident.Name = resident.Name;
+            Resident = kernel.Get<ResidentUI>();
+            // TODO: Is this correct?
+            Resident.Underlying = new Resident();
         }
     }
 }
