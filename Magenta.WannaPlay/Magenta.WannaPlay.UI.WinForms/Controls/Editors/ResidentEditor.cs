@@ -25,14 +25,9 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls.Editors
             set { dataContext.DataSource = value; }
         }
 
-        public event EventHandler AutoSuggestRequired;
-
         void OnAutoSuggestRequired()
         {
-            var handler = AutoSuggestRequired;
-
-            if (handler != null)
-                handler(this, EventArgs.Empty);
+            Value.AutoFill();
         }
 
         private void facilityCardNumber_Validated(object sender, EventArgs e)

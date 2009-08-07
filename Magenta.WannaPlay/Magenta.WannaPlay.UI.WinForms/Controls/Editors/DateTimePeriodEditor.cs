@@ -15,6 +15,9 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls.Editors
 {
     public partial class DateTimePeriodEditor : UserControl
     {
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        [Browsable(false)]
+        [Bindable(true)]
         public DateTimePeriodUI ViewModel
         {
             get { return (DateTimePeriodUI)dataContext.DataSource; }

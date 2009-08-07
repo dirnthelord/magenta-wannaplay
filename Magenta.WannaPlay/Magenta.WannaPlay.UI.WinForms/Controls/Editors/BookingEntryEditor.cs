@@ -19,15 +19,22 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls.Editors
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        [Browsable(false)]
+        [Bindable(true)]
         public BookingEntryViewModel ViewModel
         {
             get { return (BookingEntryViewModel)dataContext.DataSource; }
             set { dataContext.DataSource = value; }
         }
 
-        private void resident_AutoSuggestRequired(object sender, EventArgs e)
+        bool _isReadOnly;
+        public bool IsReadOnly
         {
-            ViewModel.ResidentAutoFillRequired();
+            get { return _isReadOnly; }
+            set { _isReadOnly = value;
+            throw new NotImplementedException();
+            //resident.IsReadOnly = true;
+            }
         }
     }
 }

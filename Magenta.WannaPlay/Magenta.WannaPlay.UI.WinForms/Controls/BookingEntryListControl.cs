@@ -28,6 +28,12 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             set { dataContext.DataSource = value; }
         }
 
+        public bool AllowMultipleSelection
+        {
+            get { return bookingEntries.MultiSelect; }
+            set { bookingEntries.MultiSelect = value; }
+        }
+
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public IEnumerable<T> GetSelectedRowsDataItems<T>()
         {

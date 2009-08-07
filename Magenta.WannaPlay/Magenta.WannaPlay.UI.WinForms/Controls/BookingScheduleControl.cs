@@ -30,16 +30,6 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
         public BookingScheduleControl()
         {
             InitializeComponent();
-
-            dataContext.DataSourceChanged += delegate { CreateFacilityColumns(); FillGridWithData(); };
-
-            bookingScheduleGrid.SelectionChanged += delegate { OnSelectedSlotsChanged(); };
-        
-            // TODO: Move to designer-generated code
-            bookingScheduleGrid.VirtualMode = true;
-            bookingScheduleGrid.KeyDown += bookingScheduleGrid_KeyDown;
-            bookingScheduleGrid.ReadOnly = true;
-            bookingScheduleGrid.SelectionChanging += bookingScheduleGrid_SelectionChanging;
         }
 
         void bookingScheduleGrid_SelectionChanging(object sender, GridSelectionChangingEventArgs e)
@@ -155,22 +145,6 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
         }
         #endregion
 
-        void bookingScheduleGrid_KeyDown(object sender, KeyEventArgs e)
-        {
-            switch (e.KeyData)
-            {
-                case Keys.Control | Keys.Enter:
-                    ViewModel.AddBookingToSelected();
-                    e.Handled = true;
-                    break;
-
-                case Keys.Control | Keys.Delete:
-                    ViewModel.CancelBookings();
-                    e.Handled = true;
-                    break;
-            }
-        }
-
         public IEnumerable<BookingSlot> SelectedSlots
         {
             get
@@ -183,6 +157,17 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
                         Facility = GetFacility(cell.ColumnIndex)
                     });
             }
+        }
+
+        private void bookingScheduleGrid_SelectionChanged(object sender, EventArgs e)
+        {
+            OnSelectedSlotsChanged();
+        }
+
+        private void dataContext_DataSourceChanged(object sender, EventArgs e)
+        {
+            CreateFacilityColumns(); 
+            FillGridWithData();
         }
     }
 }

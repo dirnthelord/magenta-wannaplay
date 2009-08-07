@@ -11,7 +11,7 @@ namespace Magenta.Shared.Ui.WinForms
 {
     public static class ControlHoster
     {
-        public static HostingForm HostInForm(Bitmap icon, string title, Control content)
+        public static HostingForm CreateForm(Bitmap icon, string title, Control content)
         {
             content.Padding = new Padding(8);
 

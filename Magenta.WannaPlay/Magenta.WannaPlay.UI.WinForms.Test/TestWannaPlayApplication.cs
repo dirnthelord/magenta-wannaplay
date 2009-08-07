@@ -36,7 +36,7 @@ namespace Magenta.WannaPlay.UI.WinForms
 
             //main.ViewModel = new DateTimePeriodUI 
             //{ 
-            //    Model = new DateTimePeriod(from, from.AddHours(2))
+            //    Underlying = new DateTimePeriod(from, from.AddHours(2))
             //};
 
 
@@ -46,7 +46,7 @@ namespace Magenta.WannaPlay.UI.WinForms
 
             //main.ViewModel.BookingPeriod = new DateTimePeriodUI
             //{
-            //    Model = new DateTimePeriod(from, from.AddHours(2))
+            //    Underlying = new DateTimePeriod(from, from.AddHours(2))
             //};
 
             //var main = Kernel.Get<BookingEntryListControl>();

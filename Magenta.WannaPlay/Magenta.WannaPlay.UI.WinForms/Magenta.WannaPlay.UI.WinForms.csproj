@@ -144,6 +144,12 @@
     <Compile Include="Controls\Editors\ResidentEditor.Designer.cs">
       <DependentUpon>ResidentEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Viewers\DateTimePeriodViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Viewers\DateTimePeriodViewer.Designer.cs">
+      <DependentUpon>DateTimePeriodViewer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Diagnostics\ApplicationInfo.cs" />
     <Compile Include="Diagnostics\EmailExceptionNotifier.cs" />
     <Compile Include="Diagnostics\ExceptionManager.cs" />
@@ -210,6 +216,7 @@
     </None>
     <None Include="Properties\DataSources\Magenta.WannaPlay.UI.WinForms.Domain.UI.BookingEntryUI.datasource" />
     <None Include="Properties\DataSources\Magenta.WannaPlay.UI.WinForms.Domain.UI.BookingSearchRequestUI.datasource" />
+    <None Include="Properties\DataSources\Magenta.WannaPlay.UI.WinForms.Domain.UI.DateTimePeriodUI.datasource" />
     <None Include="Properties\DataSources\Magenta.WannaPlay.UI.WinForms.Domain.UI.ResidentUI.datasource" />
     <None Include="Properties\DataSources\Magenta.WannaPlay.UI.WinForms.ViewModels.BookingEntryViewModel.datasource" />
     <None Include="Properties\DataSources\Magenta.WannaPlay.UI.WinForms.ViewModels.BookingListViewModel.datasource" />
@@ -290,6 +297,9 @@
     <EmbeddedResource Include="Controls\Editors\ResidentEditor.resx">
       <DependentUpon>ResidentEditor.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Viewers\DateTimePeriodViewer.resx">
+      <DependentUpon>DateTimePeriodViewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\WannaPlayMainControl.resx">
       <DependentUpon>WannaPlayMainControl.cs</DependentUpon>
