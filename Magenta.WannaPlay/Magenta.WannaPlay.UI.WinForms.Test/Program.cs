@@ -32,7 +32,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Test
             var control = new DateTimePeriodViewer();
             control.Value = new DateTimePeriodUI 
             { 
-                Model = DateTimePeriod.FromHours(new DateTime(2009, 08, 06, 9, 0, 0), 3)
+                Underlying = DateTimePeriod.FromHours(new DateTime(2009, 08, 06, 9, 0, 0), 3)
             };
 
             Application.Run(ControlHoster.CreateForm(null, null, control));

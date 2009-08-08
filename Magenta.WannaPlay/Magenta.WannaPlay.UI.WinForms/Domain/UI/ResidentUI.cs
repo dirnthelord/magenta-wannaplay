@@ -65,7 +65,6 @@ namespace Magenta.WannaPlay.UI.WinForms.Domain.UI
             Underlying.Name = resident.Name;
         }
 
-
         #region Read only
         bool _isReadOnly;
 

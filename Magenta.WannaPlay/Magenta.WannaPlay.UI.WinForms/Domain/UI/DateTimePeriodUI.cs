@@ -46,7 +46,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Domain.UI
             }
         }
 
-        public DateTimePeriod Model
+        public DateTimePeriod Underlying
         {
             get
             {
@@ -67,7 +67,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Domain.UI
 
         protected override bool EqualsCoreNotNull(DateTimePeriodUI other)
         {
-            return this.Model == other.Model;
+            return this.Underlying == other.Underlying;
         }
     }
 }

@@ -219,8 +219,8 @@
     <None Include="Properties\DataSources\Magenta.WannaPlay.UI.WinForms.Domain.UI.DateTimePeriodUI.datasource" />
     <None Include="Properties\DataSources\Magenta.WannaPlay.UI.WinForms.Domain.UI.ResidentUI.datasource" />
     <None Include="Properties\DataSources\Magenta.WannaPlay.UI.WinForms.ViewModels.BookingEntryViewModel.datasource" />
-    <None Include="Properties\DataSources\Magenta.WannaPlay.UI.WinForms.ViewModels.BookingListViewModel.datasource" />
     <None Include="Properties\DataSources\Magenta.WannaPlay.UI.WinForms.ViewModels.BookingSearchViewModel.datasource" />
+    <None Include="Properties\DataSources\Magenta.WannaPlay.UI.WinForms.ViewModels.CancelBookingConfirmationViewModel.datasource" />
     <None Include="Properties\DataSources\Magenta.WannaPlay.UI.WinForms.ViewModels.CancelBookingViewModel.datasource" />
     <None Include="Resources\Error.ico" />
     <None Include="Resources\Copy.ico" />

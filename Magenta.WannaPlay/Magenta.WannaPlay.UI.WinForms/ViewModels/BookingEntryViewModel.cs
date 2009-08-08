@@ -46,11 +46,8 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
             ResidenceManager = RequireArg.NotNull(residenceManager);
             Kernel = RequireArg.NotNull(kernel);
 
-            BookingPeriod = kernel.Get<DateTimePeriodUI>();
-
-            Resident = kernel.Get<ResidentUI>();
-            // TODO: Is this correct?
-            Resident.Underlying = new Resident();
+            Resident = Kernel.Get<ResidentUI>();
+            BookingPeriod = Kernel.Get<DateTimePeriodUI>();
         }
     }
 }

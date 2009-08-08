@@ -188,7 +188,7 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
             // TODO: Remove UI dependency from this ViewModel
             var addBookingViewModel = Kernel.Get<AddBookingViewModel>();
 
-            addBookingViewModel.BookingEntryViewModel.BookingPeriod.Model = period;
+            addBookingViewModel.BookingEntryViewModel.BookingPeriod.Underlying = period;
             addBookingViewModel.BookingEntryViewModel.Facility = firstSlot.Facility;
 
 

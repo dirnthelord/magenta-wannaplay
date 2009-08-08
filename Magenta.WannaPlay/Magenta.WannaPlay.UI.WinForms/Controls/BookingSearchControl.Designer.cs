@@ -32,14 +32,14 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.components = new System.ComponentModel.Container();
             this.findBookingsButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.findBookingsRequestEditorControl = new Magenta.WannaPlay.UI.WinForms.Controls.Editors.BookingSearchRequestEditor();
+            this.dataContext = new System.Windows.Forms.BindingSource(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.bookingSearchResults = new Magenta.WannaPlay.UI.WinForms.Controls.BookingEntryListControl();
-            this.dataContext = new System.Windows.Forms.BindingSource(this.components);
-            this.findBookingsRequestEditorControl1 = new BookingSearchRequestEditor();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataContext)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // findBookingsButton
@@ -59,13 +59,28 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             // 
             this.panel1.AutoSize = true;
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panel1.Controls.Add(this.findBookingsRequestEditorControl1);
+            this.panel1.Controls.Add(this.findBookingsRequestEditorControl);
             this.panel1.Controls.Add(this.findBookingsButton);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(630, 125);
             this.panel1.TabIndex = 3;
+            // 
+            // findBookingsRequestEditorControl
+            // 
+            this.findBookingsRequestEditorControl.AutoSize = true;
+            this.findBookingsRequestEditorControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.findBookingsRequestEditorControl.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.dataContext, "BookingSearchRequest", true));
+            this.findBookingsRequestEditorControl.Location = new System.Drawing.Point(3, 3);
+            this.findBookingsRequestEditorControl.Name = "findBookingsRequestEditorControl";
+            this.findBookingsRequestEditorControl.Size = new System.Drawing.Size(153, 85);
+            this.findBookingsRequestEditorControl.TabIndex = 0;
+            this.findBookingsRequestEditorControl.Enter += new System.EventHandler(this.findBookingsRequestEditorControl_Enter);
+            // 
+            // dataContext
+            // 
+            this.dataContext.DataSource = typeof(Magenta.WannaPlay.UI.WinForms.ViewModels.BookingSearchViewModel);
             // 
             // panel2
             // 
@@ -89,6 +104,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             // 
             // bookingSearchResults
             // 
+            this.bookingSearchResults.AllowMultipleSelection = true;
             this.bookingSearchResults.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
@@ -98,20 +114,6 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.bookingSearchResults.Size = new System.Drawing.Size(630, 254);
             this.bookingSearchResults.TabIndex = 2;
             this.bookingSearchResults.SelectionChanged += new System.EventHandler(this.bookingSearchResults_SelectionChanged);
-            // 
-            // dataContext
-            // 
-            this.dataContext.DataSource = typeof(Magenta.WannaPlay.UI.WinForms.ViewModels.BookingSearchViewModel);
-            // 
-            // findBookingsRequestEditorControl1
-            // 
-            this.findBookingsRequestEditorControl1.AutoSize = true;
-            this.findBookingsRequestEditorControl1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.findBookingsRequestEditorControl1.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.dataContext, "BookingSearchRequest", true));
-            this.findBookingsRequestEditorControl1.Location = new System.Drawing.Point(3, 3);
-            this.findBookingsRequestEditorControl1.Name = "findBookingsRequestEditorControl1";
-            this.findBookingsRequestEditorControl1.Size = new System.Drawing.Size(153, 85);
-            this.findBookingsRequestEditorControl1.TabIndex = 0;
             // 
             // BookingSearchControl
             // 
@@ -123,9 +125,9 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.Size = new System.Drawing.Size(630, 403);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataContext)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataContext)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -133,7 +135,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
 
         #endregion
 
-        private BookingSearchRequestEditor findBookingsRequestEditorControl1;
+        private BookingSearchRequestEditor findBookingsRequestEditorControl;
         private System.Windows.Forms.Button findBookingsButton;
         private BookingEntryListControl bookingSearchResults;
         private System.Windows.Forms.Panel panel1;

@@ -26,15 +26,5 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls.Editors
             get { return (BookingEntryViewModel)dataContext.DataSource; }
             set { dataContext.DataSource = value; }
         }
-
-        bool _isReadOnly;
-        public bool IsReadOnly
-        {
-            get { return _isReadOnly; }
-            set { _isReadOnly = value;
-            throw new NotImplementedException();
-            //resident.IsReadOnly = true;
-            }
-        }
     }
 }
