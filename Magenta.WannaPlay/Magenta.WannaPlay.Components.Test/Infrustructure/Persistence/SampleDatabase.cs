@@ -15,6 +15,10 @@ namespace Magenta.WannaPlay.Components.Infrustructure.Persistence
 
         public Resident ResidentBradPit { get; private set; }
 
+        public Resident ResidentAngelinaJolie { get; private set; }
+
+        public Resident ResidentGorgeCarlin { get; private set; }
+
         public DutyGuard DutyGuardRoss { get; private set; }
 
         public DateTime Today { get; private set; }
@@ -25,7 +29,7 @@ namespace Magenta.WannaPlay.Components.Infrustructure.Persistence
 
             CreateFacilities(session);
 
-            CreateResidents();
+            CreateResidents(session);
 
             CreateDutyGuards();
 
@@ -64,7 +68,7 @@ namespace Magenta.WannaPlay.Components.Infrustructure.Persistence
                                 };
         }
 
-        private void CreateResidents()
+        private void CreateResidents(ISession session)
         {
             ResidentBradPit = new Resident
                                   {
@@ -72,6 +76,26 @@ namespace Magenta.WannaPlay.Components.Infrustructure.Persistence
                                       PassCardNumber = "0000",
                                       Unit = new ResidenceUnit { Block = "10", Number = "#99-01" }
                                   };
+
+            session.Save(ResidentBradPit);
+
+            ResidentAngelinaJolie = new Resident
+            {
+                Name = "Angelina Jolie",
+                PassCardNumber = "0001",
+                Unit = ResidentBradPit.Unit
+            };
+
+            session.Save(ResidentAngelinaJolie);
+
+            ResidentGorgeCarlin = new Resident
+            {
+                Name = "Gorge Carlin",
+                PassCardNumber = "1111",
+                Unit = new ResidenceUnit { Block = "12", Number = "#01-01" }
+            };
+
+            session.Save(ResidentGorgeCarlin);
         }
 
         private void CreateFacilities(ISession session)
@@ -82,6 +106,8 @@ namespace Magenta.WannaPlay.Components.Infrustructure.Persistence
             session.Save(new Facility { FacilityType = FacilityType.TennisCourt, Name = "Tennis Court 2" });
             session.Save(new Facility { FacilityType = FacilityType.SquashCourt, Name = "Squash Court 1" });
             session.Save(new Facility { FacilityType = FacilityType.SquashCourt, Name = "Squash Court 2" });
+
+            session.Save(new Facility { FacilityType = FacilityType.MultiPurposeCourt, Name = "Multi Purpose Court" });
         }
     }
 }

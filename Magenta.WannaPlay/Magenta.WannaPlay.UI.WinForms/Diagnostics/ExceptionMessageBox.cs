@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.IO;
 using Magenta.Shared.DesignByContract;
 using Magenta.Shared.Exceptions;
+using Magenta.Shared.Validation;
 using Magenta.WannaPlay.UI.WinForms.Properties;
 using Ninject.Core;
 
@@ -67,9 +68,10 @@ namespace Magenta.WannaPlay.UI.WinForms.Diagnostics
         public DialogResult ShowDialog(Exception ex)
         {
             _exception = RequireArg.NotNull(ex);
-
-            Text = DefaultCaption;
+  
             Reset();
+
+            Text = ex is ValidationException ? "Validation error" : DefaultCaption;
 
             _exception.EnumarateExceptions().ForEach(x => AddException(x));
 

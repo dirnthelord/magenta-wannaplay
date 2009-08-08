@@ -63,19 +63,67 @@ namespace Magenta.WannaPlay.Components.Services.Booking.Validation
             AssertBookingIsNotAvailable(12, 14);
             AssertBookingIsNotAvailable(12, 15);
         }
+        [Test]
+        public void DutyGuardtIsRequired()
+        {
+            var entry = CreateBooking(8, 9);
+            entry.BookedByGuard = null;
+
+            Validate(entry, KnownBookingErrors.DutyGuardIsRequired);
+        }
+
+        [Test]
+        public void ResidenceUnitIsRequired()
+        {
+            var entry = CreateBooking(8, 9);
+            entry.Resident = new Resident { PassCardNumber = "111", Unit = null };
+
+            Validate(entry, KnownBookingErrors.ResidenceUnitIsRequired);
+        }
+
+        [Test]
+        public void IsEntitledForMoreBooking()
+        {
+            DateTime date = DateTime.UtcNow.AddDays(2).Date;
+
+            var byPit = new BookingEntry
+            {
+                Facility = _database.TennisCourt1,
+                BookedByGuard = _database.DutyGuardRoss,
+                Resident = _database.ResidentBradPit,
+                Period = new DateTimePeriod(date.AddHours(9), date.AddHours(10))
+            };
+
+            Session.Save(byPit);
+
+            var byJolie = new BookingEntry
+            {
+                Facility = _database.TennisCourt1,
+                BookedByGuard = _database.DutyGuardRoss,
+                Resident = _database.ResidentAngelinaJolie,
+                Period = new DateTimePeriod(date.AddHours(11), date.AddHours(12))
+            };
+
+            Validate(byJolie, KnownBookingErrors.ResidentIsNotEntitled);
+        }
 
         private void AssertBookingIsAvailable(int from, int to)
         {
-            BookingEntry entry = CreateBooking(from, to);
+            var entry = CreateBooking(from, to);
 
-            Target.Validate(entry).Count().AssertIsEqual(0);
+            Validate(entry);
         }
 
         private void AssertBookingIsNotAvailable(int from, int to)
         {
-            BookingEntry entry = CreateBooking(from, to);
+            var entry = CreateBooking(from, to);
 
-            Target.Validate(entry).Select(f => f.ErrorId).AssertSequenceEqual(KnownBookingErrors.PeriodIsNotAvailable);
+            Validate(entry, KnownBookingErrors.PeriodIsNotAvailable);
+        }
+
+        private void Validate(BookingEntry entry, params string[] errors)
+        {
+            Target.Validate(entry).Select(f => f.ErrorId).AssertSequenceEqual(errors);
         }
 
         private BookingEntry CreateBooking(int from, int to)

@@ -10,9 +10,21 @@ namespace Magenta.Shared.Validation
             return rules;
         }
 
+        public static ValidationRules<T> Assert<T>(this ValidationRules<T> rules, Func<T, bool> condition, Func<T, bool> assert, string errorId)
+        {
+            rules.Add(new ValidationRule<T>(condition, assert, new ValidationFailure(errorId)));
+            return rules;
+        }
+
         public static ValidationRules<T> Assert<T>(this ValidationRules<T> rules, Func<T, bool> assert, string errorId, params object[] parameters)
         {
             rules.Add(new ValidationRule<T>(assert, new ValidationFailure(errorId, parameters)));
+            return rules;
+        }
+
+        public static ValidationRules<T> Assert<T>(this ValidationRules<T> rules, Func<T, bool> condition, Func<T, bool> assert, string errorId, params object[] parameters)
+        {
+            rules.Add(new ValidationRule<T>(condition, assert, new ValidationFailure(errorId, parameters)));
             return rules;
         }
     }

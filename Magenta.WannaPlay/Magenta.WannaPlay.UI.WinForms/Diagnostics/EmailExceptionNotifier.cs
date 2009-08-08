@@ -26,7 +26,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Diagnostics
             try
             {
                 //TODO: implement better ways of creating e-mails
-                Process.Start(command.Substring(0, 1800));
+                Process.Start(command.Length >= 1800 ? command.Substring(0, 1800) : command);
             }
             catch (Win32Exception)
             {
