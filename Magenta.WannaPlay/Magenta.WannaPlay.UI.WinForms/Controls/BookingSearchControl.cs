@@ -30,7 +30,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
 
         private void findBookingsButton_Click(object sender, EventArgs e)
         {
-            ViewModel.FindBookings();
+            ViewModel.DoSearch();
         }
 
         private void findBookingsRequestEditorControl_Enter(object sender, EventArgs e)

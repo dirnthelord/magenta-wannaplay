@@ -1,5 +1,6 @@
 ﻿using Magenta.WannaPlay.UI.WinForms.Domain.UI;
 using Magenta.WannaPlay.Domain;
+using Magenta.WannaPlay.UI.WinForms.ViewModels;
 namespace Magenta.WannaPlay.UI.WinForms.Controls.Editors
 {
     partial class ResidentEditor
@@ -33,6 +34,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls.Editors
             this.components = new System.ComponentModel.Container();
             this.label8 = new System.Windows.Forms.Label();
             this.name = new System.Windows.Forms.TextBox();
+            this.dataContext = new System.Windows.Forms.BindingSource(this.components);
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.addressBlockNumber = new System.Windows.Forms.TextBox();
@@ -40,17 +42,16 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls.Editors
             this.label5 = new System.Windows.Forms.Label();
             this.facilityCardNumber = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.unitNumberEditorControl1 = new Magenta.WannaPlay.UI.WinForms.Controls.Editors.UnitNumberEditor();
             this._residentPicture = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.residentGroupBox = new System.Windows.Forms.GroupBox();
-            this.dataContext = new System.Windows.Forms.BindingSource(this.components);
-            this.unitNumberEditorControl1 = new Magenta.WannaPlay.UI.WinForms.Controls.Editors.UnitNumberEditor();
+            ((System.ComponentModel.ISupportInitialize)(this.dataContext)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._residentPicture)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.residentGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataContext)).BeginInit();
             this.SuspendLayout();
             // 
             // label8
@@ -73,6 +74,10 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls.Editors
             this.name.Size = new System.Drawing.Size(202, 20);
             this.name.TabIndex = 3;
             this.name.Text = "Weis Mei Yunis Semenovich";
+            // 
+            // dataContext
+            // 
+            this.dataContext.DataSource = typeof(ResidentEditorViewModel);
             // 
             // label7
             // 
@@ -125,6 +130,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls.Editors
             this.facilityCardNumber.Size = new System.Drawing.Size(34, 20);
             this.facilityCardNumber.TabIndex = 0;
             this.facilityCardNumber.Text = "9999";
+            this.facilityCardNumber.Validated += new System.EventHandler(this.facilityCardNumber_Validated);
             // 
             // panel1
             // 
@@ -142,6 +148,18 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls.Editors
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(243, 75);
             this.panel1.TabIndex = 7;
+            // 
+            // unitNumberEditorControl1
+            // 
+            this.unitNumberEditorControl1.AutoSize = true;
+            this.unitNumberEditorControl1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.unitNumberEditorControl1.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.unitBindingSource, "Number", true));
+            this.unitNumberEditorControl1.Location = new System.Drawing.Point(118, 26);
+            this.unitNumberEditorControl1.Margin = new System.Windows.Forms.Padding(4);
+            this.unitNumberEditorControl1.Name = "unitNumberEditorControl1";
+            this.unitNumberEditorControl1.Size = new System.Drawing.Size(35, 20);
+            this.unitNumberEditorControl1.TabIndex = 2;
+            this.unitNumberEditorControl1.Value = "  -";
             // 
             // _residentPicture
             // 
@@ -184,22 +202,6 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls.Editors
             this.residentGroupBox.TabStop = false;
             this.residentGroupBox.Text = "Resident";
             // 
-            // dataContext
-            // 
-            this.dataContext.DataSource = typeof(Magenta.WannaPlay.Domain.Resident);
-            // 
-            // unitNumberEditorControl1
-            // 
-            this.unitNumberEditorControl1.AutoSize = true;
-            this.unitNumberEditorControl1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.unitNumberEditorControl1.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.unitBindingSource, "Number", true));
-            this.unitNumberEditorControl1.Location = new System.Drawing.Point(118, 26);
-            this.unitNumberEditorControl1.Margin = new System.Windows.Forms.Padding(4);
-            this.unitNumberEditorControl1.Name = "unitNumberEditorControl1";
-            this.unitNumberEditorControl1.Size = new System.Drawing.Size(35, 20);
-            this.unitNumberEditorControl1.TabIndex = 2;
-            this.unitNumberEditorControl1.Value = "  -";
-            // 
             // ResidentEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -207,6 +209,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls.Editors
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "ResidentEditor";
             this.Size = new System.Drawing.Size(331, 104);
+            ((System.ComponentModel.ISupportInitialize)(this.dataContext)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -214,7 +217,6 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls.Editors
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.residentGroupBox.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataContext)).EndInit();
             this.ResumeLayout(false);
 
         }

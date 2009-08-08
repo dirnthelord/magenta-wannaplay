@@ -24,9 +24,9 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls.Editors
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         [Browsable(false)]
         [Bindable(true)]
-        public BookingEntry ViewModel
+        public BookingEntryEditorViewModel ViewModel
         {
-            get { return dataContext.DataSource as BookingEntry; }
+            get { return dataContext.DataSource as BookingEntryEditorViewModel; }
             set { dataContext.DataSource = value; }
         }
     }

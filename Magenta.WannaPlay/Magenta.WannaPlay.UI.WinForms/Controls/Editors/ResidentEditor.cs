@@ -8,10 +8,11 @@ using System.Text;
 using System.Windows.Forms;
 using Magenta.WannaPlay.UI.WinForms.Domain.UI;
 using Magenta.WannaPlay.Domain;
+using Magenta.WannaPlay.UI.WinForms.ViewModels;
 
 namespace Magenta.WannaPlay.UI.WinForms.Controls.Editors
 {
-    [DefaultBindingProperty("Value")]
+    [DefaultBindingProperty("ViewModel")]
     public partial class ResidentEditor : UserControl
     {
         public ResidentEditor()
@@ -20,9 +21,11 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls.Editors
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public Resident Value
+        [Browsable(false)]
+        [Bindable(true)]
+        public ResidentEditorViewModel ViewModel
         {
-            get { return dataContext.DataSource as Resident; }
+            get { return dataContext.DataSource as ResidentEditorViewModel; }
             set { dataContext.DataSource = value; }
         }
 
@@ -33,8 +36,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls.Editors
 
         void OnAutoSuggestRequired()
         {
-            throw new NotImplementedException();
-            //Value.AutoFill();
+            ViewModel.AutoFill();
         }
     }
 }
