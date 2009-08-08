@@ -47,6 +47,7 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
             Kernel = RequireArg.NotNull(kernel);
 
             Resident = Kernel.Get<ResidentUI>();
+            Resident.Underlying = new Resident { Unit = new ResidenceUnit() };
             BookingPeriod = Kernel.Get<DateTimePeriodUI>();
         }
     }

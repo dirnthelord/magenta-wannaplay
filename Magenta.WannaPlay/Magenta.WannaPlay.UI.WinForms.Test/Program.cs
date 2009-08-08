@@ -11,6 +11,7 @@ using Magenta.Shared;
 using Magenta.Shared.Ui.WinForms;
 using System.Windows.Forms;
 using Magenta.WannaPlay.UI.WinForms.Controls.Viewers;
+using Magenta.WannaPlay.UI.WinForms.Controls.Editors;
 
 namespace Magenta.WannaPlay.UI.WinForms.Test
 {
@@ -29,11 +30,10 @@ namespace Magenta.WannaPlay.UI.WinForms.Test
         [STAThread]
         public static void ControlTest()
         {
-            var control = new DateTimePeriodViewer();
-            control.Value = new DateTimePeriodUI 
-            { 
-                Underlying = DateTimePeriod.FromHours(new DateTime(2009, 08, 06, 9, 0, 0), 3)
-            };
+            var kernel = new StandardKernel(new IModule[] { new MockComponentsConfiguration(), new UIConfiguration() });
+
+            var control = new ResidentEditor();
+            control.Value = kernel.Get<ResidentUI>();
 
             Application.Run(ControlHoster.CreateForm(null, null, control));
         }
