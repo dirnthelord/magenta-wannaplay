@@ -37,16 +37,16 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             // 
             // bookingEntry
             // 
-            this.bookingEntry.DataBindings.Add(new System.Windows.Forms.Binding("ViewModel", this.dataContext, "BookingUI", true));
+            this.bookingEntry.DataBindings.Add(new System.Windows.Forms.Binding("ViewModel", this.dataContext, "BookingViewModel", true));
+            this.bookingEntry.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bookingEntry.Location = new System.Drawing.Point(0, 0);
             this.bookingEntry.Name = "bookingEntry";
-            this.bookingEntry.Size = new System.Drawing.Size(315, 284);
+            this.bookingEntry.Size = new System.Drawing.Size(338, 297);
             this.bookingEntry.TabIndex = 0;
             // 
             // dataContext
             // 
             this.dataContext.DataSource = typeof(Magenta.WannaPlay.UI.WinForms.ViewModels.CancelBookingConfirmationViewModel);
-            this.dataContext.CurrentChanged += new System.EventHandler(this.dataContext_CurrentChanged);
             // 
             // CancelBookingConfirmationControl
             // 
@@ -54,7 +54,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.bookingEntry);
             this.Name = "CancelBookingConfirmationControl";
-            this.Size = new System.Drawing.Size(336, 333);
+            this.Size = new System.Drawing.Size(338, 297);
             ((System.ComponentModel.ISupportInitialize)(this.dataContext)).EndInit();
             this.ResumeLayout(false);
 

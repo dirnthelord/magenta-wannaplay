@@ -176,12 +176,15 @@
     <Compile Include="Services\IWannaPlayContextService.cs" />
     <Compile Include="Services\WannaPlayContextService.cs" />
     <Compile Include="ViewModels\AddBookingViewModel.cs" />
+    <Compile Include="ViewModels\BookingEntryEditorViewModel.cs" />
     <Compile Include="ViewModels\BookingEntryListViewModel.cs" />
     <Compile Include="ViewModels\BookingScheduleViewModel.cs" />
     <Compile Include="ViewModels\CancelBookingConfirmationViewModel.cs" />
     <Compile Include="ViewModels\CancelBookingViewModel.cs" />
     <Compile Include="ViewModels\CurrentDutyGuardViewModel.cs" />
     <Compile Include="ViewModels\BookingSearchViewModel.cs" />
+    <Compile Include="ViewModels\ResidenceUnitViewModel.cs" />
+    <Compile Include="ViewModels\ResidentEditorViewModel.cs" />
     <Compile Include="ViewModels\WannaPlayMainViewModel.cs" />
     <Compile Include="WannaPlayApplication.cs" />
   </ItemGroup>

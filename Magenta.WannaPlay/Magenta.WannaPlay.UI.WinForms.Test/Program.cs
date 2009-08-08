@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using Magenta.WannaPlay.UI.WinForms.Controls.Viewers;
 using Magenta.WannaPlay.UI.WinForms.Controls.Editors;
 using Magenta.WannaPlay.Domain;
+using Magenta.WannaPlay.UI.WinForms.ViewModels;
 
 namespace Magenta.WannaPlay.UI.WinForms.Test
 {
@@ -34,7 +35,9 @@ namespace Magenta.WannaPlay.UI.WinForms.Test
             var kernel = new StandardKernel(new IModule[] { new MockComponentsConfiguration(), new UIConfiguration() });
 
             var control = new ResidentEditor();
-            control.Value = new Resident();
+            var viewModel = kernel.Get<ResidentEditorViewModel>();
+            viewModel.Underlying = new Resident();
+            control.ViewModel = viewModel;
 
             Application.Run(ControlHoster.CreateForm(null, null, control));
         }

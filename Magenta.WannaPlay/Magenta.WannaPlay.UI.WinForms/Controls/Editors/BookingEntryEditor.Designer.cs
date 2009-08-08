@@ -127,7 +127,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls.Editors
             // 
             this.residentEditor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.residentEditor.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.dataContext, "Resident", true));
+            this.residentEditor.DataBindings.Add(new System.Windows.Forms.Binding("ViewModel", this.dataContext, "Resident", true));
             this.residentEditor.Location = new System.Drawing.Point(0, 80);
             this.residentEditor.Margin = new System.Windows.Forms.Padding(0, 0, 0, 8);
             this.residentEditor.Name = "residentEditor";

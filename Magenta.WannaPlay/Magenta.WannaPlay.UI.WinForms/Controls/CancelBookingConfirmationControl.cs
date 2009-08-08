@@ -28,18 +28,5 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             get { return dataContext.DataSource as CancelBookingConfirmationViewModel; }
             set { dataContext.DataSource = value; }
         }
-
-        private void dataContext_CurrentChanged(object sender, EventArgs e)
-        {
-            DisplayBookingEntry();
-        }
-
-        private void DisplayBookingEntry()
-        {
-            throw new NotImplementedException();
-            //var viewModel = Kernel.Get<BookingEntryUI>();
-            ////viewModel.
-            //bookingEntry.ViewModel = viewModel;
-        }
     }
 }

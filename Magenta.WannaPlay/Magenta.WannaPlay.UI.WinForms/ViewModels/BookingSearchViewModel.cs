@@ -41,7 +41,7 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
             SearchResults = Kernel.Get<BookingEntryListViewModel>();
         }
 
-        public void FindBookings()
+        public void DoSearch()
         {
             // TODO: Remove hardcoded number of days
             var period = DateTimePeriod.FromDays(DateTime.Now, 1);

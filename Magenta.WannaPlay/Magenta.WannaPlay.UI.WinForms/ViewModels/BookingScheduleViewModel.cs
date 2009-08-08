@@ -201,16 +201,18 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
                 }
             };
 
-            var bookingEntryEditor = Kernel.Get<BookingEntryEditor>();
+            var bookingEditor = Kernel.Get<BookingEntryEditor>();
+            var bookingEditorViewModel = Kernel.Get<BookingEntryEditorViewModel>();
+            bookingEditorViewModel.Underlying = addBookingViewModel.Booking;
 
-            bookingEntryEditor.ViewModel = addBookingViewModel.Booking;
+            bookingEditor.ViewModel = bookingEditorViewModel;
 
 
             var form = ControlHoster.CreateDialog(new DialogDescription
             {
                 Parent = CommonUIService.MainForm,
                 Title = "Add booking",
-                Content = bookingEntryEditor,
+                Content = bookingEditor,
                 ButtonDescriptions = new[]
                 {
                     new DialogButtonDescription { Text = "Add", OnClick = () => addBookingViewModel.SaveBooking() },
