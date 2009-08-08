@@ -12,7 +12,7 @@ namespace Magenta.Shared.Validation
         public IEnumerable<ValidationFailure> Failures { get; private set; }
 
         public ValidationException(IEnumerable<ValidationFailure> failures)
-            : base("Validation error(s): " + JoinFailures(failures))
+            : base("Validation error(s):\n" + JoinFailures(failures))
         {
             Failures = RequireArg.NotNull(failures);
         }
@@ -23,7 +23,7 @@ namespace Magenta.Shared.Validation
                        ?
                             string.Empty
                        :
-                            string.Join(", ", failures.Select(f => f.ErrorId).ToArray());
+                            string.Join("\n", failures.Select(f => f.ErrorId).ToArray());
         }
     }
 }

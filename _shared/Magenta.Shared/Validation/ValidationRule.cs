@@ -19,5 +19,10 @@ namespace Magenta.Shared.Validation
             Validator = validator;
             Failure = failure;
         }
+
+        public ValidationRule(Func<T, bool> condition, Func<T, bool> validator, ValidationFailure failure)
+            : this(x => !condition(x) || validator(x), failure)
+        {
+        }
     }
 }

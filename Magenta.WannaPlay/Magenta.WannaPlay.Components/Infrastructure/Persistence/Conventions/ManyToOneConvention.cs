@@ -14,6 +14,7 @@ namespace Magenta.WannaPlay.Infrastructure.Persistence.Conventions
 
         public void Apply(IManyToOnePart target)
         {
+            target.SetAttribute("not-null", "true");
             target.Cascade.SaveUpdate();
         }
 

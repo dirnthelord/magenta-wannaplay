@@ -24,15 +24,37 @@ namespace Magenta.WannaPlay.Services.Booking.Validation
         private void SetupRules()
         {
             this
+                .Required(x => x.BookedByGuard, KnownBookingErrors.DutyGuardIsRequired)
+
+                .Required(x => x.Resident, KnownBookingErrors.ResidentIsRequired)
+
+                .Required(x => x.Resident != null, x => x.Resident.Unit, KnownBookingErrors.ResidenceUnitIsRequired)
+
+                .Required(x => x.Facility, KnownBookingErrors.FacilityIsRequired)
+
+                .Assert(x => x.Resident != null && x.Resident.Unit != null,
+                    x => IsEntitledForMoreBooking(x.Resident.Unit, x.Period.From.Date),
+                    KnownBookingErrors.ResidentIsNotEntitled)
+
                 .Assert(x => x.Period.From < x.Period.To, KnownBookingErrors.FromLaterThanTo)
-                .Assert(x => IsPeriodAvailable(x.Facility, x.Period), KnownBookingErrors.PeriodIsNotAvailable);
+
+                .Assert(x => x.Facility != null, x => IsPeriodAvailable(x.Facility, x.Period), KnownBookingErrors.PeriodIsNotAvailable);
+        }
+
+        /// <summary>
+        /// 1 hour per day per unit
+        /// </summary>
+        private bool IsEntitledForMoreBooking(ResidenceUnit residenceUnit, DateTime date)
+        {
+            var entries = _persistenceRepository.Search<BookingEntry>(
+                x => x.Period.From >= date.RoundDateDown() && x.Period.To <= date.RoundDateUp(),
+                x => x.Resident.Unit.Block == residenceUnit.Block && x.Resident.Unit.Number == residenceUnit.Number);
+
+            return entries.Count() == 0;
         }
 
         private bool IsPeriodAvailable(Facility facility, DateTimePeriod period)
         {
-            RequireArg.NotNull(facility);
-            RequireArg.NotNull(period);
-
             var entries = _persistenceRepository.Search<BookingEntry>(
                 x => x.Facility.Id == facility.Id,
                 x => (x.Period.From >= period.From && x.Period.From < period.To) ||

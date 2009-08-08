@@ -4,6 +4,7 @@ namespace Magenta.WannaPlay.Domain
     {
         Undefined = 0,
         TennisCourt = 1,
-        SquashCourt = 2
+        SquashCourt = 2,
+        MultiPurposeCourt = 3
     }
 }

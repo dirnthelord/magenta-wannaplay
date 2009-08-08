@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace NUnit.Framework
 {
@@ -32,12 +34,14 @@ namespace NUnit.Framework
         #region Collection assertions
         public static void AssertSequenceEqual<T>(this IEnumerable<T> actual, params T[] expected)
         {
-            CollectionAssert.AreEqual(expected, actual);
+            CollectionAssert.AreEqual(expected, actual,
+                "Actual sequence is wrong: {0}", actual.Select(x => x.ToString()).Join(", "));
         }
 
         public static void AssertSequenceEqual<T>(this IEnumerable<T> actual, IEnumerable<T> expected)
         {
-            CollectionAssert.AreEqual(expected, actual);
+            CollectionAssert.AreEqual(expected, actual,
+                "Actual sequence is wrong: {0}", actual.Select(x => x.ToString()).Join(", "));
         }
 
         public static void AssertSetEqual<T>(this IEnumerable<T> actual, params T[] expected)

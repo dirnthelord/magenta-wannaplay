@@ -32,7 +32,6 @@ namespace Magenta.WannaPlay.Infrastructure.Persistence
                                                    c.Add<NotNullPropertyConvention>();
                                                });
 
-            // TODO: Make it more generic?
             WithSetup(s => s.IsComponentType = type => _componentTypes.Contains(type));
 
             WithSetup(s => s.IsBaseType = type => type == typeof(Entity));
