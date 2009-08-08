@@ -7,6 +7,8 @@ namespace Magenta.WannaPlay.Domain
     {
         public BookingEntry()
         {
+            Remarks = "";
+            // TODO: Remove reference to time
             BookedAtDateTime = DateTime.UtcNow;
         }
 
@@ -19,6 +21,8 @@ namespace Magenta.WannaPlay.Domain
         public virtual DateTime BookedAtDateTime { get; set; }
 
         public virtual DateTimePeriod Period { get; set; }
+
+        public virtual string Remarks { get; set; }
 
         public override string ToString()
         {

@@ -30,28 +30,29 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.bookingEntryEditor = new Magenta.WannaPlay.UI.WinForms.Controls.Editors.BookingEntryEditor();
+            this.bookingEntry = new Magenta.WannaPlay.UI.WinForms.Controls.Editors.BookingEntryEditor();
             this.dataContext = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataContext)).BeginInit();
             this.SuspendLayout();
             // 
-            // bookingEntryEditor
+            // bookingEntry
             // 
-            this.bookingEntryEditor.DataBindings.Add(new System.Windows.Forms.Binding("ViewModel", this.dataContext, "BookingUI", true));
-            this.bookingEntryEditor.Location = new System.Drawing.Point(0, 0);
-            this.bookingEntryEditor.Name = "bookingEntryEditor";
-            this.bookingEntryEditor.Size = new System.Drawing.Size(315, 284);
-            this.bookingEntryEditor.TabIndex = 0;
+            this.bookingEntry.DataBindings.Add(new System.Windows.Forms.Binding("ViewModel", this.dataContext, "BookingUI", true));
+            this.bookingEntry.Location = new System.Drawing.Point(0, 0);
+            this.bookingEntry.Name = "bookingEntry";
+            this.bookingEntry.Size = new System.Drawing.Size(315, 284);
+            this.bookingEntry.TabIndex = 0;
             // 
             // dataContext
             // 
             this.dataContext.DataSource = typeof(Magenta.WannaPlay.UI.WinForms.ViewModels.CancelBookingConfirmationViewModel);
+            this.dataContext.CurrentChanged += new System.EventHandler(this.dataContext_CurrentChanged);
             // 
             // CancelBookingConfirmationControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.bookingEntryEditor);
+            this.Controls.Add(this.bookingEntry);
             this.Name = "CancelBookingConfirmationControl";
             this.Size = new System.Drawing.Size(336, 333);
             ((System.ComponentModel.ISupportInitialize)(this.dataContext)).EndInit();
@@ -61,7 +62,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
 
         #endregion
 
-        private BookingEntryEditor bookingEntryEditor;
+        private BookingEntryEditor bookingEntry;
         private System.Windows.Forms.BindingSource dataContext;
     }
 }

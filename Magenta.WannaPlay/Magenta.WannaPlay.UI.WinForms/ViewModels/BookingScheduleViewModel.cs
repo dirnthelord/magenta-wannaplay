@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ComponentModel;
+using System.Windows.Forms;
 using Magenta.WannaPlay.Domain;
 using Magenta.WannaPlay.Services.Booking;
 using Magenta.Shared.DesignByContract;
@@ -32,13 +33,13 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 
         [Browsable(false)]
         public IBookingService BookingService { get; private set; }
-        
+
         [Browsable(false)]
         public IBookingScheduleService BookingScheduleService { get; private set; }
-        
+
         [Browsable(false)]
         public IResidenceManager ResidenceManager { get; private set; }
-        
+
         [Browsable(false)]
         public ICommonUIService CommonUIService { get; private set; }
 
@@ -61,7 +62,7 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
             UpdateBookingData();
         }
 
-        
+
         IEnumerable<BookingSlot> _selectedBookingSlots;
         public IEnumerable<BookingSlot> SelectedBookingSlots
         {
@@ -187,17 +188,22 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
             var length = slots.Count();
             var period = DateTimePeriod.FromHours(firstSlot.Period.From, length);
 
-            
+
             // TODO: Remove UI dependency from this ViewModel
             var addBookingViewModel = Kernel.Get<AddBookingViewModel>();
-
-            addBookingViewModel.BookingEntryViewModel.BookingPeriod.Underlying = period;
-            addBookingViewModel.BookingEntryViewModel.Facility = firstSlot.Facility;
-
+            addBookingViewModel.Booking = new BookingEntry
+            {
+                Period = period,
+                Facility = firstSlot.Facility,
+                Resident = new Resident
+                {
+                    Unit = new ResidenceUnit { }
+                }
+            };
 
             var bookingEntryEditor = Kernel.Get<BookingEntryEditor>();
 
-            bookingEntryEditor.ViewModel = addBookingViewModel.BookingEntryViewModel;
+            bookingEntryEditor.ViewModel = addBookingViewModel.Booking;
 
 
             var form = ControlHoster.CreateDialog(new DialogDescription
@@ -213,8 +219,7 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
                 Icon = Resources.AddBooking.ToBitmap()
             });
 
-            // TODO: Replace with strongly-typed AddBinding helper method call
-            form.DataBindings.Add("Text", addBookingViewModel, "BookingTitle");
+            form.AddBinding(addBookingViewModel, f => f.Text, vm => vm.BookingTitle);
 
             form.ShowDialog();
 

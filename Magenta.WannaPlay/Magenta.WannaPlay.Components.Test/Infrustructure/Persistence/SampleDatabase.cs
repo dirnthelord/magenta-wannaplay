@@ -25,7 +25,7 @@ namespace Magenta.WannaPlay.Components.Infrustructure.Persistence
 
         public SampleDatabase(ISession session)
         {
-            Today = DateTime.UtcNow.Date;
+            Today = DateTime.Today;
 
             CreateFacilities(session);
 

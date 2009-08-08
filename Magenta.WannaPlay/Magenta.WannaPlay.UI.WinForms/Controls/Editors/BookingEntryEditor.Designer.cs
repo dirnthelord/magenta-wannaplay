@@ -1,4 +1,6 @@
 ﻿using Magenta.WannaPlay.UI.WinForms.ViewModels;
+using Magenta.WannaPlay.UI.WinForms.Domain.UI;
+using Magenta.WannaPlay.Domain;
 namespace Magenta.WannaPlay.UI.WinForms.Controls.Editors
 {
     partial class BookingEntryEditor
@@ -31,9 +33,9 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls.Editors
         {
             this.components = new System.ComponentModel.Container();
             this.panel4 = new System.Windows.Forms.Panel();
+            this._remarksPicture = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.comment = new System.Windows.Forms.RichTextBox();
-            this._remarksPicture = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dateTimePeriodViewer = new Magenta.WannaPlay.UI.WinForms.Controls.Viewers.DateTimePeriodViewer();
             this.residentEditor = new Magenta.WannaPlay.UI.WinForms.Controls.Editors.ResidentEditor();
@@ -59,6 +61,16 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls.Editors
             this.panel4.Size = new System.Drawing.Size(379, 148);
             this.panel4.TabIndex = 20;
             // 
+            // _remarksPicture
+            // 
+            this._remarksPicture.Image = global::Magenta.WannaPlay.UI.WinForms.Properties.Resources.Remarks;
+            this._remarksPicture.Location = new System.Drawing.Point(2, 5);
+            this._remarksPicture.Name = "_remarksPicture";
+            this._remarksPicture.Size = new System.Drawing.Size(64, 64);
+            this._remarksPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this._remarksPicture.TabIndex = 18;
+            this._remarksPicture.TabStop = false;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -74,23 +86,12 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls.Editors
             this.comment.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.comment.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dataContext, "Comment", true));
-            this.comment.DataBindings.Add(new System.Windows.Forms.Binding("ReadOnly", this.dataContext, "IsReadOnly", true));
+            this.comment.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dataContext, "Remarks", true));
             this.comment.Location = new System.Drawing.Point(76, 17);
             this.comment.Name = "comment";
             this.comment.Size = new System.Drawing.Size(302, 129);
             this.comment.TabIndex = 16;
             this.comment.Text = "";
-            // 
-            // _remarksPicture
-            // 
-            this._remarksPicture.Image = global::Magenta.WannaPlay.UI.WinForms.Properties.Resources.Remarks;
-            this._remarksPicture.Location = new System.Drawing.Point(2, 5);
-            this._remarksPicture.Name = "_remarksPicture";
-            this._remarksPicture.Size = new System.Drawing.Size(64, 64);
-            this._remarksPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this._remarksPicture.TabIndex = 18;
-            this._remarksPicture.TabStop = false;
             // 
             // tableLayoutPanel1
             // 
@@ -115,7 +116,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls.Editors
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.dateTimePeriodViewer.AutoSize = true;
             this.dateTimePeriodViewer.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.dateTimePeriodViewer.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.dataContext, "BookingPeriod", true));
+            this.dateTimePeriodViewer.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.dataContext, "Period", true));
             this.dateTimePeriodViewer.Location = new System.Drawing.Point(0, 0);
             this.dateTimePeriodViewer.Margin = new System.Windows.Forms.Padding(0, 0, 0, 8);
             this.dateTimePeriodViewer.Name = "dateTimePeriodViewer";
@@ -135,7 +136,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls.Editors
             // 
             // dataContext
             // 
-            this.dataContext.DataSource = typeof(Magenta.WannaPlay.UI.WinForms.ViewModels.BookingEntryViewModel);
+            this.dataContext.DataSource = typeof(Magenta.WannaPlay.Domain.BookingEntry);
             // 
             // BookingEntryEditor
             // 

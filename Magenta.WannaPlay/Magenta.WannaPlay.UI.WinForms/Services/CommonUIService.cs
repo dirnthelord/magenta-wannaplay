@@ -23,7 +23,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Services
 
         public void ChangeDutyGuard()
         {
-            var dutyGuardSelector = Kernel.Get<CurrentDutyGuardControl>();
+            var dutyGuardSelector = Kernel.Get<CurrentDutyGuardEditor>();
             dutyGuardSelector.ViewModel = Kernel.Get<CurrentDutyGuardViewModel>();
 
             var buttons = new[]

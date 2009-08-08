@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Magenta.WannaPlay.UI.WinForms.Domain.UI;
+using Magenta.Shared;
 
 namespace Magenta.WannaPlay.UI.WinForms.Controls.Viewers
 {
@@ -20,9 +21,15 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls.Viewers
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         [Browsable(false)]
         [Bindable(true)]
-        public DateTimePeriodUI Value
+        public DateTimePeriod Value
         {
-            get { return (DateTimePeriodUI)dataContext.DataSource; }
+            get { return ValueUI == null ? null : ValueUI.Underlying; }
+            set { ValueUI = new DateTimePeriodUI(value); }
+        }
+
+        DateTimePeriodUI ValueUI
+        {
+            get { return dataContext.DataSource as DateTimePeriodUI; }
             set { dataContext.DataSource = value; }
         }
     }

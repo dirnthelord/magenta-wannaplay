@@ -12,11 +12,6 @@ namespace Magenta.WannaPlay.Domain
 
         public virtual ResidenceUnit Unit { get; set; }
 
-        public Resident()
-        {
-            Unit = new ResidenceUnit();
-        }
-
         public override string ToString()
         {
             return string.Format("{0} ({1})", Name, PassCardNumber);

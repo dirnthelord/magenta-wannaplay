@@ -1,7 +1,7 @@
 ﻿using Magenta.WannaPlay.UI.WinForms.ViewModels;
 namespace Magenta.WannaPlay.UI.WinForms.Controls
 {
-    partial class CurrentDutyGuardControl
+    partial class CurrentDutyGuardEditor
     {
         /// <summary> 
         /// Required designer variable.
