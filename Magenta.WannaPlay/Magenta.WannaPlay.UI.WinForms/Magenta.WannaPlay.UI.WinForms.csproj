@@ -190,6 +190,7 @@
     <Compile Include="Services\IWannaPlayContextService.cs" />
     <Compile Include="Services\WannaPlayContextService.cs" />
     <Compile Include="ViewModels\AddBookingViewModel.cs" />
+    <Compile Include="ViewModels\BookingEntryListViewModel.cs" />
     <Compile Include="ViewModels\BookingEntryViewModel.cs" />
     <Compile Include="ViewModels\BookingScheduleViewModel.cs" />
     <Compile Include="ViewModels\CancelBookingConfirmationViewModel.cs" />
@@ -205,8 +206,7 @@
     <None Include="Log4Net.Config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Properties\DataSources\Magenta.WannaPlay.UI.WinForms.Domain.UI.BookingEntryUI.datasource" />
-    <None Include="Properties\DataSources\Magenta.WannaPlay.UI.WinForms.Domain.UI.BookingSearchRequestUI.datasource" />
+    <None Include="Properties\DataSources\Magenta.WannaPlay.Domain.BookingEntry.datasource" />
     <None Include="Properties\DataSources\Magenta.WannaPlay.UI.WinForms.Domain.UI.DateTimePeriodUI.datasource" />
     <None Include="Properties\DataSources\Magenta.WannaPlay.UI.WinForms.Domain.UI.ResidentUI.datasource" />
     <None Include="Properties\DataSources\Magenta.WannaPlay.UI.WinForms.ViewModels.BookingEntryViewModel.datasource" />

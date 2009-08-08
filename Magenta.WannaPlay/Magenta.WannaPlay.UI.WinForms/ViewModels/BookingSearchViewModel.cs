@@ -23,49 +23,22 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
         [Browsable(false)]
         public IResidenceManager ResidenceManager { get; private set; }
 
+        [Browsable(false)]
+        public IKernel Kernel { get; set; }
+
 
         public BookingSearchRequest BookingSearchRequest { get; private set; }
-        public BindingList<BookingEntry> SearchResults { get; private set; }
+        public BookingEntryListViewModel SearchResults { get; private set; }
 
 
-        IEnumerable<BookingEntry> _selectedBookings = Enumerable.Empty<BookingEntry>();
-        public IEnumerable<BookingEntry> SelectedBookings
-        {
-            get { return _selectedBookings; }
-            set
-            {
-                _selectedBookings = value ?? Enumerable.Empty<BookingEntry>();
-                OnSelectedBookingsChanged();
-            }
-        }
-
-        bool _allowMultipleSelection;
-        public bool AllowMultipleSelection
-        {
-            get { return _allowMultipleSelection; }
-            set { _allowMultipleSelection = value; OnPropertyChanged("AllowMultipleSelection"); }
-        }
-
-        public event EventHandler SelectedBookingsChanged;
-
-        private void OnSelectedBookingsChanged()
-        {
-            OnPropertyChanged("SelectedBookings");
-
-            var handler = SelectedBookingsChanged;
-
-            if (handler != null)
-                handler(this, EventArgs.Empty);
-        }
-
-
-        public BookingSearchViewModel(IBookingService bookingService, IResidenceManager residenceManager)
+        public BookingSearchViewModel(IBookingService bookingService, IResidenceManager residenceManager, IKernel kernel)
         {
             BookingService = RequireArg.NotNull(bookingService);
             ResidenceManager = RequireArg.NotNull(residenceManager);
+            Kernel = RequireArg.NotNull(kernel);
 
-            SearchResults = new BindingList<BookingEntry>();
-            BookingSearchRequest = new BookingSearchRequest();
+            BookingSearchRequest = Kernel.Get<BookingSearchRequest>();
+            SearchResults = Kernel.Get<BookingEntryListViewModel>();
         }
 
         public void FindBookings()
@@ -82,10 +55,10 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 
             if (BookingSearchRequest.Unit.IsSpecified)
                 bookings = bookings.Where(b =>
-                    b.Resident.Unit.Block == BookingSearchRequest.Unit.BlockNumber && 
+                    b.Resident.Unit.Block == BookingSearchRequest.Unit.BlockNumber &&
                     b.Resident.Unit.Number == BookingSearchRequest.Unit.UnitNumber);
 
-            SearchResults.ReplaceWith(bookings);
+            SearchResults.Bookings.ReplaceWith(bookings);
         }
     }
 }

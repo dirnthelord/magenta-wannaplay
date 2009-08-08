@@ -9,11 +9,11 @@ using System.Windows.Forms;
 using Magenta.WannaPlay.UI.WinForms.Domain.UI;
 using Magenta.WannaPlay.UI.WinForms.Controls.GridCells;
 using Magenta.WannaPlay.Domain;
+using Magenta.WannaPlay.UI.WinForms.ViewModels;
 
 namespace Magenta.WannaPlay.UI.WinForms.Controls
 {
-    [ComplexBindingProperties("ItemsSource")]
-    [DefaultBindingProperty("ItemsSource")]
+    [DefaultBindingProperty("ViewModel")]
     public partial class BookingEntryListControl : UserControl
     {
         public BookingEntryListControl()
@@ -22,29 +22,17 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public BindingList<BookingEntry> ItemsSource
+        [Browsable(false)]
+        [Bindable(true)]
+        public BookingEntryListViewModel ViewModel
         {
-            get { return dataContext.DataSource as BindingList<BookingEntry>; }
+            get { return dataContext.DataSource as BookingEntryListViewModel; }
             set { dataContext.DataSource = value; }
         }
 
-        public bool AllowMultipleSelection
+        private void bookingEntries_SelectionChanged(object sender, EventArgs e)
         {
-            get { return bookingEntries.MultiSelect; }
-            set { bookingEntries.MultiSelect = value; }
-        }
-
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public IEnumerable<T> GetSelectedRowsDataItems<T>()
-        {
-            // TODO: Ensure this code is not duplicated
-            return bookingEntries.SelectedRows.Cast<DataGridViewRow>().Select(r => (T)r.DataBoundItem);
-        }
-
-        public event EventHandler SelectionChanged
-        {
-            add { bookingEntries.SelectionChanged += value; }
-            remove { bookingEntries.SelectionChanged -= value; }
+            ViewModel.SelectedBookings = bookingEntries.SelectedRows.Cast<DataGridViewRow>().Select(r => (BookingEntry)r.DataBoundItem);
         }
     }
 }
