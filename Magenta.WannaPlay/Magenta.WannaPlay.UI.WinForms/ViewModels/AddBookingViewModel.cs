@@ -26,7 +26,9 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
         [Browsable(false)]
         public IWannaPlayContextService WannaPlayContextService { get; private set; }
 
+
         public BookingEntryViewModel BookingEntryViewModel { get; private set; }
+
 
         public string BookingTitle
         {
@@ -60,7 +62,7 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
                 BookedByGuard = currentDutyGuard,
                 Facility = BookingEntryViewModel.Facility,
                 Resident = GetSelectedResident(),
-                Period = BookingEntryViewModel.BookingPeriod.Model,
+                Period = BookingEntryViewModel.BookingPeriod.Underlying,
             };
 
             BookingService.SaveBookingEntry(bookingEntry);

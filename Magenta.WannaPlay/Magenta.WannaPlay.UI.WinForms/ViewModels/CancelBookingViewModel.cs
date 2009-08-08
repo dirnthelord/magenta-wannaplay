@@ -73,7 +73,7 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 
         public void CancelSelectedBookings()
         {
-            var bookingsToCancel = SelectedBookings.ToBindingList();
+            var bookingsToCancel = SelectedBookings.ToList();
 
             if (bookingsToCancel.Count == 0)
                 return;

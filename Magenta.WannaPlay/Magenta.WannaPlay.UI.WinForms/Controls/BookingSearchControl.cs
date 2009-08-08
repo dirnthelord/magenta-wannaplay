@@ -36,5 +36,10 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
         {
             ViewModel.SelectedBookings = bookingSearchResults.GetSelectedRowsDataItems<BookingEntryUI>();
         }
+
+        private void findBookingsRequestEditorControl_Enter(object sender, EventArgs e)
+        {
+            FindForm().AcceptButton = findBookingsButton;
+        }
     }
 }
