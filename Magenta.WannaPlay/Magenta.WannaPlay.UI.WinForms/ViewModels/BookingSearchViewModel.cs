@@ -10,6 +10,7 @@ using Magenta.Shared.DesignByContract;
 using Magenta.WannaPlay.Services.Residence;
 using Magenta.WannaPlay.Domain;
 using Magenta.Shared;
+using Ninject.Core;
 
 namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 {
@@ -23,16 +24,16 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 
 
         public BookingSearchRequestUI BookingSearchRequest { get; private set; }
-        public BindingList<BookingEntryUI> SearchResults { get; private set; }
+        public BindingList<BookingEntry> SearchResults { get; private set; }
 
 
-        IEnumerable<BookingEntryUI> _selectedBookings = Enumerable.Empty<BookingEntryUI>();
-        public IEnumerable<BookingEntryUI> SelectedBookings
+        IEnumerable<BookingEntry> _selectedBookings = Enumerable.Empty<BookingEntry>();
+        public IEnumerable<BookingEntry> SelectedBookings
         {
             get { return _selectedBookings; }
             set
             {
-                _selectedBookings = value ?? Enumerable.Empty<BookingEntryUI>();
+                _selectedBookings = value ?? Enumerable.Empty<BookingEntry>();
                 OnSelectedBookingsChanged();
             }
         }
@@ -66,7 +67,7 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
             BookingService = RequireArg.NotNull(bookingService);
             ResidenceManager = RequireArg.NotNull(residenceManager);
 
-            SearchResults = new BindingList<BookingEntryUI>();
+            SearchResults = new BindingList<BookingEntry>();
             BookingSearchRequest = new BookingSearchRequestUI();
         }
 
@@ -90,7 +91,8 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
                 bookings = bookings.Where(b => b.Resident == resident);
             };
 
-            SearchResults.ReplaceWith(bookings.Select(b => new BookingEntryUI(b)));
+            throw new NotImplementedException();
+            //SearchResults.ReplaceWith(bookings.Select(b => new BookingEntryUI(b)));
         }
     }
 }

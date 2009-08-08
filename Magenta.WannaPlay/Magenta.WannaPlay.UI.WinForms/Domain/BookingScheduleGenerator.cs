@@ -22,7 +22,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Domain
 
         TimeSpan Granularity { get; set; }
 
-        public IEnumerable<BookingEntryUI> GenerateSchedule(DateTimePeriod fullPeriod)
+        public IEnumerable<BookingSlot> GenerateSchedule(DateTimePeriod fullPeriod)
         {
             // TODO: Sort bookings by date
             // TODO: Make sure bookings do not intersect
@@ -45,14 +45,17 @@ namespace Magenta.WannaPlay.UI.WinForms.Domain
                     }
                 }
 
-                var bookingSlot =
-                    currentBooking != null
-                    ? new BookingEntryUI(currentBooking)
-                    : new EmptyBookingEntryUI(new DateTimePeriod(currentFrom, currentFrom.Add(Granularity)));
+                throw new NotImplementedException();
+                yield break;
 
-                yield return bookingSlot;
+                //var bookingSlot =
+                //    currentBooking != null
+                //    ? new BookingEntryUI(currentBooking)
+                //    : new EmptyBookingEntryUI(new DateTimePeriod(currentFrom, currentFrom.Add(Granularity)));
 
-                currentFrom = bookingSlot.Period.To;
+                //yield return bookingSlot;
+
+                //currentFrom = bookingSlot.Period.To;
             }
         }
     }

@@ -22,9 +22,9 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public BindingList<BookingEntryUI> ItemsSource
+        public BindingList<BookingEntry> ItemsSource
         {
-            get { return dataContext.DataSource as BindingList<BookingEntryUI>; }
+            get { return dataContext.DataSource as BindingList<BookingEntry>; }
             set { dataContext.DataSource = value; }
         }
 

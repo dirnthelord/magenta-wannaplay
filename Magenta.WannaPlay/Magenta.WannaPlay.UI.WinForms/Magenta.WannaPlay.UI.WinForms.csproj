@@ -170,12 +170,6 @@
     <Compile Include="Domain\UI\TimeSpanUI.cs" />
     <Compile Include="Domain\UI\ResidentUI.cs" />
     <Compile Include="Ioc\UIConfiguration.cs" />
-    <Compile Include="Controls\BookingScheduleDetailsControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\BookingScheduleDetailsControl.Designer.cs">
-      <DependentUpon>BookingScheduleDetailsControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="Controls\WannaPlayMainControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -198,9 +192,6 @@
     <Compile Include="ViewModels\AddBookingViewModel.cs" />
     <Compile Include="ViewModels\BookingEntryViewModel.cs" />
     <Compile Include="ViewModels\BookingScheduleViewModel.cs" />
-    <Compile Include="Domain\UI\EmptyBookingEntryUI.cs" />
-    <Compile Include="Domain\UI\BookingEntryUI.cs" />
-    <Compile Include="ViewModels\BookingScheduleDetailsViewModel.cs" />
     <Compile Include="ViewModels\CancelBookingConfirmationViewModel.cs" />
     <Compile Include="ViewModels\CancelBookingViewModel.cs" />
     <Compile Include="ViewModels\CurrentDutyGuardViewModel.cs" />
@@ -268,10 +259,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\BookingScheduleControl.resx">
       <DependentUpon>BookingScheduleControl.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\BookingScheduleDetailsControl.resx">
-      <DependentUpon>BookingScheduleDetailsControl.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\CurrentDutyGuardControl.resx">

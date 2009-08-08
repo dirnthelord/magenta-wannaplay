@@ -14,13 +14,16 @@ using Magenta.WannaPlay.UI.WinForms.Domain;
 using Magenta.Shared;
 using Magenta.WannaPlay.UI.WinForms.Domain.UI;
 using Magenta.Shared.UI.WinForms.Controls;
+using Magenta.Shared.DesignByContract;
+using Magenta.Shared.Exceptions;
 
 namespace Magenta.WannaPlay.UI.WinForms.Controls
 {
     public partial class BookingScheduleControl : UserControl
     {
-        [Inject]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        [Browsable(false)]
+        [Bindable(true)]
         public BookingScheduleViewModel ViewModel
         {
             get { return (BookingScheduleViewModel)dataContext.DataSource; }
@@ -30,70 +33,60 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
         public BookingScheduleControl()
         {
             InitializeComponent();
+
+            bookingScheduleGrid.AutoGenerateColumns = false;
         }
 
-        void bookingScheduleGrid_SelectionChanging(object sender, GridSelectionChangingEventArgs e)
+        private void dataContext_DataSourceChanged(object sender, EventArgs e)
         {
-            if (GetFacility(e.ColumnIndex) == null)
-                e.Cancel = true;
+            RecreateColumns();
+            FillGridWithData();
         }
 
-        private void FillGridWithData()
+        #region Columns
+        void RecreateColumns()
         {
-            bookingScheduleGrid.DataSource = ViewModel.BookingPeriods;
+            RemoveAllColumns();
+            AddPeriodColumns();
+            AddFacilityColumns();
         }
 
-        void OnSelectedSlotsChanged()
+        private void RemoveAllColumns()
         {
-            // TODO: Refactor (?)
-            ViewModel.SelectedBookingSlots = SelectedSlots;
+            bookingScheduleGrid.Columns.Clear();
         }
 
-
-        void CreateFacilityColumns()
+        private void AddPeriodColumns()
         {
-            // TODO: Remove old facility columns first
+            bookingScheduleGrid.Columns.Add(CreatePeriodColumn("From", PeriodColumnType.From));
+            bookingScheduleGrid.Columns.Add(CreatePeriodColumn("To", PeriodColumnType.To));
+        }
+
+        enum PeriodColumnType
+        {
+            From = 1,
+            To = 2,
+        }
+
+        private static DataGridViewTextBoxColumn CreatePeriodColumn(string header, PeriodColumnType type)
+        {
+            return new DataGridViewTextBoxColumn
+            {
+                HeaderText = header,
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                Tag = type,
+            };
+        }
+
+        bool IsPeriodColumn(int columnIndex)
+        {
+            return bookingScheduleGrid.Columns[columnIndex].Tag is PeriodColumnType;
+        }
+
+        void AddFacilityColumns()
+        {
             foreach (var facility in ViewModel.Facilities)
-                AddFacilityColumn(facility);
-        }
-
-        private void bookingScheduleGrid_CellValueNeeded(object sender, DataGridViewCellValueEventArgs e)
-        {
-            var bookingSlot = GetBookingSlot(e.RowIndex, e.ColumnIndex);
-
-            if (bookingSlot != null)
-            {
-                bool isBooked = ViewModel.GetBookingEntries(bookingSlot.ToEnumerable()).Any();
-                e.Value = isBooked;
-            }
-        }
-
-        private void cancelBookingButton_Click(object sender, EventArgs e)
-        {
-            ViewModel.CancelBookings();
-        }
-
-        private void addBookingButton_Click(object sender, EventArgs e)
-        {
-            ViewModel.AddBookingToSelected();
-        }
-
-        private void bookingScheduleGrid_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            if (e.RowIndex != 0
-                && e.ColumnIndex != bookingScheduleGrid.Columns.Count - 1
-                && ViewModel.CanAddBooking)
-            {
-                ViewModel.AddBookingToSelected();
-            }
-        }
-
-
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public BindingList<BookingEntryUI> ItemsSource
-        {
-            get { return dataContext.DataSource as BindingList<BookingEntryUI>; }
-            set { dataContext.DataSource = value; }
+                bookingScheduleGrid.Columns.Add(CreateFacilityBookingColumn(facility));
         }
 
         BookingIndicatorCell _indicatorCellTemplate = new BookingIndicatorCell();
@@ -106,22 +99,39 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
                 HeaderText = facility.Name,
                 Tag = facility,
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill,
-                ReadOnly = true
             };
         }
+        #endregion
 
-        void AddFacilityColumn(Facility facility)
+        #region Booking management
+        private void cancelBookingButton_Click(object sender, EventArgs e)
         {
-            bookingScheduleGrid.Columns.Add(CreateFacilityBookingColumn(facility));
+            ViewModel.CancelBookings();
         }
 
-        #region Rows and columns values
-        BookingPeriodUI GetBookingPeriodUI(int rowIndex)
+        private void addBookingButton_Click(object sender, EventArgs e)
+        {
+            ViewModel.AddBookingToSelected();
+        }
+
+        private void bookingScheduleGrid_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            ViewModel.AddBookingToSelected();
+        }
+        #endregion
+
+        #region Row, column and cell values
+        private void FillGridWithData()
+        {
+            bookingScheduleGrid.DataSource = ViewModel.BookingPeriods;
+        }
+
+        DateTimePeriod GetPeriod(int rowIndex)
         {
             if (rowIndex < 0)
                 return null;
 
-            return (BookingPeriodUI)bookingScheduleGrid.Rows[rowIndex].DataBoundItem;
+            return (DateTimePeriod)bookingScheduleGrid.Rows[rowIndex].DataBoundItem;
         }
 
         Facility GetFacility(int columnIndex)
@@ -129,21 +139,91 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             if (columnIndex < 0)
                 return null;
 
-            var column = bookingScheduleGrid.Columns[columnIndex];
-            return column.Tag as Facility;
+            return bookingScheduleGrid.Columns[columnIndex].Tag as Facility;
+        }
+
+        public BookingSlot GetBookingSlot(DataGridViewCell cell)
+        {
+            return GetBookingSlot(cell.RowIndex, cell.ColumnIndex);
         }
 
         public BookingSlot GetBookingSlot(int rowIndex, int columnIndex)
         {
-            var period = GetBookingPeriodUI(rowIndex);
+            var period = GetPeriod(rowIndex);
             var facility = GetFacility(columnIndex);
 
             if (period == null || facility == null)
                 return null;
 
-            return new BookingSlot { Period = period.Period, Facility = facility };
+            return new BookingSlot { Period = period, Facility = facility };
+        }
+
+        bool IsFacilityColumn(int columnIndex)
+        {
+            return GetFacility(columnIndex) != null;
+        }
+
+        bool IsPeriodRow(int rowIndex)
+        {
+            return GetPeriod(rowIndex) != null;
+        }
+
+        private void bookingScheduleGrid_CellValueNeeded(object sender, DataGridViewCellValueEventArgs e)
+        {
+            RequireArg.Complies(IsPeriodRow(e.RowIndex));
+
+            if (IsFacilityColumn(e.ColumnIndex))
+            {
+                e.Value = ViewModel.IsSlotBooked(GetBookingSlot(e.RowIndex, e.ColumnIndex));
+                return;
+            }
+
+            if (IsPeriodColumn(e.ColumnIndex))
+                e.Value = GetPeriodCellValue(e.RowIndex, e.ColumnIndex);
+        }
+
+        string GetPeriodCellValue(int rowIndex, int columnIndex)
+        {
+            var time = GetPeriodColumnTime(rowIndex, columnIndex);
+            return time.ToString("h.mmtt");
+        }
+
+        DateTime GetPeriodColumnTime(int rowIndex, int columnIndex)
+        {
+            var period = RequireArg.NotNull(GetPeriod(rowIndex));
+
+            var periodColumnType = GetPeriodColumnType(columnIndex);
+
+            switch (periodColumnType)
+            {
+                case PeriodColumnType.From:
+                    return period.From;
+
+                case PeriodColumnType.To:
+                    return period.To;
+            }
+
+            throw ExceptionFactory.NotSupported("PeriodColumnType '{0}' is not supported", periodColumnType);
+        }
+
+        PeriodColumnType GetPeriodColumnType(int columnIndex)
+        {
+            return (PeriodColumnType)bookingScheduleGrid.Columns[columnIndex].Tag;
         }
         #endregion
+
+        #region Selection
+        void bookingScheduleGrid_SelectionChanging(object sender, GridSelectionChangingEventArgs e)
+        {
+            // Only cells in facility-related columns and in period-related rows should be selectable
+            if (!IsFacilityColumn(e.ColumnIndex) || !IsPeriodRow(e.RowIndex))
+                e.Cancel = true;
+        }
+
+        private void bookingScheduleGrid_SelectionChanged(object sender, EventArgs e)
+        {
+            ViewModel.SelectedBookingSlots = SelectedSlots;
+        }
 
         public IEnumerable<BookingSlot> SelectedSlots
         {
@@ -151,23 +231,20 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             {
                 return bookingScheduleGrid.SelectedCells
                     .Cast<DataGridViewCell>()
-                    .Select(cell => new BookingSlot
-                    {
-                        Period = GetBookingPeriodUI(cell.RowIndex).Period,
-                        Facility = GetFacility(cell.ColumnIndex)
-                    });
+                    .Select(cell => GetBookingSlot(cell))
+                    .Where(s => s != null);
             }
         }
+        #endregion
 
-        private void bookingScheduleGrid_SelectionChanged(object sender, EventArgs e)
+        private void bookingScheduleGrid_CellToolTipTextNeeded(object sender, DataGridViewCellToolTipTextNeededEventArgs e)
         {
-            OnSelectedSlotsChanged();
-        }
+            if (!IsPeriodRow(e.RowIndex))
+                return;
 
-        private void dataContext_DataSourceChanged(object sender, EventArgs e)
-        {
-            CreateFacilityColumns(); 
-            FillGridWithData();
+            if (IsFacilityColumn(e.ColumnIndex))
+                e.ToolTipText = ViewModel.GetSlotToolTip(GetBookingSlot(e.RowIndex, e.ColumnIndex));
+
         }
     }
 }

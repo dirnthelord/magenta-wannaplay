@@ -39,7 +39,6 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.addBookingButton = new System.Windows.Forms.Button();
             this.dataContext = new System.Windows.Forms.BindingSource(this.components);
             this.bookingScheduleGrid = new Magenta.WannaPlay.UI.WinForms.Controls.DataGridViewEx();
-            this.periodStringColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataContext)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookingScheduleGrid)).BeginInit();
@@ -99,8 +98,6 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.bookingScheduleGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.bookingScheduleGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.bookingScheduleGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.bookingScheduleGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.periodStringColumn});
             this.bookingScheduleGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bookingScheduleGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.bookingScheduleGrid.Location = new System.Drawing.Point(0, 0);
@@ -115,16 +112,8 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.bookingScheduleGrid.CellValueNeeded += new System.Windows.Forms.DataGridViewCellValueEventHandler(this.bookingScheduleGrid_CellValueNeeded);
             this.bookingScheduleGrid.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.bookingScheduleGrid_CellMouseDoubleClick);
             this.bookingScheduleGrid.SelectionChanging += new System.EventHandler<Magenta.Shared.UI.WinForms.Controls.GridSelectionChangingEventArgs>(this.bookingScheduleGrid_SelectionChanging);
+            this.bookingScheduleGrid.CellToolTipTextNeeded += new System.Windows.Forms.DataGridViewCellToolTipTextNeededEventHandler(this.bookingScheduleGrid_CellToolTipTextNeeded);
             this.bookingScheduleGrid.SelectionChanged += new System.EventHandler(this.bookingScheduleGrid_SelectionChanged);
-            // 
-            // periodStringColumn
-            // 
-            this.periodStringColumn.DataPropertyName = "PeriodString";
-            this.periodStringColumn.Frozen = true;
-            this.periodStringColumn.HeaderText = "Period";
-            this.periodStringColumn.Name = "periodStringColumn";
-            this.periodStringColumn.ReadOnly = true;
-            this.periodStringColumn.Width = 62;
             // 
             // BookingScheduleControl
             // 
@@ -150,6 +139,5 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
         private System.Windows.Forms.Button addBookingButton;
         private DataGridViewEx bookingScheduleGrid;
         private System.Windows.Forms.BindingSource dataContext;
-        private System.Windows.Forms.DataGridViewTextBoxColumn periodStringColumn;
     }
 }

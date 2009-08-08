@@ -26,5 +26,15 @@ namespace Magenta.Shared.Exceptions
         {
             return ArgumentOutOfRange(null, format, args);
         }
+
+        public static NotSupportedException NotSupported(string format, params object[] args)
+        {
+            return NotSupported(null, format, args);
+        }
+
+        public static NotSupportedException NotSupported(Exception innerException, string format, params object[] args)
+        {
+            throw new NotSupportedException(string.Format(format, args), innerException);
+        }
     }
 }

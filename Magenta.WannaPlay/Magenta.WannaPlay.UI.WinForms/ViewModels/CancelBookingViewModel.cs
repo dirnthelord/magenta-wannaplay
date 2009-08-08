@@ -15,6 +15,7 @@ using Magenta.Shared.UI.WinForms;
 using Magenta.WannaPlay.UI.WinForms.Properties;
 using Magenta.WannaPlay.Services.Booking;
 using Magenta.WannaPlay.UI.WinForms.Controls.Editors;
+using Magenta.WannaPlay.Domain;
 
 namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 {
@@ -32,8 +33,8 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
         public BookingSearchViewModel BookingSearch { get; private set; }
 
         #region SelectedBookings
-        IEnumerable<BookingEntryUI> _selectedBookings;
-        public IEnumerable<BookingEntryUI> SelectedBookings
+        IEnumerable<BookingEntry> _selectedBookings;
+        public IEnumerable<BookingEntry> SelectedBookings
         {
             get { return BookingSearch.SelectedBookings; }
         }
@@ -81,12 +82,13 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
             CancelSingleBooking(bookingsToCancel.First());
         }
 
-        private void CancelSingleBooking(BookingEntryUI bookingToCancel)
+        private void CancelSingleBooking(BookingEntry bookingToCancel)
         {
             var bookingControl = new CancelBookingConfirmationControl();
 
             var viewModel = Kernel.Get<CancelBookingConfirmationViewModel>();
-            viewModel.BookingUI = bookingToCancel;
+            throw new NotImplementedException();
+            //viewModel.BookingUI = bookingToCancel;
 
             bookingControl.ViewModel = viewModel;
 
@@ -104,9 +106,10 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
             });
         }
 
-        private void CancelBooking(BookingEntryUI booking)
+        private void CancelBooking(BookingEntry booking)
         {
-            BookingService.CancelBookingEntry(booking.Booking);
+            throw new NotImplementedException();
+            //BookingService.CancelBookingEntry(booking.Booking);
         }
     }
 }

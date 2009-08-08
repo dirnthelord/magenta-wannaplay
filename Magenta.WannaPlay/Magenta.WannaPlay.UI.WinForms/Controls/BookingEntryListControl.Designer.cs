@@ -1,5 +1,6 @@
 ﻿using Magenta.WannaPlay.UI.WinForms.Domain;
 using Magenta.WannaPlay.UI.WinForms.Domain.UI;
+using Magenta.WannaPlay.Domain;
 namespace Magenta.WannaPlay.UI.WinForms.Controls
 {
     partial class BookingEntryListControl
@@ -110,7 +111,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             // 
             // dataContext
             // 
-            this.dataContext.DataSource = typeof(Magenta.WannaPlay.UI.WinForms.Domain.UI.BookingEntryUI);
+            this.dataContext.DataSource = typeof(BookingEntry);
             // 
             // BookingEntryListControl
             // 

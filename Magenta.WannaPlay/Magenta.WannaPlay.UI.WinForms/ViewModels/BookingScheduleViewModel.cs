@@ -43,7 +43,7 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
         public ICommonUIService CommonUIService { get; private set; }
 
 
-        public BindingList<BookingPeriodUI> BookingPeriods { get; private set; }
+        public BindingList<DateTimePeriod> BookingPeriods { get; private set; }
         public BindingList<BookingEntry> BookingEntries { get; private set; }
         public BindingList<Facility> Facilities { get; private set; }
 
@@ -134,7 +134,7 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 
             Facilities = new BindingList<Facility>();
             BookingEntries = new BindingList<BookingEntry>();
-            BookingPeriods = new BindingList<BookingPeriodUI>();
+            BookingPeriods = new BindingList<DateTimePeriod>();
         }
 
         void OnSelectedDayChanged()
@@ -145,7 +145,7 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
         private void UpdateBookingData()
         {
             BookingEntries.ReplaceWith(BookingService.GetBookingEntries(Period, Facilities));
-            BookingPeriods.ReplaceWith(BookingScheduleService.GetSchedule(Period).Select(p => new BookingPeriodUI(p)));
+            BookingPeriods.ReplaceWith(BookingScheduleService.GetSchedule(Period));
         }
 
         private void UpdateFaciltyList()
@@ -178,6 +178,9 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 
         public void AddBookingToSelected()
         {
+            if (!CanAddBooking)
+                return;
+
             var firstSlot = SelectedBookingSlots.OrderBy(s => s.Period.From).First();
             var slots = SelectedBookingSlots.Where(s => s.Facility == firstSlot.Facility);
 
@@ -216,6 +219,28 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
             form.ShowDialog();
 
             UpdateBookingData();
+        }
+
+        public bool IsSlotBooked(BookingSlot slot)
+        {
+            return GetBookingEntries(slot.ToEnumerable()).Any();
+        }
+
+        public BookingEntry GetBookingEntry(BookingSlot slot)
+        {
+            return GetBookingEntries(slot.ToEnumerable()).SingleOrDefault();
+        }
+
+        public string GetSlotToolTip(BookingSlot slot)
+        {
+            RequireArg.NotNull(slot);
+
+            var entry = GetBookingEntry(slot);
+
+            if (entry == null)
+                return null;
+
+            return string.Format("{0} (card {1})", entry.Resident.Name, entry.Resident.PassCardNumber);
         }
     }
 }

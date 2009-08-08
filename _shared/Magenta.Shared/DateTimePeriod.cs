@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Magenta.Shared
 {
-    public class DateTimePeriod : EquatableBase<DateTimePeriod>
+    public class DateTimePeriod : EquatableBase<DateTimePeriod>, IFormattable
     {
         public virtual DateTime From { get; set; }
         public virtual DateTime To { get; set; }
@@ -33,6 +33,26 @@ namespace Magenta.Shared
         public override string ToString()
         {
             return string.Format("{0} - {1}", From, To);
+        }
+
+        public string ToString(string format)
+        {
+            return ToString(format, null);
+        }
+
+        public string ToString(string format, IFormatProvider formatProvider)
+        {
+            if (format == "$sameDayOnly")
+            {
+                if (From.Date != To.Date)
+                    return string.Format("Different days: {0} - {1}", From, To);
+
+                var timeFormat = "h.mmtt";
+
+                return string.Format("{0} - {1}", From.ToString(timeFormat), To.ToString(timeFormat));
+            }
+
+            return string.Format("Format is not recognized: '{0}'",  format);
         }
 
 
