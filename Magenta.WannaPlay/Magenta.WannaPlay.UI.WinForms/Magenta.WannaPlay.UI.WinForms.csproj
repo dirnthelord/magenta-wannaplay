@@ -101,17 +101,11 @@
     <Compile Include="Controls\BookingScheduleControl.Designer.cs">
       <DependentUpon>BookingScheduleControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\CurrentDutyGuardControl.cs">
+    <Compile Include="Controls\Editors\CurrentDutyGuardEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\CurrentDutyGuardControl.Designer.cs">
-      <DependentUpon>CurrentDutyGuardControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\DutyGuardsManagerControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\DutyGuardsManagerControl.Designer.cs">
-      <DependentUpon>DutyGuardsManagerControl.cs</DependentUpon>
+    <Compile Include="Controls\Editors\CurrentDutyGuardEditor.Designer.cs">
+      <DependentUpon>CurrentDutyGuardEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\BookingSearchControl.cs">
       <SubType>UserControl</SubType>
@@ -132,12 +126,6 @@
       <DependentUpon>UnitNumberEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\GridCells\BookingIndicatorCell.cs" />
-    <Compile Include="Controls\HtmlBrowserControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\HtmlBrowserControl.Designer.cs">
-      <DependentUpon>HtmlBrowserControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="Controls\Editors\ResidentEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -161,14 +149,12 @@
     </Compile>
     <Compile Include="Diagnostics\IExceptionNotifier.cs" />
     <Compile Include="Domain\BookingScheduleGenerator.cs" />
-    <Compile Include="Domain\UI\BookingPeriodUI.cs" />
     <Compile Include="Domain\BookingSlot.cs" />
     <Compile Include="Domain\UI\DateTimePeriodUI.cs" />
     <Compile Include="Domain\BookingSearchRequestUI.cs" />
     <Compile Include="Domain\ResidenceUnitSearchRequestUI.cs" />
     <Compile Include="Domain\ResidentSearchRequestUI.cs" />
     <Compile Include="Domain\UI\TimeSpanUI.cs" />
-    <Compile Include="Domain\UI\ResidentUI.cs" />
     <Compile Include="Ioc\UIConfiguration.cs" />
     <Compile Include="Controls\WannaPlayMainControl.cs">
       <SubType>UserControl</SubType>
@@ -191,7 +177,6 @@
     <Compile Include="Services\WannaPlayContextService.cs" />
     <Compile Include="ViewModels\AddBookingViewModel.cs" />
     <Compile Include="ViewModels\BookingEntryListViewModel.cs" />
-    <Compile Include="ViewModels\BookingEntryViewModel.cs" />
     <Compile Include="ViewModels\BookingScheduleViewModel.cs" />
     <Compile Include="ViewModels\CancelBookingConfirmationViewModel.cs" />
     <Compile Include="ViewModels\CancelBookingViewModel.cs" />
@@ -208,8 +193,6 @@
     </None>
     <None Include="Properties\DataSources\Magenta.WannaPlay.Domain.BookingEntry.datasource" />
     <None Include="Properties\DataSources\Magenta.WannaPlay.UI.WinForms.Domain.UI.DateTimePeriodUI.datasource" />
-    <None Include="Properties\DataSources\Magenta.WannaPlay.UI.WinForms.Domain.UI.ResidentUI.datasource" />
-    <None Include="Properties\DataSources\Magenta.WannaPlay.UI.WinForms.ViewModels.BookingEntryViewModel.datasource" />
     <None Include="Properties\DataSources\Magenta.WannaPlay.UI.WinForms.ViewModels.BookingSearchViewModel.datasource" />
     <None Include="Properties\DataSources\Magenta.WannaPlay.UI.WinForms.ViewModels.CancelBookingConfirmationViewModel.datasource" />
     <None Include="Properties\DataSources\Magenta.WannaPlay.UI.WinForms.ViewModels.CancelBookingViewModel.datasource" />
@@ -261,12 +244,8 @@
       <DependentUpon>BookingScheduleControl.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\CurrentDutyGuardControl.resx">
-      <DependentUpon>CurrentDutyGuardControl.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\DutyGuardsManagerControl.resx">
-      <DependentUpon>DutyGuardsManagerControl.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\Editors\CurrentDutyGuardEditor.resx">
+      <DependentUpon>CurrentDutyGuardEditor.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\BookingSearchControl.resx">
@@ -277,9 +256,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Editors\UnitNumberEditor.resx">
       <DependentUpon>UnitNumberEditor.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\HtmlBrowserControl.resx">
-      <DependentUpon>HtmlBrowserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Editors\ResidentEditor.resx">
       <DependentUpon>ResidentEditor.cs</DependentUpon>

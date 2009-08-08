@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Magenta.WannaPlay.UI.WinForms.Domain.UI;
+using Magenta.WannaPlay.Domain;
 
 namespace Magenta.WannaPlay.UI.WinForms.Controls.Editors
 {
@@ -19,20 +20,21 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls.Editors
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public ResidentUI Value
+        public Resident Value
         {
-            get { return (ResidentUI)dataContext.DataSource; }
+            get { return dataContext.DataSource as Resident; }
             set { dataContext.DataSource = value; }
-        }
-
-        void OnAutoSuggestRequired()
-        {
-            Value.AutoFill();
         }
 
         private void facilityCardNumber_Validated(object sender, EventArgs e)
         {
             OnAutoSuggestRequired();
+        }
+
+        void OnAutoSuggestRequired()
+        {
+            throw new NotImplementedException();
+            //Value.AutoFill();
         }
     }
 }

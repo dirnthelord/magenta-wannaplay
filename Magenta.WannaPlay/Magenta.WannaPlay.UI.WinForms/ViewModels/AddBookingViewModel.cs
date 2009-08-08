@@ -9,6 +9,7 @@ using Magenta.WannaPlay.UI.WinForms.Services;
 using Magenta.WannaPlay.Services.Residence;
 using Magenta.Shared.DesignByContract;
 using System.ComponentModel;
+using Magenta.WannaPlay.UI.WinForms.Domain.UI;
 
 namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 {
@@ -18,51 +19,38 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
         public IKernel Kernel { get; private set; }
 
         [Browsable(false)]
-        public IBookingService BookingService { get; private set; }
+        public IBookingService BookingService { get { return Kernel.Get<IBookingService>(); } }
 
         [Browsable(false)]
-        public IResidenceManager ResidenceManager { get; private set; }
+        public IResidenceManager ResidenceManager { get { return Kernel.Get<IResidenceManager>(); } }
 
         [Browsable(false)]
-        public IWannaPlayContextService WannaPlayContextService { get; private set; }
+        public IWannaPlayContextService WannaPlayContextService { get { return Kernel.Get<IWannaPlayContextService>(); } }
 
 
-        public BookingEntryViewModel BookingEntryViewModel { get; private set; }
+        public BookingEntry Booking { get; set; }
 
 
         public string BookingTitle
         {
-            get { return string.Format("Book {0}", BookingEntryViewModel.Facility.Name); }
+            get { return string.Format("Book {0}", Booking.Facility.Name); }
         }
 
 
-        public AddBookingViewModel
-            (
-                IKernel kernel,
-                IBookingService bookingService,
-                IResidenceManager residenceManager,
-                IWannaPlayContextService wannaPlayContextService
-            )
+        public AddBookingViewModel(IKernel kernel)
         {
             Kernel = RequireArg.NotNull(kernel);
-            BookingService = RequireArg.NotNull(bookingService);
-            ResidenceManager = RequireArg.NotNull(residenceManager);
-            WannaPlayContextService = RequireArg.NotNull(wannaPlayContextService);
-
-            BookingEntryViewModel = Kernel.Get<BookingEntryViewModel>();
         }
 
         public void SaveBooking()
         {
-            var currentDutyGuard = WannaPlayContextService.CurrentGuard;
-
             var bookingEntry = new BookingEntry
             {
                 BookedAtDateTime = DateTime.UtcNow,
-                BookedByGuard = currentDutyGuard,
-                Facility = BookingEntryViewModel.Facility,
+                BookedByGuard = WannaPlayContextService.CurrentGuard,
+                Facility = Booking.Facility,
                 Resident = GetSelectedResident(),
-                Period = BookingEntryViewModel.BookingPeriod.Underlying,
+                Period = Booking.Period,
             };
 
             BookingService.SaveBookingEntry(bookingEntry);
@@ -70,12 +58,11 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 
         Resident GetSelectedResident()
         {
-            var existingResident = ResidenceManager.GetResident(BookingEntryViewModel.Resident.FactilityCardNumber);
+            var existingResident = ResidenceManager.GetResident(Booking.Resident.PassCardNumber);
 
             var resident = existingResident ?? new Resident();
 
-            resident.Name = BookingEntryViewModel.Resident.Name;
-            resident.PassCardNumber = BookingEntryViewModel.Resident.FactilityCardNumber;
+            resident.Name = Booking.Resident.Name;
             resident.Unit = GetSelectedUnit();
 
             return resident;
@@ -83,12 +70,12 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 
         ResidenceUnit GetSelectedUnit()
         {
-            var existingUnit = ResidenceManager.GetResidenceUnit(BookingEntryViewModel.Resident.AddressBlockNumber, BookingEntryViewModel.Resident.AddressUnitNumber);
+            var existingUnit = ResidenceManager.GetResidenceUnit(Booking.Resident.Unit.Block, Booking.Resident.Unit.Number);
 
             var unit = existingUnit ?? new ResidenceUnit();
 
-            unit.Block = BookingEntryViewModel.Resident.AddressBlockNumber;
-            unit.Number = BookingEntryViewModel.Resident.AddressUnitNumber;
+            unit.Block = Booking.Resident.Unit.Block;
+            unit.Number = Booking.Resident.Unit.Number;
 
             return unit;
         }

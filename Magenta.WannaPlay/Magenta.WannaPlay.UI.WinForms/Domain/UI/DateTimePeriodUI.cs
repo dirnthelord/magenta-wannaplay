@@ -21,7 +21,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Domain.UI
         public BindingList<TimeSpanUI> PeriodFromValues { get; private set; }
         public BindingList<TimeSpanUI> PeriodForValues { get; private set; }
 
-        public DateTimePeriodUI()
+        public DateTimePeriodUI(DateTimePeriod underlying)
         {
             MinimumFromTime = new TimeSpanUI(TimeSpan.FromHours(7));
             MaximumToTime = new TimeSpanUI(TimeSpan.FromHours(22));
@@ -35,6 +35,8 @@ namespace Magenta.WannaPlay.UI.WinForms.Domain.UI
             PeriodForValues = Enumerable.Range(1, 2)
                 .Select(i => new TimeSpanUI(new TimeSpan(TimeGranularity.Ticks * i)))
                 .ToBindingList();
+
+            Underlying = underlying;
         }
 
         IEnumerable<TimeSpanUI> ScheduleSlots

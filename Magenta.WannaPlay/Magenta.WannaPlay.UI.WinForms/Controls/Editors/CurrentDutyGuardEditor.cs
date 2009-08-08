@@ -11,7 +11,7 @@ using Magenta.WannaPlay.UI.WinForms.ViewModels;
 
 namespace Magenta.WannaPlay.UI.WinForms.Controls
 {
-    public partial class CurrentDutyGuardControl : UserControl
+    public partial class CurrentDutyGuardEditor : UserControl
     {
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public CurrentDutyGuardViewModel ViewModel
@@ -25,7 +25,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             dutyGuards.DataSource = ViewModel.AllGuards;
         }
 
-        public CurrentDutyGuardControl()
+        public CurrentDutyGuardEditor()
         {
             InitializeComponent();
         }

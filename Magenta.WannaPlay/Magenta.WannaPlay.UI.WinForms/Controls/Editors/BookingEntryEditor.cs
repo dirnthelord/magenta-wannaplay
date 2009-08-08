@@ -8,9 +8,12 @@ using System.Text;
 using System.Windows.Forms;
 using Ninject.Core;
 using Magenta.WannaPlay.UI.WinForms.ViewModels;
+using Magenta.WannaPlay.UI.WinForms.Domain.UI;
+using Magenta.WannaPlay.Domain;
 
 namespace Magenta.WannaPlay.UI.WinForms.Controls.Editors
 {
+    [DefaultBindingProperty("ViewModel")]
     public partial class BookingEntryEditor : UserControl
     {
         public BookingEntryEditor()
@@ -21,9 +24,9 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls.Editors
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         [Browsable(false)]
         [Bindable(true)]
-        public BookingEntryViewModel ViewModel
+        public BookingEntry ViewModel
         {
-            get { return (BookingEntryViewModel)dataContext.DataSource; }
+            get { return dataContext.DataSource as BookingEntry; }
             set { dataContext.DataSource = value; }
         }
     }
