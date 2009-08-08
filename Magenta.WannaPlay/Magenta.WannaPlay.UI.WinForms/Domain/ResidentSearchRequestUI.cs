@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Magenta.WannaPlay.UI.WinForms.Domain.UI
+namespace Magenta.WannaPlay.UI.WinForms.Domain
 {
-    public class ResidentSearchRequestUI
+    public class ResidentSearchRequest
     {
         public string FacilityCardNumber { get; set; }
 

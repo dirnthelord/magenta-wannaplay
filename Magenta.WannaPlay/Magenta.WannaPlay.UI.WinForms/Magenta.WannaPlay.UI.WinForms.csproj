@@ -164,9 +164,9 @@
     <Compile Include="Domain\UI\BookingPeriodUI.cs" />
     <Compile Include="Domain\BookingSlot.cs" />
     <Compile Include="Domain\UI\DateTimePeriodUI.cs" />
-    <Compile Include="Domain\UI\BookingSearchRequestUI.cs" />
-    <Compile Include="Domain\UI\ResidenceUnitSearchRequestUI.cs" />
-    <Compile Include="Domain\UI\ResidentSearchRequestUI.cs" />
+    <Compile Include="Domain\BookingSearchRequestUI.cs" />
+    <Compile Include="Domain\ResidenceUnitSearchRequestUI.cs" />
+    <Compile Include="Domain\ResidentSearchRequestUI.cs" />
     <Compile Include="Domain\UI\TimeSpanUI.cs" />
     <Compile Include="Domain\UI\ResidentUI.cs" />
     <Compile Include="Ioc\UIConfiguration.cs" />

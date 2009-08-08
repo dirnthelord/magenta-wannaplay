@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Magenta.WannaPlay.UI.WinForms.Domain.UI;
+using Magenta.WannaPlay.UI.WinForms.Domain;
 
 namespace Magenta.WannaPlay.UI.WinForms.Controls.Editors
 {
@@ -19,9 +20,9 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls.Editors
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public BookingSearchRequestUI Value
+        public BookingSearchRequest Value
         {
-            get { return (BookingSearchRequestUI)dataContext.DataSource; }
+            get { return (BookingSearchRequest)dataContext.DataSource; }
             set { dataContext.DataSource = value; }
         }
     }
