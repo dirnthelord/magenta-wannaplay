@@ -53,6 +53,7 @@
     <Compile Include="ExpressionHelperTest.cs" />
     <Compile Include="Extentions\System\Collections\Generic\EnumerableExtensionsTest.cs" />
     <Compile Include="Extentions\System\DateTimeExtentionsTest.cs" />
+    <Compile Include="Extentions\System\EventHandlerExtensionsTest.cs" />
     <Compile Include="Extentions\System\StringExtensionsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StringHelperTest.cs" />
