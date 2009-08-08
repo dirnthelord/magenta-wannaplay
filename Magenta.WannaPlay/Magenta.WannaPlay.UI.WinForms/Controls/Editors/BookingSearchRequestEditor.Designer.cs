@@ -72,7 +72,7 @@
             // 
             // dataContext
             // 
-            this.dataContext.DataSource = typeof(Magenta.WannaPlay.UI.WinForms.Domain.UI.BookingSearchRequestUI);
+            this.dataContext.DataSource = typeof(Magenta.WannaPlay.UI.WinForms.Domain.BookingSearchRequest);
             // 
             // blockNumberTextBox
             // 

@@ -11,6 +11,7 @@ using Magenta.WannaPlay.Services.Residence;
 using Magenta.WannaPlay.Domain;
 using Magenta.Shared;
 using Ninject.Core;
+using Magenta.WannaPlay.UI.WinForms.Domain;
 
 namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 {
@@ -23,7 +24,7 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
         public IResidenceManager ResidenceManager { get; private set; }
 
 
-        public BookingSearchRequestUI BookingSearchRequest { get; private set; }
+        public BookingSearchRequest BookingSearchRequest { get; private set; }
         public BindingList<BookingEntry> SearchResults { get; private set; }
 
 
@@ -58,17 +59,13 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
         }
 
 
-        public BookingSearchViewModel
-            (
-                IBookingService bookingService, 
-                IResidenceManager residenceManager
-            )
+        public BookingSearchViewModel(IBookingService bookingService, IResidenceManager residenceManager)
         {
             BookingService = RequireArg.NotNull(bookingService);
             ResidenceManager = RequireArg.NotNull(residenceManager);
 
             SearchResults = new BindingList<BookingEntry>();
-            BookingSearchRequest = new BookingSearchRequestUI();
+            BookingSearchRequest = new BookingSearchRequest();
         }
 
         public void FindBookings()
@@ -77,22 +74,18 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
             var period = DateTimePeriod.FromDays(DateTime.Now, 1);
             var facilities = ResidenceManager.GetFacilities();
 
+            // TODO: Change BookingService interface IQueryable
             var bookings = BookingService.GetBookingEntries(period, facilities);
 
-            if (BookingSearchRequest.Unit.IsSpecified)
-            {
-                var unit = ResidenceManager.GetResidenceUnit(BookingSearchRequest.Unit.BlockNumber, BookingSearchRequest.Unit.UnitNumber);
-                bookings = bookings.Where(b => b.Resident.Unit == unit);
-            };
-
             if (BookingSearchRequest.Resident.IsSpecified)
-            {
-                var resident = ResidenceManager.GetResident(BookingSearchRequest.Resident.FacilityCardNumber);
-                bookings = bookings.Where(b => b.Resident == resident);
-            };
+                bookings = bookings.Where(b => b.Resident.PassCardNumber == BookingSearchRequest.Resident.FacilityCardNumber);
 
-            throw new NotImplementedException();
-            //SearchResults.ReplaceWith(bookings.Select(b => new BookingEntryUI(b)));
+            if (BookingSearchRequest.Unit.IsSpecified)
+                bookings = bookings.Where(b =>
+                    b.Resident.Unit.Block == BookingSearchRequest.Unit.BlockNumber && 
+                    b.Resident.Unit.Number == BookingSearchRequest.Unit.UnitNumber);
+
+            SearchResults.ReplaceWith(bookings);
         }
     }
 }
