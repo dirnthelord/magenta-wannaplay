@@ -8,7 +8,7 @@ using Magenta.Shared.DesignByContract;
 
 namespace Magenta.WannaPlay.UI.WinForms.Domain.UI
 {
-    public class BookingPeriodUI
+    public class BookingPeriodUI2
     {
         [Browsable(false)]
         public DateTimePeriod Period { get; private set; }
@@ -16,7 +16,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Domain.UI
         [DisplayName("Period")]
         public virtual string PeriodString { get { return string.Format("{0:h tt} - {1:h tt}", Period.From, Period.To); } }
 
-        public BookingPeriodUI(DateTimePeriod period)
+        public BookingPeriodUI2(DateTimePeriod period)
         {
             Period = RequireArg.NotNull(period);
         }

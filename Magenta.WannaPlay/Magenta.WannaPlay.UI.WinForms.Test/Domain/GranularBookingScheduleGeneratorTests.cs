@@ -28,8 +28,8 @@ namespace Magenta.WannaPlay.UI.WinForms.Domain
 
             var schedule = sheduleGenerator.GenerateSchedule(DateTimePeriod.FromHours(from, 9)).ToList();
 
-            schedule[0].IsEmpty.AssertIsTrue();
-            schedule[0].Booking.Period.AssertIsEqual(DateTimePeriod.FromHours(from, 1));
+            //schedule[0].IsEmpty.AssertIsTrue();
+            //schedule[0].Booking.Period.AssertIsEqual(DateTimePeriod.FromHours(from, 1));
 
             Assert.Fail();
         }

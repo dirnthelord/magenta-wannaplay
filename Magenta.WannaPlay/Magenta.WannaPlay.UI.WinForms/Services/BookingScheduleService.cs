@@ -41,12 +41,13 @@ namespace Magenta.WannaPlay.UI.WinForms.Services
             }
         }
 
-        public IEnumerable<BookingEntryUI> GetBookingDetails(DateTimePeriod fullPeriod, Facility facility)
+        public IEnumerable<BookingEntry> GetBookingDetails(DateTimePeriod fullPeriod, Facility facility)
         {
-            var facilityTypeBookings = BookingService.GetBookingEntries(fullPeriod, facility.ToEnumerable());
-            var facilityBookings = facilityTypeBookings.Where(b => b.Facility == facility);
+            throw new NotImplementedException();
+            //var facilityTypeBookings = BookingService.GetBookingEntries(fullPeriod, facility.ToEnumerable());
+            //var facilityBookings = facilityTypeBookings.Where(b => b.Facility == facility);
 
-            return new BookingScheduleGenerator(facilityBookings, Granularity).GenerateSchedule(fullPeriod);
+            //return new BookingScheduleGenerator(facilityBookings, Granularity).GenerateSchedule(fullPeriod);
         }
 
         public IEnumerable<DateTimePeriod> GetSchedule(DateTimePeriod fullPeriod)

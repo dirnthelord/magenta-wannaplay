@@ -30,7 +30,7 @@ namespace Magenta.WannaPlay.UI.WinForms
             try
             {
                 // TODO: Remove
-                //Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("en-SG");
+                Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("en-SG");
                 //Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("en-SG");
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);

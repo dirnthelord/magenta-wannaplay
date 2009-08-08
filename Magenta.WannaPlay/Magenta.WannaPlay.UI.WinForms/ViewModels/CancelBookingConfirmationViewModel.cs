@@ -15,19 +15,7 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
     {
         public IBookingService BookingService { get; set; }
 
-        BookingEntryUI _bookingUI;
-        public BookingEntryUI BookingUI 
-        {
-            get { return _bookingUI; }
-            set { _bookingUI = value; OnPropertyChanged("BookingUI"); }
-        }
-
-        [Browsable(false)]
-        BookingEntry Booking
-        {
-            get { return BookingUI.Booking; }
-            set { BookingUI = new BookingEntryUI(Booking); }
-        }
+        public BookingEntry Booking { get; set; }
 
         public CancelBookingConfirmationViewModel(IBookingService bookingService)
         {
