@@ -21,46 +21,12 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 {
     public class CancelBookingViewModel : ViewModelBase
     {
-        [Browsable(false)]
         public IKernel Kernel { get; private set; }
-
-        [Browsable(false)]
         public ICommonUIService CommonUIService { get; private set; }
-
-        [Browsable(false)]
         public IBookingService BookingService { get; private set; }
 
         public BookingSearchViewModel BookingSearch { get; private set; }
 
-        #region SelectedBookings
-        IEnumerable<BookingEntry> _selectedBookings;
-        public IEnumerable<BookingEntry> SelectedBookings
-        {
-            get { return BookingSearch.SelectedBookings; }
-        }
-
-        private void OnSelectedBookingsChanged()
-        {
-            OnCanCacelSelectedBookingsChanged();
-        }
-        #endregion
-
-        #region CanCacelSelectedBookings
-        public bool CanCacelSelectedBookings
-        {
-            get { return SelectedBookings.Count() > 0; }
-        }
-
-        public event EventHandler CanCacelSelectedBookingsChanged;
-
-        void OnCanCacelSelectedBookingsChanged()
-        {
-            var handler = CanCacelSelectedBookingsChanged;
-
-            if (handler != null)
-                handler(this, EventArgs.Empty);
-        }
-        #endregion
 
         public CancelBookingViewModel(IKernel kernel, ICommonUIService commonUIService, IBookingService bookingService)
         {
@@ -69,12 +35,11 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
             BookingService = RequireArg.NotNull(bookingService);
 
             BookingSearch = Kernel.Get<BookingSearchViewModel>();
-            BookingSearch.SelectedBookingsChanged += delegate { OnSelectedBookingsChanged(); };
         }
 
         public void CancelSelectedBookings()
         {
-            var bookingsToCancel = SelectedBookings.ToList();
+            var bookingsToCancel = BookingSearch.SearchResults.SelectedBookings.ToList();
 
             if (bookingsToCancel.Count == 0)
                 return;
@@ -87,8 +52,7 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
             var bookingControl = new CancelBookingConfirmationControl();
 
             var viewModel = Kernel.Get<CancelBookingConfirmationViewModel>();
-            throw new NotImplementedException();
-            //viewModel.BookingUI = bookingToCancel;
+            viewModel.Booking = bookingToCancel;
 
             bookingControl.ViewModel = viewModel;
 
@@ -108,8 +72,7 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 
         private void CancelBooking(BookingEntry booking)
         {
-            throw new NotImplementedException();
-            //BookingService.CancelBookingEntry(booking.Booking);
+            BookingService.CancelBookingEntry(booking);
         }
     }
 }

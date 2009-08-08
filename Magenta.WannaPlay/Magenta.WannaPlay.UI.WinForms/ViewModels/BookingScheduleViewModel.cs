@@ -73,7 +73,7 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
         private void OnSelectedBookingSlotsChanged()
         {
             OnPropertyChanged("SelectedBookingSlots");
-            OnPropertyChanged("SelectedBookingEntries");
+            OnPropertyChanged("SelectedBookings");
             OnPropertyChanged("CanAddBooking");
         }
 

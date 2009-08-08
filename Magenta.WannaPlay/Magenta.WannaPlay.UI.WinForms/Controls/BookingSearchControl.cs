@@ -33,11 +33,6 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             ViewModel.FindBookings();
         }
 
-        private void bookingSearchResults_SelectionChanged(object sender, EventArgs e)
-        {
-            ViewModel.SelectedBookings = bookingSearchResults.GetSelectedRowsDataItems<BookingEntry>();
-        }
-
         private void findBookingsRequestEditorControl_Enter(object sender, EventArgs e)
         {
             FindForm().AcceptButton = findBookingsButton;
