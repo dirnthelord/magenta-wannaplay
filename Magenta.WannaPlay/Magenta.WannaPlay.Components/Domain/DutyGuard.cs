@@ -9,6 +9,8 @@ namespace Magenta.WannaPlay.Domain
     {
         public virtual string Name { get; set; }
 
+        public virtual DateTime LoggedLastTime { get; set; }
+
         public override string ToString()
         {
             return Name;

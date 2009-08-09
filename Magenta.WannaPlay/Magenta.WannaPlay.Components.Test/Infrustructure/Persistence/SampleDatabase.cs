@@ -21,6 +21,8 @@ namespace Magenta.WannaPlay.Components.Infrustructure.Persistence
 
         public DutyGuard DutyGuardRoss { get; private set; }
 
+        public DutyGuard DutyGuardMax { get; private set; }
+
         public DateTime Today { get; private set; }
 
         public SampleDatabase(ISession session)
@@ -31,7 +33,7 @@ namespace Magenta.WannaPlay.Components.Infrustructure.Persistence
 
             CreateResidents(session);
 
-            CreateDutyGuards();
+            CreateDutyGuards(session);
 
             CreateBookings(session);
         }
@@ -60,12 +62,23 @@ namespace Magenta.WannaPlay.Components.Infrustructure.Persistence
             session.Save(bookingEntry2);
         }
 
-        private void CreateDutyGuards()
+        private void CreateDutyGuards(ISession session)
         {
-            DutyGuardRoss = new DutyGuard()
+            DutyGuardRoss = new DutyGuard
                                 {
-                                    Name = "Ross"
+                                    Name = "Ross",
+                                    LoggedLastTime = DateTime.UtcNow.AddDays(-1)
                                 };
+
+            session.Save(DutyGuardRoss);
+
+            DutyGuardMax = new DutyGuard
+            {
+                Name = "Max",
+                LoggedLastTime = DateTime.UtcNow.AddDays(-2)
+            };
+
+            session.Save(DutyGuardMax);
         }
 
         private void CreateResidents(ISession session)
