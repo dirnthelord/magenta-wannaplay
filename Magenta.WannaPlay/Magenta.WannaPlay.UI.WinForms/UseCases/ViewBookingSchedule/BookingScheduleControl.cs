@@ -16,6 +16,7 @@ using Magenta.WannaPlay.UI.WinForms.Domain.UI;
 using Magenta.Shared.UI.WinForms.Controls;
 using Magenta.Shared.DesignByContract;
 using Magenta.Shared.Exceptions;
+using Magenta.WannaPlay.UI.WinForms.UseCases.ViewBookingSchedule;
 
 namespace Magenta.WannaPlay.UI.WinForms.Controls
 {
@@ -70,12 +71,16 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
 
         private static DataGridViewTextBoxColumn CreatePeriodColumn(string header, PeriodColumnType type)
         {
-            return new DataGridViewTextBoxColumn
+            var column = new DataGridViewTextBoxColumn
             {
                 HeaderText = header,
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
                 Tag = type,
             };
+
+            column.DefaultCellStyle.BackColor = SystemColors.Info;
+
+            return column;
         }
 
         bool IsPeriodColumn(int columnIndex)
@@ -89,13 +94,10 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
                 bookingScheduleGrid.Columns.Add(CreateFacilityBookingColumn(facility));
         }
 
-        BookingIndicatorCell _indicatorCellTemplate = new BookingIndicatorCell();
-
         DataGridViewColumn CreateFacilityBookingColumn(Facility facility)
         {
-            return new DataGridViewColumn
+            return new BookingSlotColumn
             {
-                CellTemplate = _indicatorCellTemplate,
                 HeaderText = facility.Name,
                 Tag = facility,
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill,
@@ -149,13 +151,13 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
 
         public BookingSlot GetBookingSlot(int rowIndex, int columnIndex)
         {
-            var period = GetPeriod(rowIndex);
+            var slotPeriod = GetPeriod(rowIndex);
             var facility = GetFacility(columnIndex);
 
-            if (period == null || facility == null)
+            if (slotPeriod == null || facility == null)
                 return null;
 
-            return new BookingSlot { Period = period, Facility = facility };
+            return ViewModel.GetBookingSlot(slotPeriod, facility);
         }
 
         bool IsFacilityColumn(int columnIndex)
@@ -174,7 +176,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
 
             if (IsFacilityColumn(e.ColumnIndex))
             {
-                e.Value = ViewModel.IsSlotBooked(GetBookingSlot(e.RowIndex, e.ColumnIndex));
+                e.Value = GetBookingSlot(e.RowIndex, e.ColumnIndex);
                 return;
             }
 
@@ -215,7 +217,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
         #region Selection
         void bookingScheduleGrid_SelectionChanging(object sender, GridSelectionChangingEventArgs e)
         {
-            // Only cells in facility-related columns and in period-related rows should be selectable
+            // Only cells in facility-related columns and in slotPeriod-related rows should be selectable
             if (!IsFacilityColumn(e.ColumnIndex) || !IsPeriodRow(e.RowIndex))
                 e.Cancel = true;
         }

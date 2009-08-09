@@ -125,7 +125,7 @@
     <Compile Include="CommonControls\UnitNumberEditor.Designer.cs">
       <DependentUpon>UnitNumberEditor.cs</DependentUpon>
     </Compile>
-    <Compile Include="UseCases\ViewBookingSchedule\BookingIndicatorCell.cs" />
+    <Compile Include="UseCases\ViewBookingSchedule\BookingSlotCell.cs" />
     <Compile Include="CommonControls\ResidentEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -186,6 +186,8 @@
     <Compile Include="CommonControls\ResidenceUnitViewModel.cs" />
     <Compile Include="CommonControls\ResidentEditorViewModel.cs" />
     <Compile Include="UseCases\StartApplication\WannaPlayMainViewModel.cs" />
+    <Compile Include="UseCases\ViewBookingSchedule\BookingSlotColumn.cs" />
+    <Compile Include="UseCases\ViewBookingSchedule\KnownCellStyles.cs" />
     <Compile Include="WannaPlayApplication.cs" />
   </ItemGroup>
   <ItemGroup>
