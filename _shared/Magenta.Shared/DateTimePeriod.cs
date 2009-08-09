@@ -10,6 +10,7 @@ namespace Magenta.Shared
         public virtual DateTime From { get; set; }
         public virtual DateTime To { get; set; }
 
+        // TODO: Convert to property (note: FluentHibernate doesn't like read-only properties!)
         public virtual TimeSpan GetTimeSpan()
         {
             return To - From;
@@ -96,6 +97,12 @@ namespace Magenta.Shared
                 return new DateTimePeriod();
 
             return new DateTimePeriod(right.From, DateTimeHelper.Min(right.To, left.To));
+        }
+
+        // TODO: Convert to property (it is method now because FluentHibernate tries to map property and fails because it is read-only)
+        public virtual bool IsEmpty()
+        {
+            return GetTimeSpan().Ticks == 0;
         }
     }
 }

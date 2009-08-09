@@ -33,7 +33,6 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cancelBookingButton = new System.Windows.Forms.Button();
             this.addBookingButton = new System.Windows.Forms.Button();
@@ -94,8 +93,6 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.bookingScheduleGrid.AllowUserToDeleteRows = false;
             this.bookingScheduleGrid.AllowUserToResizeColumns = false;
             this.bookingScheduleGrid.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Honeydew;
-            this.bookingScheduleGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.bookingScheduleGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.bookingScheduleGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.bookingScheduleGrid.Dock = System.Windows.Forms.DockStyle.Fill;

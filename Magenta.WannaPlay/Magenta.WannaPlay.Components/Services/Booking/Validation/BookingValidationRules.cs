@@ -44,7 +44,7 @@ namespace Magenta.WannaPlay.Services.Booking.Validation
         }
 
         /// <summary>
-        /// 3 hours per day per unit
+        /// 1 hour per day per unit
         /// </summary>
         private bool IsEntitledForMoreBooking(ResidenceUnit residenceUnit, DateTime date)
         {
@@ -52,7 +52,8 @@ namespace Magenta.WannaPlay.Services.Booking.Validation
                 x => x.Period.From >= date.RoundDateDown() && x.Period.To <= date.RoundDateUp(),
                 x => x.Resident.Unit.Block == residenceUnit.Block && x.Resident.Unit.Number == residenceUnit.Number);
 
-            return entries.Count() < 3;
+            // TODO: Parametrize hardcoded number of hours
+            return entries.Count() < 1;
         }
 
         private bool IsPeriodAvailable(Facility facility, DateTimePeriod period)

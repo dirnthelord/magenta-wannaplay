@@ -13,5 +13,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Domain
     {
         public DateTimePeriod Period { get; set; }
         public Facility Facility { get; set; }
+        public BookingEntry Booking { get; set; }
+        public bool IsBooked { get { return Booking != null; } }
     }
 }
