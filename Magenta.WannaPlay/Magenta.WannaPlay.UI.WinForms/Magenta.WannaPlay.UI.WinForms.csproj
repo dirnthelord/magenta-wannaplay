@@ -125,7 +125,7 @@
     <Compile Include="CommonControls\UnitNumberEditor.Designer.cs">
       <DependentUpon>UnitNumberEditor.cs</DependentUpon>
     </Compile>
-    <Compile Include="CommonControls\GridCells\BookingIndicatorCell.cs" />
+    <Compile Include="UseCases\ViewBookingSchedule\BookingIndicatorCell.cs" />
     <Compile Include="CommonControls\ResidentEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
