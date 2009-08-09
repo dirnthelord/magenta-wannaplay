@@ -29,6 +29,8 @@ namespace Magenta.WannaPlay.Services.Booking.Validation
                 .Required(x => x.Resident, KnownBookingErrors.ResidentIsRequired)
 
                 .Required(x => x.Resident != null, x => x.Resident.Unit, KnownBookingErrors.ResidenceUnitIsRequired)
+                .Required(x => x.Resident != null, x => x.Resident.Name, KnownBookingErrors.ResidentNameIsRequired)
+                .Required(x => x.Resident != null, x => x.Resident.PassCardNumber, KnownBookingErrors.ResidentCardNumberIsRequired)
 
                 .Required(x => x.Facility, KnownBookingErrors.FacilityIsRequired)
 

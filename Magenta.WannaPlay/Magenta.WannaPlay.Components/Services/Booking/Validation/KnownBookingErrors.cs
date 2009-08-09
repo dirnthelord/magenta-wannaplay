@@ -12,7 +12,10 @@ namespace Magenta.WannaPlay.Services.Booking.Validation
 
         public static readonly string DutyGuardIsRequired = "Duty guard is not specified";
         public static readonly string ResidentIsRequired = "Resident is not specified";
+        public static readonly string ResidentNameIsRequired = "Resident name is not specified";
+        public static readonly string ResidentCardNumberIsRequired = "Resident card number is not specified";
         public static readonly string ResidenceUnitIsRequired = "Residence unit is not specified";
+
         public static readonly string FacilityIsRequired = "Facility is not specified";
         public static readonly string ResidentIsNotEntitled = "Resident is not entitled to do more booking for the specified date";
     }
