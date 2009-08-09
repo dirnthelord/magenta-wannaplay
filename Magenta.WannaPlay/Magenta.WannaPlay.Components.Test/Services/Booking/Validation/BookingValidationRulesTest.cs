@@ -107,6 +107,21 @@ namespace Magenta.WannaPlay.Components.Services.Booking.Validation
             Validate(byJolie, KnownBookingErrors.ResidentIsNotEntitled);
         }
 
+        [Test]
+        public void ResidentNameIsRequired()
+        {
+            var entry = CreateBooking(8, 9);
+
+            entry.Resident = new Resident
+                                 {
+                                     PassCardNumber = "999", Unit = new ResidenceUnit {Block = "12", Number = "222"}
+                                 };
+
+            Validate(entry, KnownBookingErrors.ResidentNameIsRequired);
+        }
+
+        #region Private
+
         private void AssertBookingIsAvailable(int from, int to)
         {
             var entry = CreateBooking(from, to);
@@ -135,6 +150,8 @@ namespace Magenta.WannaPlay.Components.Services.Booking.Validation
                            Resident = _database.ResidentBradPit,
                            Period = new DateTimePeriod(_database.Today.AddHours(from), _database.Today.AddHours(to))
                        };
-        }
+        } 
+
+        #endregion
     }
 }
