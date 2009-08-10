@@ -54,6 +54,7 @@
     <Compile Include="Controls\GridSelectionChangingEventArgs.cs" />
     <Compile Include="DialogButtonDescription.cs" />
     <Compile Include="DialogDescription.cs" />
+    <Compile Include="Extensions\System\Drawing\IconExt.cs" />
     <Compile Include="Extensions\System\Windows\Forms\ControlExtensions.cs" />
     <Compile Include="HostingDialog.cs">
       <SubType>Form</SubType>

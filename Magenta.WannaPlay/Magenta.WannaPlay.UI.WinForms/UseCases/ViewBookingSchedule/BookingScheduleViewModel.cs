@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.ComponentModel;
@@ -24,6 +25,8 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 {
     public class BookingScheduleViewModel : ViewModelBase
     {
+        private readonly IWorkflowManager _workflowManager;
+
         [Browsable(false)]
         [Inject]
         public IKernel Kernel { get; set; }
@@ -58,7 +61,7 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 
         void OnFacilityFilterChanged()
         {
-            UpdateFaciltyList();
+            UpdateFacilityList();
             UpdateBookingData();
         }
 
@@ -76,6 +79,7 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
             OnPropertyChanged("SelectedBookingSlots");
             OnPropertyChanged("SelectedBookings");
             OnPropertyChanged("CanAddBooking");
+            OnPropertyChanged("CanCancelBooking");
         }
 
         IEnumerable<BookingEntry> SelectedBookingEntries
@@ -99,7 +103,19 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
             }
         }
 
+        public bool CanCancelBooking
+        {
+            get
+            {
+                if (SelectedBookingSlots == null || SelectedBookingSlots.Count() != 1)
+                    return false;
+
+                return SelectedBookingEntries.Any();
+            }
+        }
+
         #region Booking slotPeriod
+
         TimeSpan StartHour { get { return TimeSpan.FromHours(7); } }
         TimeSpan FinishHour { get { return TimeSpan.FromHours(22); } }
 
@@ -121,9 +137,11 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
                 IBookingScheduleService bookingScheduleService,
                 IResidenceManager residenceManager,
                 IWannaPlayContextService wannaPlayContextService,
-                ICommonUIService commonUIService
+                ICommonUIService commonUIService,
+                IWorkflowManager workflowManager
             )
         {
+            _workflowManager = RequireArg.NotNull(workflowManager);
             BookingService = RequireArg.NotNull(bookingService);
             BookingScheduleService = RequireArg.NotNull(bookingScheduleService);
             ResidenceManager = RequireArg.NotNull(residenceManager);
@@ -149,23 +167,25 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
             BookingPeriods.ReplaceWith(BookingScheduleService.GetSchedule(Period));
         }
 
-        private void UpdateFaciltyList()
+        private void UpdateFacilityList()
         {
             Facilities.ReplaceWith(ResidenceManager.GetFacilities().Where(FacilityFilter));
         }
 
         public IEnumerable<BookingEntry> GetBookingEntries(IEnumerable<BookingSlot> slots)
         {
-            return slots.Select(s => s.Booking).Distinct();
+            return slots
+                .Where(s => s.Booking != null)
+                .Select(s => s.Booking).Distinct();
         }
 
-        public void CancelBookings()
+        public void FindBookings()
         {
             // TODO: Remove UI depencency
             var bookingSearchView = Kernel.Get<CancelBookingsControl>();
             bookingSearchView.ViewModel = Kernel.Get<CancelBookingViewModel>();
 
-            var form = ControlHoster.CreateForm(null, "Find booking", bookingSearchView);
+            var form = ControlHoster.CreateForm(Resources.Search.ToBitmap(), "Search booking(s)", bookingSearchView);
 
             form.ShowDialog();
 
@@ -221,6 +241,24 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
             form.ShowDialog();
 
             UpdateBookingData();
+        }
+
+        public void CancelSelectedBooking()
+        {
+            Debug.Assert(CanCancelBooking);
+
+            _workflowManager.ProcessCancelBooking(SelectedBookingEntries.First());
+
+            UpdateBookingData();
+        }
+
+        public void AddOrCancelSelectedBooking()
+        {
+            if(CanAddBooking)
+                AddBookingToSelected();
+            else
+            if(CanCancelBooking)
+                CancelSelectedBooking();
         }
 
         //public bool IsSlotBooked(BookingSlot slot)
