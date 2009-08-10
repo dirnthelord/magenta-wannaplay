@@ -17,7 +17,7 @@ namespace Magenta.WannaPlay.Components.Infrustructure.Persistence
 
         public Resident ResidentAngelinaJolie { get; private set; }
 
-        public Resident ResidentGorgeCarlin { get; private set; }
+        public Resident ResidentGeorgeCarlin { get; private set; }
 
         public DutyGuard DutyGuardRoss { get; private set; }
 
@@ -101,14 +101,14 @@ namespace Magenta.WannaPlay.Components.Infrustructure.Persistence
 
             session.Save(ResidentAngelinaJolie);
 
-            ResidentGorgeCarlin = new Resident
+            ResidentGeorgeCarlin = new Resident
             {
-                Name = "Gorge Carlin",
+                Name = "George Carlin",
                 PassCardNumber = "1111",
                 Unit = new ResidenceUnit { Block = "12", Number = "#01-01" }
             };
 
-            session.Save(ResidentGorgeCarlin);
+            session.Save(ResidentGeorgeCarlin);
         }
 
         private void CreateFacilities(ISession session)

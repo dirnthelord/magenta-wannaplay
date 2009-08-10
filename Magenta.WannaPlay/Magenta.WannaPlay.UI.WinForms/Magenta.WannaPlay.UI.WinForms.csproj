@@ -77,6 +77,7 @@
     <Compile Include="CommonControls\BookingEntryListControl.Designer.cs">
       <DependentUpon>BookingEntryListControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Services\WorkflowManager.cs" />
     <Compile Include="UseCases\CancelBooking\CancelBookingConfirmationControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -204,10 +205,13 @@
     <None Include="Resources\Error.ico" />
     <None Include="Resources\Copy.ico" />
     <None Include="Resources\EMail.ico" />
+    <Content Include="Resources\Cancel.ico" />
     <Content Include="Resources\Clock.png" />
     <Content Include="Resources\CancelBooking.bmp" />
+    <None Include="Resources\Delete.ico" />
     <Content Include="Resources\Remarks.png" />
     <Content Include="Resources\Resident.png" />
+    <Content Include="Resources\Search.ico" />
     <Content Include="Resources\Squash.png" />
     <Content Include="Resources\Tennis2.png" />
     <Content Include="Resources\WannaPlay.png" />

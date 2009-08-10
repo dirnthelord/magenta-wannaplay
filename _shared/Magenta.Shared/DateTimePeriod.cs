@@ -86,6 +86,11 @@ namespace Magenta.Shared
             return new DateTimePeriod(from, from.AddDays(days));
         }
 
+        public bool IsIntersected(DateTimePeriod right)
+        {
+            return Intersect(right).GetTimeSpan().Ticks > 0;
+        }
+
         public DateTimePeriod Intersect(DateTimePeriod right)
         {
             if (From > right.From)

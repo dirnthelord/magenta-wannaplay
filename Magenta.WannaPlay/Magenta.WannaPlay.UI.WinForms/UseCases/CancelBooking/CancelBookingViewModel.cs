@@ -21,18 +21,18 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 {
     public class CancelBookingViewModel : ViewModelBase
     {
+        private readonly IWorkflowManager _workflowManager;
+
         public IKernel Kernel { get; private set; }
-        public ICommonUIService CommonUIService { get; private set; }
-        public IBookingService BookingService { get; private set; }
 
         public BookingSearchViewModel BookingSearch { get; private set; }
 
 
-        public CancelBookingViewModel(IKernel kernel, ICommonUIService commonUIService, IBookingService bookingService)
+        public CancelBookingViewModel(IKernel kernel,
+            IWorkflowManager workflowManager)
         {
+            _workflowManager = workflowManager;
             Kernel = RequireArg.NotNull(kernel);
-            CommonUIService = RequireArg.NotNull(commonUIService);
-            BookingService = RequireArg.NotNull(bookingService);
 
             BookingSearch = Kernel.Get<BookingSearchViewModel>();
         }
@@ -44,32 +44,9 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
             if (bookingsToCancel.Count == 0)
                 return;
 
-            CancelSingleBooking(bookingsToCancel.First());
-        }
-
-        private void CancelSingleBooking(BookingEntry bookingToCancel)
-        {
-            var bookingControl = new CancelBookingConfirmationControl();
-
-            var viewModel = Kernel.Get<CancelBookingConfirmationViewModel>();
-            viewModel.Booking = bookingToCancel;
-
-            bookingControl.ViewModel = viewModel;
-
-            ControlHoster.HostInModalDialog(new DialogDescription
-            {
-                Parent = CommonUIService.MainForm,
-                Title = "Cancel booking?",
-                Content = bookingControl,
-                ButtonDescriptions = new[]
-                {
-                    new DialogButtonDescription { Text = "Cancel booking", IsAcceptButton = true, OnClick = () => viewModel.DoCancel() },
-                    new DialogButtonDescription { Text = "Don't cancel", IsCancelButton = true }     
-                },
-                Icon = Resources.CancelBooking
-            });
-
+            _workflowManager.ProcessCancelBooking(bookingsToCancel.First());
             BookingSearch.DoSearch();
         }
+
     }
 }

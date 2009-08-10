@@ -6,7 +6,11 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Magenta.Shared.Ui.WinForms;
+using Magenta.Shared.UI.WinForms;
 using Magenta.WannaPlay.UI.WinForms.Controls.GridCells;
+using Magenta.WannaPlay.UI.WinForms.Properties;
+using Magenta.WannaPlay.UI.WinForms.Services;
 using Magenta.WannaPlay.UI.WinForms.ViewModels;
 using Magenta.WannaPlay.Domain;
 using Ninject.Core;
@@ -36,6 +40,9 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             InitializeComponent();
 
             bookingScheduleGrid.AutoGenerateColumns = false;
+            addBookingButton.Image = Resources.AddBooking.As16x16Bitmap();
+            findBookingButton.Image = Resources.Search.As16x16Bitmap();
+            cancelBookingButton.Image = Resources.Cancel.As16x16Bitmap();
         }
 
         private void dataContext_DataSourceChanged(object sender, EventArgs e)
@@ -106,20 +113,27 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
         #endregion
 
         #region Booking management
-        private void cancelBookingButton_Click(object sender, EventArgs e)
+
+        private void FindBookingClicked(object sender, EventArgs e)
         {
-            ViewModel.CancelBookings();
+            ViewModel.FindBookings();
         }
 
-        private void addBookingButton_Click(object sender, EventArgs e)
+        private void AddBookingClicked(object sender, EventArgs e)
         {
             ViewModel.AddBookingToSelected();
         }
 
-        private void bookingScheduleGrid_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void ScheduleGridCellMouseDoubleClicked(object sender, DataGridViewCellMouseEventArgs e)
         {
-            ViewModel.AddBookingToSelected();
+            ViewModel.AddOrCancelSelectedBooking();
         }
+
+        private void cancelBookingClicked(object sender, EventArgs e)
+        {
+            ViewModel.CancelSelectedBooking();
+        }
+
         #endregion
 
         #region Row, column and cell values
