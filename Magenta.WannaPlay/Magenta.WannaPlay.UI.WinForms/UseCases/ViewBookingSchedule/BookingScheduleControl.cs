@@ -83,9 +83,11 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
                 HeaderText = header,
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
                 Tag = type,
+                SortMode = DataGridViewColumnSortMode.NotSortable
             };
 
-            column.DefaultCellStyle.BackColor = SystemColors.Info;
+            column.DefaultCellStyle.BackColor = Color.RoyalBlue;
+            column.DefaultCellStyle.ForeColor = Color.White;
 
             return column;
         }
@@ -108,6 +110,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
                 HeaderText = facility.Name,
                 Tag = facility,
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill,
+                SortMode = DataGridViewColumnSortMode.NotSortable
             };
         }
         #endregion
@@ -201,7 +204,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
         string GetPeriodCellValue(int rowIndex, int columnIndex)
         {
             var time = GetPeriodColumnTime(rowIndex, columnIndex);
-            return time.ToString("h.mmtt");
+            return time.ToString("HH.mm tt");
         }
 
         DateTime GetPeriodColumnTime(int rowIndex, int columnIndex)

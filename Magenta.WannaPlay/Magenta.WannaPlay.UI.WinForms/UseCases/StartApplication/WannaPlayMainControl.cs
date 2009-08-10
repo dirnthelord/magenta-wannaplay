@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Magenta.WannaPlay.Services.Residence;
+using Magenta.WannaPlay.UI.WinForms.Properties;
 using Ninject.Core;
 using Magenta.WannaPlay.UI.WinForms.ViewModels;
 using Magenta.Shared.Ui.WinForms;
@@ -35,6 +36,10 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             InitializeComponent();
 
             dataContext.DataSourceChanged += dataContext_DataSourceChanged;
+
+            _facilityTabs.ImageList = ImageListHost.Default;
+            _tennisTabPage.ImageKey = ImageListHost.KnownKeys.Tennis;
+            _squashTabPage.ImageKey = ImageListHost.KnownKeys.Squash;
         }
 
         void dataContext_DataSourceChanged(object sender, EventArgs e)

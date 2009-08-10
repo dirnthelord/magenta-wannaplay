@@ -81,13 +81,6 @@ namespace Magenta.WannaPlay.UI.WinForms.Properties {
             }
         }
         
-        internal static System.Drawing.Bitmap CancelBooking {
-            get {
-                object obj = ResourceManager.GetObject("CancelBooking", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
         internal static System.Drawing.Bitmap Clock {
             get {
                 object obj = ResourceManager.GetObject("Clock", resourceCulture);
@@ -137,17 +130,17 @@ namespace Magenta.WannaPlay.UI.WinForms.Properties {
             }
         }
         
-        internal static System.Drawing.Bitmap Squash {
+        internal static System.Drawing.Icon Squash {
             get {
                 object obj = ResourceManager.GetObject("Squash", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ((System.Drawing.Icon)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap Tennis2 {
+        internal static System.Drawing.Icon Tennis {
             get {
-                object obj = ResourceManager.GetObject("Tennis2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                object obj = ResourceManager.GetObject("Tennis", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
         
