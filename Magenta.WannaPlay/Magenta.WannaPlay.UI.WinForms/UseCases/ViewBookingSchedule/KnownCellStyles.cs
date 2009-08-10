@@ -15,8 +15,10 @@ namespace Magenta.WannaPlay.UI.WinForms.UseCases.ViewBookingSchedule
         {
             BookedSlotCellStyle = new DataGridViewCellStyle(new DataGridViewTextBoxColumn().CellTemplate.Style);
 
-            BookedSlotCellStyle.BackColor = Color.Magenta;
-            BookedSlotCellStyle.SelectionBackColor = SystemColors.Highlight;
+            BookedSlotCellStyle.BackColor = Color.LightSteelBlue;
+            
+            BookedSlotCellStyle.ForeColor = Color.Black;
+            BookedSlotCellStyle.SelectionBackColor = Color.DarkOrange;
         }
     }
 }
