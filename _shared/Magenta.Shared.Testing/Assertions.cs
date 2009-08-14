@@ -52,7 +52,12 @@ namespace NUnit.Framework
         public static void AssertSetEqual<T>(this IEnumerable<T> actual, IEnumerable<T> expected)
         {
             CollectionAssert.AreEquivalent(expected, actual);
-        } 
+        }
+
+        public static void AssertIsEmpty(this System.Collections.IEnumerable collection)
+        {
+            CollectionAssert.IsEmpty(collection);
+        }
         #endregion
     }
 }
