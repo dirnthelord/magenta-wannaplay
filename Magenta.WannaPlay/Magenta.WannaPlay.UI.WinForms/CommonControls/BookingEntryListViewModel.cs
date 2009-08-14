@@ -8,15 +8,16 @@ using Magenta.Shared.DesignByContract;
 
 namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 {
-    public class BookingEntryListViewModel
+    public abstract class BookingEntryListViewModel : INotifyPropertyChanged
     {
-        public BindingList<BookingEntry> Bookings { get; private set; }
-        public bool AllowMultipleSelection { get; set; }
-        public IEnumerable<BookingEntry> SelectedBookings { get; set; }
+        public abstract BindingList<BookingEntry> Bookings { get; protected set; }
+        public abstract BookingEntry SelectedBooking { get; set; }
 
-        public BookingEntryListViewModel(BindingList<BookingEntry> bookings)
+        public BookingEntryListViewModel()
         {
-            Bookings = RequireArg.NotNull(bookings);
+            Bookings = new BindingList<BookingEntry>();
         }
+
+        public abstract event PropertyChangedEventHandler PropertyChanged;
     }
 }

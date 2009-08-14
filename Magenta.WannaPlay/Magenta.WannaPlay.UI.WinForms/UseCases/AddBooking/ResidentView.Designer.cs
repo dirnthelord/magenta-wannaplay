@@ -1,9 +1,11 @@
 ﻿using Magenta.WannaPlay.UI.WinForms.Domain.UI;
 using Magenta.WannaPlay.Domain;
 using Magenta.WannaPlay.UI.WinForms.ViewModels;
-namespace Magenta.WannaPlay.UI.WinForms.Controls.Editors
+using Magenta.WannaPlay.UI.WinForms.Controls.Editors;
+
+namespace Magenta.WannaPlay.UI.WinForms.UseCases.AddBooking
 {
-    partial class ResidentEditor
+    partial class ResidentView
     {
         /// <summary> 
         /// Required designer variable.
@@ -34,24 +36,22 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls.Editors
             this.components = new System.ComponentModel.Container();
             this.label8 = new System.Windows.Forms.Label();
             this.name = new System.Windows.Forms.TextBox();
-            this.dataContext = new System.Windows.Forms.BindingSource(this.components);
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.addressBlockNumber = new System.Windows.Forms.TextBox();
-            this.unitBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label5 = new System.Windows.Forms.Label();
             this.facilityCardNumber = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.unitNumberEditorControl1 = new Magenta.WannaPlay.UI.WinForms.Controls.Editors.UnitNumberEditor();
             this._residentPicture = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.residentGroupBox = new System.Windows.Forms.GroupBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataContext)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).BeginInit();
+            this.unitNumberEditorControl1 = new Magenta.WannaPlay.UI.WinForms.Controls.Editors.UnitNumberEditor();
+            this.dataContext = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._residentPicture)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.residentGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataContext)).BeginInit();
             this.SuspendLayout();
             // 
             // label8
@@ -75,10 +75,6 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls.Editors
             this.name.TabIndex = 3;
             this.name.Text = "Weis Mei Yunis Semenovich";
             // 
-            // dataContext
-            // 
-            this.dataContext.DataSource = typeof(ResidentEditorViewModel);
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -100,17 +96,12 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls.Editors
             // 
             // addressBlockNumber
             // 
-            this.addressBlockNumber.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.unitBindingSource, "Block", true));
+            this.addressBlockNumber.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dataContext, "AddressBlockNumber", true));
             this.addressBlockNumber.Location = new System.Drawing.Point(41, 26);
             this.addressBlockNumber.Name = "addressBlockNumber";
             this.addressBlockNumber.Size = new System.Drawing.Size(39, 20);
             this.addressBlockNumber.TabIndex = 1;
             this.addressBlockNumber.Text = "1398A";
-            // 
-            // unitBindingSource
-            // 
-            this.unitBindingSource.DataMember = "Unit";
-            this.unitBindingSource.DataSource = this.dataContext;
             // 
             // label5
             // 
@@ -130,7 +121,6 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls.Editors
             this.facilityCardNumber.Size = new System.Drawing.Size(34, 20);
             this.facilityCardNumber.TabIndex = 0;
             this.facilityCardNumber.Text = "9999";
-            this.facilityCardNumber.Validated += new System.EventHandler(this.facilityCardNumber_Validated);
             // 
             // panel1
             // 
@@ -148,18 +138,6 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls.Editors
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(243, 75);
             this.panel1.TabIndex = 7;
-            // 
-            // unitNumberEditorControl1
-            // 
-            this.unitNumberEditorControl1.AutoSize = true;
-            this.unitNumberEditorControl1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.unitNumberEditorControl1.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.unitBindingSource, "Number", true));
-            this.unitNumberEditorControl1.Location = new System.Drawing.Point(118, 26);
-            this.unitNumberEditorControl1.Margin = new System.Windows.Forms.Padding(4);
-            this.unitNumberEditorControl1.Name = "unitNumberEditorControl1";
-            this.unitNumberEditorControl1.Size = new System.Drawing.Size(35, 20);
-            this.unitNumberEditorControl1.TabIndex = 2;
-            this.unitNumberEditorControl1.Value = "  -";
             // 
             // _residentPicture
             // 
@@ -202,21 +180,36 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls.Editors
             this.residentGroupBox.TabStop = false;
             this.residentGroupBox.Text = "Resident";
             // 
-            // ResidentEditor
+            // unitNumberEditorControl1
+            // 
+            this.unitNumberEditorControl1.AutoSize = true;
+            this.unitNumberEditorControl1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.unitNumberEditorControl1.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.dataContext, "AddressUnitNumber", true));
+            this.unitNumberEditorControl1.Location = new System.Drawing.Point(118, 26);
+            this.unitNumberEditorControl1.Margin = new System.Windows.Forms.Padding(4);
+            this.unitNumberEditorControl1.Name = "unitNumberEditorControl1";
+            this.unitNumberEditorControl1.Size = new System.Drawing.Size(35, 20);
+            this.unitNumberEditorControl1.TabIndex = 2;
+            this.unitNumberEditorControl1.Value = "  -";
+            // 
+            // dataContext
+            // 
+            this.dataContext.DataSource = typeof(Magenta.WannaPlay.UI.WinForms.UseCases.AddBooking.ResidentViewModel);
+            // 
+            // ResidentView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "ResidentEditor";
+            this.Name = "ResidentView";
             this.Size = new System.Drawing.Size(331, 104);
-            ((System.ComponentModel.ISupportInitialize)(this.dataContext)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this._residentPicture)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.residentGroupBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataContext)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -236,6 +229,5 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls.Editors
         private System.Windows.Forms.PictureBox _residentPicture;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.GroupBox residentGroupBox;
-        private System.Windows.Forms.BindingSource unitBindingSource;
     }
 }

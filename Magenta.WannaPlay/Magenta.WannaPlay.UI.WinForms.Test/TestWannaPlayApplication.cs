@@ -58,7 +58,7 @@ namespace Magenta.WannaPlay.UI.WinForms
             //    { 
             //        Period = DateTimePeriod.FromHours(from, 2),
             //        BookedAtDateTime = DateTime.Now,
-            //        Resident = new Resident
+            //        ResidentController = new ResidentController
             //        {
             //            Name = "Nickolas",
             //            PassCardNumber = "9994",
@@ -71,7 +71,7 @@ namespace Magenta.WannaPlay.UI.WinForms
             //    { 
             //        Period = DateTimePeriod.FromHours(from.AddHours(7), 1),
             //        BookedAtDateTime = DateTime.Now.AddHours(-45),
-            //        Resident = new Resident
+            //        ResidentController = new ResidentController
             //        {
             //            Name = "Postulkanis Vigulinfikus",
             //            PassCardNumber = "765",
@@ -84,7 +84,7 @@ namespace Magenta.WannaPlay.UI.WinForms
             //    { 
             //        Period = DateTimePeriod.FromHours(from.AddHours(3), 2),
             //        BookedAtDateTime = DateTime.Now.AddMinutes(-23),
-            //        Resident = new Resident
+            //        ResidentController = new ResidentController
             //        {
             //            Name = "Miguel Sranchos",
             //            PassCardNumber = "2",

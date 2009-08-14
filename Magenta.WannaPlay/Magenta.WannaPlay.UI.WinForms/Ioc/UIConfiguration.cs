@@ -29,7 +29,6 @@ namespace Magenta.WannaPlay.UI.WinForms.Ioc
             Bind<ICommonUIService>().To<CommonUIService>().Using<SingletonBehavior>();
             Bind<IBookingScheduleService>().To<BookingScheduleService>().Using<SingletonBehavior>();
             Bind<IWannaPlayContextService>().To<WannaPlayContextService>().Using<SingletonBehavior>();
-            Bind<IWorkflowManager>().To<WorkflowManager>().Using<SingletonBehavior>();
         }
     }
 }
