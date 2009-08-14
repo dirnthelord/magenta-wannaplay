@@ -19,5 +19,13 @@ namespace System
 
             return string.Join(separator, values.ToArray());
         }
+
+        public static string FormatString(this string format, params object[] args)
+        {
+            if (format == null)
+                return null;
+
+            return string.Format(format, args);
+        }
     }
 }
