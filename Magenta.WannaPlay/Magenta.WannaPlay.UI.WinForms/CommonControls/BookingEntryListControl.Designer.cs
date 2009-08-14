@@ -34,17 +34,16 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
         {
             this.components = new System.ComponentModel.Container();
             this.bookingEntries = new System.Windows.Forms.DataGridView();
-            this.bookingsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataContext = new System.Windows.Forms.BindingSource(this.components);
+            this.bookingsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.bookingEntries)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bookingsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataContext)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bookingsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // bookingEntries
@@ -57,16 +56,15 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.bookingEntries.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.bookingEntries.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn6});
-            this.bookingEntries.DataBindings.Add(new System.Windows.Forms.Binding("MultiSelect", this.dataContext, "AllowMultipleSelection", true));
             this.bookingEntries.DataSource = this.bookingsBindingSource;
             this.bookingEntries.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bookingEntries.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.bookingEntries.Location = new System.Drawing.Point(0, 0);
+            this.bookingEntries.MultiSelect = false;
             this.bookingEntries.Name = "bookingEntries";
             this.bookingEntries.ReadOnly = true;
             this.bookingEntries.RowHeadersVisible = false;
@@ -76,11 +74,6 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.bookingEntries.TabIndex = 0;
             this.bookingEntries.SelectionChanged += new System.EventHandler(this.bookingEntries_SelectionChanged);
             // 
-            // bookingsBindingSource
-            // 
-            this.bookingsBindingSource.DataMember = "Bookings";
-            this.bookingsBindingSource.DataSource = this.dataContext;
-            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "Facility";
@@ -88,14 +81,6 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
             this.dataGridViewTextBoxColumn1.Width = 64;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Resident";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Resident";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 74;
             // 
             // dataGridViewTextBoxColumn3
             // 
@@ -133,6 +118,11 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             // 
             this.dataContext.DataSource = typeof(Magenta.WannaPlay.UI.WinForms.ViewModels.BookingEntryListViewModel);
             // 
+            // bookingsBindingSource
+            // 
+            this.bookingsBindingSource.DataMember = "Bookings";
+            this.bookingsBindingSource.DataSource = this.dataContext;
+            // 
             // BookingEntryListControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -141,8 +131,8 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.Name = "BookingEntryListControl";
             this.Size = new System.Drawing.Size(566, 310);
             ((System.ComponentModel.ISupportInitialize)(this.bookingEntries)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bookingsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataContext)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bookingsBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

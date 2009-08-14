@@ -34,12 +34,12 @@ namespace Magenta.WannaPlay.UI.WinForms.Test
         {
             var kernel = new StandardKernel(new IModule[] { new MockComponentsConfiguration(), new UIConfiguration() });
 
-            var control = new ResidentEditor();
-            var viewModel = kernel.Get<ResidentEditorViewModel>();
-            viewModel.Underlying = new Resident();
-            control.ViewModel = viewModel;
+            //var control = new ResidentEditor();
+            //var viewModel = kernel.Get<ResidentEditorViewModel>();
+            //viewModel.Underlying = new Resident();
+            //control.ViewModel = viewModel;
 
-            Application.Run(ControlHoster.CreateForm(null, null, control));
+            //Application.Run(ControlHoster.CreateForm(null, null, control));
         }
     }
 }

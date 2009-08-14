@@ -10,74 +10,32 @@ using Magenta.WannaPlay.Services.Residence;
 using Magenta.Shared.DesignByContract;
 using System.ComponentModel;
 using Magenta.WannaPlay.UI.WinForms.Domain.UI;
+using Magenta.Shared;
+using Magenta.Shared.Aop;
 
-namespace Magenta.WannaPlay.UI.WinForms.ViewModels
+namespace Magenta.WannaPlay.UI.WinForms.UseCases.AddBooking
 {
-    public class AddBookingViewModel
+    public abstract class AddBookingViewModel : INotifyPropertyChanged
     {
-        [Browsable(false)]
-        public IKernel Kernel { get; private set; }
+        public abstract event PropertyChangedEventHandler PropertyChanged;
 
-        [Browsable(false)]
-        public IBookingService BookingService { get { return Kernel.Get<IBookingService>(); } }
-
-        [Browsable(false)]
-        public IResidenceManager ResidenceManager { get { return Kernel.Get<IResidenceManager>(); } }
-
-        [Browsable(false)]
-        public IWannaPlayContextService WannaPlayContextService { get { return Kernel.Get<IWannaPlayContextService>(); } }
+        public abstract Facility Facility { get; set; }
+        public abstract DateTimePeriod Period { get; set; }
+        public abstract ResidentController ResidentController { get; set; }
+        public abstract string Remarks { get; set; }
 
 
-        public BookingEntry Booking { get; set; }
-
-
-        public string BookingTitle
+        public virtual string BookingTitle
         {
-            get { return string.Format("Book {0}", Booking.Facility.Name); }
+            get { return "Book '{0}'".FormatString(Facility.Name); }
         }
 
 
-        public AddBookingViewModel(IKernel kernel)
+        public void SetContext(Facility facility, DateTimePeriod period, ResidentController residentController)
         {
-            Kernel = RequireArg.NotNull(kernel);
-        }
-
-        public void SaveBooking()
-        {
-            var bookingEntry = new BookingEntry
-            {
-                BookedAtDateTime = DateTime.UtcNow,
-                BookedByGuard = WannaPlayContextService.CurrentGuard,
-                Facility = Booking.Facility,
-                Resident = GetSelectedResident(),
-                Period = Booking.Period,
-            };
-
-            BookingService.SaveBookingEntry(bookingEntry);
-        }
-
-        Resident GetSelectedResident()
-        {
-            var existingResident = ResidenceManager.GetResident(Booking.Resident.PassCardNumber);
-
-            var resident = existingResident ?? new Resident();
-
-            resident.Name = Booking.Resident.Name;
-            resident.Unit = GetSelectedUnit();
-
-            return resident;
-        }
-
-        ResidenceUnit GetSelectedUnit()
-        {
-            var existingUnit = ResidenceManager.GetResidenceUnit(Booking.Resident.Unit.Block, Booking.Resident.Unit.Number);
-
-            var unit = existingUnit ?? new ResidenceUnit();
-
-            unit.Block = Booking.Resident.Unit.Block;
-            unit.Number = Booking.Resident.Unit.Number;
-
-            return unit;
+            Facility = RequireArg.NotNull(facility);
+            Period = RequireArg.NotNull(period);
+            ResidentController = RequireArg.NotNull(residentController);
         }
     }
 }

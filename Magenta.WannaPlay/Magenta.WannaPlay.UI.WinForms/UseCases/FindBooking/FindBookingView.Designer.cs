@@ -1,7 +1,9 @@
 ﻿using Magenta.WannaPlay.UI.WinForms.Controls.Editors;
-namespace Magenta.WannaPlay.UI.WinForms.Controls
+using Magenta.WannaPlay.UI.WinForms.Controls;
+
+namespace Magenta.WannaPlay.UI.WinForms.UseCases.FindBooking
 {
-    partial class BookingSearchControl
+    partial class FindBookingView
     {
         /// <summary> 
         /// Required designer variable.
@@ -35,7 +37,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.bookingSearchResults = new Magenta.WannaPlay.UI.WinForms.Controls.BookingEntryListControl();
-            this.findBookingsRequestEditorControl = new Magenta.WannaPlay.UI.WinForms.Controls.Editors.BookingSearchRequestEditor();
+            this.findBookingsRequestView = new BookingSearchRequestView();
             this.dataContext = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -59,7 +61,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             // 
             this.panel1.AutoSize = true;
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panel1.Controls.Add(this.findBookingsRequestEditorControl);
+            this.panel1.Controls.Add(this.findBookingsRequestView);
             this.panel1.Controls.Add(this.findBookingsButton);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -98,20 +100,19 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
             this.bookingSearchResults.Size = new System.Drawing.Size(630, 254);
             this.bookingSearchResults.TabIndex = 2;
             // 
-            // findBookingsRequestEditorControl
+            // findBookingsRequestView
             // 
-            this.findBookingsRequestEditorControl.AutoSize = true;
-            this.findBookingsRequestEditorControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.findBookingsRequestEditorControl.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.dataContext, "BookingSearchRequest", true));
-            this.findBookingsRequestEditorControl.Location = new System.Drawing.Point(3, 3);
-            this.findBookingsRequestEditorControl.Name = "findBookingsRequestEditorControl";
-            this.findBookingsRequestEditorControl.Size = new System.Drawing.Size(153, 85);
-            this.findBookingsRequestEditorControl.TabIndex = 0;
-            this.findBookingsRequestEditorControl.Enter += new System.EventHandler(this.findBookingsRequestEditorControl_Enter);
+            this.findBookingsRequestView.AutoSize = true;
+            this.findBookingsRequestView.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.findBookingsRequestView.Location = new System.Drawing.Point(3, 3);
+            this.findBookingsRequestView.Name = "findBookingsRequestView";
+            this.findBookingsRequestView.Size = new System.Drawing.Size(153, 85);
+            this.findBookingsRequestView.TabIndex = 0;
+            this.findBookingsRequestView.Enter += new System.EventHandler(this.findBookingsRequestEditorControl_Enter);
             // 
             // dataContext
             // 
-            this.dataContext.DataSource = typeof(Magenta.WannaPlay.UI.WinForms.ViewModels.BookingSearchViewModel);
+            this.dataContext.DataSource = typeof(FindBookingViewModel);
             // 
             // BookingSearchControl
             // 
@@ -133,7 +134,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
 
         #endregion
 
-        private BookingSearchRequestEditor findBookingsRequestEditorControl;
+        private BookingSearchRequestView findBookingsRequestView;
         private System.Windows.Forms.Button findBookingsButton;
         private BookingEntryListControl bookingSearchResults;
         private System.Windows.Forms.Panel panel1;

@@ -9,28 +9,31 @@ using System.Windows.Forms;
 using Magenta.WannaPlay.UI.WinForms.ViewModels;
 using Magenta.WannaPlay.UI.WinForms.Domain.UI;
 using Magenta.WannaPlay.Domain;
+using Magenta.Shared.DesignByContract;
+using Magenta.Shared.Aop;
 
-namespace Magenta.WannaPlay.UI.WinForms.Controls
+namespace Magenta.WannaPlay.UI.WinForms.UseCases.FindBooking
 {
-    [DefaultBindingProperty("ViewModel")]
-    public partial class BookingSearchControl : UserControl
+    public partial class FindBookingView : UserControl
     {
-        public BookingSearchControl()
+        public FindBookingView()
         {
             InitializeComponent();
         }
 
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        [Bindable(true)]
-        public BookingSearchViewModel ViewModel
+        public FindBookingController Controller { get; private set; }
+
+        public void SetContext(FindBookingViewModel viewModel, FindBookingController controller)
         {
-            get { return (BookingSearchViewModel)dataContext.DataSource; }
-            set { dataContext.DataSource = value; }
+            dataContext.DataSource = RequireArg.NotNull(viewModel);
+            Controller = RequireArg.NotNull(controller);
+
+            findBookingsRequestView.SetContext(viewModel.BookingSearchRequest);
         }
 
         private void findBookingsButton_Click(object sender, EventArgs e)
         {
-            ViewModel.DoSearch();
+            Controller.FindBooking();
         }
 
         private void findBookingsRequestEditorControl_Enter(object sender, EventArgs e)

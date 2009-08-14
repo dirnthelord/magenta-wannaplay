@@ -118,7 +118,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Properties {
         
         internal static System.Drawing.Bitmap Resident {
             get {
-                object obj = ResourceManager.GetObject("Resident", resourceCulture);
+                object obj = ResourceManager.GetObject("ResidentController", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

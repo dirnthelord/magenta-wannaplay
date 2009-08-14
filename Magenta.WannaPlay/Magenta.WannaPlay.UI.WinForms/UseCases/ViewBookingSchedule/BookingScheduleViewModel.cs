@@ -25,8 +25,6 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 {
     public class BookingScheduleViewModel : ViewModelBase
     {
-        private readonly IWorkflowManager _workflowManager;
-
         [Browsable(false)]
         [Inject]
         public IKernel Kernel { get; set; }
@@ -137,11 +135,9 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
                 IBookingScheduleService bookingScheduleService,
                 IResidenceManager residenceManager,
                 IWannaPlayContextService wannaPlayContextService,
-                ICommonUIService commonUIService,
-                IWorkflowManager workflowManager
+                ICommonUIService commonUIService
             )
         {
-            _workflowManager = RequireArg.NotNull(workflowManager);
             BookingService = RequireArg.NotNull(bookingService);
             BookingScheduleService = RequireArg.NotNull(bookingScheduleService);
             ResidenceManager = RequireArg.NotNull(residenceManager);
@@ -181,14 +177,7 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 
         public void FindBookings()
         {
-            // TODO: Remove UI depencency
-            var bookingSearchView = Kernel.Get<CancelBookingsControl>();
-            bookingSearchView.ViewModel = Kernel.Get<CancelBookingViewModel>();
-
-            var form = ControlHoster.CreateForm(Resources.Search.ToBitmap(), "Search booking(s)", bookingSearchView);
-
-            form.ShowDialog();
-
+            CommonUIService.FindBooking();
             UpdateBookingData();
         }
 
@@ -203,43 +192,7 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
             var length = slots.Count();
             var period = DateTimePeriod.FromHours(firstSlot.Period.From, length);
 
-
-            // TODO: Remove UI dependency from this ViewModel
-            var addBookingViewModel = Kernel.Get<AddBookingViewModel>();
-            addBookingViewModel.Booking = new BookingEntry
-            {
-                Period = period,
-                Facility = firstSlot.Facility,
-                Resident = new Resident
-                {
-                    Unit = new ResidenceUnit { }
-                }
-            };
-
-            var bookingEditor = Kernel.Get<BookingEntryEditor>();
-            var bookingEditorViewModel = Kernel.Get<BookingEntryEditorViewModel>();
-            bookingEditorViewModel.Underlying = addBookingViewModel.Booking;
-
-            bookingEditor.ViewModel = bookingEditorViewModel;
-
-
-            var form = ControlHoster.CreateDialog(new DialogDescription
-            {
-                Parent = CommonUIService.MainForm,
-                Title = "Add booking",
-                Content = bookingEditor,
-                ButtonDescriptions = new[]
-                {
-                    new DialogButtonDescription { Text = "Add", OnClick = () => addBookingViewModel.SaveBooking() },
-                    new DialogButtonDescription { Text = "Cancel", IsCancelButton = true }     
-                },
-                Icon = Resources.AddBooking.ToBitmap()
-            });
-
-            form.AddBinding(addBookingViewModel, f => f.Text, vm => vm.BookingTitle);
-
-            form.ShowDialog();
-
+            CommonUIService.AddBooking(firstSlot.Facility, period);
             UpdateBookingData();
         }
 
@@ -247,7 +200,7 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
         {
             Debug.Assert(CanCancelBooking);
 
-            _workflowManager.ProcessCancelBooking(SelectedBookingEntries.First());
+            CommonUIService.ConfirmCancelBooking(SelectedBookingEntries.First());
 
             UpdateBookingData();
         }
@@ -292,7 +245,7 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
             if (!slot.IsBooked)
                 return "";
 
-            return slot.Booking.Remarks;// string.Format("{0} (card {1})", entry.Resident.Name, entry.Resident.PassCardNumber);
+            return slot.Booking.Remarks;// string.Format("{0} (card {1})", entry.ResidentController.Name, entry.ResidentController.PassCardNumber);
         }
     }
 }

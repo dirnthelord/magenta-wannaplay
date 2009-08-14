@@ -32,7 +32,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls
 
         private void bookingEntries_SelectionChanged(object sender, EventArgs e)
         {
-            ViewModel.SelectedBookings = bookingEntries.SelectedRows.Cast<DataGridViewRow>().Select(r => (BookingEntry)r.DataBoundItem);
+            ViewModel.SelectedBooking = bookingEntries.SelectedRows.Cast<DataGridViewRow>().Select(r => (BookingEntry)r.DataBoundItem).SingleOrDefault();
         }
     }
 }
