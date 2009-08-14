@@ -22,7 +22,7 @@ namespace Magenta.WannaPlay.Infrastructure.Persistence
         public WannaPlayPersistenceModel()
         {
             AddEntityAssembly(Assembly.GetExecutingAssembly())
-                .Where(entity => entity.BaseType == typeof(Entity))
+                .Where(entity => entity.Namespace == "Magenta.WannaPlay.Domain")
                 .ConventionDiscovery.Setup(c =>
                                                {
                                                    c.Add<ForeignKeyConvention>();
@@ -35,6 +35,8 @@ namespace Magenta.WannaPlay.Infrastructure.Persistence
             WithSetup(s => s.IsComponentType = type => _componentTypes.Contains(type));
 
             WithSetup(s => s.IsBaseType = type => type == typeof(Entity));
+
+            WithSetup(s => s.SubclassStrategy = type => SubclassStrategy.JoinedSubclass);
 
             ForTypesThatDeriveFrom<DutyGuard>(map =>
                 map.Map(x => x.Name).SetAttribute("unique-key", "IX_DutyGuard_Name_Unique"));

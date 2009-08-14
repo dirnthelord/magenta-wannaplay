@@ -16,7 +16,7 @@ namespace Magenta.WannaPlay.Components.Services.Booking.Validation
     public class BookingValidationRulesTest
         : NHibernateTest<BookingValidationRules, SqLiteInMemoryPersister, WannaPlayPersistenceModel> 
     {
-        SampleDatabase _database;
+        SampleCondo _condo;
 
         protected override BookingValidationRules CreateTarget()
         {
@@ -25,7 +25,7 @@ namespace Magenta.WannaPlay.Components.Services.Booking.Validation
 
         protected override void SetupTestContext()
         {
-            _database = new SampleDatabase(Session);
+            _condo = new SampleCondo(Session);
         }
 
         [Test]
@@ -88,9 +88,9 @@ namespace Magenta.WannaPlay.Components.Services.Booking.Validation
 
             var byPit = new BookingEntry
             {
-                Facility = _database.TennisCourt1,
-                BookedByGuard = _database.DutyGuardRoss,
-                Resident = _database.ResidentBradPit,
+                Facility = _condo.TennisCourt1,
+                BookedByGuard = _condo.DutyGuardRoss,
+                Resident = _condo.ResidentBradPit,
                 Period = new DateTimePeriod(date.AddHours(9), date.AddHours(10))
             };
 
@@ -98,9 +98,9 @@ namespace Magenta.WannaPlay.Components.Services.Booking.Validation
 
             var byJolie = new BookingEntry
             {
-                Facility = _database.TennisCourt1,
-                BookedByGuard = _database.DutyGuardRoss,
-                Resident = _database.ResidentAngelinaJolie,
+                Facility = _condo.TennisCourt1,
+                BookedByGuard = _condo.DutyGuardRoss,
+                Resident = _condo.ResidentAngelinaJolie,
                 Period = new DateTimePeriod(date.AddHours(11), date.AddHours(12))
             };
 
@@ -145,10 +145,10 @@ namespace Magenta.WannaPlay.Components.Services.Booking.Validation
         {
             return new BookingEntry
                        {
-                           Facility = _database.TennisCourt1,
-                           BookedByGuard = _database.DutyGuardRoss,
-                           Resident = _database.ResidentBradPit,
-                           Period = new DateTimePeriod(_database.Today.AddHours(from), _database.Today.AddHours(to))
+                           Facility = _condo.TennisCourt1,
+                           BookedByGuard = _condo.DutyGuardRoss,
+                           Resident = _condo.ResidentBradPit,
+                           Period = new DateTimePeriod(_condo.Today.AddHours(from), _condo.Today.AddHours(to))
                        };
         } 
 

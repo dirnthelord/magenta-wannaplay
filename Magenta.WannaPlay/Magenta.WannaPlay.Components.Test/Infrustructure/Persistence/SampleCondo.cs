@@ -9,9 +9,13 @@ using NHibernate;
 
 namespace Magenta.WannaPlay.Components.Infrustructure.Persistence
 {
-    public class SampleDatabase
+    public class SampleCondo
     {
         public Facility TennisCourt1 { get; private set; }
+
+        public Facility SwimmingPool { get; private set; }
+
+        public Facility Gymnasium { get; private set; }
 
         public Resident ResidentBradPit { get; private set; }
 
@@ -25,7 +29,7 @@ namespace Magenta.WannaPlay.Components.Infrustructure.Persistence
 
         public DateTime Today { get; private set; }
 
-        public SampleDatabase(ISession session)
+        public SampleCondo(ISession session)
         {
             Today = DateTime.Today;
 
@@ -36,6 +40,8 @@ namespace Magenta.WannaPlay.Components.Infrustructure.Persistence
             CreateDutyGuards(session);
 
             CreateBookings(session);
+
+            CreateRegistrations(session);
         }
 
         private void CreateBookings(ISession session)
@@ -60,6 +66,28 @@ namespace Magenta.WannaPlay.Components.Infrustructure.Persistence
 
             session.Save(bookingEntry1);
             session.Save(bookingEntry2);
+        }
+
+        private void CreateRegistrations(ISession session)
+        {
+            var guestRegistration = new GuestRegistration
+                                        {
+                                            Facility = SwimmingPool,
+                                            Resident = ResidentGeorgeCarlin,
+                                            TimeIn = Today.AddHours(10.0),
+                                            GuestName = "Vasya"
+                                        };
+
+            var residentRegistration = new ResidentRegistration
+            {
+                Facility = Gymnasium,
+                Resident = ResidentGeorgeCarlin,
+                TimeIn = Today.AddHours(10.0),
+                TimeOut = Today.AddHours(11.0),
+            };
+
+            session.Save(guestRegistration);
+            session.Save(residentRegistration);
         }
 
         private void CreateDutyGuards(ISession session)
@@ -115,7 +143,12 @@ namespace Magenta.WannaPlay.Components.Infrustructure.Persistence
         {
             TennisCourt1 = new Facility { FacilityType = FacilityType.TennisCourt, Name = "Tennis Court 1" };
 
+            SwimmingPool = new Facility { FacilityType = FacilityType.SwimmingPool, Name = "Swimming Pool" };
+
+            Gymnasium = new Facility { FacilityType = FacilityType.Gymnasium, Name = "Gymnasium" };
+
             session.Save(TennisCourt1);
+            session.Save(SwimmingPool);
             session.Save(new Facility { FacilityType = FacilityType.TennisCourt, Name = "Tennis Court 2" });
             session.Save(new Facility { FacilityType = FacilityType.SquashCourt, Name = "Squash Court 1" });
             session.Save(new Facility { FacilityType = FacilityType.SquashCourt, Name = "Squash Court 2" });

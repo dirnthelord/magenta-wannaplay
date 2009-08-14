@@ -18,7 +18,9 @@ namespace Magenta.WannaPlay.Infrastructure.Persistence.Conventions
 
         public void Apply(IProperty target)
         {
-            target.Not.Nullable();
+            //TODO: think about cleaner way to mark nullable properties
+            if(target.Property.Name != "Remarks")
+                target.Not.Nullable();
         }
 
         #endregion
