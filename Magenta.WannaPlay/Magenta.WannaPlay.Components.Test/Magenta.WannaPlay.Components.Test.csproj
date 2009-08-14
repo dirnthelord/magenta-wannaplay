@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{F1FE86A5-728E-489B-A3CA-806125EE3F75}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -79,11 +79,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\BookingSlotTest.cs" />
-    <Compile Include="Infrustructure\Persistence\SampleDatabase.cs" />
+    <Compile Include="Domain\GuestRegistrationTest.cs" />
+    <Compile Include="Domain\ResidentRegistrationTest.cs" />
+    <Compile Include="Infrustructure\Persistence\SampleCondo.cs" />
     <Compile Include="Infrustructure\Persistence\SchemaGenerator.cs" />
     <Compile Include="Infrustructure\Persistence\PersistenceRepositoryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Booking\Validation\BookingValidationRulesTest.cs" />
+    <Compile Include="Services\Registration\RegistrationServiceTest.cs" />
     <Compile Include="TestEnvironment.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -106,6 +109,7 @@
     <Content Include="Generated\Mappings\Magenta.WannaPlay.Domain.BookingEntry.hbm.xml" />
     <Content Include="Generated\Mappings\Magenta.WannaPlay.Domain.DutyGuard.hbm.xml" />
     <Content Include="Generated\Mappings\Magenta.WannaPlay.Domain.Facility.hbm.xml" />
+    <Content Include="Generated\Mappings\Magenta.WannaPlay.Domain.RegistrationRecord.hbm.xml" />
     <Content Include="Generated\Mappings\Magenta.WannaPlay.Domain.ResidenceUnit.hbm.xml" />
     <Content Include="Generated\Mappings\Magenta.WannaPlay.Domain.Resident.hbm.xml" />
   </ItemGroup>

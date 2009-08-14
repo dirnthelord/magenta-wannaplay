@@ -65,6 +65,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\GuestRegistration.cs" />
+    <Compile Include="Domain\RegistrationRecord.cs" />
+    <Compile Include="Domain\ResidentRegistration.cs" />
     <Compile Include="Infrastructure\Persistence\Conventions\EnumConvention.cs" />
     <Compile Include="Infrastructure\Persistence\Conventions\ForeignKeyConvention.cs" />
     <Compile Include="Infrastructure\Persistence\Conventions\ManyToOneConvention.cs" />
@@ -87,6 +90,8 @@
     <Compile Include="Services\Booking\IBookingService.cs" />
     <Compile Include="Services\Booking\Validation\BookingValidationRules.cs" />
     <Compile Include="Services\Booking\Validation\KnownBookingErrors.cs" />
+    <Compile Include="Services\Registration\IRegistrationService.cs" />
+    <Compile Include="Services\Registration\RegistrationService.cs" />
     <Compile Include="Services\Residence\IResidenceManager.cs" />
     <Compile Include="Services\Residence\ResidenceManager.cs" />
   </ItemGroup>

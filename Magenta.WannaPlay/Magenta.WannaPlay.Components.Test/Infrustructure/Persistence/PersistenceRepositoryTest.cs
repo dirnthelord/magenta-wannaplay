@@ -40,7 +40,7 @@ namespace Magenta.WannaPlay.Components.Infrustructure.Persistence
 
                 using (var transaction = session.BeginTransaction(IsolationLevel.ReadCommitted))
                 {
-                    new SampleDatabase(session);
+                    new SampleCondo(session);
                     transaction.Commit();
                 }
             }
@@ -65,7 +65,7 @@ namespace Magenta.WannaPlay.Components.Infrustructure.Persistence
 
                 using (var transaction = session.BeginTransaction(IsolationLevel.ReadCommitted))
                 {
-                    new SampleDatabase(session);
+                    new SampleCondo(session);
                     transaction.Commit();
                 }
             }

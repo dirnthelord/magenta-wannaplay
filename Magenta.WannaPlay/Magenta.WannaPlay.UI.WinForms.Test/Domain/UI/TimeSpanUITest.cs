@@ -12,6 +12,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Domain.UI
     public class TimeSpanUITest
     {
         [Test]
+        [Ignore("en-SG can not be on the box")]
         public void Format_test()
         {
             Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("en-SG");
