@@ -1,6 +1,12 @@
 ToDo:
-- Rename ResidentPass to FacilityCard
+- Add Cacel from FindBookings use case
+- Display selected booking details in BookingSchedule use case
+- Fix problem with resident icon not shown in AddBooking use case
 - Add cancel booking functionality
+- Add registration UI
+
+Under discussion:
+- Rename ResidentPass to FacilityCard
 
 Done:
 - Restore standard fonts
