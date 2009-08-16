@@ -18,8 +18,8 @@ namespace Magenta.Shared
             ExpressionHelper.GetPropertyName(() => obj.DayOfWeek).AssertIsEqual("DayOfWeek");
             ExpressionHelper.GetPropertyName(() => obj.Date.TimeOfDay).AssertIsEqual("Date.TimeOfDay");
 
-            ExpressionHelper.GetPropertyName(obj, o => o.DayOfWeek).AssertIsEqual("DayOfWeek");
-            ExpressionHelper.GetPropertyName(obj, o => o.Date.TimeOfDay).AssertIsEqual("Date.TimeOfDay");
+            ExpressionHelper.GetPropertyName((DateTime o) => o.DayOfWeek).AssertIsEqual("DayOfWeek");
+            ExpressionHelper.GetPropertyName((DateTime o) => o.Date.TimeOfDay).AssertIsEqual("Date.TimeOfDay");
         }
     }
 }

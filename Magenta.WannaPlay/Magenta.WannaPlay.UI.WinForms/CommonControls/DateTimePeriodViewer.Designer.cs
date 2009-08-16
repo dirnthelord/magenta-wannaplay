@@ -1,4 +1,4 @@
-﻿namespace Magenta.WannaPlay.UI.WinForms.Controls.Viewers
+﻿namespace Magenta.WannaPlay.UI.WinForms.CommonControls
 {
     partial class DateTimePeriodViewer
     {
@@ -35,16 +35,16 @@
             this.periodFromTextBox = new System.Windows.Forms.TextBox();
             this.periodForTextBox = new System.Windows.Forms.TextBox();
             this.periodDayTextBox = new System.Windows.Forms.TextBox();
-            this._clockPicture = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this._clockPicture = new System.Windows.Forms.PictureBox();
             this.dataContext = new System.Windows.Forms.BindingSource(this.components);
             periodFromLabel = new System.Windows.Forms.Label();
             periodForLabel = new System.Windows.Forms.Label();
             periodDayLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this._clockPicture)).BeginInit();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._clockPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataContext)).BeginInit();
             this.SuspendLayout();
             // 
@@ -81,47 +81,35 @@
             // periodFromTextBox
             // 
             this.periodFromTextBox.BackColor = System.Drawing.SystemColors.Info;
-            this.periodFromTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dataContext, "PeriodFrom", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "$h $tt"));
+            this.periodFromTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dataContext, "PeriodFrom", true));
             this.periodFromTextBox.Location = new System.Drawing.Point(46, 26);
             this.periodFromTextBox.Margin = new System.Windows.Forms.Padding(6, 6, 0, 6);
             this.periodFromTextBox.Name = "periodFromTextBox";
             this.periodFromTextBox.ReadOnly = true;
             this.periodFromTextBox.Size = new System.Drawing.Size(92, 20);
-            this.periodFromTextBox.TabIndex = 26;
+            this.periodFromTextBox.TabIndex = 1;
             // 
             // periodForTextBox
             // 
             this.periodForTextBox.BackColor = System.Drawing.SystemColors.Info;
-            this.periodForTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dataContext, "PeriodFor", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "$h $hour(s)"));
+            this.periodForTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dataContext, "PeriodFor", true));
             this.periodForTextBox.Location = new System.Drawing.Point(46, 52);
             this.periodForTextBox.Margin = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.periodForTextBox.Name = "periodForTextBox";
             this.periodForTextBox.ReadOnly = true;
             this.periodForTextBox.Size = new System.Drawing.Size(92, 20);
-            this.periodForTextBox.TabIndex = 24;
+            this.periodForTextBox.TabIndex = 2;
             // 
             // periodDayTextBox
             // 
             this.periodDayTextBox.BackColor = System.Drawing.SystemColors.Info;
-            this.periodDayTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dataContext, "PeriodDay", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "dd MMMM"));
+            this.periodDayTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dataContext, "PeriodDay", true));
             this.periodDayTextBox.Location = new System.Drawing.Point(46, 0);
             this.periodDayTextBox.Margin = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.periodDayTextBox.Name = "periodDayTextBox";
             this.periodDayTextBox.ReadOnly = true;
             this.periodDayTextBox.Size = new System.Drawing.Size(92, 20);
-            this.periodDayTextBox.TabIndex = 22;
-            // 
-            // _clockPicture
-            // 
-            this._clockPicture.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this._clockPicture.Image = global::Magenta.WannaPlay.UI.WinForms.Properties.Resources.Clock;
-            this._clockPicture.Location = new System.Drawing.Point(0, 4);
-            this._clockPicture.Margin = new System.Windows.Forms.Padding(0, 0, 8, 0);
-            this._clockPicture.Name = "_clockPicture";
-            this._clockPicture.Size = new System.Drawing.Size(64, 64);
-            this._clockPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this._clockPicture.TabIndex = 27;
-            this._clockPicture.TabStop = false;
+            this.periodDayTextBox.TabIndex = 0;
             // 
             // panel1
             // 
@@ -157,9 +145,21 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(210, 72);
             this.tableLayoutPanel1.TabIndex = 29;
             // 
+            // _clockPicture
+            // 
+            this._clockPicture.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this._clockPicture.Image = global::Magenta.WannaPlay.UI.WinForms.Properties.Resources.Clock;
+            this._clockPicture.Location = new System.Drawing.Point(0, 4);
+            this._clockPicture.Margin = new System.Windows.Forms.Padding(0, 0, 8, 0);
+            this._clockPicture.Name = "_clockPicture";
+            this._clockPicture.Size = new System.Drawing.Size(64, 64);
+            this._clockPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this._clockPicture.TabIndex = 27;
+            this._clockPicture.TabStop = false;
+            // 
             // dataContext
             // 
-            this.dataContext.DataSource = typeof(Magenta.WannaPlay.UI.WinForms.Domain.UI.DateTimePeriodUI);
+            this.dataContext.DataSource = typeof(Magenta.WannaPlay.UI.WinForms.CommonControls.DateTimePeriodViewModel);
             // 
             // DateTimePeriodViewer
             // 
@@ -170,11 +170,11 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "DateTimePeriodViewer";
             this.Size = new System.Drawing.Size(210, 72);
-            ((System.ComponentModel.ISupportInitialize)(this._clockPicture)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._clockPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataContext)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

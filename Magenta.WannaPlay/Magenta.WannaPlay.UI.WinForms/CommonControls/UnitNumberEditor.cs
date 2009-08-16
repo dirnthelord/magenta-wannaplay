@@ -25,6 +25,12 @@ namespace Magenta.WannaPlay.UI.WinForms.Controls.Editors
             set { unitNumber.Text = value; }
         }
 
+        public bool ReadOnly
+        {
+            get { return unitNumber.ReadOnly; }
+            set { unitNumber.ReadOnly = value; }
+        }
+
         public event EventHandler ValueChanged
         {
             add { unitNumber.TextChanged += value; }

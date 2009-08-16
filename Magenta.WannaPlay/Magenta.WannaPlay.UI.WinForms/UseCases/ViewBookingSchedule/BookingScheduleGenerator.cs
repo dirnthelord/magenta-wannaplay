@@ -6,7 +6,6 @@ using Magenta.WannaPlay.UI.WinForms.ViewModels;
 using Magenta.WannaPlay.Domain;
 using Magenta.Shared.DesignByContract;
 using Magenta.Shared;
-using Magenta.WannaPlay.UI.WinForms.Domain.UI;
 
 namespace Magenta.WannaPlay.UI.WinForms.Domain
 {

@@ -7,10 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Magenta.WannaPlay.UI.WinForms.ViewModels;
-using Magenta.WannaPlay.UI.WinForms.Domain.UI;
 using Magenta.WannaPlay.Domain;
 using Magenta.Shared.DesignByContract;
-using Magenta.Shared.Aop;
 
 namespace Magenta.WannaPlay.UI.WinForms.UseCases.FindBooking
 {

@@ -1,5 +1,4 @@
 ﻿using Magenta.WannaPlay.UI.WinForms.Domain;
-using Magenta.WannaPlay.UI.WinForms.Domain.UI;
 using Magenta.WannaPlay.Domain;
 using Magenta.WannaPlay.UI.WinForms.ViewModels;
 namespace Magenta.WannaPlay.UI.WinForms.Controls

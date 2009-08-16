@@ -65,10 +65,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Aop\DependsOnAttribute.cs" />
-    <Compile Include="Aop\NotifyPropertyChangedInterceptor.cs" />
-    <Compile Include="Aop\ObjectFactory.cs" />
     <Compile Include="DateTimeHelper.cs" />
+    <Compile Include="DesignByContract\Require.cs" />
     <Compile Include="DesignByContract\RequireArg.cs" />
     <Compile Include="EquatableBase.cs" />
     <Compile Include="Exceptions\ExceptionFactory.cs" />
@@ -87,6 +85,8 @@
     <Compile Include="Extensions\System\Reflection\MemberInfoExtensions.cs" />
     <Compile Include="Extensions\System\StringExtentions.cs" />
     <Compile Include="Extensions\System\TypeExtensions.cs" />
+    <Compile Include="LazyValue.cs" />
+    <Compile Include="ObjectHelper.cs" />
     <Compile Include="PeriodBoundaryType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DateTimePeriod.cs" />

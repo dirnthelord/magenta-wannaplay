@@ -33,26 +33,18 @@ namespace Magenta.WannaPlay.Services.Residence
 
         public Resident GetResident(string passCardNumber)
         {
-            var residents = _persistenceRepository
+            // Null when no resident found!
+            return _persistenceRepository
                 .Search<Resident>(r => r.PassCardNumber == passCardNumber)
-                .ToList();
-
-            if(residents.Count == 0)
-                return new Resident { PassCardNumber = passCardNumber };
-
-            return residents[0];
+                .SingleOrDefault();
         }
 
         public ResidenceUnit GetResidenceUnit(string unitBlock, string unitNumber)
         {
-            var residenceUnits = _persistenceRepository
+            // Null when no unit found!
+            return _persistenceRepository
                 .Search<ResidenceUnit>(u => u.Block == unitBlock && u.Number == unitNumber)
-                .ToList();
-
-            if (residenceUnits.Count == 0)
-                return new ResidenceUnit { Block = unitBlock, Number = unitNumber };
-
-            return residenceUnits[0];
+                .SingleOrDefault();
         }
 
         #endregion

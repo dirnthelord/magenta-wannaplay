@@ -11,6 +11,18 @@ namespace NUnit.Framework
             Assert.AreEqual(expected, actual);
         }
 
+        public static void AssertIsSame<T>(this T actual, T expected)
+            where T : class
+        {
+            Assert.AreSame(expected, actual);
+        }
+
+        public static void AssertIsNotSame<T>(this T actual, T expected)
+            where T : class
+        {
+            Assert.AreNotSame(expected, actual);
+        }
+
         public static void AssertIsNull(this object left)
         {
             Assert.IsNull(left);

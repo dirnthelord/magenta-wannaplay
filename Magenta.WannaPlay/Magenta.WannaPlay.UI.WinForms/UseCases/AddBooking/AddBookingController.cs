@@ -4,16 +4,19 @@ using System.Linq;
 using System.Text;
 using Magenta.Shared.DesignByContract;
 using Magenta.WannaPlay.Domain;
-using Magenta.Shared.Aop;
 using Ninject.Core;
 using Magenta.WannaPlay.Services.Residence;
 using Magenta.WannaPlay.UI.WinForms.Services;
 using Magenta.WannaPlay.Services.Booking;
+using Magenta.Shared;
 
 namespace Magenta.WannaPlay.UI.WinForms.UseCases.AddBooking
 {
     public class AddBookingController
     {
+        [Inject]
+        public IKernel Kernel { get; set; }
+
         [Inject]
         public IResidenceManager ResidenceManager { get; set; }
 
@@ -24,64 +27,40 @@ namespace Magenta.WannaPlay.UI.WinForms.UseCases.AddBooking
         public IBookingService BookingService { get; set; }
 
 
-        public AddBookingViewModel ViewModel { get; private set; }
-
-
-        public AddBookingController()
+        public void AddBooking(BookingEntry booking)
         {
-            ViewModel = ObjectFactory.Create<AddBookingViewModel>();
+            // TODO: Use external service to get time
+            booking.BookedAtDateTime = DateTime.Now;
+            booking.BookedByGuard = WannaPlayContextService.CurrentGuard;
+            booking.Resident = RectifyResident(booking.Resident);
+
+            BookingService.SaveBookingEntry(booking);
         }
 
-        public void AddBooking()
+        Resident RectifyResident(Resident newResident)
         {
-            var bookingEntry = new BookingEntry
-            {
-                // TODO: Use external service to get time
-                BookedAtDateTime = DateTime.Now,
-
-                BookedByGuard = WannaPlayContextService.CurrentGuard,
-                Facility = ViewModel.Facility,
-                Resident = GetResident(),
-                Period = ViewModel.Period,
-                Remarks = ViewModel.Remarks
-            };
-
-            BookingService.SaveBookingEntry(bookingEntry);
-        }
-
-        Resident GetResident()
-        {
-            var passCardNumber = ViewModel.ResidentController.ViewModel.PassCardNumber;
-            var resident = ResidenceManager.GetResident(passCardNumber);
+            var resident = ResidenceManager.GetResident(newResident.PassCardNumber);
 
             if (resident == null)
-                resident = new Resident
-                {
-                    PassCardNumber = passCardNumber
-                };
+                resident = newResident;
+            else
+                resident.CopyFrom(newResident);
 
-            resident.Name = ViewModel.ResidentController.ViewModel.Name;
-            resident.Unit = GetUnit();
+            resident.Unit = RectifyUnit(newResident.Unit);
 
             return resident;
         }
 
-        ResidenceUnit GetUnit()
+        ResidenceUnit RectifyUnit(ResidenceUnit newUnit)
         {
-            var block = ViewModel.ResidentController.ViewModel.AddressBlockNumber;
-            var unit = ViewModel.ResidentController.ViewModel.AddressUnitNumber;
+            var unit = ResidenceManager.GetResidenceUnit(newUnit.Block, newUnit.Number);
 
-            var address = ResidenceManager.GetResidenceUnit(block, unit);
+            if (unit == null)
+                unit = newUnit;
+            else
+                unit.CopyFrom(newUnit);
 
-            if (address == null)
-                address = new ResidenceUnit
-                {
-                    Block = block,
-                    Number = unit,
-                };
-
-            return address;
+            return unit;
         }
-
     }
 }

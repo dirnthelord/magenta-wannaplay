@@ -52,8 +52,17 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\GridSelectionChangingEventArgs.cs" />
+    <Compile Include="DataBinding\DataBinder.cs" />
+    <Compile Include="DataBinding\DataBinderBindingSourceContext.cs" />
+    <Compile Include="DataBinding\DataBinderControlContext.cs" />
     <Compile Include="DialogButtonDescription.cs" />
     <Compile Include="DialogDescription.cs" />
+    <Compile Include="DialogView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DialogView.Designer.cs">
+      <DependentUpon>DialogView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\System\Drawing\IconExt.cs" />
     <Compile Include="Extensions\System\Windows\Forms\ControlExtensions.cs" />
     <Compile Include="HostingDialog.cs">
@@ -79,6 +88,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="DialogView.resx">
+      <DependentUpon>DialogView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HostingDialog.resx">
       <DependentUpon>HostingDialog.cs</DependentUpon>
       <SubType>Designer</SubType>
