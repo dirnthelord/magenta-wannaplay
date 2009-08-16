@@ -13,7 +13,7 @@ namespace Magenta.Shared
             return GetMemberNames(((LambdaExpression)property).Body).Skip(1).Join(".");
         }
     
-        public static string GetPropertyName<T, TResult>(T obj, Expression<Func<T, TResult>> property)
+        public static string GetPropertyName<T, TResult>(Expression<Func<T, TResult>> property)
         {
             return GetMemberNames(((LambdaExpression)property).Body).Join(".");
         }

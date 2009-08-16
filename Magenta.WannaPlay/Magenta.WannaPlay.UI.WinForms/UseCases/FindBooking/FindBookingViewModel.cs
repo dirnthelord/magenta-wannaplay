@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Magenta.Shared.UI.WinForms.Mvvm;
-using Magenta.WannaPlay.UI.WinForms.Domain.UI;
 using System.ComponentModel;
 using Magenta.WannaPlay.Services.Booking;
 using Magenta.Shared.DesignByContract;
@@ -13,7 +12,6 @@ using Magenta.Shared;
 using Ninject.Core;
 using Magenta.WannaPlay.UI.WinForms.Domain;
 using Magenta.WannaPlay.UI.WinForms.ViewModels;
-using Magenta.Shared.Aop;
 
 namespace Magenta.WannaPlay.UI.WinForms.UseCases.FindBooking
 {
@@ -25,8 +23,8 @@ namespace Magenta.WannaPlay.UI.WinForms.UseCases.FindBooking
 
         public FindBookingViewModel()
         {
-            BookingSearchRequest = ObjectFactory.Create<BookingSearchRequestViewModel>();
-            SearchResults = ObjectFactory.Create<BookingEntryListViewModel>();
+            BookingSearchRequest = new BookingSearchRequestViewModel();
+            SearchResults = new BookingEntryListViewModel();
         }
     }
 }

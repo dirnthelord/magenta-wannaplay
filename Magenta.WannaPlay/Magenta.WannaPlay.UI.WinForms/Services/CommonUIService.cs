@@ -15,6 +15,7 @@ using Magenta.WannaPlay.Domain;
 using Magenta.WannaPlay.UI.WinForms.UseCases.CancelBooking;
 using Magenta.WannaPlay.UI.WinForms.UseCases.FindBooking;
 using Magenta.Shared;
+using Magenta.WannaPlay.UI.WinForms.CommonControls;
 
 namespace Magenta.WannaPlay.UI.WinForms.Services
 {
@@ -38,7 +39,7 @@ namespace Magenta.WannaPlay.UI.WinForms.Services
                 Content = dutyGuardSelector,
                 ButtonDescriptions = new[]
                 {
-                    new DialogButtonDescription { Text = "OK", IsAcceptButton = true, OnClick = () => dutyGuardSelector.ViewModel.AcceptSelectedDutyGuard() },
+                    new DialogButtonDescription { Text = "OK", IsAcceptButton = true, OnClick = dutyGuardSelector.ViewModel.AcceptSelectedDutyGuard },
                     new DialogButtonDescription { Text = "Cancel", IsCancelButton = true }
                 }
             });
@@ -46,30 +47,41 @@ namespace Magenta.WannaPlay.UI.WinForms.Services
 
         public void AddBooking(Facility facility, DateTimePeriod period)
         {
-            var controller = Kernel.Get<AddBookingController>();
-            var viewModel = controller.ViewModel;
-
-            var residentController = Kernel.Get<ResidentController>();
-
-            viewModel.SetContext(facility, period, residentController);
-
-            var view = new AddBookingViewPart();
-            view.SetContext(controller.ViewModel, controller);
-
-            var form = ControlHoster.CreateDialog(new DialogDescription
+            var booking = new BookingEntry
             {
-                Parent = MainForm,
-                Title = "Add booking",
-                Content = view,
-                Icon = Resources.AddBooking.ToBitmap(),
-                ButtonDescriptions = new[]
+                Facility = facility,
+                Period = period,
+                Resident = new Resident
                 {
-                    new DialogButtonDescription { Text = "Add booking", OnClick = () => controller.AddBooking() },
-                    new DialogButtonDescription { Text = "Don't add", IsCancelButton = true }     
-                },
-            });
+                    Unit = new ResidenceUnit()
+                }
+            };
 
-            form.AddBinding(controller.ViewModel, f => f.Text, vm => vm.BookingTitle);
+            var view = Kernel.Get<AddBookingView>();
+            view.ViewModel.Booking = booking;
+
+            //var controller = Kernel.Get<AddBookingController>();
+            //var viewModel = new AddBookingViewModel { Booking = booking };
+
+            var form = ControlHoster.CreateForm(
+                Resources.AddBooking.ToBitmap(),
+                "Add booking",
+                view);
+
+            //    new DialogDescription
+            //{
+            //    Parent = MainForm,
+            //    Title = "Add booking",
+            //    Content = Kernel.Get<BookingEntryView>().Do(v => v.Value = booking),
+            //    Icon = Resources.AddBooking.ToBitmap(),
+            //    ButtonDescriptions = new[]
+            //    {
+            //        new DialogButtonDescription { Text = "Add booking", OnClick = () => controller.AddBooking(booking) },
+            //        new DialogButtonDescription { Text = "Don't add", IsCancelButton = true }     
+            //    },
+            //});
+
+            form.AddBinding(view.ViewModel, f => f.Text, vm => vm.ViewTitle);
 
             form.ShowDialog();
         }
@@ -97,21 +109,18 @@ namespace Magenta.WannaPlay.UI.WinForms.Services
 
         public void ConfirmCancelBooking(BookingEntry booking)
         {
+            var viewModel = new CancelBookingConfirmationViewModel { Booking = booking };
             var controller = Kernel.Get<CancelBookingConfirmationController>();
-            controller.ViewModel.SetContext(booking);
-
-            var view = new CancelBookingConfirmationView();
-            view.SetContext(controller.ViewModel, controller);
 
             ControlHoster.HostInModalDialog(new DialogDescription
             {
                 Parent = MainForm,
                 Title = "Cancel booking?",
-                Content = view,
+                Content = Kernel.Get<BookingEntryView>().Do(v => v.Value = booking),
                 Icon = Resources.Cancel.ToBitmap(),
                 ButtonDescriptions = new[]
                 {
-                    new DialogButtonDescription { Text = "Cancel booking", IsAcceptButton = true, OnClick = () => controller.CancelBooking() },
+                    new DialogButtonDescription { Text = "Cancel booking", IsAcceptButton = true, OnClick = () => controller.CancelBooking(booking) },
                     new DialogButtonDescription { Text = "Don't cancel", IsCancelButton = true }     
                 }
             });

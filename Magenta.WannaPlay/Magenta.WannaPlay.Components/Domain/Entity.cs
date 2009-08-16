@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.ComponentModel;
 
 namespace Magenta.WannaPlay.Domain
 {
-    public abstract class Entity
+    public abstract class Entity : INotifyPropertyChanged
     {
         public virtual int Id { get; set; }
 
@@ -25,7 +26,7 @@ namespace Magenta.WannaPlay.Domain
         public override bool Equals(object obj)
         {
             var other = obj as Entity;
-            
+
             if (other == null)
                 return false;
 
@@ -38,6 +39,17 @@ namespace Magenta.WannaPlay.Domain
         public override int GetHashCode()
         {
             return Id.GetHashCode();
+        }
+
+        [field: NonSerialized]
+        public virtual event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(params string[] propertyNames)
+        {
+            var handler = PropertyChanged;
+
+            if (handler != null)
+                propertyNames.ForEach(propertyName => handler(this, new PropertyChangedEventArgs(propertyName)));
         }
     }
 }

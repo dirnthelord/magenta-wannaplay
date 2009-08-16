@@ -6,7 +6,7 @@ using Ninject.Core;
 using System.ComponentModel;
 using Magenta.WannaPlay.Services.Booking;
 using Magenta.WannaPlay.UI.WinForms.ViewModels;
-using Magenta.Shared.Aop;
+using Magenta.WannaPlay.Domain;
 
 namespace Magenta.WannaPlay.UI.WinForms.UseCases.CancelBooking
 {
@@ -17,19 +17,9 @@ namespace Magenta.WannaPlay.UI.WinForms.UseCases.CancelBooking
         public IBookingService BookingService { get; set; }
 
 
-        public CancelBookingConfirmationViewModel ViewModel { get; set; }
-
-        
-        public CancelBookingConfirmationController()
+        public void CancelBooking(BookingEntry booking)
         {
-            ViewModel = ObjectFactory.Create<CancelBookingConfirmationViewModel>();
+            BookingService.CancelBookingEntry(booking);
         }
-
-
-        public void CancelBooking()
-        {
-            BookingService.CancelBookingEntry(ViewModel.Booking);
-        }
-
     }
 }

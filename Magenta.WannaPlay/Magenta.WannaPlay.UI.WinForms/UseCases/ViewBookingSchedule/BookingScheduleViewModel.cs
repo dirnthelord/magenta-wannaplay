@@ -13,7 +13,6 @@ using Magenta.WannaPlay.UI.WinForms.Properties;
 using Magenta.WannaPlay.UI.WinForms.Services;
 using Magenta.WannaPlay.UI.WinForms.Domain;
 using Magenta.WannaPlay.Services.Residence;
-using Magenta.WannaPlay.UI.WinForms.Domain.UI;
 using Magenta.Shared.UI.WinForms.Mvvm;
 using Ninject.Core;
 using Magenta.WannaPlay.UI.WinForms.Controls;
@@ -245,7 +244,7 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
             if (!slot.IsBooked)
                 return "";
 
-            return slot.Booking.Remarks;// string.Format("{0} (card {1})", entry.ResidentController.Name, entry.ResidentController.PassCardNumber);
+            return slot.Booking.Remarks;// string.Format("{0} (card {1})", entry.Resident.Name, entry.Resident.PassCardNumber);
         }
     }
 }

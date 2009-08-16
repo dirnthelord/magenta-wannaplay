@@ -1,7 +1,6 @@
 ﻿using Magenta.WannaPlay.UI.WinForms.Domain;
 using Magenta.WannaPlay.UI.WinForms.ViewModels;
 using Magenta.Shared;
-using Magenta.WannaPlay.UI.WinForms.Domain.UI;
 namespace Magenta.WannaPlay.UI.WinForms.Controls
 {
     partial class BookingScheduleControl

@@ -30,7 +30,7 @@ namespace Magenta.WannaPlay.UI.WinForms.ViewModels
 
         private void OnUnderlyingChanged()
         {
-            // Raise OnPropertyChanged
+            // Raise OnSpecificPropertyChanged
             Block = Block;
             Number = Number;
         }

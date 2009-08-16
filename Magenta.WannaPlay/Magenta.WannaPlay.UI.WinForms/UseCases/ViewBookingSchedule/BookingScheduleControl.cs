@@ -16,7 +16,6 @@ using Magenta.WannaPlay.Domain;
 using Ninject.Core;
 using Magenta.WannaPlay.UI.WinForms.Domain;
 using Magenta.Shared;
-using Magenta.WannaPlay.UI.WinForms.Domain.UI;
 using Magenta.Shared.UI.WinForms.Controls;
 using Magenta.Shared.DesignByContract;
 using Magenta.Shared.Exceptions;

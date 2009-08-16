@@ -37,17 +37,19 @@
             // 
             this.content.Dock = System.Windows.Forms.DockStyle.Fill;
             this.content.Location = new System.Drawing.Point(0, 0);
+            this.content.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.content.Name = "content";
-            this.content.Size = new System.Drawing.Size(757, 433);
+            this.content.Size = new System.Drawing.Size(568, 352);
             this.content.TabIndex = 0;
             // 
             // _separator
             // 
             this._separator.BackColor = System.Drawing.Color.Silver;
             this._separator.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this._separator.Location = new System.Drawing.Point(0, 431);
+            this._separator.Location = new System.Drawing.Point(0, 350);
+            this._separator.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this._separator.Name = "_separator";
-            this._separator.Size = new System.Drawing.Size(757, 2);
+            this._separator.Size = new System.Drawing.Size(568, 2);
             this._separator.TabIndex = 0;
             // 
             // buttonsPanel
@@ -59,23 +61,23 @@
             this.buttonsPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.buttonsPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.buttonsPanel.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.AddColumns;
-            this.buttonsPanel.Location = new System.Drawing.Point(0, 433);
+            this.buttonsPanel.Location = new System.Drawing.Point(0, 352);
+            this.buttonsPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonsPanel.Name = "buttonsPanel";
-            this.buttonsPanel.Padding = new System.Windows.Forms.Padding(8, 4, 8, 4);
+            this.buttonsPanel.Padding = new System.Windows.Forms.Padding(6, 3, 6, 3);
             this.buttonsPanel.RowCount = 1;
             this.buttonsPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.buttonsPanel.Size = new System.Drawing.Size(757, 8);
+            this.buttonsPanel.Size = new System.Drawing.Size(568, 6);
             this.buttonsPanel.TabIndex = 1;
             // 
             // HostingDialog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(757, 441);
+            this.ClientSize = new System.Drawing.Size(568, 358);
             this.Controls.Add(this._separator);
             this.Controls.Add(this.content);
             this.Controls.Add(this.buttonsPanel);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "HostingDialog";
             this.ShowInTaskbar = false;
             this.Text = "HostingDialog";

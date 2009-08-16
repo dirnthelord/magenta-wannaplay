@@ -10,12 +10,12 @@ namespace Magenta.Shared.UI.WinForms.Mvvm
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected void OnPropertyChanged(string propertyName)
+        protected void OnPropertyChanged(params string[] propertyNames)
         {
             var handler = PropertyChanged;
 
             if (handler != null)
-                handler(this, new PropertyChangedEventArgs(propertyName));
+               propertyNames.ForEach(propertyName =>  handler(this, new PropertyChangedEventArgs(propertyName)));
         }
     }
 }

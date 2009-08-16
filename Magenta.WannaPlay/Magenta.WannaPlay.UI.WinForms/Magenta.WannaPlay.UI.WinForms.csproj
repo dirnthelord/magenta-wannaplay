@@ -65,34 +65,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommonControls\BookingEntryView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CommonControls\BookingEntryView.Designer.cs">
+      <DependentUpon>BookingEntryView.cs</DependentUpon>
+    </Compile>
     <Compile Include="CommonControls\BookingEntryListControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="CommonControls\BookingEntryListControl.Designer.cs">
       <DependentUpon>BookingEntryListControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="CommonControls\BookingEntryListItem.cs" />
+    <Compile Include="CommonControls\BookingEntryViewModel.cs" />
+    <Compile Include="CommonControls\TimeSpanFormatter.cs" />
+    <Compile Include="CommonControls\ViewBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Properties\ImageListHost.cs" />
     <Compile Include="UseCases\AddBooking\AddBookingController.cs" />
-    <Compile Include="UseCases\AddBooking\AddBookingViewPart.cs">
+    <Compile Include="CommonControls\ResidentController.cs" />
+    <Compile Include="UseCases\AddBooking\AddBookingView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UseCases\AddBooking\AddBookingViewPart.Designer.cs">
-      <DependentUpon>AddBookingViewPart.cs</DependentUpon>
+    <Compile Include="UseCases\AddBooking\AddBookingView.Designer.cs">
+      <DependentUpon>AddBookingView.cs</DependentUpon>
     </Compile>
-    <Compile Include="UseCases\AddBooking\ResidentController.cs" />
     <Compile Include="UseCases\CancelBooking\CancelBookingConfirmationController.cs" />
-    <Compile Include="UseCases\CancelBooking\CancelBookingConfirmationView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UseCases\CancelBooking\CancelBookingConfirmationView.Designer.cs">
-      <DependentUpon>CancelBookingConfirmationView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CommonControls\DateTimePeriodEditor.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="CommonControls\DateTimePeriodEditor.Designer.cs">
-      <DependentUpon>DateTimePeriodEditor.cs</DependentUpon>
-    </Compile>
     <Compile Include="UseCases\FindBooking\FindBookingController.cs" />
     <Compile Include="UseCases\ViewBookingSchedule\BookingScheduleControl.cs">
       <SubType>UserControl</SubType>
@@ -125,10 +125,10 @@
       <DependentUpon>UnitNumberEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="UseCases\ViewBookingSchedule\BookingSlotCell.cs" />
-    <Compile Include="UseCases\AddBooking\ResidentView.cs">
+    <Compile Include="CommonControls\ResidentView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UseCases\AddBooking\ResidentView.Designer.cs">
+    <Compile Include="CommonControls\ResidentView.Designer.cs">
       <DependentUpon>ResidentView.cs</DependentUpon>
     </Compile>
     <Compile Include="CommonControls\DateTimePeriodViewer.cs">
@@ -149,9 +149,8 @@
     <Compile Include="Diagnostics\IExceptionNotifier.cs" />
     <Compile Include="UseCases\ViewBookingSchedule\BookingScheduleGenerator.cs" />
     <Compile Include="Domain\BookingSlot.cs" />
-    <Compile Include="CommonControls\DateTimePeriodUI.cs" />
+    <Compile Include="CommonControls\DateTimePeriodViewModel.cs" />
     <Compile Include="UseCases\FindBooking\BookingSearchRequestViewModel.cs" />
-    <Compile Include="CommonControls\TimeSpanUI.cs" />
     <Compile Include="Ioc\UIConfiguration.cs" />
     <Compile Include="UseCases\StartApplication\WannaPlayMainControl.cs">
       <SubType>UserControl</SubType>
@@ -179,7 +178,7 @@
     <Compile Include="UseCases\ChangeCurrentDutyGuard\CurrentDutyGuardViewModel.cs" />
     <Compile Include="UseCases\FindBooking\FindBookingViewModel.cs" />
     <Compile Include="CommonControls\ResidenceUnitViewModel.cs" />
-    <Compile Include="UseCases\AddBooking\ResidentViewModel.cs" />
+    <Compile Include="CommonControls\ResidentViewModel.cs" />
     <Compile Include="UseCases\StartApplication\WannaPlayMainViewModel.cs" />
     <Compile Include="UseCases\ViewBookingSchedule\BookingSlotColumn.cs" />
     <Compile Include="UseCases\ViewBookingSchedule\KnownCellStyles.cs" />
@@ -192,8 +191,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Properties\DataSources\Magenta.WannaPlay.Domain.BookingEntry.datasource" />
-    <None Include="Properties\DataSources\Magenta.WannaPlay.UI.WinForms.Domain.UI.DateTimePeriodUI.datasource" />
-    <None Include="Properties\DataSources\Magenta.WannaPlay.UI.WinForms.UseCases.AddBooking.ResidentViewModel.datasource" />
+    <None Include="Properties\DataSources\Magenta.WannaPlay.UI.WinForms.CommonControls.BookingEntryViewModel.datasource" />
+    <None Include="Properties\DataSources\Magenta.WannaPlay.UI.WinForms.CommonControls.DateTimePeriodViewModel.datasource" />
+    <None Include="Properties\DataSources\Magenta.WannaPlay.UI.WinForms.CommonControls.ResidentViewModel.datasource" />
+    <None Include="Properties\DataSources\Magenta.WannaPlay.UI.WinForms.UseCases.AddBooking.AddBookingViewModel.datasource" />
     <None Include="Properties\DataSources\Magenta.WannaPlay.UI.WinForms.UseCases.FindBooking.BookingSearchRequestViewModel.datasource" />
     <None Include="Resources\Error.ico" />
     <None Include="Resources\Copy.ico" />
@@ -222,20 +223,16 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="CommonControls\BookingEntryView.resx">
+      <DependentUpon>BookingEntryView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="CommonControls\BookingEntryListControl.resx">
       <DependentUpon>BookingEntryListControl.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="UseCases\AddBooking\AddBookingViewPart.resx">
-      <DependentUpon>AddBookingViewPart.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UseCases\CancelBooking\CancelBookingConfirmationView.resx">
-      <DependentUpon>CancelBookingConfirmationView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CommonControls\DateTimePeriodEditor.resx">
-      <DependentUpon>DateTimePeriodEditor.cs</DependentUpon>
-      <SubType>Designer</SubType>
+    <EmbeddedResource Include="UseCases\AddBooking\AddBookingView.resx">
+      <DependentUpon>AddBookingView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UseCases\ViewBookingSchedule\BookingScheduleControl.resx">
       <DependentUpon>BookingScheduleControl.cs</DependentUpon>
@@ -254,7 +251,7 @@
     <EmbeddedResource Include="CommonControls\UnitNumberEditor.resx">
       <DependentUpon>UnitNumberEditor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UseCases\AddBooking\ResidentView.resx">
+    <EmbeddedResource Include="CommonControls\ResidentView.resx">
       <DependentUpon>ResidentView.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>

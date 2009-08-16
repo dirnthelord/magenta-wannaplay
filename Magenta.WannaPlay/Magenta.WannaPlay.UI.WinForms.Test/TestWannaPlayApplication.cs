@@ -5,7 +5,6 @@ using System.Text;
 using System.Windows.Forms;
 using Magenta.WannaPlay.UI.WinForms.Ioc;
 using Magenta.WannaPlay.UI.WinForms.Controls;
-using Magenta.WannaPlay.UI.WinForms.Domain.UI;
 using Magenta.Shared;
 using Magenta.WannaPlay.UI.WinForms.ViewModels;
 using Magenta.WannaPlay.Domain;
@@ -58,7 +57,7 @@ namespace Magenta.WannaPlay.UI.WinForms
             //    { 
             //        Period = DateTimePeriod.FromHours(from, 2),
             //        BookedAtDateTime = DateTime.Now,
-            //        ResidentController = new ResidentController
+            //        Resident = new Resident
             //        {
             //            Name = "Nickolas",
             //            PassCardNumber = "9994",
@@ -71,7 +70,7 @@ namespace Magenta.WannaPlay.UI.WinForms
             //    { 
             //        Period = DateTimePeriod.FromHours(from.AddHours(7), 1),
             //        BookedAtDateTime = DateTime.Now.AddHours(-45),
-            //        ResidentController = new ResidentController
+            //        Resident = new Resident
             //        {
             //            Name = "Postulkanis Vigulinfikus",
             //            PassCardNumber = "765",
@@ -84,7 +83,7 @@ namespace Magenta.WannaPlay.UI.WinForms
             //    { 
             //        Period = DateTimePeriod.FromHours(from.AddHours(3), 2),
             //        BookedAtDateTime = DateTime.Now.AddMinutes(-23),
-            //        ResidentController = new ResidentController
+            //        Resident = new Resident
             //        {
             //            Name = "Miguel Sranchos",
             //            PassCardNumber = "2",

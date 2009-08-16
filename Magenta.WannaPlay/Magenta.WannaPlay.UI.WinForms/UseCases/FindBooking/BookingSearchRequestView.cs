@@ -6,7 +6,6 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using Magenta.WannaPlay.UI.WinForms.Domain.UI;
 using Magenta.WannaPlay.UI.WinForms.Domain;
 using Magenta.Shared.DesignByContract;
 

@@ -57,8 +57,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommonControls\DateTimePeriodViewModelTests.cs" />
+    <Compile Include="CommonControls\TimeSpanFormatterTests.cs" />
     <Compile Include="Domain\GranularBookingScheduleGeneratorTests.cs" />
-    <Compile Include="Domain\UI\TimeSpanUITest.cs" />
     <Compile Include="Ioc\MockComponentsConfiguration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
