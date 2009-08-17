@@ -7,6 +7,7 @@ using Magenta.WannaPlay.Domain;
 
 namespace Magenta.WannaPlay.UI.WinForms.Services
 {
+    // TODO: Remove this mock class
     public class MockResidenceManager : IResidenceManager
     {
         public ResidenceUnit GetResidenceUnit(string unitBlock, string unitNumber)
@@ -47,5 +48,15 @@ namespace Magenta.WannaPlay.UI.WinForms.Services
         {
             return GetResidents().Where(r => r.PassCardNumber == passCardNumber).FirstOrDefault();
         }
+
+        #region IResidenceManager Members
+
+
+        public Resident RectifyResident(Resident resident)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 }

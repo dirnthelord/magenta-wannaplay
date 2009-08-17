@@ -60,26 +60,10 @@ namespace Magenta.WannaPlay.UI.WinForms.Services
             var view = Kernel.Get<AddBookingView>();
             view.ViewModel.Booking = booking;
 
-            //var controller = Kernel.Get<AddBookingController>();
-            //var viewModel = new AddBookingViewModel { Booking = booking };
-
             var form = ControlHoster.CreateForm(
                 Resources.AddBooking.ToBitmap(),
                 "Add booking",
                 view);
-
-            //    new DialogDescription
-            //{
-            //    Parent = MainForm,
-            //    Title = "Add booking",
-            //    Content = Kernel.Get<BookingEntryView>().Do(v => v.Value = booking),
-            //    Icon = Resources.AddBooking.ToBitmap(),
-            //    ButtonDescriptions = new[]
-            //    {
-            //        new DialogButtonDescription { Text = "Add booking", OnClick = () => controller.AddBooking(booking) },
-            //        new DialogButtonDescription { Text = "Don't add", IsCancelButton = true }     
-            //    },
-            //});
 
             form.AddBinding(view.ViewModel, f => f.Text, vm => vm.ViewTitle);
 

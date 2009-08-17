@@ -48,5 +48,31 @@ namespace Magenta.WannaPlay.Services.Residence
         }
 
         #endregion
+
+        public Resident RectifyResident(Resident newResident)
+        {
+            var resident = GetResident(newResident.PassCardNumber);
+
+            if (resident == null)
+                resident = newResident;
+            else
+                resident.CopyFrom(newResident); // TODO: Find smarter option to copy data
+
+            resident.Unit = RectifyUnit(newResident.Unit);
+
+            return resident;
+        }
+
+        public ResidenceUnit RectifyUnit(ResidenceUnit newUnit)
+        {
+            var unit = GetResidenceUnit(newUnit.Block, newUnit.Number);
+
+            if (unit == null)
+                unit = newUnit;
+            else
+                unit.CopyFrom(newUnit); // TODO: Find smarter option to copy data
+
+            return unit;
+        }
     }
 }

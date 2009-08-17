@@ -33,38 +33,34 @@ namespace Magenta.WannaPlay.UI.WinForms.CommonControls
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.panel4 = new System.Windows.Forms.Panel();
+            this._remarksPanel = new System.Windows.Forms.Panel();
             this._remarksPicture = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.comment = new System.Windows.Forms.RichTextBox();
             this.dataContext = new System.Windows.Forms.BindingSource(this.components);
-            this.panel1 = new System.Windows.Forms.Panel();
             this.dateTimePeriodViewer = new Magenta.WannaPlay.UI.WinForms.CommonControls.DateTimePeriodViewer();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.residentView = new Magenta.WannaPlay.UI.WinForms.CommonControls.ResidentView();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.panel4.SuspendLayout();
+            this._separator2 = new System.Windows.Forms.Panel();
+            this._separator1 = new System.Windows.Forms.Panel();
+            this._remarksPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._remarksPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataContext)).BeginInit();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel4
+            // _remarksPanel
             // 
-            this.panel4.AutoSize = true;
-            this.panel4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panel4.BackColor = System.Drawing.SystemColors.Control;
-            this.panel4.Controls.Add(this._remarksPicture);
-            this.panel4.Controls.Add(this.label1);
-            this.panel4.Controls.Add(this.comment);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(0, 203);
-            this.panel4.Margin = new System.Windows.Forms.Padding(0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(379, 94);
-            this.panel4.TabIndex = 20;
+            this._remarksPanel.AutoSize = true;
+            this._remarksPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this._remarksPanel.BackColor = System.Drawing.SystemColors.Control;
+            this._remarksPanel.Controls.Add(this._remarksPicture);
+            this._remarksPanel.Controls.Add(this.label1);
+            this._remarksPanel.Controls.Add(this.comment);
+            this._remarksPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._remarksPanel.Location = new System.Drawing.Point(0, 192);
+            this._remarksPanel.Margin = new System.Windows.Forms.Padding(0);
+            this._remarksPanel.Name = "_remarksPanel";
+            this._remarksPanel.Size = new System.Drawing.Size(379, 105);
+            this._remarksPanel.TabIndex = 1;
             // 
             // _remarksPicture
             // 
@@ -94,7 +90,7 @@ namespace Magenta.WannaPlay.UI.WinForms.CommonControls
             this.comment.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dataContext, "Booking.Remarks", true));
             this.comment.Location = new System.Drawing.Point(76, 17);
             this.comment.Name = "comment";
-            this.comment.Size = new System.Drawing.Size(302, 75);
+            this.comment.Size = new System.Drawing.Size(302, 86);
             this.comment.TabIndex = 0;
             this.comment.Text = "";
             // 
@@ -102,81 +98,58 @@ namespace Magenta.WannaPlay.UI.WinForms.CommonControls
             // 
             this.dataContext.DataSource = typeof(Magenta.WannaPlay.UI.WinForms.CommonControls.BookingEntryViewModel);
             // 
-            // panel1
-            // 
-            this.panel1.AutoSize = true;
-            this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panel1.Controls.Add(this.dateTimePeriodViewer);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(379, 80);
-            this.panel1.TabIndex = 21;
-            // 
             // dateTimePeriodViewer
             // 
             this.dateTimePeriodViewer.AutoSize = true;
             this.dateTimePeriodViewer.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.dateTimePeriodViewer.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.dataContext, "Booking.Period", true));
+            this.dateTimePeriodViewer.Dock = System.Windows.Forms.DockStyle.Top;
             this.dateTimePeriodViewer.Location = new System.Drawing.Point(0, 0);
             this.dateTimePeriodViewer.Margin = new System.Windows.Forms.Padding(0, 0, 0, 8);
             this.dateTimePeriodViewer.Name = "dateTimePeriodViewer";
-            this.dateTimePeriodViewer.Size = new System.Drawing.Size(210, 72);
-            this.dateTimePeriodViewer.TabIndex = 0;
-            // 
-            // panel2
-            // 
-            this.panel2.AutoSize = true;
-            this.panel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panel2.Controls.Add(this.residentView);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 88);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(379, 107);
-            this.panel2.TabIndex = 22;
+            this.dateTimePeriodViewer.Size = new System.Drawing.Size(379, 72);
+            this.dateTimePeriodViewer.TabIndex = 1;
             // 
             // residentView
             // 
             this.residentView.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.dataContext, "Booking.Resident", true));
-            this.residentView.Location = new System.Drawing.Point(0, 0);
+            this.residentView.Dock = System.Windows.Forms.DockStyle.Top;
+            this.residentView.Location = new System.Drawing.Point(0, 80);
             this.residentView.Name = "residentView";
             this.residentView.Size = new System.Drawing.Size(379, 104);
             this.residentView.TabIndex = 0;
             // 
-            // panel3
+            // _separator2
             // 
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 80);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(379, 8);
-            this.panel3.TabIndex = 20;
+            this._separator2.Dock = System.Windows.Forms.DockStyle.Top;
+            this._separator2.Location = new System.Drawing.Point(0, 72);
+            this._separator2.Name = "_separator2";
+            this._separator2.Size = new System.Drawing.Size(379, 8);
+            this._separator2.TabIndex = 20;
             // 
-            // panel5
+            // _separator1
             // 
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(0, 195);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(379, 8);
-            this.panel5.TabIndex = 21;
+            this._separator1.Dock = System.Windows.Forms.DockStyle.Top;
+            this._separator1.Location = new System.Drawing.Point(0, 184);
+            this._separator1.Name = "_separator1";
+            this._separator1.Size = new System.Drawing.Size(379, 8);
+            this._separator1.TabIndex = 21;
             // 
             // BookingEntryView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel5);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this._remarksPanel);
+            this.Controls.Add(this._separator1);
+            this.Controls.Add(this.residentView);
+            this.Controls.Add(this._separator2);
+            this.Controls.Add(this.dateTimePeriodViewer);
             this.Name = "BookingEntryView";
             this.Size = new System.Drawing.Size(379, 297);
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
+            this._remarksPanel.ResumeLayout(false);
+            this._remarksPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this._remarksPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataContext)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -185,15 +158,13 @@ namespace Magenta.WannaPlay.UI.WinForms.CommonControls
         #endregion
 
         private System.Windows.Forms.BindingSource dataContext;
-        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel _remarksPanel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RichTextBox comment;
         private System.Windows.Forms.PictureBox _remarksPicture;
         private Magenta.WannaPlay.UI.WinForms.CommonControls.DateTimePeriodViewer dateTimePeriodViewer;
         private ResidentView residentView;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel _separator2;
+        private System.Windows.Forms.Panel _separator1;
     }
 }

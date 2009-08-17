@@ -8,6 +8,7 @@ using Magenta.Shared;
 
 namespace Magenta.WannaPlay.UI.WinForms.Services
 {
+    // TODO: Remove this mock class
     public class MockBookingService : IBookingService
     {
         public IEnumerable<BookingEntry> GetBookingEntries(DateTimePeriod period, IEnumerable<Facility> facilities)
@@ -48,12 +49,12 @@ namespace Magenta.WannaPlay.UI.WinForms.Services
             }
         }
 
-        public void SaveBookingEntry(BookingEntry bookingSlot)
+        public void AddBooking(BookingEntry bookingSlot)
         {
             throw new NotImplementedException();
         }
 
-        public void CancelBookingEntry(BookingEntry bookingSlot)
+        public void CancelBooking(BookingEntry bookingSlot)
         {
             throw new NotImplementedException();
         }

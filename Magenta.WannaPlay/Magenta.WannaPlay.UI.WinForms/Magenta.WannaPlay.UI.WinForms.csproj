@@ -93,6 +93,12 @@
       <DependentUpon>AddBookingView.cs</DependentUpon>
     </Compile>
     <Compile Include="UseCases\CancelBooking\CancelBookingConfirmationController.cs" />
+    <Compile Include="UseCases\CancelBooking\CancelBookingConfirmationView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UseCases\CancelBooking\CancelBookingConfirmationView.Designer.cs">
+      <DependentUpon>CancelBookingConfirmationView.cs</DependentUpon>
+    </Compile>
     <Compile Include="UseCases\FindBooking\FindBookingController.cs" />
     <Compile Include="UseCases\ViewBookingSchedule\BookingScheduleControl.cs">
       <SubType>UserControl</SubType>
@@ -233,6 +239,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UseCases\AddBooking\AddBookingView.resx">
       <DependentUpon>AddBookingView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UseCases\CancelBooking\CancelBookingConfirmationView.resx">
+      <DependentUpon>CancelBookingConfirmationView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UseCases\ViewBookingSchedule\BookingScheduleControl.resx">
       <DependentUpon>BookingScheduleControl.cs</DependentUpon>

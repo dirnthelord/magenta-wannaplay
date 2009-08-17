@@ -24,9 +24,11 @@ namespace Magenta.WannaPlay.Ioc
 
             // Business services
             Bind<IResidenceManager>().To<ResidenceManager>().Using<SingletonBehavior>();
-            
+
             Bind<IBookingService>().To<BookingService>().Using<SingletonBehavior>();
-            Bind<IValidationRules<BookingEntry>>().To<BookingValidationRules>().Using<SingletonBehavior>();
+            Bind<IBookingValidationService>().To<BookingValidationService>().Using<SingletonBehavior>();
+
+            //Bind<IValidationRules<BookingEntry>>().To<BookingValidationRules>().Using<SingletonBehavior>();
         }
     }
 }
