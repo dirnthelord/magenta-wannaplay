@@ -19,7 +19,7 @@ namespace Magenta.WannaPlay.UI.WinForms.UseCases.CancelBooking
 
         public void CancelBooking(BookingEntry booking)
         {
-            BookingService.CancelBookingEntry(booking);
+            BookingService.CancelBooking(booking);
         }
     }
 }

@@ -5,42 +5,45 @@ using Magenta.WannaPlay.Domain;
 using Magenta.WannaPlay.Infrastructure.Persistence;
 using Magenta.Shared;
 using System.Linq;
+using Ninject.Core;
+using Magenta.WannaPlay.Services.Residence;
 
 namespace Magenta.WannaPlay.Services.Booking
 {
     public class BookingService : IBookingService
     {
-        private readonly IPersistenceRepository _persistenceRepository;
-        private readonly IValidationRules<BookingEntry> _rules;
+        [Inject]
+        public IBookingValidationService BookingValidationService { get; set; }
 
-        public BookingService(IPersistenceRepository persistenceRepository, IValidationRules<BookingEntry> rules)
-        {
-            _persistenceRepository = persistenceRepository;
-            _rules = rules;
-        }
+        [Inject]
+        public IPersistenceRepository PersistenceRepository { get; set; }
+
+        [Inject]
+        public IResidenceManager ResidenceManager { get; set; }
+
 
         #region IBookingService Members
 
         public IEnumerable<BookingEntry> GetBookingEntries(DateTimePeriod period, IEnumerable<Facility> facilities)
         {
-            return _persistenceRepository.Search<BookingEntry>(e => e.Period.From >= period.From.RoundDateDown()
+            return PersistenceRepository.Search<BookingEntry>(e => e.Period.From >= period.From.RoundDateDown()
                     && e.Period.To <= period.To.RoundDateUp()
                    && facilities.Contains(e.Facility));
         }
 
-        public void SaveBookingEntry(BookingEntry bookingEntry)
+        public void AddBooking(BookingEntry bookingEntry)
         {
-            var failures = _rules.Validate(bookingEntry);
+            BookingValidationService.ValidateBookingToAdd(bookingEntry).ThrowIfFailed();
 
-            if (failures.Count() > 0)
-                throw new ValidationException(failures);
+            // Ensure such no resident duplication
+            bookingEntry.Resident = ResidenceManager.RectifyResident(bookingEntry.Resident);
 
-            _persistenceRepository.Save(bookingEntry);
+            PersistenceRepository.Save(bookingEntry);
         }
 
-        public void CancelBookingEntry(BookingEntry bookingEntry)
+        public void CancelBooking(BookingEntry bookingEntry)
         {
-            _persistenceRepository.Delete(bookingEntry);
+            PersistenceRepository.Delete(bookingEntry);
         }
 
         #endregion

@@ -32,9 +32,10 @@ namespace Magenta.WannaPlay.UI.WinForms.UseCases.AddBooking
             // TODO: Use external service to get time
             booking.BookedAtDateTime = DateTime.Now;
             booking.BookedByGuard = WannaPlayContextService.CurrentGuard;
+
             booking.Resident = RectifyResident(booking.Resident);
 
-            BookingService.SaveBookingEntry(booking);
+            BookingService.AddBooking(booking);
         }
 
         Resident RectifyResident(Resident newResident)
@@ -62,5 +63,17 @@ namespace Magenta.WannaPlay.UI.WinForms.UseCases.AddBooking
 
             return unit;
         }
+
+        public void CancelAdd()
+        {
+            FinishDialog();
+        }
+
+        private void FinishDialog()
+        {
+            DialogFinished.Raise(this, EventArgs.Empty);
+        }
+
+        public event EventHandler DialogFinished;
     }
 }

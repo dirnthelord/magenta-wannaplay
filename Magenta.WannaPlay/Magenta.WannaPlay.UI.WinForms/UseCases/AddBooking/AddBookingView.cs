@@ -37,5 +37,15 @@ namespace Magenta.WannaPlay.UI.WinForms.UseCases.AddBooking
             get { return (AddBookingViewModel)dataContext.DataSource; }
             private set { dataContext.DataSource = value; }
         }
+
+        private void addBooking_Click(object sender, EventArgs e)
+        {
+            Controller.AddBooking(ViewModel.Booking);
+        }
+
+        private void cancelAdd_Click(object sender, EventArgs e)
+        {
+            Controller.CancelAdd();
+        }
     }
 }

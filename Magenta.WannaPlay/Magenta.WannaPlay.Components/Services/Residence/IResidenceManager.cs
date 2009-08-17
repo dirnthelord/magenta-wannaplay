@@ -24,5 +24,10 @@ namespace Magenta.WannaPlay.Services.Residence
         /// If residence unit with the block\number does not exist it will be created
         /// </summary>
         ResidenceUnit GetResidenceUnit(string unitBlock, string unitNumber);
+
+        /// <summary>
+        /// Try to find existing resident in the database and return it filled with passed object data
+        /// </summary>
+        Resident RectifyResident(Resident resident);
     }
 }

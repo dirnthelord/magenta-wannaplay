@@ -11,14 +11,7 @@ namespace Magenta.Shared.Validation
 
         public IEnumerable<ValidationFailure> Validate(T target)
         {
-            return _rules.Aggregate(
-                new List<ValidationFailure>(), (failures, rule) =>
-                                                   {
-                                                       if (!rule.Validator(target))
-                                                           failures.Add(rule.Failure);
-                                                       return failures;
-                                                   })
-                .ToList();
+            return _rules.Where(r => !r.Validator(target)).Select(r => r.Failure);
         }
 
         public void Add(ValidationRule<T> rule)

@@ -94,6 +94,7 @@
     <Compile Include="Validation\IValidationRules.cs" />
     <Compile Include="Validation\ValidationException.cs" />
     <Compile Include="Validation\ValidationFailure.cs" />
+    <Compile Include="Validation\ValidationResults.cs" />
     <Compile Include="Validation\ValidationRule.cs" />
     <Compile Include="Validation\ValidationRules.cs" />
     <Compile Include="Validation\ValidationRulesAssert.cs" />

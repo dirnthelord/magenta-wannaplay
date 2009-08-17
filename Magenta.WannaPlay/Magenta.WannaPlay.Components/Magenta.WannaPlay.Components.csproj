@@ -87,7 +87,9 @@
     <Compile Include="Infrastructure\Persistence\IPersistenceRepository.cs" />
     <Compile Include="Infrastructure\Persistence\PersistenceRepository.cs" />
     <Compile Include="Services\Booking\BookingService.cs" />
+    <Compile Include="Services\Booking\BookingValidationService.cs" />
     <Compile Include="Services\Booking\IBookingService.cs" />
+    <Compile Include="Services\Booking\IBookingValidationService.cs" />
     <Compile Include="Services\Booking\Validation\BookingValidationRules.cs" />
     <Compile Include="Services\Booking\Validation\KnownBookingErrors.cs" />
     <Compile Include="Services\Registration\IRegistrationService.cs" />
