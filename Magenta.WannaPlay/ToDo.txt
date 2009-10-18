@@ -12,3 +12,6 @@ Done:
 - Restore standard fonts
 - Align buttons in dialogs to bottom right corner
 - Fix "Magents" folder naming bug
+
+
+test
